@@ -9,8 +9,17 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import environ
+import os
 from pathlib import Path
+
+# Django-environ
+# environment variables
+
+env = environ.Env(
+    DEBUG=(bool, False)
+)
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
