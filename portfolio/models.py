@@ -1,9 +1,10 @@
+from django.core.validators import URLValidator
 from django.db import models
 
 
 class Icon(models.Model):
-    name = models.CharField('nom', max_length=50)
-    image = models.ImageField('image', upload_to='uploads/images/')
+    name = models.CharField('nom', max_length=50, unique=True)
+    svg_file = models.FileField('fichier svg', upload_to='uploads/icons/')
 
     def __str__(self):
         return self.name
@@ -14,9 +15,8 @@ class Icon(models.Model):
 
 
 class Skill(models.Model):
-    name = models.CharField('nom', max_length=50)
-    name_fr = models.CharField('nom fr', max_length=50)
-    image = models.ForeignKey(Icon, on_delete=models.SET_NULL, null=True, blank=True)
+    name = models.CharField('nom', max_length=50, unique=True)
+    icon = models.ForeignKey(Icon, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='icône')
     order = models.PositiveSmallIntegerField("ordre d'apparition")
 
     def __str__(self):
@@ -28,17 +28,17 @@ class Skill(models.Model):
 
 
 class PortfolioLink(models.Model):
-    name = models.CharField('nom', max_length=50)
-    name_fr = models.CharField('nom fr', max_length=50)
-    image = models.ForeignKey(Icon, on_delete=models.SET_NULL, null=True, blank=True)
+    name = models.CharField('nom', max_length=50, unique=True)
+    icon = models.ForeignKey(Icon, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='icône')
+    link = models.CharField('lien', max_length=200)
     order = models.PositiveSmallIntegerField("ordre d'apparition")
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = 'Lien du portfolio'
-        verbose_name_plural = 'Liens du portfolio'
+        verbose_name = 'Lien de portfolio'
+        verbose_name_plural = 'Liens de portfolio'
 
 
 class Portfolio(models.Model):
@@ -51,8 +51,8 @@ class Portfolio(models.Model):
     contact_email = models.EmailField('email de contact')
     about_description = models.CharField('description de la section à propos', max_length=500)
     about_description_fr = models.CharField('description de la section à propos fr', max_length=500)
-    about_skill = models.ManyToManyField(Skill)
-    about_link = models.ManyToManyField(PortfolioLink)
+    about_skill = models.ManyToManyField(Skill, verbose_name='compétences')
+    about_link = models.ManyToManyField(PortfolioLink, verbose_name='liens')
     resume = models.FileField('cv', upload_to='uploads/resume/')
 
     def __str__(self):
@@ -64,7 +64,7 @@ class Portfolio(models.Model):
 
 
 class ProjectType(models.Model):
-    name = models.CharField('nom', max_length=50)
+    name = models.CharField('nom', max_length=50, unique=True)
     name_fr = models.CharField('nom fr', max_length=50)
 
     def __str__(self):
@@ -76,12 +76,12 @@ class ProjectType(models.Model):
 
 
 class Project(models.Model):
-    name = models.CharField('nom', max_length=50)
+    name = models.CharField('nom', max_length=50, unique=True)
     name_fr = models.CharField('nom fr', max_length=50)
     description = models.CharField('description du projet', max_length=500)
     description_fr = models.CharField('description du projet fr', max_length=500)
-    skill = models.ManyToManyField(Skill)
-    project_type = models.ForeignKey(ProjectType, on_delete=models.CASCADE)
+    skill = models.ManyToManyField(Skill, verbose_name='compétences')
+    project_type = models.ForeignKey(ProjectType, on_delete=models.CASCADE, verbose_name='type de projet')
     order = models.PositiveSmallIntegerField("ordre d'apparition")
 
     def __str__(self):
@@ -94,27 +94,27 @@ class Project(models.Model):
 
 class ProjectImage(models.Model):
     name = models.CharField('nom', max_length=50)
-    image = models.ImageField('nom fr', upload_to='uploads/images/')
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, verbose_name='projet')
+    image = models.ImageField('image', upload_to='uploads/images/')
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = 'Image du projet'
-        verbose_name_plural = 'Images du projet'
+        verbose_name = 'Image de projet'
+        verbose_name_plural = 'Images de projet'
 
 
 class ProjectLink(models.Model):
     name = models.CharField('nom', max_length=50)
-    name_fr = models.CharField('nom fr', max_length=50)
-    image = models.ForeignKey(Icon, on_delete=models.SET_NULL, null=True, blank=True)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    icon = models.ForeignKey(Icon, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='icône')
+    url = models.URLField('url', validators=[URLValidator(schemes=['http', 'https'])])
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, verbose_name='projet')
     order = models.PositiveSmallIntegerField("ordre d'apparition")
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = 'Lien'
-        verbose_name_plural = 'Liens'
+        verbose_name = 'Lien de projet'
+        verbose_name_plural = 'Liens de projet'
