@@ -43,7 +43,7 @@ class PortfolioLink(models.Model):
 
 class Portfolio(models.Model):
     name = models.CharField('nom', max_length=100)
-    name_fr = models.CharField('nom fr', max_length=50)
+    name_fr = models.CharField('nom fr', max_length=100)
     firstname = models.CharField('prénom', max_length=30)
     lastname = models.CharField('nom', max_length=30)
     job_title = models.CharField('titre de poste', max_length=50)
