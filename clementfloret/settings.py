@@ -34,7 +34,10 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+if env('ENV') == 'PROD':
+    ALLOWED_HOSTS = ['www.clementfloret.dev']
+else:
+    ALLOWED_HOSTS = ['*']
 
 
 # Application definition
