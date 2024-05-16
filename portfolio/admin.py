@@ -32,7 +32,7 @@ class PortfolioLinkAdmin(admin.ModelAdmin):
 
 
 class PortfolioAdmin(admin.ModelAdmin):
-    list_display = ['name', 'name_fr', 'firstname', 'lastname', 'job_title', 'job_title_fr', 'contact_email', 'resume']
+    list_display = ['name', 'name_fr', 'job_title', 'job_title_fr', 'contact_email', 'resume', 'active']
     list_per_page = 50
     ordering = ['pk']
     search_fields = ['name', 'name_fr']
