@@ -54,6 +54,7 @@ class Portfolio(models.Model):
     about_skill = models.ManyToManyField(Skill, verbose_name='compétences')
     about_link = models.ManyToManyField(PortfolioLink, verbose_name='liens')
     resume = models.FileField('cv', upload_to='uploads/resume/')
+    active = models.BooleanField('actif', default=False)
 
     def __str__(self):
         return self.name
