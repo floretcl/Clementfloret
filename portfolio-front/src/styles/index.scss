@@ -1,0 +1,256 @@
+// FONTS
+
+@font-face {
+  font-family: 'ruda-regular';
+  src: url('../fonts/Ruda-Regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ruda-bold';
+  src: url('../fonts/Ruda-Bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'karla-regular';
+  src: url('../fonts/Karla-Regular.woff2') format('woff2'),
+  url('../fonts/Karla-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'karla-bold';
+  src: url('../fonts/Karla-Bold.woff2') format('woff2'),
+  url('../fonts/Karla-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'duru-regular';
+  src: url('../fonts/duru-sans-latin-400-normal.woff2') format('woff2'),
+  url('../fonts/duru-sans-latin-400-normal.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$ruda-regular: ruda-regular, sans-serif;
+$ruda-bold: ruda-regular, sans-serif;
+$karla-regular: karla-regular, sans-serif;
+$karla-bold: karla-regular, sans-serif;
+$duru-regular: duru-regular, sans-serif;
+
+// COLORS
+
+$dark-color: #464A4E;
+$green-color: #C4D4CF;
+$grey-color: #706F6F;
+$purple-color: #CA7DF9;
+$white-color: #F5F5F5;
+
+// FILTERS
+
+$dark-filter: brightness(0) saturate(100%) invert(27%) sepia(7%) saturate(418%) hue-rotate(169deg) brightness(100%) contrast(91%);
+$green-filter: brightness(0) saturate(100%) invert(100%) sepia(73%) saturate(185%) hue-rotate(80deg) brightness(87%) contrast(90%);
+$grey-filter: brightness(0) saturate(100%) invert(44%) sepia(1%) saturate(1985%) hue-rotate(3deg) brightness(94%) contrast(79%);
+$purple-filter: brightness(0) saturate(100%) invert(64%) sepia(71%) saturate(2593%) hue-rotate(224deg) brightness(96%) contrast(104%);
+$white-filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(5596%) hue-rotate(298deg) brightness(112%) contrast(91%);
+
+body {
+  margin: 0;
+  font-family: $duru-regular;
+  color: $dark-color;
+  background-color: $green-color;
+}
+
+button {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem;
+
+  &__logo {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  &__nav {
+    position: relative;
+  }
+}
+
+.menu {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  background-color: $dark-color;
+  padding: 1rem 2rem 1rem 0.5rem;
+  animation: 0.3s ease-in-out 0s forwards opening-menu;
+
+  @keyframes opening-menu {
+    from {
+      transform: scale(0);
+      transform-origin: top right;
+    }
+    to {
+      transform: scale(1);
+      transform-origin: top right;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  &__link {
+    a {
+      display: inline-block;
+      padding: 0.5rem 2rem;
+      font-family: $karla-regular;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $green-color;
+      transition: color 0.2s ease-in;
+
+      &:hover {
+        color: $purple-color;
+        transition: color 0.3s ease-in;
+
+        ~hr {
+          border-color: $purple-color;
+          transition: border-color 0.3s ease-in;
+          animation: 0.3s ease-in 0s forwards moving-line;
+        }
+        @keyframes moving-line {
+          from {
+            margin-right: 8.5rem;
+          }
+          50% {
+            margin-left: 2rem;
+            margin-right: 1rem;
+          }
+          to {
+            margin-left: 2rem;
+            margin-right: 4rem;
+          }
+        }
+      }
+    }
+  }
+
+  &__divider {
+    border: 0.075rem solid $green-color;
+    margin: 0 1rem 0.25rem 2rem;
+    transition: border-color 0.2s ease-in;
+  }
+
+  &__button {
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    color: $dark-color;
+    transition: color 0.2s ease-in;
+
+    &:hover {
+      cursor: pointer;
+      color: $purple-color;
+      transition: color 0.3s ease-in;
+    }
+
+    svg {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  &__button-lines {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &:hover div {
+      background-color: $purple-color;
+      transition: all 0.2s ease-in;
+    }
+  }
+
+  &__button-line {
+    height: 0.1875rem;
+    width: 2rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    background-color: $dark-color;
+    transition: all 0.3s ease-in;
+
+    &--active1 {
+      transform: translateY(0.6875rem) rotate(45deg);
+      transform-origin: center;
+      background-color: $green-color;
+    }
+
+    &--active2 {
+      opacity: 0;
+      background-color: $green-color;
+    }
+
+    &--active3 {
+      transform: translateY(-0.6875rem) rotate(-45deg);
+      transform-origin: center;
+      background-color: $green-color;
+    }
+  }
+}
+
+.mode {
+  padding: 0 1rem 0 2rem;
+
+  &__button {
+    color: $green-color;
+    transition: color 0.2s ease-in;
+
+    &:active {
+      animation: 0.3s ease-in-out 0s forwards rotation-button;
+
+      @keyframes rotation-button {
+        from {
+          transform: rotate(0);
+          transform-origin: center;
+        }
+        to {
+          transform: rotate(360deg);
+          transform-origin: center;
+        }
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $purple-color;
+      transition: color 0.3s ease-in;
+    }
+
+    svg {
+      width: 2.75rem;
+      height: 2.75rem;
+    }
+  }
+}
