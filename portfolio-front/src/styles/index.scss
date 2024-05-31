@@ -80,13 +80,20 @@ button {
   align-items: center;
   margin: 0.5rem;
 
-  &__logo {
-    width: 3rem;
-    height: 3rem;
-  }
-
   &__nav {
     position: relative;
+  }
+
+  &__logo:hover svg {
+    color: $purple-color;
+    transition: color 0.3s ease-in;
+  }
+
+  svg {
+    width: 3rem;
+    height: 3rem;
+    color: $dark-color;
+    transition: color 0.2s ease-in;
   }
 }
 
