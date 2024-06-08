@@ -3,12 +3,16 @@ import {useState} from "react";
 export default function Mode() {
     const [isDarkMode, setDarkMode] = useState(false);
 
+    function toggleDarkMode() {
+        setDarkMode(!isDarkMode);
+    }
+
     return (
         <div className="mode">
             <button
                 className="mode__button"
                 type="button"
-                onClick={() => setDarkMode(!isDarkMode)}>
+                onClick={toggleDarkMode}>
                 {isDarkMode ? (
                     <svg width="46" height="44" viewBox="0 0 46 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
