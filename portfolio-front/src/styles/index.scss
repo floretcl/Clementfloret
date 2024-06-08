@@ -86,7 +86,7 @@ button {
 
   &__logo:hover svg {
     color: $purple-color;
-    transition: color 0.3s ease-in;
+    transition: color 0.2s ease-in;
   }
 
   &__logo svg {
@@ -99,17 +99,28 @@ button {
 
 .menu {
   position: absolute;
+  display: none;
   top: -0.5rem;
   right: -0.5rem;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
   background-color: $dark-color;
   padding: 1rem 2rem 1rem 0.5rem;
-  animation: 0.3s ease-in-out 0s forwards opening-menu;
 
-  @keyframes opening-menu {
+  &--active {
+    display: flex;
+  }
+
+  &--close {
+    animation: 0.3s ease-in-out 0s forwards opening-menu-close;
+  }
+
+  &--open {
+    animation: 0.3s ease-in-out 0s forwards opening-menu-open;
+  }
+
+  @keyframes opening-menu-open {
     from {
       transform: scale(0);
       transform-origin: top right;
@@ -119,6 +130,18 @@ button {
       transform-origin: top right;
     }
   }
+
+  @keyframes opening-menu-close {
+    from {
+      transform: scale(1);
+      transform-origin: top right;
+    }
+    to {
+      transform: scale(0);
+      transform-origin: top right;
+    }
+  }
+
 
   &__list {
     list-style: none;
@@ -139,7 +162,7 @@ button {
 
       &:hover {
         color: $purple-color;
-        transition: color 0.3s ease-in;
+        transition: color 0.2s ease-in;
 
         ~hr {
           border-color: $purple-color;
@@ -179,7 +202,7 @@ button {
     &:hover {
       cursor: pointer;
       color: $purple-color;
-      transition: color 0.3s ease-in;
+      transition: color 0.2s ease-in;
     }
 
     svg {
@@ -196,33 +219,145 @@ button {
 
     &:hover div {
       background-color: $purple-color;
-      transition: all 0.2s ease-in;
+      transition: background-color 0.2s ease-in;
     }
   }
 
-  &__button-line {
+  &__button-line-top {
     height: 0.1875rem;
     width: 2rem;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
     background-color: $dark-color;
-    transition: all 0.3s ease-in;
 
-    &--active1 {
+    &--close {
+      animation: 0.3s ease-in-out 0s menu-button-line-top-out;
+    }
+
+    &--open {
       transform: translateY(0.6875rem) rotate(45deg);
       transform-origin: center;
       background-color: $green-color;
+      animation: 0.3s ease-in-out 0s menu-button-line-top-in;
     }
 
-    &--active2 {
+    @keyframes menu-button-line-top-in {
+      from {
+        transform: none;
+        background-color: $dark-color;
+      }
+      50% {
+        transform: translateY(0.6875rem);
+      }
+      to {
+        transform: translateY(0.6875rem) rotate(45deg);
+        transform-origin: center;
+        background-color: $green-color;
+      }
+    }
+
+    @keyframes menu-button-line-top-out {
+      from {
+        transform: translateY(0.6875rem) rotate(45deg);
+        transform-origin: center;
+        background-color: $green-color;
+      }
+      50% {
+        transform: translateY(0.6875rem);
+      }
+      to {
+        transform: none;
+        background-color: $dark-color;
+      }
+    }
+  }
+
+  &__button-line-middle {
+    height: 0.1875rem;
+    width: 2rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    background-color: $dark-color;
+
+    &--close {
+      animation: 0.3s ease-in-out 0s menu-button-line-middle-out;
+    }
+
+    &--open {
       opacity: 0;
       background-color: $green-color;
+      animation: 0.3s ease-in-out 0s menu-button-line-middle-in;
     }
 
-    &--active3 {
+    @keyframes menu-button-line-middle-in {
+      from {
+        opacity: 1;
+        background-color: $dark-color;
+      }
+      to {
+        opacity: 0;
+        background-color: $green-color;
+      }
+    }
+
+    @keyframes menu-button-line-middle-out {
+      from {
+        opacity: 0;
+        background-color: $green-color;
+      }
+      to {
+        opacity: 1;
+        background-color: $dark-color;
+      }
+    }
+  }
+
+  &__button-line-bottom {
+    height: 0.1875rem;
+    width: 2rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    background-color: $dark-color;
+
+    &--close {
+      animation: 0.3s ease-in-out 0s menu-button-line-bottom-out;
+    }
+
+    &--open {
       transform: translateY(-0.6875rem) rotate(-45deg);
       transform-origin: center;
       background-color: $green-color;
+      animation: 0.3s ease-in-out 0s menu-button-line-bottom-in;
+    }
+
+    @keyframes menu-button-line-bottom-in {
+      from {
+        transform: none;
+        background-color: $dark-color;
+      }
+      50% {
+        transform: translateY(-0.6875rem);
+      }
+      to {
+        transform: translateY(-0.6875rem) rotate(-45deg);
+        transform-origin: center;
+        background-color: $green-color;
+      }
+    }
+
+    @keyframes menu-button-line-bottom-out {
+      from {
+        transform: translateY(-0.6875rem) rotate(-45deg);
+        transform-origin: center;
+        background-color: $green-color;
+      }
+      50% {
+        transform: translateY(-0.6875rem);
+      }
+      to {
+        transform: none;
+        background-color: $dark-color;
+      }
     }
   }
 }
@@ -252,7 +387,7 @@ button {
     &:hover {
       cursor: pointer;
       color: $purple-color;
-      transition: color 0.3s ease-in;
+      transition: color 0.2s ease-in;
     }
 
     svg {
