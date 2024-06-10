@@ -39,9 +39,9 @@
 }
 
 $ruda-regular: ruda-regular, sans-serif;
-$ruda-bold: ruda-regular, sans-serif;
+$ruda-bold: ruda-bold, sans-serif;
 $karla-regular: karla-regular, sans-serif;
-$karla-bold: karla-regular, sans-serif;
+$karla-bold: karla-bold, sans-serif;
 $duru-regular: duru-regular, sans-serif;
 
 // COLORS
@@ -81,11 +81,6 @@ button {
   border: none;
   background: none;
   padding: 0;
-}
-
-.preload * {
-  transition: none !important;
-  animation: none !important;
 }
 
 .header {
@@ -152,9 +147,10 @@ button {
           transition: border-color 0.3s ease-in;
           animation: 0.3s ease-in 0s forwards moving-line;
         }
+
         @keyframes moving-line {
           from {
-            margin-right: 8.5rem;
+            margin-right: 100%;
           }
           50% {
             margin-left: 2rem;
@@ -162,7 +158,7 @@ button {
           }
           to {
             margin-left: 2rem;
-            margin-right: 4rem;
+            margin-right: 25%;
           }
         }
       }
@@ -372,7 +368,6 @@ button {
   }
 }
 
-
 .mode {
   padding: 0 1rem 0 2rem;
 
@@ -404,6 +399,97 @@ button {
     svg {
       width: 2.75rem;
       height: 2.75rem;
+    }
+  }
+}
+
+@media all and (min-width: $medium) {
+  .header {
+    margin: 1rem 1.5rem;
+    &__nav {
+      position: initial;
+      flex-grow: 2;
+    }
+  }
+
+  .menu {
+    &__content {
+      position: initial;
+      display: flex;
+      top: 0;
+      right: 0;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      background-color: initial;
+      padding: 0;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: row;
+      margin: 0 2rem;
+    }
+
+    &__link {
+      a {
+        color: $dark-color;
+        padding: 0.5rem 1rem;
+
+        &:hover {
+          ~hr {
+            animation: 0.5s ease-in-out 0s forwards moving-line-medium;
+          }
+
+          @keyframes moving-line-medium {
+          from {
+            margin-left: 1rem;
+            margin-right: 100%;
+          }
+          50% {
+            margin-left: 1rem;
+            margin-right: 1rem;
+          }
+          to {
+            margin-left: 1rem;
+            margin-right: 40%;
+          }
+        }
+        }
+      }
+    }
+
+    &__divider {
+    margin: 0 1rem 0.25rem 1rem;
+  }
+
+    &__button {
+      display: none;
+    }
+
+    &--close {
+      .menu__content {
+        animation: none;
+      }
+    }
+  }
+
+  .mode {
+    padding: 0;
+    &__button {
+      color: $dark-color;
+    }
+  }
+}
+
+@media all and (min-width: $large) {
+  .header {
+    margin: 1.5rem 2rem;
+  }
+
+  .menu {
+    &__list {
+      margin: 0 3rem;
     }
   }
 }
