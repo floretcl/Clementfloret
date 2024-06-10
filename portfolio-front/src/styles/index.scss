@@ -68,7 +68,7 @@ $large: 1024px;
 $x-large: 1280px;
 $xx-large: 1536px;
 
-// STYLE
+// BLOCKS
 
 body {
   margin: 0;
@@ -82,6 +82,8 @@ button {
   background: none;
   padding: 0;
 }
+
+// CLASSES
 
 .header {
   display: flex;
@@ -399,6 +401,36 @@ button {
     svg {
       width: 2.75rem;
       height: 2.75rem;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__contact {
+    order: 1;
+    a {
+      color: $dark-color;
+      text-decoration: none;
+    }
+  }
+
+  &__infos {
+    order: 3;
+  }
+
+  &__social {
+    order: 2;
+    &-link {
+      svg {
+        width: 2.75rem;
+        height: 2.75rem;
+        color: $dark-color;
+      }
     }
   }
 }
