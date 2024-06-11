@@ -90,7 +90,7 @@ button {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 0.5rem;
+  margin: 0.5rem 0.75rem;
 
   &__nav {
     position: relative;
@@ -101,11 +101,15 @@ button {
     transition: color 0.2s ease-in;
   }
 
-  &__logo svg {
-    width: 3rem;
-    height: 3rem;
-    color: $dark-color;
-    transition: color 0.2s ease-in;
+  &__logo {
+    padding-top: 0.5rem;
+
+    svg {
+      width: 3rem;
+      height: 3rem;
+      color: $dark-color;
+      transition: color 0.2s ease-in;
+    }
   }
 }
 
@@ -374,6 +378,7 @@ button {
   padding: 0 1rem 0 2rem;
 
   &__button {
+    padding-top: 0.25rem;
     color: $green-color;
     transition: color 0.2s ease-in;
 
