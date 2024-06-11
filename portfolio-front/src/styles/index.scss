@@ -463,6 +463,10 @@ button {
   }
 }
 
+// MEDIA QUERIES
+
+// MEDIA QUERY - MEDIUM
+
 @media all and (min-width: $medium) {
   .header {
     margin: 1rem 1.5rem;
@@ -560,6 +564,8 @@ button {
     }
   }
 }
+
+// MEDIA QUERY - LARGE
 
 @media all and (min-width: $large) {
   .header {
