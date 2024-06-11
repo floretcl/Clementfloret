@@ -410,26 +410,54 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0.5rem;
 
   &__contact {
     order: 1;
+    margin: 0.5rem 1rem;
+
     a {
       color: $dark-color;
       text-decoration: none;
+      transition: color 0.2s ease-in;
+
+      &:hover {
+        color: $purple-color;
+        transition: color 0.2s ease-in;
+      }
     }
   }
 
   &__infos {
     order: 3;
+    text-align: center;
+    margin: 0.5rem 1rem;
   }
 
   &__social {
+    display: flex;
+    flex-direction: row;
     order: 2;
+
     &-link {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      padding: 0.5rem;
+      margin: 0 0.5rem;
+
       svg {
-        width: 2.75rem;
-        height: 2.75rem;
+        width: 2.5rem;
+        height: 2.5rem;
         color: $dark-color;
+        transition: color 0.2s ease-in;
+      }
+
+      &:hover {
+        svg {
+          color: $purple-color;
+          transition: color 0.2s ease-in;
+        }
       }
     }
   }
@@ -512,6 +540,25 @@ button {
       color: $dark-color;
     }
   }
+
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem 1.5rem;
+    font-size: 0.875rem;
+
+    &__contact {
+      order: 1;
+    }
+
+    &__infos {
+      order: 2;
+    }
+
+    &__social {
+      order: 3;
+    }
+  }
 }
 
 @media all and (min-width: $large) {
@@ -523,5 +570,9 @@ button {
     &__list {
       margin: 0 3rem;
     }
+  }
+
+  .footer {
+    margin: 1.5rem 2rem;
   }
 }
