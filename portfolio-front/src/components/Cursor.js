@@ -72,7 +72,7 @@ export default function Cursor({mousePosition}) {
     return (
         <div ref={cursorRef} className="cursor">
             <div className="cursor__ball cursor__ball--big"
-                 style={{left: positionBigBall.x - 15, top: positionBigBall.y - 15}}>
+                 style={{left: positionBigBall.x - 20, top: positionBigBall.y - 20}}>
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.91154 11.2887L20 2.57735L35.0885 11.2887V28.7113L20 37.4226L4.91154 28.7113V11.2887Z"
                           fill="currentColor"/>
@@ -80,7 +80,7 @@ export default function Cursor({mousePosition}) {
             </div>
 
             <div className="cursor__ball cursor__ball--small"
-                 style={{left: positionSmallBall.x - 5, top: positionSmallBall.y - 7}}>
+                 style={{left: positionSmallBall.x - 5.5, top: positionSmallBall.y - 11}}>
                 <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.5 1L9.39711 3.25V7.75L5.5 10L1.60289 7.75V3.25L5.5 1Z" fill="currentColor"/>
                 </svg>
