@@ -86,6 +86,10 @@ button {
   padding: 0;
 }
 
+a {
+  cursor: none;
+}
+
 // CLASSES
 
 .header {
@@ -184,7 +188,7 @@ button {
     transition: color 0.2s ease-in;
 
     &:hover {
-      cursor: pointer;
+      cursor: none;
       color: $purple-color;
       transition: color 0.2s ease-in;
     }
@@ -396,7 +400,7 @@ button {
     }
 
     &:hover {
-      cursor: pointer;
+      cursor: none;
       color: $purple-color;
       transition: color 0.2s ease-in;
     }
