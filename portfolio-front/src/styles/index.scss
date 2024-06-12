@@ -414,11 +414,12 @@ button {
 
   &__contact {
     order: 1;
-    margin: 0.5rem 1rem;
-
+    margin: 0;
     a {
+      display: inline-block;
       color: $dark-color;
       text-decoration: none;
+      padding: 0.5rem 1rem;
       transition: color 0.2s ease-in;
 
       &:hover {
