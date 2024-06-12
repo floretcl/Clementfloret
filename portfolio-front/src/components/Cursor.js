@@ -40,7 +40,7 @@ export default function Cursor({mousePosition}) {
             const distSmallBall = Math.sqrt(dxSmallBall * dxSmallBall + dySmallBall * dySmallBall);
 
             // Vitesse de l'animation
-            const speedBigBall = 0.03;
+            const speedBigBall = 0.025;
             const speedSmallBall = 0.1;
 
             if (distBigBall > 0.1) {
