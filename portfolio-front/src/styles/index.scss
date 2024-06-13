@@ -446,8 +446,9 @@ a {
     text-align: center;
     margin: 0.5rem 1rem;
   }
+}
 
-  &__social {
+.social {
     display: flex;
     flex-direction: row;
     order: 2;
@@ -474,7 +475,6 @@ a {
       }
     }
   }
-}
 
 .cursor {
   pointer-events: none;
