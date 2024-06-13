@@ -90,7 +90,7 @@ button {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 0.5rem 0.75rem;
+  padding: 0.5rem 0.75rem;
 
   &__nav {
     position: relative;
@@ -470,7 +470,7 @@ button {
 
 @media all and (min-width: $medium) {
   .header {
-    margin: 1rem 1.5rem;
+    padding: 1rem 1.5rem;
     &__nav {
       position: initial;
       flex-grow: 2;
@@ -568,7 +568,7 @@ button {
 
 @media all and (min-width: $large) {
   .header {
-    margin: 1.5rem 2rem;
+    padding: 1.5rem 2rem;
   }
 
   .menu {
