@@ -8,8 +8,15 @@ function App() {
         x: 0,
         y: 0
     });
+
+    function moveBackground(x, y) {
+        document.body.style.backgroundPositionX = -(x/20) + "px";
+        document.body.style.backgroundPositionY = -(y/20) + "px";
+    }
+
     function handleMouseMove(event) {
-        setMousePosition({x: event.pageX, y: event.pageY})
+        setMousePosition({x: event.pageX, y: event.pageY});
+        moveBackground(event.pageX, event.pageY);
     }
 
     return (
