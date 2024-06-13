@@ -1,17 +1,21 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Cursor from "./components/Cursor";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
+import Home from "./components/Home";
 
 function App() {
     const [mousePosition, setMousePosition] = useState({
         x: 0,
         y: 0
     });
+    const bodyRef = useRef(null);
 
     function moveBackground(x, y) {
-        document.body.style.backgroundPositionX = -(x/20) + "px";
-        document.body.style.backgroundPositionY = -(y/20) + "px";
+        if (bodyRef) {
+            bodyRef.current.style.backgroundPositionX = `-${x / 20}px`;
+            bodyRef.current.style.backgroundPositionY = `-${y / 20}px`;
+        }
     }
 
     function handleMouseMove(event) {
@@ -19,9 +23,14 @@ function App() {
         moveBackground(event.pageX, event.pageY);
     }
 
+    useEffect(() => {
+        bodyRef.current = document.body;
+    }, []);
+
     return (
         <div onMouseMove={(event) => handleMouseMove(event)} className="app">
             <Header />
+            <Home />
             <Footer />
             <Cursor mousePosition={mousePosition}/>
         </div>
