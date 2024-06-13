@@ -419,11 +419,12 @@ button {
 
   &__contact {
     order: 1;
-    margin: 0.5rem 1rem;
-
+    margin: 0;
     a {
+      display: inline-block;
       color: $dark-color;
       text-decoration: none;
+      padding: 0.5rem 1rem;
       transition: color 0.2s ease-in;
 
       &:hover {
@@ -448,7 +449,7 @@ button {
       display: inline-block;
       width: 100%;
       height: 100%;
-      padding: 0.5rem;
+      padding: 0.25rem 0.5rem 0 0.5rem;
       margin: 0 0.5rem;
 
       svg {
@@ -549,6 +550,7 @@ button {
   .footer {
     flex-direction: row;
     justify-content: space-between;
+    align-items: end;
     margin: 1rem 1.5rem;
     font-size: 0.875rem;
 
