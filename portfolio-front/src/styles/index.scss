@@ -88,6 +88,19 @@ button {
 
 a {
   cursor: none;
+  text-decoration: none;
+}
+
+strong {
+  color: $dark-color;
+}
+
+// APP
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 // HEADER
@@ -148,7 +161,6 @@ a {
       font-family: $karla-regular;
       font-size: 1.5rem;
       text-transform: uppercase;
-      text-decoration: none;
       color: $green-color;
       transition: color 0.2s ease-in;
 
@@ -435,7 +447,6 @@ a {
     a {
       display: inline-block;
       color: $dark-color;
-      text-decoration: none;
       padding: 0.5rem 1rem;
       transition: color 0.2s ease-in;
 
