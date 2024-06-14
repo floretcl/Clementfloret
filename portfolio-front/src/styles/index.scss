@@ -75,7 +75,7 @@ body {
   font-family: $duru-regular;
   color: $dark-color;
   background-color: $green-color;
-  background-image: url("../svg/Hexagon-1.svg");
+  background-image: url("../svg/hexagon-1.svg");
   background-repeat: no-repeat;
   cursor: none;
 }
@@ -93,6 +93,11 @@ a {
 
 strong {
   color: $dark-color;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
 }
 
 // APP
@@ -540,35 +545,37 @@ strong {
   &__social {
     margin: 1rem;
   }
+}
 
-  &__resume {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 110px;
-    margin: 1rem;
+// RESUME BUTTON
 
-    a {
-      position: absolute;
-      color: $dark-color;
-      transition: color 0.2s ease-in;
+.resumeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 110px;
+  margin: 1rem;
 
-      &:hover {
-        color: $purple-color;
-        transition: color 0.2s ease-in;
-      }
-    }
+  a {
+    position: absolute;
+    color: $dark-color;
+    transition: color 0.2s ease-in;
 
-    &--link-hover {
+    &:hover {
       color: $purple-color;
-      transition: color 0.3s ease-in;
+      transition: color 0.2s ease-in;
     }
+  }
 
-    svg {
-      width: 100px;
-      height: 100px;
-    }
+  &--link-hover {
+    color: $purple-color;
+    transition: color 0.3s ease-in;
+  }
+
+  svg {
+    width: 100px;
+    height: 100px;
   }
 }
 
