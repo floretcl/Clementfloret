@@ -1,8 +1,9 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Cursor from "./components/Cursor";
-import {useEffect, useRef, useState} from "react";
 import Home from "./components/Home";
+import About from "./components/About";
+import {useEffect, useRef, useState} from "react";
 
 function App() {
     const [mousePosition, setMousePosition] = useState({
@@ -30,7 +31,7 @@ function App() {
     return (
         <div onMouseMove={(event) => handleMouseMove(event)} className="app">
             <Header />
-            <Home />
+            <About />
             <Footer />
             <Cursor mousePosition={mousePosition}/>
         </div>
