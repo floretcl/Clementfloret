@@ -1,4 +1,4 @@
-// FONTS
+// -- FONTS -- //
 
 @font-face {
   font-family: 'ruda-regular';
@@ -44,7 +44,7 @@ $karla-regular: karla-regular, sans-serif;
 $karla-bold: karla-bold, sans-serif;
 $duru-regular: duru-regular, sans-serif;
 
-// COLORS
+// -- COLORS -- //
 
 $dark-color: #464A4E;
 $green-color: #C4D4CF;
@@ -52,7 +52,7 @@ $grey-color: #706F6F;
 $purple-color: #CA7DF9;
 $white-color: #F5F5F5;
 
-// FILTERS
+// -- FILTERS -- //
 
 $dark-filter: brightness(0) saturate(100%) invert(27%) sepia(7%) saturate(418%) hue-rotate(169deg) brightness(100%) contrast(91%);
 $green-filter: brightness(0) saturate(100%) invert(100%) sepia(73%) saturate(185%) hue-rotate(80deg) brightness(87%) contrast(90%);
@@ -60,7 +60,7 @@ $grey-filter: brightness(0) saturate(100%) invert(44%) sepia(1%) saturate(1985%)
 $purple-filter: brightness(0) saturate(100%) invert(64%) sepia(71%) saturate(2593%) hue-rotate(224deg) brightness(96%) contrast(104%);
 $white-filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(5596%) hue-rotate(298deg) brightness(112%) contrast(91%);
 
-// BREAKPOINTS
+// -- BREAKPOINTS -- //
 
 $small: 640px;
 $medium: 768px;
@@ -68,7 +68,7 @@ $large: 1024px;
 $x-large: 1280px;
 $xx-large: 1536px;
 
-// BLOCKS
+// -- STYLE -- //
 
 body {
   margin: 0;
@@ -90,7 +90,7 @@ a {
   cursor: none;
 }
 
-// CLASSES
+// HEADER
 
 .header {
   display: flex;
@@ -120,6 +120,7 @@ a {
   }
 }
 
+// MENU
 
 .menu {
   &__content {
@@ -381,6 +382,8 @@ a {
   }
 }
 
+// MODE
+
 .mode {
   padding: 0 1rem 0 2rem;
 
@@ -416,6 +419,8 @@ a {
     }
   }
 }
+
+// FOOTER
 
 .footer {
   display: flex;
@@ -476,6 +481,8 @@ a {
   }
 }
 
+// CURSOR
+
 .cursor {
   pointer-events: none;
 
@@ -496,7 +503,7 @@ a {
   }
 }
 
-// MEDIA QUERIES
+// -- MEDIA QUERIES -- //
 
 // MEDIA QUERY - MEDIUM
 
