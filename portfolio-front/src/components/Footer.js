@@ -11,7 +11,9 @@ export default function Footer() {
             <div className="footer__infos">
                 © {fullYear} Clément Floret, All rights reserved
             </div>
-            <Social />
+            <div className="footer__social">
+                <Social />
+            </div>
         </footer>
     );
 }
