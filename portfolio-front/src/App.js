@@ -5,6 +5,7 @@ import {useEffect, useRef, useState} from "react";
 import Home from "./components/Home";
 
 function App() {
+    const [onHomePage, setOnHomePage] = useState(true)
     const [mousePosition, setMousePosition] = useState({
         x: 0,
         y: 0
@@ -31,7 +32,7 @@ function App() {
         <div onMouseMove={(event) => handleMouseMove(event)} className="app">
             <Header />
             <Home />
-            <Footer />
+            <Footer onHomePage={onHomePage} />
             <Cursor mousePosition={mousePosition}/>
         </div>
     );

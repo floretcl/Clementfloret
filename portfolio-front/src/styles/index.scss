@@ -668,6 +668,10 @@ ul {
     margin: 1rem 1.5rem;
     font-size: 0.875rem;
 
+    &--home {
+      justify-content: center;
+    }
+
     &__contact {
       order: 1;
     }
