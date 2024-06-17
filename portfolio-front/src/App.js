@@ -20,8 +20,8 @@ function App() {
     }
 
     function handleMouseMove(event) {
-        setMousePosition({x: event.pageX, y: event.pageY});
-        moveBackground(event.pageX, event.pageY);
+        setMousePosition({x: event.clientX, y: event.clientY});
+        moveBackground(event.clientX, event.clientY);
     }
 
     useEffect(() => {
