@@ -30,10 +30,12 @@ function App() {
     }, []);
 
     return (
-        <div onMouseMove={(event) => handleMouseMove(event)} className="app">
+        <div
+            onMouseMove={(event) => handleMouseMove(event)}
+            className={`app ${onHomePage ? "app--home" : ""}`}>
             <Header />
             {onHomePage ? <Home /> : <About />}
-            <Footer />
+            <Footer onHomePage={onHomePage}/>
             <Cursor mousePosition={mousePosition}/>
         </div>
     );

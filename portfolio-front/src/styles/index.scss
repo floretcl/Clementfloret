@@ -105,7 +105,10 @@ ul {
 .app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+
+  &--home {
+    height: 100vh;
+  }
 }
 
 // HEADER
