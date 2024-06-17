@@ -440,11 +440,11 @@ ul {
 // FOOTER
 
 .footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
   margin: 0.75rem 0.5rem;
+  font-size: 0.875rem;
 
   &__contact {
     order: 1;
@@ -723,26 +723,29 @@ ul {
   }
 
   .footer {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: end;
+    grid-template-columns: repeat(3, 1fr);
     margin: 1rem 1.5rem;
-    font-size: 0.875rem;
 
     &--home {
-      justify-content: center;
+      grid-template-columns: 1fr;
     }
 
     &__contact {
       order: 1;
+      justify-self: start;
+      align-self: end;
     }
 
     &__infos {
       order: 2;
+      justify-self: center;
+      align-self: end;
     }
 
     &__social {
       order: 3;
+      justify-self: end;
+      align-self: end;
     }
   }
 }
