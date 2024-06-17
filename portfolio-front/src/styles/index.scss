@@ -579,6 +579,65 @@ ul {
   }
 }
 
+// ABOUT
+
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+  padding: 6rem 0;
+
+  &__avatar {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  &__title {
+    font-family: $karla-bold;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    padding: 0 1.5rem;
+  }
+
+  &__separator {
+    width: 7.375rem;
+    height: 5.975rem;
+    margin: 3.5rem 1rem;
+  }
+
+  &__subtitle {
+    font-family: $karla-bold;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+  }
+
+  &__skills {
+    padding: 0 1.5rem;
+    li {
+      display: inline;
+    }
+  }
+
+  &__icons {
+    display: grid;
+    grid-gap: 2.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1rem 0;
+    li {
+      img {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  }
+}
+
 // -- MEDIA QUERIES -- //
 
 // MEDIA QUERY - MEDIUM

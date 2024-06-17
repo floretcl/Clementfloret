@@ -1,8 +1,9 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Cursor from "./components/Cursor";
-import {useEffect, useRef, useState} from "react";
 import Home from "./components/Home";
+import About from "./components/About";
+import {useEffect, useRef, useState} from "react";
 
 function App() {
     const [onHomePage, setOnHomePage] = useState(true)
@@ -20,8 +21,8 @@ function App() {
     }
 
     function handleMouseMove(event) {
-        setMousePosition({x: event.pageX, y: event.pageY});
-        moveBackground(event.pageX, event.pageY);
+        setMousePosition({x: event.clientX, y: event.clientY});
+        moveBackground(event.clientX, event.clientY);
     }
 
     useEffect(() => {
@@ -31,8 +32,8 @@ function App() {
     return (
         <div onMouseMove={(event) => handleMouseMove(event)} className="app">
             <Header />
-            <Home />
-            <Footer onHomePage={onHomePage} />
+            {onHomePage ? <Home /> : <About />}
+            <Footer />
             <Cursor mousePosition={mousePosition}/>
         </div>
     );
