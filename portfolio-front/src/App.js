@@ -4,6 +4,7 @@ import Cursor from "./components/Cursor";
 import Home from "./components/Home";
 import About from "./components/About";
 import {useEffect, useRef, useState} from "react";
+import Contact from "./components/Contact";
 
 function App() {
     const [onHomePage, setOnHomePage] = useState(true)
