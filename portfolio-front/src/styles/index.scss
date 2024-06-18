@@ -596,6 +596,7 @@ ul {
   margin: auto;
   text-align: center;
   padding: 6rem 0;
+  max-width: 26rem;
 
   &__avatar {
     width: 8rem;
@@ -610,6 +611,7 @@ ul {
 
   &__text {
     padding: 0 1.5rem;
+    line-height: 1.5rem;
   }
 
   &__separator {
@@ -626,6 +628,8 @@ ul {
 
   &__skills {
     padding: 0 1.5rem;
+    line-height: 1.5rem;
+
     li {
       display: inline;
     }
@@ -634,7 +638,7 @@ ul {
   &__icons {
     display: grid;
     grid-gap: 2.5rem;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     padding: 1rem 0;
     li {
       img {
@@ -647,7 +651,27 @@ ul {
 
 // -- MEDIA QUERIES -- //
 
-// MEDIA QUERY - MEDIUM
+// MEDIA QUERY - SMALL (640p)
+
+@media all and (min-width: $small) {
+  .about {
+    max-width: 32rem;
+
+    &__text {
+      line-height: 1.75rem;
+    }
+
+    &__separator {
+      margin: 4rem 1rem;
+    }
+
+    &__skills {
+      line-height: 1.75rem;
+    }
+  }
+}
+
+// MEDIA QUERY - MEDIUM (768p)
 
 @media all and (min-width: $medium) {
   .header {
@@ -753,9 +777,29 @@ ul {
       align-self: end;
     }
   }
+
+  .about {
+    max-width: 38rem;
+
+    &__text {
+      line-height: 1.75rem;
+    }
+
+    &__separator {
+      margin: 5rem 1rem;
+    }
+
+    &__skills {
+      line-height: 1.75rem;
+    }
+
+    &__icons {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
 }
 
-// MEDIA QUERY - LARGE
+// MEDIA QUERY - LARGE (1024p)
 
 @media all and (min-width: $large) {
   .header {
@@ -770,5 +814,17 @@ ul {
 
   .footer {
     margin: 1.5rem 2rem;
+  }
+
+  .about {
+    max-width: 48rem;
+
+    &__separator {
+      margin: 6rem 1rem;
+    }
+
+    &__icons {
+      grid-template-columns: repeat(9, 1fr);
+    }
   }
 }
