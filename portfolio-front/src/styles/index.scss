@@ -100,6 +100,10 @@ ul {
   padding: 0;
 }
 
+:focus-visible {
+  outline: 2px solid $dark-color;
+}
+
 // APP
 
 .app {
@@ -124,9 +128,11 @@ ul {
     position: relative;
   }
 
-  &__logo:hover svg {
-    color: $purple-color;
-    transition: color 0.2s ease-in;
+  &__logo:hover, &__logo:focus-visible {
+      svg {
+      color: $purple-color;
+      transition: color 0.2s ease-in;
+    }
   }
 
   &__logo {
@@ -172,7 +178,7 @@ ul {
       color: $green-color;
       transition: color 0.2s ease-in;
 
-      &:hover {
+      &:hover, &:focus-visible {
         color: $purple-color;
         transition: color 0.2s ease-in;
 
@@ -212,10 +218,15 @@ ul {
     color: $dark-color;
     transition: color 0.2s ease-in;
 
-    &:hover {
+    &:hover, &:focus-visible {
       cursor: none;
       color: $purple-color;
       transition: color 0.2s ease-in;
+
+      .menu__button-lines div{
+        background-color: $purple-color;
+        transition: background-color 0.2s ease-in;
+      }
     }
 
     svg {
@@ -229,11 +240,6 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    &:hover div {
-      background-color: $purple-color;
-      transition: background-color 0.2s ease-in;
-    }
   }
 
   &__button-lines div {
@@ -427,7 +433,7 @@ ul {
       }
     }
 
-    &:hover {
+    &:hover, &:focus-visible {
       cursor: none;
       color: $purple-color;
       transition: color 0.2s ease-in;
@@ -458,7 +464,7 @@ ul {
       padding: 0.5rem 1rem;
       transition: color 0.2s ease-in;
 
-      &:hover {
+      &:hover, &:focus-visible {
         color: $purple-color;
         transition: color 0.2s ease-in;
       }
@@ -493,7 +499,7 @@ ul {
         transition: color 0.2s ease-in;
       }
 
-      &:hover {
+      &:hover, &:focus-visible {
         svg {
           color: $purple-color;
           transition: color 0.2s ease-in;
@@ -569,7 +575,7 @@ ul {
     color: $dark-color;
     transition: color 0.2s ease-in;
 
-    &:hover {
+    &:hover, &:focus-visible {
       color: $purple-color;
       transition: color 0.2s ease-in;
     }
@@ -774,7 +780,7 @@ ul {
         color: $dark-color;
         padding: 0.5rem 1rem;
 
-        &:hover {
+        &:hover, &:focus-visible {
           ~hr {
             animation: 0.5s ease-in-out 0s forwards moving-line-medium;
           }
