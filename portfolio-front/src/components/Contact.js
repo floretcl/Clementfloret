@@ -2,7 +2,7 @@ export default function Contact() {
     return (
         <main className="contact">
             <h1 className="contact__title">Contact</h1>
-            <p className="contact__infos">Send me an email directly on clement.floret@icloud.com</p>
+            <p className="contact__infos">Complete the form or email me directly at clement.floret@icloud.com</p>
             <form className="contact__form">
                 <input type="text" id="name" name="name" minLength="3" maxLength="100" placeholder="Name" required/>
                 <input type="email" id="email" name="email" minLength="3" maxLength="254" placeholder="Email" required/>

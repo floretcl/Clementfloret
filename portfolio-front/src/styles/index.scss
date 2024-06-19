@@ -649,14 +649,17 @@ ul {
   }
 }
 
+// CONTACT
+
 .contact {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  max-width: 26rem;
   margin: auto;
-
+  padding: 6rem 0;
 
   &__title {
     font-family: $karla-bold;
@@ -672,6 +675,8 @@ ul {
   &__form {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    margin: 0.75rem 0;
 
     input, textarea {
       font-family: $duru-regular;
@@ -680,29 +685,30 @@ ul {
       background: none;
       padding: 0.5rem 1rem;
       border: thin solid $grey-color;
-      margin: 1rem;
+      margin: 0.75rem 1rem;
 
       &[type="submit"] {
         text-transform: uppercase;
-        background-color: $white-color;
+        background-color: $dark-color;
+        color: $white-color;
         padding: 0.75rem 1rem;
+        margin: 1.5rem 1rem;
         transition: all 0.2s ease-in;
         cursor: none;
+        width: 50%;
+        max-width: 13rem;
+        align-self: center;
 
-        &:hover {
-          color: $purple-color;
-          border: 0.125rem solid $purple-color;
-          margin-top: 0.875rem;
-          transition: all 0.2s ease-in;
-        }
-
-        &:focus-visible {
-          color: $purple-color;
-          border: 0.125rem solid $purple-color;
-          margin-top: 0.875rem;
+        &:hover, &:focus-visible {
+          color: $dark-color;
+          background-color: $purple-color;
           transition: all 0.2s ease-in;
         }
       }
+    }
+
+    textarea {
+      padding: 0.75rem 1rem;
     }
   }
 }
@@ -726,6 +732,10 @@ ul {
     &__skills {
       line-height: 1.75rem;
     }
+  }
+
+  .contact {
+    max-width: 32rem;
   }
 }
 
@@ -855,6 +865,10 @@ ul {
       grid-template-columns: repeat(6, 1fr);
     }
   }
+
+  .contact {
+    max-width: 38rem;
+  }
 }
 
 // MEDIA QUERY - LARGE (1024p)
@@ -884,5 +898,9 @@ ul {
     &__icons {
       grid-template-columns: repeat(9, 1fr);
     }
+  }
+
+  .contact {
+    max-width: 48rem;
   }
 }
