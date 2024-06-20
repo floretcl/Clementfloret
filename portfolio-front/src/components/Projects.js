@@ -10,30 +10,36 @@ export default function Projects() {
     return (
         <main className="projects">
             <h1 className="projects__title">Projects</h1>
-            <ul className="projects__filter">
-                <li>All</li>
-                <li>Web</li>
-                <li>Mobile</li>
+            <ul className="projects__filters">
+                <li>
+                    <button type="button" onClick="" className="projects__filter-btn">All</button>
+                </li>
+                <li>
+                    <button type="button" onClick="" className="projects__filter-btn">Web</button>
+                </li>
+                <li>
+                    <button type="button" onClick="" className="projects__filter-btn">Mobile</button>
+                </li>
             </ul>
-            <div className="projects__grid">
-                <ul>
+            <div className="projects__content">
+                <ul className="projects__list">
                     <li>
-                        <ProjectCard name="Alpha" src={project1Img} />
+                        <ProjectCard name="Alpha" imgSrc={project1Img}/>
                     </li>
                     <li>
-                        <ProjectCard name="Alpha" imgSrc={project2Img} />
+                        <ProjectCard name="Beta" imgSrc={project2Img}/>
                     </li>
                     <li>
-                        <ProjectCard name="Alpha" imgSrc={project3Img} />
+                        <ProjectCard name="Gamma" imgSrc={project3Img}/>
                     </li>
                     <li>
-                        <ProjectCard name="Alpha" imgSrc={project4Img} />
+                        <ProjectCard name="Delta" imgSrc={project4Img}/>
                     </li>
                     <li>
-                        <ProjectCard name="Alpha" imgSrc={project5Img} />
+                        <ProjectCard name="Epsilon" imgSrc={project5Img}/>
                     </li>
                     <li>
-                        <ProjectCard name="Alpha" imgSrc={project6Img} />
+                        <ProjectCard name="Zeta" imgSrc={project6Img}/>
                     </li>
                 </ul>
             </div>
