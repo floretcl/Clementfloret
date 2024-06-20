@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
+import Project from "./components/Project";
 import {useEffect, useRef, useState} from "react";
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
             onMouseMove={(event) => handleMouseMove(event)}
             className={`app ${onHomePage ? "app--screen" : ""}`}>
             <Header />
-            {onHomePage ? <Home /> : <Projects />}
+            {onHomePage ? <Home /> : <Project />}
             <Footer onHomePage={onHomePage}/>
             <Cursor mousePosition={mousePosition}/>
         </div>
