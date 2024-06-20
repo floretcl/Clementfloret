@@ -3,6 +3,8 @@ import Footer from "./components/Footer";
 import Cursor from "./components/Cursor";
 import Home from "./components/Home";
 import About from "./components/About";
+import Contact from "./components/Contact";
+import Projects from "./components/Projects";
 import {useEffect, useRef, useState} from "react";
 import Contact from "./components/Contact";
 
