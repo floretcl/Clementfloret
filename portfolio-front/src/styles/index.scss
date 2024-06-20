@@ -129,7 +129,7 @@ ul {
   }
 
   &__logo:hover, &__logo:focus-visible {
-      svg {
+    svg {
       color: $purple-color;
       transition: color 0.2s ease-in;
     }
@@ -182,7 +182,7 @@ ul {
         color: $purple-color;
         transition: color 0.2s ease-in;
 
-        ~hr {
+        ~ hr {
           border-color: $purple-color;
           transition: border-color 0.3s ease-in;
           animation: 0.3s ease-in 0s forwards moving-line;
@@ -223,7 +223,7 @@ ul {
       color: $purple-color;
       transition: color 0.2s ease-in;
 
-      .menu__button-lines div{
+      .menu__button-lines div {
         background-color: $purple-color;
         transition: background-color 0.2s ease-in;
       }
@@ -458,6 +458,7 @@ ul {
   &__contact {
     order: 1;
     margin: 0;
+
     a {
       display: inline-block;
       color: $dark-color;
@@ -481,32 +482,32 @@ ul {
 // SOCIAL
 
 .social {
-    display: flex;
-    flex-direction: row;
-    order: 2;
+  display: flex;
+  flex-direction: row;
+  order: 2;
 
-    &-link {
-      display: inline-block;
-      width: 100%;
-      height: 100%;
-      padding: 0.25rem 0.5rem 0 0.5rem;
-      margin: 0 0.5rem;
+  &-link {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 0.25rem 0.5rem 0 0.5rem;
+    margin: 0 0.5rem;
 
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      color: $dark-color;
+      transition: color 0.2s ease-in;
+    }
+
+    &:hover, &:focus-visible {
       svg {
-        width: 2.5rem;
-        height: 2.5rem;
-        color: $dark-color;
+        color: $purple-color;
         transition: color 0.2s ease-in;
-      }
-
-      &:hover, &:focus-visible {
-        svg {
-          color: $purple-color;
-          transition: color 0.2s ease-in;
-        }
       }
     }
   }
+}
 
 // CURSOR
 
@@ -601,7 +602,7 @@ ul {
   align-items: center;
   margin: auto;
   text-align: center;
-  padding: 6rem 0;
+  padding: 4rem 0;
   max-width: 26rem;
 
   &__avatar {
@@ -646,6 +647,7 @@ ul {
     grid-gap: 2.5rem;
     grid-template-columns: repeat(3, 1fr);
     padding: 1rem 0;
+
     li {
       img {
         width: 45px;
@@ -665,13 +667,13 @@ ul {
   text-align: center;
   max-width: 26rem;
   margin: auto;
-  padding: 6rem 0;
+  padding: 4rem 0;
 
   &__title {
     font-family: $karla-bold;
     font-size: 2.25rem;
     text-transform: uppercase;
-    margin: 1.5rem 1rem;
+    margin: 0.5rem 1rem;
   }
 
   &__infos {
@@ -749,7 +751,7 @@ ul {
     li {
       transition: all 0.2s ease-in;
 
-      &:has(> button:hover), &:has(> button:focus-visible)  {
+      &:has(> button:hover), &:has(> button:focus-visible) {
         margin-bottom: -0.125rem;
         border-bottom: 0.125rem solid $purple-color;
         transition: all 0.2s ease-in;
@@ -842,6 +844,7 @@ ul {
 @media all and (min-width: $small) {
   .about {
     max-width: 32rem;
+    padding: 4.5rem 0;
 
     &__text {
       line-height: 1.75rem;
@@ -858,6 +861,10 @@ ul {
 
   .contact {
     max-width: 32rem;
+
+    &__title {
+      margin: 1rem;
+    }
   }
 
   .projects {
@@ -879,6 +886,7 @@ ul {
 @media all and (min-width: $medium) {
   .header {
     padding: 1rem 1.5rem;
+
     &__nav {
       position: initial;
       flex-grow: 2;
@@ -910,31 +918,31 @@ ul {
         padding: 0.5rem 1rem;
 
         &:hover, &:focus-visible {
-          ~hr {
+          ~ hr {
             animation: 0.5s ease-in-out 0s forwards moving-line-medium;
           }
 
           @keyframes moving-line-medium {
-          from {
-            margin-left: 1rem;
-            margin-right: 100%;
+            from {
+              margin-left: 1rem;
+              margin-right: 100%;
+            }
+            50% {
+              margin-left: 1rem;
+              margin-right: 1rem;
+            }
+            to {
+              margin-left: 1rem;
+              margin-right: 40%;
+            }
           }
-          50% {
-            margin-left: 1rem;
-            margin-right: 1rem;
-          }
-          to {
-            margin-left: 1rem;
-            margin-right: 40%;
-          }
-        }
         }
       }
     }
 
     &__divider {
-    margin: 0 1rem 0.25rem 1rem;
-  }
+      margin: 0 1rem 0.25rem 1rem;
+    }
 
     &__button {
       display: none;
@@ -949,6 +957,7 @@ ul {
 
   .mode {
     padding: 0;
+
     &__button {
       color: $dark-color;
     }
