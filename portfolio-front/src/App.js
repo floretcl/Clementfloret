@@ -6,10 +6,9 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import {useEffect, useRef, useState} from "react";
-import Contact from "./components/Contact";
 
 function App() {
-    const [onHomePage, setOnHomePage] = useState(true)
+    const [onHomePage, setOnHomePage] = useState(false)
     const [mousePosition, setMousePosition] = useState({
         x: 0,
         y: 0
@@ -37,7 +36,7 @@ function App() {
             onMouseMove={(event) => handleMouseMove(event)}
             className={`app ${onHomePage ? "app--screen" : ""}`}>
             <Header />
-            {onHomePage ? <Home /> : <About />}
+            {onHomePage ? <Home /> : <Projects />}
             <Footer onHomePage={onHomePage}/>
             <Cursor mousePosition={mousePosition}/>
         </div>
