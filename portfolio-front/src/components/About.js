@@ -24,9 +24,11 @@ export default function About() {
         <main className="about">
             <img className="about__avatar" src={avatar} alt=""/>
             <h1 className="about__title">About me</h1>
-            <p className="about__text">After several years in the industrial sector, I decided to change careers and pursue my passion for IT,
+            <p className="about__text">
+                After several years in the industrial sector, I decided to change careers and pursue my passion for IT,
                 particularly development. To make my project a success, I undertook training and obtained the RNCP title
-                of Web and Mobile Web Developer. Today, I am seeking to apply my skills as an application developer.</p>
+                of Web and Mobile Web Developer. Today, I am seeking to apply my skills as an application developer.
+            </p>
             <img className="about__separator" src={separator} alt=""/>
             <h2 className="about__subtitle">Skills</h2>
             <ul className="about__skills">
