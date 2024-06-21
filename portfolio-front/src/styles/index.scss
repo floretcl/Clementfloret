@@ -160,6 +160,7 @@ ul {
     align-items: start;
     background-color: $dark-color;
     padding: 1rem 2rem 1rem 0.5rem;
+    z-index: 5;
   }
 
   &__list {
