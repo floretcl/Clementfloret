@@ -20,20 +20,20 @@ export default function Project() {
                     lorem id phasellus. Sem viverra felis sit adipiscing nibh vestibulum.
                 </p>
                 <ul className="project__skills">
-                    <li>Skill</li>
-                    <li>Skill</li>
-                    <li>Skill</li>
-                    <li>Skill</li>
-                    <li>Skill</li>
-                    <li>Skill</li>
-                    <li>Skill</li>
-                    <li>Skill</li>
+                    <li>Skill</li>-
+                    <li>Skill</li>-
+                    <li>Skill</li>-
+                    <li>Skill</li>-
+                    <li>Skill</li>-
+                    <li>Skill</li>-
+                    <li>Skill</li>-
+                    <li>Skill</li>-
                     <li>Skill</li>
                 </ul>
                 <ul className="project__links">
-                    <li>Link</li>
-                    <li>Link</li>
-                    <li>Link</li>
+                    <li>Link</li>-
+                    <li>Link</li>-
+                    <li>Link</li>-
                     <li>Link</li>
                 </ul>
             </div>

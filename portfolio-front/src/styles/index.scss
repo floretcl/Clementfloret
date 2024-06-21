@@ -887,7 +887,7 @@ ul {
   }
 
   &__content {
-    margin: 0 1rem;
+    margin: 1.5rem 1rem 1rem 1rem;
   }
 
   &__title {
@@ -898,7 +898,7 @@ ul {
   }
 
   &__text {
-
+    margin: 2rem 0;
   }
 
   &__skills, &__links {
@@ -907,6 +907,11 @@ ul {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin: 1rem 0;
+
+    li {
+      margin: 0 0.25rem;
+    }
   }
 }
 
