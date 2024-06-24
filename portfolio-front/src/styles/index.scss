@@ -887,7 +887,7 @@ ul {
   }
 
   &__content {
-    margin: 1.5rem 1rem 1rem 1rem;
+    margin: 1.5rem 7%;
   }
 
   &__title {
@@ -898,7 +898,7 @@ ul {
   }
 
   &__text {
-    margin: 2rem 0;
+    margin: 2rem 0 3rem 0;
   }
 
   &__skills, &__links {
@@ -907,10 +907,19 @@ ul {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
 
     li {
       margin: 0 0.25rem;
+    }
+
+    a {
+      color: $dark-color;
+      padding: 0.5625rem;
+
+      &:hover {
+        color: $purple-color;
+      }
     }
   }
 }
@@ -962,6 +971,18 @@ ul {
     &__img {
       width: 22rem;
       height: 22rem;
+    }
+
+    &__content {
+      margin: 2rem 12%;
+    }
+
+    .project__text {
+      margin: 2.5rem 0 3.5rem 0;
+    }
+
+    &__skills, &__links {
+      margin: 2rem 0;
     }
   }
 }
@@ -1118,6 +1139,10 @@ ul {
       width: 26rem;
       height: 26rem;
     }
+
+    &__content {
+      margin: 2rem 15%;
+    }
   }
 }
 
@@ -1191,6 +1216,10 @@ ul {
 
     &__skills, &__links {
       justify-content: start;
+
+      a {
+        padding: 0.25rem 0;
+      }
     }
   }
 }

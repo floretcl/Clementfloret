@@ -31,10 +31,10 @@ export default function Project() {
                     <li>Skill</li>
                 </ul>
                 <ul className="project__links">
-                    <li>Link</li>-
-                    <li>Link</li>-
-                    <li>Link</li>-
-                    <li>Link</li>
+                    <li><a href="#">Link</a></li>-
+                    <li><a href="#">Link</a></li>-
+                    <li><a href="#">Link</a></li>-
+                    <li><a href="#">Link</a></li>
                 </ul>
             </div>
         </main>
