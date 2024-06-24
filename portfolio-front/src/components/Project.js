@@ -1,13 +1,21 @@
-import projectImg from "../img/ales-nesetril-Im7lZjxeLhg-unsplash.webp";
+import Carousel from "./Carousel";
+import Item from "./Item";
+import project1Img from "../img/ales-nesetril-Im7lZjxeLhg-unsplash.webp";
+import project2Img from "../img/campaign-creators-OGOWDVLbMSc-unsplash.webp";
+import project3Img from "../img/christopher-gower-m_HRfLhgABo-unsplash.webp";
+import project4Img from "../img/domenico-loia-EhTcC9sYXsw-unsplash.webp";
 
 export default function Project() {
+    const items = [
+        <Item key="1" imgSrc={project1Img} />,
+        <Item key="2" imgSrc={project2Img} />,
+        <Item key="3" imgSrc={project3Img} />,
+        <Item key="4" imgSrc={project4Img} />,
+    ];
+
     return (
         <main className="project">
-            <div className="project__images">
-                <div className="project__mask">
-                    <img className="project__img" src={projectImg} alt=""/>
-                </div>
-            </div>
+            <Carousel items={items} />
             <div className="project__content">
                 <h1 className="project__title">Project name</h1>
                 <p className="project__text">
