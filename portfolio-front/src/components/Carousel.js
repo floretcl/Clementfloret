@@ -17,8 +17,10 @@ export default function Carousel({items}) {
             <div className="carousel__items">
                 {items[index]}
             </div>
-            <button className="carousel__prev" onClick={previousItem}>Prev</button>
-            <button className="carousel__next" onClick={nextItem}>Next</button>
+            <div className="carousel__buttons">
+                <button className="carousel__prev" onClick={previousItem}>Prev</button>
+                <button className="carousel__next" onClick={nextItem}>Next</button>
+            </div>
         </div>
     );
 }
