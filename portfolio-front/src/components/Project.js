@@ -1,13 +1,9 @@
-import projectImg from "../img/ales-nesetril-Im7lZjxeLhg-unsplash.webp";
+import Carousel from "./Carousel";
 
 export default function Project() {
     return (
         <main className="project">
-            <div className="project__images">
-                <div className="project__mask">
-                    <img className="project__img" src={projectImg} alt=""/>
-                </div>
-            </div>
+            <Carousel />
             <div className="project__content">
                 <h1 className="project__title">Project name</h1>
                 <p className="project__text">
