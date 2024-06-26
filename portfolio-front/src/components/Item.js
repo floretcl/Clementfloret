@@ -1,13 +1,11 @@
-import projectImg from "../img/ales-nesetril-Im7lZjxeLhg-unsplash.webp";
-
-export default function Item({imgSrc}) {
+export default function Item({index, id, imgSrc}) {
     return (
-        <div className="item">
+        <li className={`item ${id === index ? "item--active" : ""} ${id === index - 1 ? "item--prev" : ""} ${id === index + 1 ? "item--next" : ""}`}>
             <div className="item__content">
                 <div className="item__mask">
                     <img className="item__img" src={imgSrc} alt="project image"/>
                 </div>
             </div>
-        </div>
+        </li>
     );
 }

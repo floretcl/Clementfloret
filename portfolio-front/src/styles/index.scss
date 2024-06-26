@@ -891,15 +891,63 @@ ul {
 // CAROUSEL
 
 .carousel {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   &__items {
-    position: relative;
     width: 18rem;
     height: 18rem;
+  }
+
+  &__buttons {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    z-index: 50;
+  }
+
+  &__button {
+    color: $white-color;
+    background-color: #464A4E80;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    transition: background-color 0.2s ease-in;
+
+    &:hover, &:focus-visible {
+      background-color: $purple-color;
+      cursor: none;
+    }
+  }
+
+  &__dots {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    bottom: 17%;
+    z-index: 40;
+  }
+
+  &__dot {
+    border-width: 0.3125rem;
+    border-style: solid;
+    border-radius: 50%;
+    margin: 0.25rem;
+    border-color: #464A4E80;
+
+    &--active {
+      border-color: $purple-color;
+    }
   }
 }
 
@@ -907,13 +955,27 @@ ul {
 
 .item {
   position: absolute;
-  top: 0;
   left: 0;
+  z-index: 10;
+  opacity: 0;
+  transition: all 0.2s ease-in;
+
+  &--active {
+    z-index: 20;
+    opacity: 100%;
+  }
+
+  &--prev {
+    left: -100%;
+  }
+
+  &--next {
+    left: 100%;
+  }
 
   &__content {
     position: relative;
     display: inline-block;
-    //margin: 0 0.5rem;
 
     &::before {
       content: '';
