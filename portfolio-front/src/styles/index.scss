@@ -218,6 +218,7 @@ ul {
     height: 3rem;
     color: $dark-color;
     transition: color 0.2s ease-in;
+    z-index: 20;
 
     &:hover, &:focus-visible {
       cursor: none;
@@ -797,7 +798,7 @@ ul {
       left: -0.25rem;
       right: -0.25rem;
       bottom: -0.25rem;
-      background: $dark-color; // Transparent background to let the border show
+      background: $dark-color;
       mask-image: url("../svg/polygon.svg");
       -webkit-mask-image: url("../svg/polygon.svg");
       mask-repeat: no-repeat;
@@ -835,6 +836,176 @@ ul {
       transform: scale(125%);
       transition: all 0.2s ease-in;
     }
+  }
+}
+
+// PROJECT
+
+.project {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 0;
+  margin: auto;
+
+  &__content {
+    margin: 1.5rem 7%;
+  }
+
+  &__title {
+    font-family: $karla-bold;
+    font-size: 2.25rem;
+    text-transform: uppercase;
+    margin: 0.5rem 1rem;
+  }
+
+  &__text {
+    margin: 2rem 0 3rem 0;
+  }
+
+  &__skills, &__links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0;
+
+    li {
+      margin: 0 0.25rem;
+    }
+
+    a {
+      color: $dark-color;
+      padding: 0.5625rem;
+
+      &:hover {
+        color: $purple-color;
+      }
+    }
+  }
+}
+
+// CAROUSEL
+
+.carousel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  &__items {
+    width: 18rem;
+    height: 18rem;
+  }
+
+  &__buttons {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    z-index: 50;
+  }
+
+  &__button {
+    color: $white-color;
+    background-color: #464A4E80;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    transition: background-color 0.2s ease-in;
+
+    &:hover, &:focus-visible {
+      background-color: $purple-color;
+      cursor: none;
+    }
+  }
+
+  &__dots {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    bottom: 17%;
+    z-index: 40;
+  }
+
+  &__dot {
+    border-width: 0.3125rem;
+    border-style: solid;
+    border-radius: 50%;
+    margin: 0.25rem;
+    border-color: #464A4E80;
+
+    &--active {
+      border-color: $purple-color;
+    }
+  }
+}
+
+// CAROUSEL ITEM
+
+.item {
+  position: absolute;
+  left: 0;
+  z-index: 10;
+  opacity: 0;
+  transition: all 0.2s ease-in;
+
+  &--active {
+    z-index: 20;
+    opacity: 100%;
+  }
+
+  &--prev {
+    left: -100%;
+  }
+
+  &--next {
+    left: 100%;
+  }
+
+  &__content {
+    position: relative;
+    display: inline-block;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -0.25rem;
+      left: -0.25rem;
+      right: -0.25rem;
+      bottom: -0.25rem;
+      background: $dark-color;
+      mask-image: url("../svg/polygon.svg");
+      -webkit-mask-image: url("../svg/polygon.svg");
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+      mask-size: cover;
+      -webkit-mask-size: contain;
+    }
+  }
+
+  &__mask {
+    mask-image: url("../svg/polygon.svg");
+    -webkit-mask-image: url("../svg/polygon.svg");
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-size: cover;
+    -webkit-mask-size: contain;
+  }
+
+  &__img {
+    width: 18rem;
+    height: 18rem;
   }
 }
 
@@ -878,6 +1049,34 @@ ul {
     &__img {
       width: 14rem;
       height: 14rem;
+    }
+  }
+
+  .project {
+    &__content {
+      margin: 2rem 12%;
+    }
+
+    .project__text {
+      margin: 2.5rem 0 3.5rem 0;
+    }
+
+    &__skills, &__links {
+      margin: 2rem 0;
+    }
+  }
+
+  .carousel {
+    &__items {
+      width: 22rem;
+      height: 22rem;
+    }
+  }
+
+  .item {
+    &__img {
+      width: 22rem;
+      height: 22rem;
     }
   }
 }
@@ -1028,6 +1227,26 @@ ul {
       height: 12rem;
     }
   }
+
+  .project {
+    &__content {
+      margin: 2rem 15%;
+    }
+  }
+
+  .carousel {
+    &__items {
+      width: 26rem;
+      height: 26rem;
+    }
+  }
+
+  .item {
+    &__img {
+      width: 26rem;
+      height: 26rem;
+    }
+  }
 }
 
 // MEDIA QUERY - LARGE (1024p)
@@ -1073,6 +1292,56 @@ ul {
     &__img {
       width: 14rem;
       height: 14rem;
+    }
+  }
+
+  .project {
+    flex-direction: row;
+    text-align: start;
+
+    &__content {
+      max-width: 38rem;
+      margin: 0 3rem 0 1rem;
+    }
+
+    &__title {
+      margin: 0.5rem 0;
+    }
+
+    &__skills, &__links {
+      justify-content: start;
+
+      a {
+        padding: 0.25rem 0;
+      }
+    }
+  }
+
+  .carousel {
+    &__items {
+      width: 28rem;
+      height: 28rem;
+    }
+  }
+
+  .item {
+    &__img {
+      width: 28rem;
+      height: 28rem;
+    }
+  }
+}
+
+@media all and (min-width: $x-large) {
+  .project {
+    &__img {
+      width: 32rem;
+      height: 32rem;
+    }
+
+    &__content {
+      max-width: 42rem;
+      margin: 0 3rem 0 2rem;
     }
   }
 }
