@@ -35,7 +35,7 @@ function App() {
     return (
         <div
             onMouseMove={(event) => handleMouseMove(event)}
-            className={`app ${onHomePage ? "app--screen" : ""}`}>
+            className={`app`}>
             <Header />
             {onHomePage ? <Home /> : <Project />}
             <Footer onHomePage={onHomePage}/>

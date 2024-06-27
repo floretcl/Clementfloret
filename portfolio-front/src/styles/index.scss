@@ -109,10 +109,7 @@ ul {
 .app {
   display: flex;
   flex-direction: column;
-
-  &--screen {
-    min-height: 100vh;
-  }
+  min-height: 100vh;
 }
 
 // HEADER
