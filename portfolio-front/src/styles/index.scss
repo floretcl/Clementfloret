@@ -131,7 +131,6 @@ ul {
   &__logo:hover, &__logo:focus-visible {
     svg {
       color: $purple-color;
-      transition: color 0.2s ease-in;
     }
   }
 
@@ -181,7 +180,6 @@ ul {
 
       &:hover, &:focus-visible {
         color: $purple-color;
-        transition: color 0.2s ease-in;
 
         ~ hr {
           border-color: $purple-color;
@@ -223,11 +221,9 @@ ul {
     &:hover, &:focus-visible {
       cursor: none;
       color: $purple-color;
-      transition: color 0.2s ease-in;
 
       .menu__button-lines div {
         background-color: $purple-color;
-        transition: background-color 0.2s ease-in;
       }
     }
 
@@ -250,6 +246,7 @@ ul {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
     background-color: $dark-color;
+    transition: background-color 0.2s ease-in;
   }
 
   &--active {
@@ -438,7 +435,6 @@ ul {
     &:hover, &:focus-visible {
       cursor: none;
       color: $purple-color;
-      transition: color 0.2s ease-in;
     }
 
     svg {
@@ -469,7 +465,6 @@ ul {
 
       &:hover, &:focus-visible {
         color: $purple-color;
-        transition: color 0.2s ease-in;
       }
     }
   }
@@ -505,7 +500,6 @@ ul {
     &:hover, &:focus-visible {
       svg {
         color: $purple-color;
-        transition: color 0.2s ease-in;
       }
     }
   }
@@ -580,13 +574,11 @@ ul {
 
     &:hover, &:focus-visible {
       color: $purple-color;
-      transition: color 0.2s ease-in;
     }
   }
 
   &:has(> a:hover), &:has(> a:focus-visible) {
     color: $purple-color;
-    transition: color 0.3s ease-in;
   }
 
   svg {
@@ -703,16 +695,15 @@ ul {
         color: $white-color;
         padding: 0.75rem 1rem;
         margin: 1.5rem 1rem;
-        transition: all 0.2s ease-in;
         cursor: none;
         width: 50%;
         max-width: 13rem;
         align-self: center;
+        transition: all 0.2s ease-in;
 
         &:hover, &:focus-visible {
           color: $dark-color;
           background-color: $purple-color;
-          transition: all 0.2s ease-in;
         }
       }
     }
@@ -756,7 +747,6 @@ ul {
       &:has(> button:hover), &:has(> button:focus-visible) {
         margin-bottom: -0.125rem;
         border-bottom: 0.125rem solid $purple-color;
-        transition: all 0.2s ease-in;
       }
     }
   }
@@ -771,7 +761,6 @@ ul {
 
     &:hover, &:focus-visible {
       color: $purple-color;
-      transition: color 0.2s ease-in;
     }
   }
 
@@ -821,7 +810,7 @@ ul {
     width: 12rem;
     height: 12rem;
     filter: blur(0.25rem);
-    transition: all 0.1s ease-in;
+    transition: all 0.2s ease-in;
   }
 
   &__name {
@@ -834,7 +823,6 @@ ul {
     .project-card__img {
       filter: none;
       transform: scale(125%);
-      transition: all 0.2s ease-in;
     }
   }
 }
@@ -880,6 +868,7 @@ ul {
     a {
       color: $dark-color;
       padding: 0.5625rem;
+      transition: color 0.2s ease-in;
 
       &:hover {
         color: $purple-color;
