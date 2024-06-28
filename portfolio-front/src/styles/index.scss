@@ -114,16 +114,63 @@ ul {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  max-width: 80rem;
+  margin: auto;
 }
 
 // HEADER
 
 .header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 0.75rem;
+  position: fixed;
+  width: 100vw;
+  max-width: 80rem;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 1rem;
+
+    &--scrolldown {
+      background-color: rgba(70, 74, 78, 0.7);
+      backdrop-filter: blur(0.25rem);
+      -webkit-backdrop-filter: blur(0.25rem);
+      outline: thin solid $dark-color;
+
+      .header__logo svg {
+        color: $green-color;
+      }
+
+      .header__logo:hover svg,
+      .header__logo:focus-visible svg {
+        color: $purple-color;
+      }
+
+      .menu__button-lines div {
+        background-color: $green-color;
+      }
+
+      .menu__link a {
+        color: $green-color;
+      }
+
+      .menu__link a:hover,
+      .menu__link a:focus-visible,
+      {
+        color: $purple-color;
+      }
+
+      .mode__button {
+          color: $green-color;
+      }
+
+      .mode__button:hover,
+      .mode__button:focus-visible {
+          color: $purple-color;
+      }
+    }
+  }
 
   &__nav {
     position: relative;
@@ -158,7 +205,10 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    background-color: $dark-color;
+    background-color: rgba(70, 74, 78, 0.7);
+    backdrop-filter: blur(0.25rem);
+    -webkit-backdrop-filter: blur(0.25rem);
+    outline: thin solid $dark-color;
     padding: 1rem 2rem 1rem 0.5rem;
     z-index: 10;
   }
@@ -183,8 +233,8 @@ ul {
         color: $purple-color;
 
         ~ hr {
+          opacity: 1;
           border-color: $purple-color;
-          transition: border-color 0.3s ease-in;
           animation: 0.3s ease-in 0s forwards moving-line;
         }
 
@@ -206,9 +256,9 @@ ul {
   }
 
   &__divider {
+    opacity: 0.3;
     border: 0.075rem solid $green-color;
     margin: 0 1rem 0.25rem 2rem;
-    transition: border-color 0.2s ease-in;
   }
 
   &__button {
@@ -1004,6 +1054,11 @@ ul {
 // MEDIA QUERY - SMALL (640p)
 
 @media all and (min-width: $small) {
+  .header {
+    &__content {
+      margin: 0.75rem 1.75rem;
+    }
+  }
   .about {
     max-width: 32rem;
     padding: 4.5rem 0;
@@ -1075,7 +1130,13 @@ ul {
 
 @media all and (min-width: $medium) {
   .header {
-    padding: 1rem 1.5rem;
+    &__content {
+      margin: 1rem;
+      padding: 0 2rem;
+      transition-property: background-color, outline-color;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in;
+    }
 
     &__nav {
       position: initial;
@@ -1093,6 +1154,9 @@ ul {
       justify-content: space-between;
       align-items: center;
       background-color: initial;
+      backdrop-filter: initial;
+      -webkit-backdrop-filter: initial;
+      outline: initial;
       padding: 0;
     }
 
@@ -1105,7 +1169,7 @@ ul {
     &__link {
       a {
         color: $dark-color;
-        padding: 0.5rem 1rem;
+        padding: 0.625rem 1rem 0.25rem 1rem;
 
         &:hover, &:focus-visible {
           ~ hr {
@@ -1132,6 +1196,7 @@ ul {
 
     &__divider {
       margin: 0 1rem 0.25rem 1rem;
+      opacity: 0;
     }
 
     &__button {
@@ -1243,7 +1308,9 @@ ul {
 
 @media all and (min-width: $large) {
   .header {
-    padding: 1.5rem 2rem;
+    &__content {
+      margin: 1.5rem 2rem;
+    }
   }
 
   .menu {
