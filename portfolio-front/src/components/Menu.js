@@ -22,38 +22,36 @@ export default function Menu() {
 
     // TODO : href
     return (
-        <nav className={`header__nav`}>
-            <div
-                className={`menu ${isActive ? "menu--active" : ""} ${isOpen ? "menu--open" : "menu--close"} ${isClosed ? "menu--closed" : ""}`}>
-                <div className="menu__content">
-                    <ul className="menu__list">
-                        <li className="menu__link">
-                            <a href="#">Home</a>
-                            <hr className="menu__divider"/>
-                        </li>
-                        <li className="menu__link">
-                            <a href="#">About</a>
-                            <hr className="menu__divider"/>
-                        </li>
-                        <li className="menu__link">
-                            <a href="#">Projects</a>
-                            <hr className="menu__divider"/>
-                        </li>
-                        <li className="menu__link">
-                            <a href="#">Contact</a>
-                            <hr className="menu__divider"/>
-                        </li>
-                    </ul>
-                    <Mode/>
-                </div>
-                <button className="menu__button" type="button" onClick={toggleMenu}>
-                    <div className="menu__button-lines">
-                        <div className="menu__button-line-top"></div>
-                        <div className="menu__button-line-middle"></div>
-                        <div className="menu__button-line-bottom"></div>
-                    </div>
-                </button>
+        <div
+            className={`menu ${isActive ? "menu--active" : ""} ${isOpen ? "menu--open" : "menu--close"} ${isClosed ? "menu--closed" : ""}`}>
+            <div className="menu__content">
+                <ul className="menu__list">
+                    <li className="menu__link">
+                        <a href="#">Home</a>
+                        <hr className="menu__divider"/>
+                    </li>
+                    <li className="menu__link">
+                        <a href="#">About</a>
+                        <hr className="menu__divider"/>
+                    </li>
+                    <li className="menu__link">
+                        <a href="#">Projects</a>
+                        <hr className="menu__divider"/>
+                    </li>
+                    <li className="menu__link">
+                        <a href="#">Contact</a>
+                        <hr className="menu__divider"/>
+                    </li>
+                </ul>
+                <Mode/>
             </div>
-        </nav>
+            <button className="menu__button" type="button" onClick={toggleMenu}>
+                <div className="menu__button-lines">
+                    <div className="menu__button-line-top"></div>
+                    <div className="menu__button-line-middle"></div>
+                    <div className="menu__button-line-bottom"></div>
+                </div>
+            </button>
+        </div>
     );
 }
