@@ -52,9 +52,10 @@ function App() {
     return (
         <div
             onMouseMove={(event) => handleMouseMove(event)}
-            className={`app`}>
-            <Header />
-            {onHomePage ? <Home /> : <Project />}
+            className={`app`}
+        >
+            <Header scrollDown={scrollDown}/>
+            {onHomePage ? <Home/> : <About/>}
             <Footer onHomePage={onHomePage}/>
             <Cursor mousePosition={mousePosition}/>
         </div>
