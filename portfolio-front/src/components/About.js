@@ -27,63 +27,64 @@ export default function About() {
             <p className="about__text">
                 After several years in the industrial sector, I decided to change careers and pursue my passion for IT,
                 particularly development. To make my project a success, I undertook training and obtained the RNCP title
-                of Web and Mobile Web Developer. Today, I am seeking to apply my skills as an application developer.
+                of Web and Mobile Web Developer. <br/>
+                Today, I am seeking to apply my skills as an application developer.
             </p>
             <img className="about__separator" src={separator} alt=""/>
             <h2 className="about__subtitle">Skills</h2>
             <ul className="about__skills">
                 <li>HTML</li>
-                <span> - </span>
+                <span> - </span>
                 <li>CSS</li>
-                <span> - </span>
+                <span> - </span>
                 <li>Sass</li>
-                <span> - </span>
+                <span> - </span>
                 <li>Javascript</li>
-                <span> - </span>
+                <span> - </span>
                 <li>PHP</li>
-                <span> - </span>
+                <span> - </span>
                 <li>Python</li>
-                <span> - </span>
+                <span> - </span>
                 <li>Swift</li>
-                <span> - </span>
+                <span> - </span>
                 <li>Kotlin</li>
-                <span> - </span>
+                <span> - </span>
                 <li>Bootstrap</li>
-                <span> - </span>
+                <span> - </span>
                 <li>TailwindCSS</li>
-                <span> - </span>
+                <span> - </span>
                 <li>Django</li>
-                <span> - </span>
+                <span> - </span>
                 <li>SwiftUI</li>
-                <span> - </span>
+                <span> - </span>
                 <li>Jetpack compose</li>
-                <span> - </span>
+                <span> - </span>
                 <li>SQL</li>
-                <span> - </span>
+                <span> - </span>
                 <li>MariaDB/MySQL</li>
-                <span> - </span>
+                <span> - </span>
                 <li>PostgreSQL</li>
-                <span> - </span>
+                <span> - </span>
                 <li>Git</li>
-                <span> - </span>
+                <span> - </span>
                 <li>GitHub</li>
-                <span> - </span>
+                <span> - </span>
                 <li>PyCharm</li>
-                <span> - </span>
+                <span> - </span>
                 <li>PhpStorm</li>
-                <span> - </span>
+                <span> - </span>
                 <li>VScode</li>
-                <span> - </span>
+                <span> - </span>
                 <li>Xcode</li>
-                <span> - </span>
+                <span> - </span>
                 <li>Android Studio</li>
-                <span> - </span>
+                <span> - </span>
                 <li>Figma</li>
-                <span> - </span>
+                <span> - </span>
                 <li>Wordpress</li>
-                <span> - </span>
+                <span> - </span>
                 <li>MacOS</li>
-                <span> - </span>
+                <span> - </span>
                 <li>GNU/Linux</li>
             </ul>
             <ul className="about__icons">
