@@ -70,6 +70,10 @@ $xx-large: 1536px;
 
 // -- STYLE -- //
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: $duru-regular;
