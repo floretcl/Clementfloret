@@ -9,11 +9,12 @@ import Project from "./components/Project";
 import {useEffect, useRef, useState} from "react";
 
 function App() {
-    const [onHomePage, setOnHomePage] = useState(false)
     const [mousePosition, setMousePosition] = useState({
         x: 0,
         y: 0
     });
+    const [scrollDown, setScrollDown] = useState(true);
+    const [onHomePage, setOnHomePage] = useState(false);
     const bodyRef = useRef(null);
 
     function moveBackground(x, y) {
@@ -28,8 +29,24 @@ function App() {
         moveBackground(event.clientX, event.clientY);
     }
 
+    function handleScroll(event) {
+        const scrollPosition = window.scrollY;
+        if (scrollPosition >= 50) {
+            setScrollDown(true);
+        } else {
+            setScrollDown(false);
+        }
+    }
+
     useEffect(() => {
         bodyRef.current = document.body;
+
+        handleScroll();
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
     }, []);
 
     return (
