@@ -640,6 +640,7 @@ ul {
     position: absolute;
     color: $dark-color;
     transition: color 0.2s ease-in;
+    margin-top: 0.25rem;
 
     &:hover, &:focus-visible {
       color: $purple-color;
@@ -1344,6 +1345,16 @@ ul {
     margin: 1.5rem 2rem;
   }
 
+  .home {
+    &__title {
+      font-size: 2.5rem;
+    }
+
+    &__subtitle {
+      font-size: 1.5rem;
+    }
+  }
+
   .about {
     max-width: 48rem;
     padding: 8rem 0;
@@ -1415,6 +1426,8 @@ ul {
   }
 }
 
+// MEDIA QUERY - X-LARGE (1280p)
+
 @media all and (min-width: $x-large) {
   .project {
     &__img {
@@ -1425,6 +1438,20 @@ ul {
     &__content {
       max-width: 42rem;
       margin: 0 3rem 0 2rem;
+    }
+  }
+}
+
+// MEDIA QUERY - XX-LARGE (1536p)
+
+@media all and (min-width: $xx-large) {
+  .home {
+    &__title {
+      font-size: 2.75rem;
+    }
+
+    &__subtitle {
+      font-size: 1.75rem;
     }
   }
 }
