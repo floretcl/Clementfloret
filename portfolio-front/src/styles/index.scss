@@ -503,12 +503,12 @@ ul {
   grid-template-columns: 1fr;
   justify-items: center;
   margin: 0.75rem 0.5rem;
+  padding: 0 1rem;
   font-size: 0.875rem;
 
   &__contact {
     order: 1;
     margin: 0;
-
     a {
       display: inline-block;
       color: $dark-color;
@@ -526,6 +526,10 @@ ul {
     text-align: center;
     margin: 0.5rem 1rem;
   }
+
+  &__social {
+    order: 2;
+  }
 }
 
 // SOCIAL
@@ -533,7 +537,6 @@ ul {
 .social {
   display: flex;
   flex-direction: row;
-  order: 2;
 
   &-link {
     display: inline-block;
@@ -1221,7 +1224,8 @@ ul {
 
   .footer {
     grid-template-columns: repeat(3, 1fr);
-    margin: 1rem 1.5rem;
+    margin: 1rem;
+    padding: 0 1rem;
 
     &--home {
       grid-template-columns: 1fr;
