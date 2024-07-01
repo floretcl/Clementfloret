@@ -137,6 +137,7 @@ ul {
       backdrop-filter: blur(0.25rem);
       -webkit-backdrop-filter: blur(0.25rem);
       outline: thin solid $dark-color;
+      padding: 0 1rem;
 
       .header__logo svg {
         color: $green-color;
@@ -1056,7 +1057,7 @@ ul {
 @media all and (min-width: $small) {
   .header {
     &__content {
-      margin: 0.75rem 1.75rem;
+      margin: 0.75rem 1rem;
     }
   }
   .about {
