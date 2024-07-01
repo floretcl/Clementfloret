@@ -15,7 +15,14 @@ function App() {
     });
     const [scrollDown, setScrollDown] = useState(true);
     const [onHomePage, setOnHomePage] = useState(false);
+    const [preload, setPreload] = useState(true);
     const bodyRef = useRef(null);
+
+    function timeoutPreload () {
+        setTimeout(() => {
+            setPreload(false);
+        }, 500);
+    }
 
     function moveBackground(x, y) {
         if (bodyRef) {
@@ -41,6 +48,8 @@ function App() {
     useEffect(() => {
         bodyRef.current = document.body;
 
+        timeoutPreload()
+
         handleScroll();
         window.addEventListener("scroll", handleScroll);
 
@@ -52,7 +61,7 @@ function App() {
     return (
         <div
             onMouseMove={(event) => handleMouseMove(event)}
-            className={`app`}
+            className={`app ${preload ? "preload" : ""}`}
         >
             <Header scrollDown={scrollDown}/>
             {onHomePage ? <Home/> : <About/>}
