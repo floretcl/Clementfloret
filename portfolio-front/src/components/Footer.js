@@ -5,19 +5,21 @@ export default function Footer({small}) {
     // TODO : href
     return (
         <footer className={`footer ${small ? "footer--home" : ""}`}>
-            { !small && (
-                <div className="footer__contact">
-                    <a href="#">Contact</a>
+            <div className="footer__content">
+                { !small && (
+                    <div className="footer__contact">
+                        <a href="#">Contact</a>
+                    </div>
+                )}
+                <div className="footer__infos">
+                    © {fullYear} Clément Floret, All rights reserved
                 </div>
-            )}
-            <div className="footer__infos">
-                © {fullYear} Clément Floret, All rights reserved
+                { !small && (
+                    <div className="footer__social">
+                        <Social/>
+                    </div>
+                )}
             </div>
-            { !small && (
-                <div className="footer__social">
-                    <Social/>
-                </div>
-            )}
         </footer>
     );
 }

@@ -112,6 +112,7 @@ ul {
 
 .preload * {
   animation-duration: 0s !important;
+  transition-duration: 0s !important;
 }
 
 .app {
@@ -119,7 +120,6 @@ ul {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  max-width: 80rem;
   margin: auto;
 }
 
@@ -130,6 +130,7 @@ ul {
   position: sticky;
   width: 100%;
   max-width: 80rem;
+  z-index: 70;
 
   &__content {
     display: flex;
@@ -223,7 +224,7 @@ ul {
     -webkit-backdrop-filter: blur(0.25rem);
     outline: thin solid $dark-color;
     width: 100vw;
-    z-index: 10;
+    z-index: 80;
   }
 
   &__list {
@@ -286,7 +287,7 @@ ul {
     height: 3rem;
     color: $dark-color;
     transition: color 0.2s ease-in;
-    z-index: 20;
+    z-index: 90;
 
     &:hover, &:focus-visible {
       cursor: none;
@@ -518,12 +519,17 @@ ul {
 // FOOTER
 
 .footer {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  margin: 0.75rem 0.5rem;
-  padding: 0 1rem;
-  font-size: 0.875rem;
+  width: 100%;
+  max-width: 80rem;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin: 0.75rem 0.5rem;
+    padding: 0 1rem;
+    font-size: 0.875rem;
+  }
 
   &__contact {
     order: 1;
@@ -644,21 +650,30 @@ ul {
   a {
     position: absolute;
     color: $dark-color;
-    transition: color 0.2s ease-in;
+    transition: all 0.5s ease-in;
     margin-top: 0.25rem;
 
     &:hover, &:focus-visible {
       color: $purple-color;
+      scale: 120%;
+      transition: all 0.3s ease-in;
     }
   }
 
   &:has(> a:hover), &:has(> a:focus-visible) {
     color: $purple-color;
+
+    svg {
+        transform: rotate(360deg);
+        scale: 120%;
+        transition: all 0.3s ease-in;
+      }
   }
 
   svg {
     width: 100px;
     height: 100px;
+    transition: all 0.5s ease-in;
   }
 }
 
@@ -1257,9 +1272,11 @@ ul {
   }
 
   .footer {
-    grid-template-columns: repeat(3, 1fr);
-    margin: 1rem;
-    padding: 0 1rem;
+    &__content {
+      grid-template-columns: repeat(3, 1fr);
+      margin: 1rem;
+      padding: 0 1rem;
+    }
 
     &--home {
       grid-template-columns: 1fr;
@@ -1347,7 +1364,10 @@ ul {
   }
 
   .footer {
-    margin: 1.5rem 2rem;
+
+    &__content {
+      margin: 1.5rem 2rem;
+    }
   }
 
   .home {
