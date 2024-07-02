@@ -2,8 +2,8 @@ import Menu from "./Menu.js";
 
 export default function Header({scrollDown}) {
     return (
-        <header className="header">
-            <div className={`header__content ${scrollDown ? "header__content--scrolldown" : ""}`}>
+        <header className={`header ${scrollDown ? "header--scrolldown" : ""}`}>
+            <div className="header__content">
                 <a className="header__logo" href="#">
                     <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="512" height="512" fill="none"/>
