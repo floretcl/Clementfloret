@@ -483,7 +483,17 @@ ul {
     color: $green-color;
     transition: color 0.2s ease-in;
 
-    &:active {
+    &:hover, &:focus-visible {
+      cursor: none;
+      color: $purple-color;
+    }
+
+    svg {
+      width: 2.75rem;
+      height: 2.75rem;
+    }
+
+    &--active {
       animation: 0.3s ease-in-out 0s forwards rotation-button;
 
       @keyframes rotation-button {
@@ -496,16 +506,6 @@ ul {
           transform-origin: center;
         }
       }
-    }
-
-    &:hover, &:focus-visible {
-      cursor: none;
-      color: $purple-color;
-    }
-
-    svg {
-      width: 2.75rem;
-      height: 2.75rem;
     }
   }
 }

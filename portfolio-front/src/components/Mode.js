@@ -1,18 +1,25 @@
 import {useState} from "react";
 
 export default function Mode() {
+    const [isClicked, setIsClicked] = useState(false);
     const [isDarkMode, setDarkMode] = useState(false);
 
     function toggleDarkMode() {
-        setDarkMode(!isDarkMode);
+        setIsClicked(!isClicked);
+
+        // modify icon during animation
+        setTimeout(() => {
+            setDarkMode(!isDarkMode);
+        }, 200);
     }
 
     return (
         <div className="mode">
             <button
-                className="mode__button"
+                className={`mode__button ${isClicked ? "mode__button--active" : ""}`}
                 type="button"
-                onClick={toggleDarkMode}>
+                onClick={toggleDarkMode}
+                onAnimationEnd={() => setIsClicked(false)}>
                 {isDarkMode ? (
                     <svg width="46" height="44" viewBox="0 0 46 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
