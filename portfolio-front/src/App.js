@@ -14,7 +14,7 @@ function App() {
         y: 0
     });
     const [scrollDown, setScrollDown] = useState(true);
-    const [onHomePage, setOnHomePage] = useState(false);
+    const [smallFooter, setSmallFooter] = useState(false);
     const [preload, setPreload] = useState(true);
     const bodyRef = useRef(null);
 
@@ -64,8 +64,8 @@ function App() {
             className={`app ${preload ? "preload" : ""}`}
         >
             <Header scrollDown={scrollDown}/>
-            {onHomePage ? <Home/> : <About/>}
-            <Footer onHomePage={onHomePage}/>
+            <About/>
+            <Footer small={smallFooter}/>
             <Cursor mousePosition={mousePosition}/>
         </div>
     );
