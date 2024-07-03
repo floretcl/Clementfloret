@@ -6,9 +6,11 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import Project from "./components/Project";
-import {useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
+import {DarkModeContext} from "./DarkModeProvider";
 
 function App() {
+    const {darkMode} = useContext(DarkModeContext);
     const [mousePosition, setMousePosition] = useState({
         x: 0,
         y: 0
@@ -61,10 +63,10 @@ function App() {
     return (
         <div
             onMouseMove={(event) => handleMouseMove(event)}
-            className={`app ${preload ? "preload" : ""}`}
+            className={`app ${darkMode ? "dark-theme" : ""} ${preload ? "preload" : ""}`}
         >
             <Header scrollDown={scrollDown}/>
-            <About/>
+            <Project/>
             <Footer small={smallFooter}/>
             <Cursor mousePosition={mousePosition}/>
         </div>
