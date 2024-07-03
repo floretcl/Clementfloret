@@ -1,15 +1,16 @@
-import {useState} from "react";
+import {useContext, useEffect, useState} from "react";
+import {DarkModeContext} from "../DarkModeProvider";
 
 export default function Mode() {
+    const {darkMode, toggleDarkMode} = useContext(DarkModeContext);
     const [isClicked, setIsClicked] = useState(false);
-    const [isDarkMode, setDarkMode] = useState(false);
 
-    function toggleDarkMode() {
+    function handleClick() {
         setIsClicked(!isClicked);
 
         // modify icon during animation
         setTimeout(() => {
-            setDarkMode(!isDarkMode);
+            toggleDarkMode();
         }, 200);
     }
 
@@ -18,9 +19,9 @@ export default function Mode() {
             <button
                 className={`mode__button ${isClicked ? "mode__button--active" : ""}`}
                 type="button"
-                onClick={toggleDarkMode}
+                onClick={handleClick}
                 onAnimationEnd={() => setIsClicked(false)}>
-                {isDarkMode ? (
+                {darkMode ? (
                     <svg width="46" height="44" viewBox="0 0 46 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M23.3432 29.1791C19.3619 29.1791 16.1343 25.9515 16.1343 21.9701C16.1343 17.9887 19.3619 14.7612 23.3432 14.7612C27.3246 14.7612 30.5522 17.9887 30.5522 21.9701C30.5522 25.9515 27.3246 29.1791 23.3432 29.1791ZM22.1418 8.75372H24.5447V12.3582H22.1418V8.75372ZM22.1418 31.5821H24.5447V35.1866H22.1418V31.5821ZM13.1482 13.4743L14.8474 11.7751L17.3962 14.3239L15.697 16.0231L13.1482 13.4743ZM29.2903 29.6164L30.9895 27.9172L33.5383 30.466L31.8391 32.1652L29.2903 29.6164ZM31.8391 11.7751L33.5383 13.4743L30.9895 16.0231L29.2903 14.3239L31.8391 11.7751ZM15.697 27.9172L17.3962 29.6164L14.8474 32.1652L13.1482 30.466L15.697 27.9172ZM36.5597 20.7686V23.1716H32.9552V20.7686H36.5597ZM13.7313 20.7686V23.1716H10.1268V20.7686H13.7313Z"
