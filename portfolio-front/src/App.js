@@ -55,15 +55,21 @@ function App() {
         handleScroll();
         window.addEventListener("scroll", handleScroll);
 
+        if (darkMode && bodyRef) {
+          bodyRef.current.classList.add("theme-dark");
+        } else {
+          bodyRef.current.classList.remove("theme-dark");
+        }
+
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-    }, []);
+    }, [darkMode]);
 
     return (
         <div
             onMouseMove={(event) => handleMouseMove(event)}
-            className={`app ${darkMode ? "dark-theme" : ""} ${preload ? "preload" : ""}`}
+            className={`app ${preload ? "preload" : ""}`}
         >
             <Header scrollDown={scrollDown}/>
             <Project/>

@@ -1493,12 +1493,10 @@ ul {
 
 // MEDIA QUERY - DARK
 
-@media (prefers-color-scheme: dark) {
-  body {
-    color: $green-color;
-    background-color: $dark-color;
-    background-image: url("../svg/hexagon-1-dark.svg");
-  }
+body.theme-dark {
+  color: $green-color;
+  background-color: $dark-color;
+  background-image: url("../svg/hexagon-1-dark.svg");
 
   strong {
     color: $white-color;
@@ -1709,6 +1707,7 @@ ul {
     .menu {
       &__content {
         background-color: initial;
+        outline: initial;
       }
 
       &__link {
