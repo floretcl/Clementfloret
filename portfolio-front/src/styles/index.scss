@@ -110,6 +110,10 @@ ul {
   padding: 0;
 }
 
+textarea {
+  resize: vertical;
+}
+
 :focus-visible {
   outline: 2px solid $dark-color;
 }
