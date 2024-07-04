@@ -150,12 +150,6 @@ ul {
     position: relative;
   }
 
-  &__logo:hover, &__logo:focus-visible {
-    svg {
-      color: $purple-color;
-    }
-  }
-
   &__logo {
     padding-top: 0.5rem;
 
@@ -164,6 +158,12 @@ ul {
       height: 3rem;
       color: $dark-color;
       transition: color 0.2s ease-in;
+    }
+  }
+
+  &__logo:hover, &__logo:focus-visible {
+    svg {
+      color: $purple-color;
     }
   }
 
@@ -275,8 +275,8 @@ ul {
           }
           to {
             border-color: $purple-color;
-            margin-left: 2rem;
-            margin-right: 2rem;
+            margin-left: 3rem;
+            margin-right: 3rem;
           }
         }
       }
@@ -1511,6 +1511,12 @@ body.theme-dark {
       color: $green-color;
     }
 
+    &__logo:hover, &__logo:focus-visible {
+      svg {
+        color: $purple-color;
+      }
+    }
+
     &--scrolldown .header__content {
       background-color: rgba($darker-color, 70%);
       outline: 0.0313rem solid $green-color;
@@ -1523,8 +1529,22 @@ body.theme-dark {
       outline: 0.0313rem solid $green-color;
     }
 
+    &__link a {
+      &:hover, &:focus-visible {
+        color: $purple-color;
+      }
+    }
+
     &__button {
       color: $green-color;
+
+      &:hover, &:focus-visible {
+        color: $purple-color;
+
+        .menu__button-lines div {
+          background-color: $purple-color;
+        }
+      }
     }
 
     &__button-lines div {
@@ -1618,15 +1638,35 @@ body.theme-dark {
     }
   }
 
+  .mode {
+    &__button {
+      &:hover, &:focus-visible {
+        color: $purple-color;
+      }
+    }
+  }
+
   .footer {
     &__contact a {
       color: $green-color;
+
+      &:hover, &:focus-visible {
+        color: $purple-color;
+      }
     }
   }
 
   .social {
-    &__link svg {
-      color: $green-color;
+    &__link {
+      svg {
+        color: $green-color;
+      }
+
+      &:hover, &:focus-visible {
+        svg {
+          color: $purple-color;
+        }
+      }
     }
   }
 
@@ -1645,6 +1685,14 @@ body.theme-dark {
   .resumeButton {
     a {
       color: $green-color;
+
+      &:hover, &:focus-visible {
+        color: $purple-color;
+      }
+    }
+
+    &:has(> a:hover), &:has(> a:focus-visible) {
+      color: $purple-color;
     }
   }
 
@@ -1668,6 +1716,11 @@ body.theme-dark {
 
         &[type="submit"] {
           background-color: $darker-color;
+
+          &:hover, &:focus-visible {
+            color: $dark-color;
+            background-color: $purple-color;
+          }
         }
       }
     }
@@ -1676,6 +1729,10 @@ body.theme-dark {
   .projects {
     &__filter-btn {
       color: $green-color;
+
+      &:hover, &:focus-visible {
+        color: $purple-color;
+      }
     }
   }
 
@@ -1691,6 +1748,10 @@ body.theme-dark {
     &__skills, &__links {
       a {
         color: $green-color;
+
+        &:hover {
+          color: $purple-color;
+        }
       }
     }
   }
