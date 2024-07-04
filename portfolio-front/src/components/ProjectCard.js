@@ -1,4 +1,4 @@
-export default function ProjectCard({name, imgSrc}) {
+export default function ProjectCard({name, imgSrc, type}) {
     return (
         <div className="project-card">
             <div className="project-card__thumbnail">
@@ -6,7 +6,10 @@ export default function ProjectCard({name, imgSrc}) {
                     <img className="project-card__img" src={imgSrc} alt={name + " thumbnail"}/>
                 </div>
             </div>
-            <p className="project-card__name">{name}</p>
+            <div className="project-card__text">
+                <p className="project-card__name">{name}</p>
+                <p className="project-card__type">{type}</p>
+            </div>
         </div>
     );
 }

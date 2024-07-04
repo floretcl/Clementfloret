@@ -820,7 +820,7 @@ ul {
   align-items: center;
   text-align: center;
   max-width: 26rem;
-  padding: 4rem 0;
+  padding: 6rem 0;
   margin: auto;
 
   &__title {
@@ -873,6 +873,12 @@ ul {
 // PROJECT-CARD
 
 .project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   &__thumbnail {
     position: relative;
     display: inline-block;
@@ -880,10 +886,10 @@ ul {
     &::before {
       content: '';
       position: absolute;
-      top: -0.125rem;
-      left: -0.125rem;
-      right: -0.125rem;
-      bottom: -0.125rem;
+      top: -0.1875rem;
+      left: -0.1875rem;
+      right: -0.1875rem;
+      bottom: -0.1875rem;
       background: $dark-color;
       mask-image: url("../svg/polygon.svg");
       -webkit-mask-image: url("../svg/polygon.svg");
@@ -891,6 +897,8 @@ ul {
       -webkit-mask-repeat: no-repeat;
       mask-size: cover;
       -webkit-mask-size: contain;
+      mask-position: center;
+      -webkit-mask-position: center;
     }
   }
 
@@ -901,25 +909,46 @@ ul {
     -webkit-mask-repeat: no-repeat;
     mask-size: cover;
     -webkit-mask-size: contain;
+    mask-position: center;
+    -webkit-mask-position: center;
   }
 
   &__img {
-    width: 12rem;
-    height: 12rem;
-    filter: blur(0.25rem);
+    width: 15rem;
+    height: 15rem;
     transition: all 0.2s ease-in;
+  }
+
+  &__text {
+    position: absolute;
+    margin: 0.5rem 0;
+    color: $white-color;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
   }
 
   &__name {
     font-family: $ruda-bold;
-    font-size: 1.25rem;
-    margin: 0.5rem 0;
+    font-size: 1.5rem;
+    margin: 0.75rem 0;
+  }
+
+  &__type {
+    font-family: $ruda-regular;
+    font-size: 1rem;
+    margin: 0.25rem 0;
   }
 
   &:hover {
-    .project-card__img {
-      filter: none;
-      transform: scale(125%);
+    .project-card {
+      &__img {
+        filter: brightness(75%) blur(0.25rem);
+        transform: scale(115%);
+      }
+
+      &__text {
+        opacity: 1;
+      }
     }
   }
 }
@@ -1141,6 +1170,8 @@ ul {
   }
 
   .projects {
+    padding: 7rem 0;
+
     &__title {
       margin: 1rem;
     }
@@ -1148,8 +1179,8 @@ ul {
 
   .project-card {
     &__img {
-      width: 14rem;
-      height: 14rem;
+      width: 16rem;
+      height: 16rem;
     }
   }
 
@@ -1325,15 +1356,15 @@ ul {
 
   .projects {
     &__list {
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 8vw;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 6vw;
     }
   }
 
   .project-card {
     &__img {
-      width: 12rem;
-      height: 12rem;
+      width: 16rem;
+      height: 16rem;
     }
   }
 
@@ -1412,15 +1443,18 @@ ul {
   }
 
   .projects {
+    padding: 8rem 0;
+
     &__list {
-      grid-gap: 10vw;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 8vw;
     }
   }
 
   .project-card {
     &__img {
-      width: 14rem;
-      height: 14rem;
+      width: 16rem;
+      height: 16rem;
     }
   }
 
