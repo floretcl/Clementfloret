@@ -932,7 +932,7 @@ ul {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 4rem 0;
+  padding: 6rem 0;
   margin: auto;
 
   &__content {
@@ -985,8 +985,8 @@ ul {
   overflow: hidden;
 
   &__items {
-    width: 18rem;
-    height: 18rem;
+    width: 20rem;
+    height: 20rem;
   }
 
   &__buttons {
@@ -1093,8 +1093,8 @@ ul {
   }
 
   &__img {
-    width: 18rem;
-    height: 18rem;
+    width: 20rem;
+    height: 20rem;
   }
 }
 
@@ -1154,6 +1154,8 @@ ul {
   }
 
   .project {
+    padding: 7rem 0;
+
     &__content {
       margin: 2rem 12%;
     }
@@ -1169,15 +1171,15 @@ ul {
 
   .carousel {
     &__items {
-      width: 22rem;
-      height: 22rem;
+      width: 24rem;
+      height: 24rem;
     }
   }
 
   .item {
     &__img {
-      width: 22rem;
-      height: 22rem;
+      width: 24rem;
+      height: 24rem;
     }
   }
 }
@@ -1345,15 +1347,15 @@ ul {
 
   .carousel {
     &__items {
-      width: 26rem;
-      height: 26rem;
+      width: 28rem;
+      height: 28rem;
     }
   }
 
   .item {
     &__img {
-      width: 26rem;
-      height: 26rem;
+      width: 28rem;
+      height: 28rem;
     }
   }
 }
@@ -1427,9 +1429,10 @@ ul {
   .project {
     flex-direction: row;
     text-align: start;
+    padding: 8rem 0;
 
     &__content {
-      max-width: 38rem;
+      max-width: 33rem;
       margin: 0 3rem 0 1rem;
     }
 
@@ -1465,14 +1468,23 @@ ul {
 
 @media all and (min-width: $x-large) {
   .project {
-    &__img {
-      width: 32rem;
-      height: 32rem;
-    }
-
     &__content {
       max-width: 42rem;
       margin: 0 3rem 0 2rem;
+    }
+  }
+
+  .carousel {
+    &__items {
+      width: 32rem;
+      height: 32rem;
+    }
+  }
+
+  .item {
+    &__img {
+      width: 32rem;
+      height: 32rem;
     }
   }
 }
