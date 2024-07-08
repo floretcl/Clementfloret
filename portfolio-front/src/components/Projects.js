@@ -24,22 +24,22 @@ export default function Projects() {
             <div className="projects__content">
                 <ul className="projects__list">
                     <li>
-                        <ProjectCard name="Alpha" imgSrc={project1Img}/>
+                        <ProjectCard name="Alpha" imgSrc={project1Img} type="Web"/>
                     </li>
                     <li>
-                        <ProjectCard name="Beta" imgSrc={project2Img}/>
+                        <ProjectCard name="Beta" imgSrc={project2Img} type="Web"/>
                     </li>
                     <li>
-                        <ProjectCard name="Gamma" imgSrc={project3Img}/>
+                        <ProjectCard name="Gamma" imgSrc={project3Img} type="Mobile"/>
                     </li>
                     <li>
-                        <ProjectCard name="Delta" imgSrc={project4Img}/>
+                        <ProjectCard name="Delta" imgSrc={project4Img} type="Web"/>
                     </li>
                     <li>
-                        <ProjectCard name="Epsilon" imgSrc={project5Img}/>
+                        <ProjectCard name="Epsilon" imgSrc={project5Img} type="Mobile"/>
                     </li>
                     <li>
-                        <ProjectCard name="Zeta" imgSrc={project6Img}/>
+                        <ProjectCard name="Zeta" imgSrc={project6Img} type="Web"/>
                     </li>
                 </ul>
             </div>

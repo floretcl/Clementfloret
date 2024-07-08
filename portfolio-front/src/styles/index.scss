@@ -834,8 +834,6 @@ ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0.25rem;
-    justify-items: center;
-    align-content: center;
     margin: 0 0 4rem 0;
 
     li {
@@ -873,7 +871,6 @@ ul {
 // PROJECT-CARD
 
 .project-card {
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -928,7 +925,6 @@ ul {
   }
 
   &__name {
-    position: absolute;
     font-family: $ruda-bold;
     font-size: 1.5rem;
     margin: 0.75rem 0;
