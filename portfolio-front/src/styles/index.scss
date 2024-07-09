@@ -717,6 +717,12 @@ ul {
     height: 5.975rem;
     margin: 6rem 1rem;
     color: $dark-color;
+    transition: all 0.4s ease-in-out;
+
+    &:hover, &:focus-visible {
+      transform: scale(110%) rotate(540deg);
+      transform-origin: center;
+    }
   }
 
   &__subtitle {
@@ -736,12 +742,26 @@ ul {
 
   &__icons {
     display: grid;
-    grid-gap: 2rem;
+    grid-gap: 3rem 2rem;
     grid-template-columns: repeat(3, 1fr);
     padding: 1rem 0;
 
     li {
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &::after {
+        display: block;
+        content: "";
+        height: 0.5rem;
+        width: 0.0625rem;
+        background-color: $grey-color;
+        opacity: 0;
+        transition: all 0.4s ease-in;
+      }
 
       img {
         width: 45px;
@@ -751,16 +771,23 @@ ul {
 
       div {
         position: absolute;
-        top: -3rem;
-        left: 2rem;
-        padding: 0.25rem 0.5rem;
+        bottom: -1rem;
+        font-size: 0.875rem;
+        color: $grey-color;
+        padding: 0.125rem 0.25rem;
         border: thin solid $grey-color;
         border-radius: 0.1rem;
         opacity: 0;
+        transition: all 0.2s ease-in;
       }
 
       &:has(> img:hover), &:has(> img:focus-visible) {
+        &::after {
+          opacity: 1;
+        }
+
         div {
+          bottom: -1.75rem;
           opacity: 1;
         }
       }
@@ -1149,6 +1176,7 @@ ul {
     }
 
     &__icons {
+      grid-gap: 3.25rem 2rem;
       grid-template-columns: repeat(6, 1fr);
     }
   }
@@ -1336,7 +1364,7 @@ ul {
     max-width: 38rem;
 
     &__icons {
-      grid-gap: 2.5rem;
+      grid-gap: 3.5rem 2.5rem;
     }
   }
 
