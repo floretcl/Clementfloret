@@ -5,15 +5,27 @@ import project3Img from "../img/christopher-gower-m_HRfLhgABo-unsplash.webp";
 import project4Img from "../img/domenico-loia-EhTcC9sYXsw-unsplash.webp";
 import project5Img from "../img/rodion-kutsaiev-0VGG7cqTwCo-unsplash.webp";
 import project6Img from "../img/taras-shypka-iFSvn82XfGo-unsplash.webp";
+import {useRef} from "react";
 
 export default function ProjectList() {
+    const contentRef = useRef(null);
+
+    function handleBackButton() {
+        contentRef.current.scrollLeft -= 100;
+    }
+
+    function handleNextButton() {
+        contentRef.current.scrollLeft += 100;
+    }
+
+
     return (
         <>
             <div className="projects-list__buttons">
-                <button className="projects-list__button">&lsaquo;</button>
-                <button className="projects-list__button">&rsaquo;</button>
+                <button className="projects-list__button" onClick={handleBackButton}>&lsaquo;</button>
+                <button className="projects-list__button" onClick={handleNextButton}>&rsaquo;</button>
             </div>
-            <div className="projects-list__content">
+            <div ref={contentRef} className="projects-list__content">
                 <ul className="projects-list__list">
                     <li>
                         <ProjectCard name="Alpha" imgSrc={project1Img} type="Web"/>
