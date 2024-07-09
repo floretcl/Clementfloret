@@ -542,6 +542,7 @@ ul {
   &__contact {
     order: 1;
     margin: 0;
+
     a {
       display: inline-block;
       color: $dark-color;
@@ -662,7 +663,7 @@ ul {
 
     &:hover, &:focus-visible {
       color: $purple-color;
-      scale: 120%;
+      transform: scale(120%);
       transition: all 0.3s ease-in;
     }
   }
@@ -671,10 +672,9 @@ ul {
     color: $purple-color;
 
     svg {
-        transform: rotate(360deg);
-        scale: 120%;
-        transition: all 0.3s ease-in;
-      }
+      transform: rotate(360deg) scale(120%);
+      transition: all 0.3s ease-in;
+    }
   }
 
   svg {
@@ -740,10 +740,30 @@ ul {
     grid-template-columns: repeat(3, 1fr);
     padding: 1rem 0;
 
-    li img {
-      width: 45px;
-      height: 45px;
-      filter: $dark-filter;
+    li {
+      position: relative;
+
+      img {
+        width: 45px;
+        height: 45px;
+        filter: $dark-filter;
+      }
+
+      div {
+        position: absolute;
+        top: -3rem;
+        left: 2rem;
+        padding: 0.25rem 0.5rem;
+        border: thin solid $grey-color;
+        border-radius: 0.1rem;
+        opacity: 0;
+      }
+
+      &:has(> img:hover), &:has(> img:focus-visible) {
+        div {
+          opacity: 1;
+        }
+      }
     }
   }
 }
@@ -996,7 +1016,6 @@ ul {
     justify-content: space-between;
     align-items: center;
     width: 80%;
-    z-index: 50;
   }
 
   &__button {
@@ -1007,11 +1026,13 @@ ul {
     width: 2.75rem;
     height: 2.75rem;
     border-radius: 50%;
-    transition: background-color 0.2s ease-in;
+    transition: all 0.2s ease-in;
+    z-index: 50;
 
     &:hover, &:focus-visible {
       background-color: $purple-color;
       border-width: 0;
+      transform: scale(115%);
       cursor: none;
     }
   }
