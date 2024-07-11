@@ -985,8 +985,10 @@ ul {
   overflow: hidden;
 
   &__items {
-    width: 20rem;
-    height: 20rem;
+    width: 18rem;
+    height: 18rem;
+    margin: 0.75rem;
+    filter: drop-shadow(0.125rem 0.125rem 0.25rem $grey-color);
   }
 
   &__buttons {
@@ -995,7 +997,7 @@ ul {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
+    width: 85%;
     z-index: 50;
   }
 
@@ -1023,7 +1025,7 @@ ul {
     justify-content: center;
     align-items: center;
     width: 80%;
-    bottom: 17%;
+    bottom: 8%;
     z-index: 40;
   }
 
@@ -1062,39 +1064,10 @@ ul {
     left: 100%;
   }
 
-  &__content {
-    position: relative;
-    display: inline-block;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: -0.125rem;
-      left: -0.125rem;
-      right: -0.125rem;
-      bottom: -0.125rem;
-      background: $dark-color;
-      mask-image: url("../svg/polygon.svg");
-      -webkit-mask-image: url("../svg/polygon.svg");
-      mask-repeat: no-repeat;
-      -webkit-mask-repeat: no-repeat;
-      mask-size: cover;
-      -webkit-mask-size: contain;
-    }
-  }
-
-  &__mask {
-    mask-image: url("../svg/polygon.svg");
-    -webkit-mask-image: url("../svg/polygon.svg");
-    mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;
-    mask-size: cover;
-    -webkit-mask-size: contain;
-  }
-
   &__img {
-    width: 20rem;
-    height: 20rem;
+    object-fit: cover;
+    width: 18rem;
+    height: 18rem;
   }
 }
 
@@ -1171,14 +1144,14 @@ ul {
 
   .carousel {
     &__items {
-      width: 24rem;
+      width: 28rem;
       height: 24rem;
     }
   }
 
   .item {
     &__img {
-      width: 24rem;
+      width: 28rem;
       height: 24rem;
     }
   }
@@ -1347,14 +1320,14 @@ ul {
 
   .carousel {
     &__items {
-      width: 28rem;
+      width: 34rem;
       height: 28rem;
     }
   }
 
   .item {
     &__img {
-      width: 28rem;
+      width: 34rem;
       height: 28rem;
     }
   }
@@ -1432,7 +1405,7 @@ ul {
     padding: 8rem 0;
 
     &__content {
-      max-width: 33rem;
+      max-width: 30rem;
       margin: 0 3rem 0 1rem;
     }
 
@@ -1450,15 +1423,17 @@ ul {
   }
 
   .carousel {
+    margin: 0 2vw;
+
     &__items {
-      width: 28rem;
+      width: 38vw;
       height: 28rem;
     }
   }
 
   .item {
     &__img {
-      width: 28rem;
+      width: 38vw;
       height: 28rem;
     }
   }
@@ -1469,22 +1444,24 @@ ul {
 @media all and (min-width: $x-large) {
   .project {
     &__content {
-      max-width: 42rem;
+      max-width: 38rem;
       margin: 0 3rem 0 2rem;
     }
   }
 
   .carousel {
+    margin: 0 1vw;
+
     &__items {
-      width: 32rem;
-      height: 32rem;
+      width: 33rem;
+      height: 30rem;
     }
   }
 
   .item {
     &__img {
-      width: 32rem;
-      height: 32rem;
+      width: 33rem;
+      height: 30rem;
     }
   }
 }
