@@ -28,7 +28,7 @@ export default function Mode() {
                             fill="currentColor"/>
                         <path
                             d="M4.58142 11.8708L23 1.71299L41.4186 11.8708V32.0695L23 42.2273L4.58142 32.0695V11.8708Z"
-                            stroke="currentColor" stroke-width="3"/>
+                            stroke="currentColor" strokeWidth="3"/>
                     </svg>
                 ) : (
                     <svg width="46" height="44" viewBox="0 0 46 44" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +37,7 @@ export default function Mode() {
                             fill="currentColor"/>
                         <path
                             d="M4.58142 11.8708L23 1.71299L41.4186 11.8708V32.0695L23 42.2273L4.58142 32.0695V11.8708Z"
-                            stroke="currentColor" stroke-width="3"/>
+                            stroke="currentColor" strokeWidth="3"/>
                     </svg>
                 )}
             </button>
