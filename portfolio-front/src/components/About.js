@@ -38,80 +38,79 @@ export default function About() {
                 </svg>
             </div>
             <h2 className="about__subtitle">Skills</h2>
-            <ul className="about__skills">
-                <li>HTML</li>
-                <span> - </span>
-                <li>CSS</li>
-                <span> - </span>
-                <li>Sass</li>
-                <span> - </span>
-                <li>Javascript</li>
-                <span> - </span>
-                <li>PHP</li>
-                <span> - </span>
-                <li>Python</li>
-                <span> - </span>
-                <li>Swift</li>
-                <span> - </span>
-                <li>Kotlin</li>
-                <span> - </span>
-                <li>Bootstrap</li>
-                <span> - </span>
-                <li>TailwindCSS</li>
-                <span> - </span>
-                <li>Django</li>
-                <span> - </span>
-                <li>SwiftUI</li>
-                <span> - </span>
-                <li>Jetpack compose</li>
-                <span> - </span>
-                <li>SQL</li>
-                <span> - </span>
-                <li>MariaDB/MySQL</li>
-                <span> - </span>
-                <li>PostgreSQL</li>
-                <span> - </span>
-                <li>Git</li>
-                <span> - </span>
-                <li>GitHub</li>
-                <span> - </span>
-                <li>PyCharm</li>
-                <span> - </span>
-                <li>PhpStorm</li>
-                <span> - </span>
-                <li>VScode</li>
-                <span> - </span>
-                <li>Xcode</li>
-                <span> - </span>
-                <li>Android Studio</li>
-                <span> - </span>
-                <li>Figma</li>
-                <span> - </span>
-                <li>Wordpress</li>
-                <span> - </span>
-                <li>MacOS</li>
-                <span> - </span>
-                <li>GNU/Linux</li>
-            </ul>
             <ul className="about__icons">
-                <li><img src={html5Icon} alt=""/></li>
-                <li><img src={css3Icon} alt=""/></li>
-                <li><img src={jsIcon} alt=""/></li>
-                <li><img src={phpIcon} alt=""/></li>
-                <li><img src={pythonIcon} alt=""/></li>
-                <li><img src={djangoIcon} alt=""/></li>
-                <li><img src={mariaDBIcon} alt=""/></li>
-                <li><img src={mySQLIcon} alt=""/></li>
-                <li><img src={postgreSQLIcon} alt=""/></li>
-                <li><img src={sassIcon} alt=""/></li>
-                <li><img src={tailwindIcon} alt=""/></li>
-                <li><img src={bootstrapIcon} alt=""/></li>
-                <li><img src={kotlinIcon} alt=""/></li>
-                <li><img src={swiftIcon} alt=""/></li>
-                <li><img src={npmIcon} alt=""/></li>
-                <li><img src={wordpressIcon} alt=""/></li>
-                <li><img src={gitIcon} alt=""/></li>
-                <li><img src={figmaIcon} alt=""/></li>
+                <li>
+                    <img src={html5Icon} alt="HTML icon"/>
+                    <div>HTML5</div>
+                </li>
+                <li>
+                    <img src={css3Icon} alt="CSS3 icon"/>
+                    <div>CSS3</div>
+                </li>
+                <li>
+                    <img src={jsIcon} alt="Javascript icon"/>
+                    <div>Javascript</div>
+                </li>
+                <li>
+                    <img src={phpIcon} alt="PHP icon"/>
+                    <div>PHP</div>
+                </li>
+                <li>
+                    <img src={pythonIcon} alt="Python icon"/>
+                    <div>Python</div>
+                </li>
+                <li>
+                    <img src={djangoIcon} alt="Django icon"/>
+                    <div>Django</div>
+                </li>
+                <li>
+                    <img src={mariaDBIcon} alt="MariaDB icon"/>
+                    <div>MariaDB</div>
+                </li>
+                <li>
+                    <img src={mySQLIcon} alt="MySQL icon"/>
+                    <div>MySQL</div>
+                </li>
+                <li>
+                    <img src={postgreSQLIcon} alt="PostgreSQL icon"/>
+                    <div>PostgreSQL</div>
+                </li>
+                <li>
+                    <img src={sassIcon} alt="Sass icon"/>
+                    <div>Sass</div>
+                </li>
+                <li>
+                    <img src={tailwindIcon} alt="Tailwind icon"/>
+                    <div>Tailwind</div>
+                </li>
+                <li>
+                    <img src={bootstrapIcon} alt="Bootstrap icon"/>
+                    <div>Bootstrap</div>
+                </li>
+                <li>
+                    <img src={kotlinIcon} alt="Kotlin icon"/>
+                    <div>Kotlin</div>
+                </li>
+                <li>
+                    <img src={swiftIcon} alt="Swift icon"/>
+                    <div>Swift</div>
+                </li>
+                <li>
+                    <img src={npmIcon} alt="Npm icon"/>
+                    <div>Npm</div>
+                </li>
+                <li>
+                    <img src={wordpressIcon} alt="Wordpress icon"/>
+                    <div>Wordpress</div>
+                </li>
+                <li>
+                    <img src={gitIcon} alt="Git icon"/>
+                    <div>Git</div>
+                </li>
+                <li>
+                    <img src={figmaIcon} alt="Figma icon"/>
+                    <div>Figma</div>
+                </li>
             </ul>
         </main>
     );
