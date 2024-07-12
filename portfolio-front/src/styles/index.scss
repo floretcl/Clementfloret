@@ -1143,16 +1143,20 @@ ul {
   }
 
   .carousel {
+    &__dots {
+      bottom: 7%;
+    }
+
     &__items {
-      width: 28rem;
-      height: 24rem;
+      width: 26rem;
+      height: 22rem;
     }
   }
 
   .item {
     &__img {
-      width: 28rem;
-      height: 24rem;
+      width: 26rem;
+      height: 22rem;
     }
   }
 }
@@ -1319,16 +1323,20 @@ ul {
   }
 
   .carousel {
+    &__dots {
+      bottom: 7%;
+    }
+
     &__items {
-      width: 34rem;
-      height: 28rem;
+      width: 30rem;
+      height: 26rem;
     }
   }
 
   .item {
     &__img {
-      width: 34rem;
-      height: 28rem;
+      width: 30rem;
+      height: 26rem;
     }
   }
 }
@@ -1427,14 +1435,14 @@ ul {
 
     &__items {
       width: 38vw;
-      height: 28rem;
+      height: 26rem;
     }
   }
 
   .item {
     &__img {
       width: 38vw;
-      height: 28rem;
+      height: 26rem;
     }
   }
 }
@@ -1453,15 +1461,15 @@ ul {
     margin: 0 1vw;
 
     &__items {
-      width: 33rem;
-      height: 30rem;
+      width: 32rem;
+      height: 28rem;
     }
   }
 
   .item {
     &__img {
-      width: 33rem;
-      height: 30rem;
+      width: 32rem;
+      height: 28rem;
     }
   }
 }
@@ -1742,6 +1750,12 @@ body.theme-dark {
           color: $purple-color;
         }
       }
+    }
+  }
+
+  .carousel {
+    &__items {
+      filter: drop-shadow(0.125rem 0.125rem 0.25rem $darker-color);
     }
   }
 
