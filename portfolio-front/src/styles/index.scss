@@ -75,7 +75,7 @@ $xx-large: 1536px;
 
 // -- STYLE -- //
 
-html {
+html * {
   scroll-behavior: smooth;
 }
 
@@ -869,7 +869,7 @@ ul {
   align-items: center;
   text-align: center;
   max-width: 26rem;
-  padding: 4rem 0;
+  padding: 6rem 0;
   margin: auto;
 
   &__title {
@@ -885,7 +885,7 @@ ul {
     grid-gap: 0.25rem;
     justify-items: center;
     align-content: center;
-    margin: 0 0 4rem 0;
+    margin: 0 0 3rem 0;
 
     li {
       transition: all 0.2s ease-in;
@@ -911,64 +911,125 @@ ul {
   }
 
   &__list {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 4rem;
-    justify-items: center;
-    align-content: center;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// PROJECT-LIST
+
+.projects-list {
+  &__content {
+    width: 90vw;
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+
+  &__buttons {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 95vw;
+  }
+
+  &__button {
+    font-size: 1.25rem;
+    color: $green-color;
+    background-color: rgba($dark-color, 80%);
+    border: thin solid $green-color;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    transition: all 0.2s ease-in;
+    z-index: 50;
+
+    &:hover, &:focus-visible {
+      background-color: $purple-color;
+      border-width: 0;
+      transform: scale(110%);
+      cursor: none;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 0.25rem;
+    height: 22rem;
+    margin: 0;
+    padding: 1rem;
+
+    li {
+      flex: 0 0 7rem;
+      overflow: hidden;
+      border: thin $white-color solid;
+      transition: all 0.3s ease-in-out;
+
+      &:hover, &:focus-visible {
+        flex: 0 0 16rem;
+      }
+    }
   }
 }
 
 // PROJECT-CARD
 
 .project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20rem;
+
   &__thumbnail {
     position: relative;
-    display: inline-block;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: -0.125rem;
-      left: -0.125rem;
-      right: -0.125rem;
-      bottom: -0.125rem;
-      background: $dark-color;
-      mask-image: url("../svg/polygon.svg");
-      -webkit-mask-image: url("../svg/polygon.svg");
-      mask-repeat: no-repeat;
-      -webkit-mask-repeat: no-repeat;
-      mask-size: cover;
-      -webkit-mask-size: contain;
-    }
-  }
-
-  &__mask {
-    mask-image: url("../svg/polygon.svg");
-    -webkit-mask-image: url("../svg/polygon.svg");
-    mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;
-    mask-size: cover;
-    -webkit-mask-size: contain;
   }
 
   &__img {
-    width: 12rem;
-    height: 12rem;
-    filter: blur(0.25rem);
-    transition: all 0.2s ease-in;
+    width: 30rem;
+    height: auto;
+    transition: all 0.3s ease-in;
+    filter: brightness(90%);
+  }
+
+  &__text {
+    position: absolute;
+    margin: 0.5rem 0;
+    color: $white-color;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
   }
 
   &__name {
     font-family: $ruda-bold;
-    font-size: 1.25rem;
-    margin: 0.5rem 0;
+    font-size: 1.5rem;
+    margin: 0.75rem 0;
   }
 
-  &:hover {
-    .project-card__img {
-      filter: none;
-      transform: scale(125%);
+  &__type {
+    font-family: $ruda-regular;
+    font-size: 1rem;
+    margin: 0.25rem 0;
+  }
+
+  &:hover, &:focus-visible {
+    .project-card {
+      &__img {
+        filter: brightness(60%) blur(0.05rem);
+        transform: scale(105%);
+      }
+
+      &__text {
+        opacity: 1;
+      }
     }
   }
 }
@@ -1016,7 +1077,7 @@ ul {
       padding: 0.5625rem;
       transition: color 0.2s ease-in;
 
-      &:hover {
+      &:hover, &:focus-visible {
         color: $purple-color;
       }
     }
@@ -1192,15 +1253,40 @@ ul {
   }
 
   .projects {
+    max-width: 32rem;
+    padding: 7rem 0;
+
     &__title {
       margin: 1rem;
     }
   }
 
+  .projects-list {
+    &__content {
+      width: 85vw;
+    }
+
+    &__buttons {
+      width: 90vw;
+    }
+
+    &__list {
+      height: 22rem;
+      gap: 0.5rem;
+
+      li {
+        &:hover, &:focus-visible {
+          flex: 0 0 22rem;
+        }
+      }
+    }
+  }
+
   .project-card {
+    height: 22rem;
+
     &__img {
-      width: 14rem;
-      height: 14rem;
+      width: 34rem;
     }
   }
 
@@ -1375,16 +1461,37 @@ ul {
   }
 
   .projects {
+    max-width: 38rem;
+  }
+
+  .projects-list {
+    &__content {
+      width: 82vw;
+    }
+
+    &__buttons {
+      width: 87vw;
+    }
+
     &__list {
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 8vw;
+      height: 26rem;
+      gap: 0.75rem;
+
+      li {
+        flex: 0 0 9rem;
+
+        &:hover, &:focus-visible {
+          flex: 0 0 26rem;
+        }
+      }
     }
   }
 
   .project-card {
+    height: 26rem;
+
     &__img {
-      width: 12rem;
-      height: 12rem;
+      width: 40rem;
     }
   }
 
@@ -1463,15 +1570,38 @@ ul {
   }
 
   .projects {
+    max-width: 48rem;
+    padding: 8rem 0;
+  }
+
+  .projects-list {
+    &__content {
+      max-width: 62rem;
+    }
+
+    &__buttons {
+      max-width: 66rem;
+    }
+
     &__list {
-      grid-gap: 10vw;
+      height: 30rem;
+      gap: 1rem;
+
+      li {
+        flex: 0 0 11rem;
+
+        &:hover, &:focus-visible {
+          flex: 0 0 28rem;
+        }
+      }
     }
   }
 
   .project-card {
+    height: 30rem;
+
     &__img {
-      width: 14rem;
-      height: 14rem;
+      width: 46rem;
     }
   }
 
@@ -1515,6 +1645,11 @@ ul {
 // MEDIA QUERY - X-LARGE (1280p)
 
 @media all and (min-width: $x-large) {
+  .projects {
+    max-width: 48rem;
+    padding: 8rem 0;
+  }
+
   .project {
     &__img {
       width: 32rem;
@@ -1785,13 +1920,9 @@ body.theme-dark {
         color: $purple-color;
       }
     }
-  }
 
-  .project-card {
-    &__thumbnail {
-      &::before {
-        background: $green-color;
-      }
+    &__list li {
+      border-color: $grey-color;
     }
   }
 
@@ -1800,7 +1931,7 @@ body.theme-dark {
       a {
         color: $green-color;
 
-        &:hover {
+        &:hover, &:focus-visible {
           color: $purple-color;
         }
       }

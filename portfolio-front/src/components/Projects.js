@@ -5,6 +5,7 @@ import project3Img from "../img/christopher-gower-m_HRfLhgABo-unsplash.webp";
 import project4Img from "../img/domenico-loia-EhTcC9sYXsw-unsplash.webp";
 import project5Img from "../img/rodion-kutsaiev-0VGG7cqTwCo-unsplash.webp";
 import project6Img from "../img/taras-shypka-iFSvn82XfGo-unsplash.webp";
+import ProjectList from "./ProjectList";
 
 export default function Projects() {
     return (
@@ -21,27 +22,8 @@ export default function Projects() {
                     <button type="button" onClick="" className="projects__filter-btn">Mobile</button>
                 </li>
             </ul>
-            <div className="projects__content">
-                <ul className="projects__list">
-                    <li>
-                        <ProjectCard name="Alpha" imgSrc={project1Img}/>
-                    </li>
-                    <li>
-                        <ProjectCard name="Beta" imgSrc={project2Img}/>
-                    </li>
-                    <li>
-                        <ProjectCard name="Gamma" imgSrc={project3Img}/>
-                    </li>
-                    <li>
-                        <ProjectCard name="Delta" imgSrc={project4Img}/>
-                    </li>
-                    <li>
-                        <ProjectCard name="Epsilon" imgSrc={project5Img}/>
-                    </li>
-                    <li>
-                        <ProjectCard name="Zeta" imgSrc={project6Img}/>
-                    </li>
-                </ul>
+            <div className="projects__list">
+                <ProjectList/>
             </div>
         </main>
     );
