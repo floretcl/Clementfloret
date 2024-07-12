@@ -234,7 +234,6 @@ textarea {
     backdrop-filter: blur(0.25rem);
     -webkit-backdrop-filter: blur(0.25rem);
     outline: thin solid $dark-color;
-    border-radius: 0.1rem;
     width: 100vw;
     z-index: 80;
   }
@@ -1102,6 +1101,8 @@ textarea {
   &__items {
     width: 18rem;
     height: 18rem;
+    margin: 0.75rem;
+    filter: drop-shadow(0.125rem 0.125rem 0.25rem $grey-color);
   }
 
   &__buttons {
@@ -1110,7 +1111,7 @@ textarea {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
+    width: 85%;
   }
 
   &__button {
@@ -1139,7 +1140,7 @@ textarea {
     justify-content: center;
     align-items: center;
     width: 80%;
-    bottom: 17%;
+    bottom: 8%;
     z-index: 40;
   }
 
@@ -1178,37 +1179,8 @@ textarea {
     left: 100%;
   }
 
-  &__content {
-    position: relative;
-    display: inline-block;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: -0.125rem;
-      left: -0.125rem;
-      right: -0.125rem;
-      bottom: -0.125rem;
-      background: $dark-color;
-      mask-image: url("../svg/polygon.svg");
-      -webkit-mask-image: url("../svg/polygon.svg");
-      mask-repeat: no-repeat;
-      -webkit-mask-repeat: no-repeat;
-      mask-size: cover;
-      -webkit-mask-size: contain;
-    }
-  }
-
-  &__mask {
-    mask-image: url("../svg/polygon.svg");
-    -webkit-mask-image: url("../svg/polygon.svg");
-    mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;
-    mask-size: cover;
-    -webkit-mask-size: contain;
-  }
-
   &__img {
+    object-fit: cover;
     width: 18rem;
     height: 18rem;
   }
@@ -1297,6 +1269,8 @@ textarea {
   }
 
   .project {
+    padding: 7rem 0;
+
     &__content {
       margin: 2rem 12%;
     }
@@ -1311,15 +1285,19 @@ textarea {
   }
 
   .carousel {
+    &__dots {
+      bottom: 7%;
+    }
+
     &__items {
-      width: 22rem;
+      width: 26rem;
       height: 22rem;
     }
   }
 
   .item {
     &__img {
-      width: 22rem;
+      width: 26rem;
       height: 22rem;
     }
   }
@@ -1508,15 +1486,19 @@ textarea {
   }
 
   .carousel {
+    &__dots {
+      bottom: 7%;
+    }
+
     &__items {
-      width: 26rem;
+      width: 30rem;
       height: 26rem;
     }
   }
 
   .item {
     &__img {
-      width: 26rem;
+      width: 30rem;
       height: 26rem;
     }
   }
@@ -1615,9 +1597,10 @@ textarea {
   .project {
     flex-direction: row;
     text-align: start;
+    padding: 8rem 0;
 
     &__content {
-      max-width: 38rem;
+      max-width: 30rem;
       margin: 0 3rem 0 1rem;
     }
 
@@ -1635,16 +1618,18 @@ textarea {
   }
 
   .carousel {
+    margin: 0 2vw;
+
     &__items {
-      width: 28rem;
-      height: 28rem;
+      width: 38vw;
+      height: 26rem;
     }
   }
 
   .item {
     &__img {
-      width: 28rem;
-      height: 28rem;
+      width: 38vw;
+      height: 26rem;
     }
   }
 }
@@ -1658,14 +1643,25 @@ textarea {
   }
 
   .project {
+    &__content {
+      max-width: 38rem;
+      margin: 0 3rem 0 2rem;
+    }
+  }
+
+  .carousel {
+    margin: 0 1vw;
+
+    &__items {
+      width: 32rem;
+      height: 28rem;
+    }
+  }
+
+  .item {
     &__img {
       width: 32rem;
-      height: 32rem;
-    }
-
-    &__content {
-      max-width: 42rem;
-      margin: 0 3rem 0 2rem;
+      height: 28rem;
     }
   }
 }
@@ -1942,6 +1938,12 @@ body.theme-dark {
           color: $purple-color;
         }
       }
+    }
+  }
+
+  .carousel {
+    &__items {
+      filter: drop-shadow(0.125rem 0.125rem 0.25rem $darker-color);
     }
   }
 
