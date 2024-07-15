@@ -234,6 +234,7 @@ textarea {
     backdrop-filter: blur(0.25rem);
     -webkit-backdrop-filter: blur(0.25rem);
     outline: thin solid $dark-color;
+    border-radius: 0.1rem;
     width: 100vw;
     z-index: 80;
   }
@@ -576,11 +577,15 @@ textarea {
 .social {
   display: flex;
   flex-direction: row;
+  margin: 0;
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
 
   &__link {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
+    display: flex;
     padding: 0.25rem 0.5rem 0 0.5rem;
     margin: 0 0.5rem;
 
@@ -821,6 +826,11 @@ textarea {
 
   &__infos {
     margin: 0.5rem 1rem;
+
+    a {
+      color: $dark-color;
+      font-weight: bolder;
+    }
   }
 
   &__form {
@@ -1891,13 +1901,30 @@ body.theme-dark {
     }
 
     &__icons {
-      li img {
-        filter: $green-filter;
+      li {
+        &::after {
+          background-color: $green-color;
+        }
+
+        img {
+          filter: $green-filter;
+        }
+
+        div {
+          color: $white-color;
+          border-color: $green-color;
+        }
       }
     }
   }
 
   .contact {
+    &__infos {
+      a {
+        color: $green-color;
+      }
+    }
+
     &__form {
       input, textarea {
         color: $green-color;
