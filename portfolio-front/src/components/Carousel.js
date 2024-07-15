@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Item from "./Item";
 import imgSrc1 from "../img/ales-nesetril-Im7lZjxeLhg-unsplash.webp";
 import imgSrc2 from "../img/campaign-creators-OGOWDVLbMSc-unsplash.webp";
@@ -6,6 +6,10 @@ import imgSrc3 from "../img/christopher-gower-m_HRfLhgABo-unsplash.webp";
 import imgSrc4 from "../img/domenico-loia-EhTcC9sYXsw-unsplash.webp";
 
 export default function Carousel() {
+    const [index, setIndex] = useState(0);
+    const [count, setCount] = useState(0);
+    const [startCarousel, setStartCarousel] = useState(false);
+
     const items = [{
         id: 0,
         imgSrc: imgSrc1
@@ -18,14 +22,13 @@ export default function Carousel() {
     }, {
         id: 3,
         imgSrc: imgSrc4
-    }]
+    }];
 
-    const [index, setIndex] = useState(0);
     const listItems = items.map(item =>
-        <Item key={item.id} index={index} id={item.id} imgSrc={item.imgSrc} />
+        <Item key={item.id} id={item.id} index={index} imgSrc={item.imgSrc} />
     );
     const listDots = items.map(item =>
-        <div className={`carousel__dot ${item.id === index ? "carousel__dot--active" : ""}`}></div>
+        <div key={item.id} className={`carousel__dot ${item.id === index ? "carousel__dot--active" : ""}`}></div>
     );
 
     function previousItem() {
@@ -35,6 +38,21 @@ export default function Carousel() {
     function nextItem() {
         setIndex((index) => (index === items.length - 1 ? 0 : index + 1));
     }
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCount(prevState => (prevState + 1) % items.length);
+            setStartCarousel(true);
+        }, 3000);
+
+        if (startCarousel) {
+            nextItem();
+        }
+
+        return () => {
+            clearInterval(interval);
+        }
+    }, [count]);
 
     return (
         <div className="carousel">
