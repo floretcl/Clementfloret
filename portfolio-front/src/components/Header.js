@@ -4,7 +4,7 @@ export default function Header({scrollDown}) {
     return (
         <header className={`header ${scrollDown ? "header--scrolldown" : ""}`}>
             <div className="header__content">
-                <a className="header__logo" href="#">
+                <a className="header__logo hoverable" href="#">
                     <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="512" height="512" fill="none"/>
                         <path fillRule="evenodd" clipRule="evenodd"

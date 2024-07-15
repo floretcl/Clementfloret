@@ -8,7 +8,7 @@ export default function Footer({small}) {
             <div className="footer__content">
                 { !small && (
                     <div className="footer__contact">
-                        <a href="#">Contact</a>
+                        <a className="hoverable" href="#">Contact</a>
                     </div>
                 )}
                 <div className="footer__infos">

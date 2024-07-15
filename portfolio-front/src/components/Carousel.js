@@ -42,8 +42,8 @@ export default function Carousel() {
                 {listItems}
             </ul>
             <div className="carousel__buttons">
-                <button className="carousel__button" onClick={previousItem}>&lsaquo;</button>
-                <button className="carousel__button" onClick={nextItem}>&rsaquo;</button>
+                <button className="carousel__button hoverable" onClick={previousItem}>&lsaquo;</button>
+                <button className="carousel__button hoverable" onClick={nextItem}>&rsaquo;</button>
             </div>
             <div className="carousel__dots">
                 {listDots}

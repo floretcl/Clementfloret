@@ -22,8 +22,8 @@ export default function ProjectList() {
     return (
         <>
             <div className="projects-list__buttons">
-                <button className="projects-list__button" onClick={handleBackButton}>&lsaquo;</button>
-                <button className="projects-list__button" onClick={handleNextButton}>&rsaquo;</button>
+                <button className="projects-list__button hoverable" onClick={handleBackButton}>&lsaquo;</button>
+                <button className="projects-list__button hoverable" onClick={handleNextButton}>&rsaquo;</button>
             </div>
             <div ref={contentRef} className="projects-list__content">
                 <ul className="projects-list__list">

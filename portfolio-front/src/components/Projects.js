@@ -13,13 +13,13 @@ export default function Projects() {
             <h1 className="projects__title">Projects</h1>
             <ul className="projects__filters">
                 <li>
-                    <button type="button" onClick="" className="projects__filter-btn">All</button>
+                    <button type="button" onClick="" className="projects__filter-btn hoverable">All</button>
                 </li>
                 <li>
-                    <button type="button" onClick="" className="projects__filter-btn">Web</button>
+                    <button type="button" onClick="" className="projects__filter-btn hoverable">Web</button>
                 </li>
                 <li>
-                    <button type="button" onClick="" className="projects__filter-btn">Mobile</button>
+                    <button type="button" onClick="" className="projects__filter-btn hoverable">Mobile</button>
                 </li>
             </ul>
             <div className="projects__list">

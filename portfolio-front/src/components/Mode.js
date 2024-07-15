@@ -17,7 +17,7 @@ export default function Mode() {
     return (
         <div className="mode">
             <button
-                className={`mode__button ${isClicked ? "mode__button--active" : ""}`}
+                className={`mode__button ${isClicked ? "mode__button--active" : ""} hoverable`}
                 type="button"
                 onClick={handleClick}
                 onAnimationEnd={() => setIsClicked(false)}>

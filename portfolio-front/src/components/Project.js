@@ -1,9 +1,60 @@
 import Carousel from "./Carousel";
 
 export default function Project() {
+    const skills = [{
+        id: 0,
+        name: "HTML5"
+    }, {
+        id: 1,
+        name: "CSS3"
+    }, {
+        id: 2,
+        name: "Javascript"
+    }, {
+        id: 3,
+        name: "Python"
+    }, {
+        id: 4,
+        name: "Django"
+    }, {
+        id: 5,
+        name: "Git"
+    }, {
+        id: 6,
+        name: "GitHub"
+    }, {
+        id: 7,
+        name: "PyCharm"
+    }, {
+        id: 8,
+        name: "MacOS"
+    }];
+
+    const links = [{
+        id: 0,
+        name: "GitHub",
+        url: "#"
+    }, {
+        id: 1,
+        name: "Figma",
+        url: "#"
+    }, {
+        id: 2,
+        name: "Website",
+        url: "#"
+    }]
+
+    const listSkills = skills.map((skill) =>
+        <li key={skill.id}>{skill.name}</li>
+    );
+
+    const listLinks = links.map((link) =>
+        <li key={link.id}><a className="hoverable" href={link.url}>{link.name}</a></li>
+    );
+
     return (
         <main className="project">
-            <Carousel />
+            <Carousel/>
             <div className="project__content">
                 <h1 className="project__title">Project name</h1>
                 <p className="project__text">
@@ -16,21 +67,10 @@ export default function Project() {
                     lorem id phasellus. Sem viverra felis sit adipiscing nibh vestibulum.
                 </p>
                 <ul className="project__skills">
-                    <li>Skill</li>-
-                    <li>Skill</li>-
-                    <li>Skill</li>-
-                    <li>Skill</li>-
-                    <li>Skill</li>-
-                    <li>Skill</li>-
-                    <li>Skill</li>-
-                    <li>Skill</li>-
-                    <li>Skill</li>
+                    {listSkills}
                 </ul>
                 <ul className="project__links">
-                    <li><a href="#">Link</a></li>-
-                    <li><a href="#">Link</a></li>-
-                    <li><a href="#">Link</a></li>-
-                    <li><a href="#">Link</a></li>
+                    {listLinks}
                 </ul>
             </div>
         </main>

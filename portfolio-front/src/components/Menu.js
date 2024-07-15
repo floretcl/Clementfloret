@@ -17,11 +17,10 @@ export default function Menu() {
         }
     }
 
-    // TODO : href
     return (
         <div
             className={`menu ${isActive ? "menu--active" : ""} ${isOpen ? "menu--open" : "menu--close"}`}>
-            <button className="menu__button" type="button" onClick={toggleMenu}>
+            <button className="menu__button hoverable" type="button" onClick={toggleMenu}>
                 <div className="menu__button-lines">
                     <div className="menu__button-line-top"></div>
                     <div className="menu__button-line-middle"></div>
@@ -30,24 +29,24 @@ export default function Menu() {
             </button>
             <div className="menu__content">
                 <Mode/>
-                <ul className="menu__list">
+                <ol className="menu__list">
                     <li className="menu__link">
-                        <a href="#">Home</a>
+                        <a className="hoverable" href="#">Home</a>
                         <hr className="menu__divider"/>
                     </li>
                     <li className="menu__link">
-                        <a href="#">About</a>
+                        <a className="hoverable" href="#">About</a>
                         <hr className="menu__divider"/>
                     </li>
                     <li className="menu__link">
-                        <a href="#">Projects</a>
+                        <a className="hoverable" href="#">Projects</a>
                         <hr className="menu__divider"/>
                     </li>
                     <li className="menu__link">
-                        <a href="#">Contact</a>
+                        <a className="hoverable" href="#">Contact</a>
                         <hr className="menu__divider"/>
                     </li>
-                </ul>
+                </ol>
             </div>
         </div>
     );
