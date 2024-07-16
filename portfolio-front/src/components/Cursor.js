@@ -9,16 +9,17 @@ export default function Cursor({mousePosition}) {
         x: 0,
         y: 0
     })
+    const [hover, setHover] = useState(false);
 
     const cursorRef = useRef(null);
 
     // Position cible
-    const targetPositionBigBall = useRef({ x: 0, y: 0 });
-    const targetPositionSmallBall = useRef({ x: 0, y: 0 });
+    const targetPositionBigBall = useRef({x: 0, y: 0});
+    const targetPositionSmallBall = useRef({x: 0, y: 0});
 
     // Dernière position pour le calcul de l'animation
-    const lastPositionBigBall = useRef({ x: 0, y: 0 });
-    const lastPositionSmallBall = useRef({ x: 0, y: 0 });
+    const lastPositionBigBall = useRef({x: 0, y: 0});
+    const lastPositionSmallBall = useRef({x: 0, y: 0});
 
     useEffect(() => {
         const updateTargetPosition = (targetPosition) => {
@@ -40,7 +41,7 @@ export default function Cursor({mousePosition}) {
             const distSmallBall = Math.sqrt(dxSmallBall * dxSmallBall + dySmallBall * dySmallBall);
 
             // Vitesse de l'animation
-            const speedBigBall = 0.025;
+            const speedBigBall = 0.0175;
             const speedSmallBall = 0.1;
 
             if (distBigBall > 0.1) {
@@ -69,9 +70,33 @@ export default function Cursor({mousePosition}) {
         animateCursor();
     }, []);
 
+    useEffect(() => {
+        const handleMouseEnter = () => {
+            setHover(true);
+        };
+
+        const handleMouseLeave = () => {
+            setHover(false);
+        };
+
+        const hoverableElements = document.querySelectorAll('.hoverable');
+
+        hoverableElements.forEach((el) => {
+            el.addEventListener('mouseenter', handleMouseEnter);
+            el.addEventListener('mouseleave', handleMouseLeave);
+        });
+
+        return () => {
+            hoverableElements.forEach((el) => {
+                el.removeEventListener('mouseenter', handleMouseEnter);
+                el.removeEventListener('mouseleave', handleMouseLeave);
+            });
+        };
+    }, []);
+
     return (
-        <div ref={cursorRef} className="cursor">
-            <div className="cursor__ball cursor__ball--big"
+        <div ref={cursorRef} className={`cursor`}>
+            <div className={`cursor__ball ${hover ? "cursor__ball--big-hover" : "cursor__ball--big"}`}
                  style={{left: positionBigBall.x - 20, top: positionBigBall.y - 20}}>
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.91154 11.2887L20 2.57735L35.0885 11.2887V28.7113L20 37.4226L4.91154 28.7113V11.2887Z"
@@ -79,7 +104,7 @@ export default function Cursor({mousePosition}) {
                 </svg>
             </div>
 
-            <div className="cursor__ball cursor__ball--small"
+            <div className={`cursor__ball ${hover ? "cursor__ball--small-hover" : "cursor__ball--small"}`}
                  style={{left: positionSmallBall.x - 5.5, top: positionSmallBall.y - 11}}>
                 <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.5 1L9.39711 3.25V7.75L5.5 10L1.60289 7.75V3.25L5.5 1Z" fill="currentColor"/>
