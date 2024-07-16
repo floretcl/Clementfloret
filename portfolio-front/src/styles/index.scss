@@ -615,13 +615,28 @@ textarea {
     left: 0;
     mix-blend-mode: hard-light;
     z-index: 100;
+    transition-property: color, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in;
 
     &--big {
       color: rgba($dark-color, 14%);
+      transform: scale(1.3);
+
+      &-hover {
+        color: rgba($dark-color, 80%);
+        transform: scale(0.6);
+      }
     }
 
     &--small {
       color: $dark-color;
+      transform: scale(1.5);
+
+      &-hover {
+        color: $green-color;
+        transform: scale(1.2);
+      }
     }
   }
 }
@@ -902,6 +917,10 @@ textarea {
 
     li {
       transition: all 0.2s ease-in;
+
+      button {
+        cursor: none;
+      }
 
       &:has(> button:hover), &:has(> button:focus-visible) {
         margin-bottom: -0.125rem;
@@ -1873,10 +1892,18 @@ body.theme-dark {
     &__ball {
       &--big {
         color: rgba($green-color, 14%);
+
+        &-hover {
+          color: rgba($green-color, 80%);
+        }
       }
 
       &--small {
         color: $green-color;
+
+        &-hover {
+          color: $dark-color;
+        }
       }
     }
   }
