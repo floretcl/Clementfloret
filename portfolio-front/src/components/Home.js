@@ -1,5 +1,5 @@
-import Social from "./Social";
-import ResumeButton from "./ResumeButton";
+import Social from "./Social/Social";
+import ResumeButton from "./ResumeButton/ResumeButton";
 
 export default function Home() {
     return (
@@ -10,7 +10,7 @@ export default function Home() {
                 <Social/>
             </div>
             <div className="home__resume">
-                <ResumeButton />
+                <ResumeButton url={"#"} />
             </div>
         </main>
     );

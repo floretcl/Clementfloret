@@ -1,6 +1,6 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Cursor from "./components/Cursor";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Cursor from "./components/Cursor/Cursor";
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -16,7 +16,6 @@ function App() {
         y: 0
     });
     const [scrollDown, setScrollDown] = useState(true);
-    const [smallFooter, setSmallFooter] = useState(false);
     const [preload, setPreload] = useState(true);
     const bodyRef = useRef(null);
 
@@ -38,7 +37,7 @@ function App() {
         moveBackground(event.clientX, event.clientY);
     }
 
-    function handleScroll(event) {
+    function handleScroll() {
         const scrollPosition = window.scrollY;
         if (scrollPosition >= 50) {
             setScrollDown(true);
@@ -71,9 +70,9 @@ function App() {
             onMouseMove={(event) => handleMouseMove(event)}
             className={`app ${preload ? "preload" : ""}`}
         >
-            <Header scrollDown={scrollDown}/>
+            <Header homeUrl={"#"} scrollDown={scrollDown}/>
             <Project/>
-            <Footer small={smallFooter}/>
+            <Footer contactUrl={"#"} small={false}/>
             <Cursor mousePosition={mousePosition}/>
         </div>
     );

@@ -105,9 +105,10 @@ strong {
   font-family: $karla-bold;
 }
 
-ul {
+ul, ol {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 textarea {
@@ -631,11 +632,11 @@ textarea {
 
     &--small {
       color: $dark-color;
-      transform: scale(1.5);
+      transform: scale(1);
 
       &-hover {
-        color: $green-color;
-        transform: scale(1.2);
+        color: $darker-color;
+        transform: scale(1.3);
       }
     }
   }
@@ -695,6 +696,7 @@ textarea {
 
   &:has(> a:hover), &:has(> a:focus-visible) {
     color: $purple-color;
+    transition: all 0s ease-in;
 
     svg {
       transform: rotate(360deg) scale(120%);
@@ -798,7 +800,7 @@ textarea {
         position: absolute;
         bottom: -1rem;
         font-size: 0.875rem;
-        color: $grey-color;
+        color: $dark-color;
         padding: 0.125rem 0.25rem;
         border: thin solid $grey-color;
         border-radius: 0.1rem;
@@ -1128,9 +1130,9 @@ textarea {
   overflow: hidden;
 
   &__items {
-    width: 18rem;
-    height: 18rem;
-    margin: 0.75rem;
+    width: 19.5rem;
+    height: 19.5rem;
+
     filter: drop-shadow(0.125rem 0.125rem 0.25rem $grey-color);
   }
 
@@ -1194,6 +1196,7 @@ textarea {
   z-index: 10;
   opacity: 0;
   transition: all 0.2s ease-in;
+  margin: 0.75rem;
 
   &--active {
     z-index: 20;
@@ -1208,10 +1211,15 @@ textarea {
     left: 100%;
   }
 
-  &__img {
-    object-fit: cover;
+  &__content {
     width: 18rem;
     height: 18rem;
+  }
+
+  &__img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -1319,13 +1327,13 @@ textarea {
     }
 
     &__items {
-      width: 26rem;
-      height: 22rem;
+      width: 27.5rem;
+      height: 23.5rem;
     }
   }
 
   .item {
-    &__img {
+    &__content {
       width: 26rem;
       height: 22rem;
     }
@@ -1520,13 +1528,13 @@ textarea {
     }
 
     &__items {
-      width: 30rem;
-      height: 26rem;
+      width: 31.5rem;
+      height: 27.5rem;
     }
   }
 
   .item {
-    &__img {
+    &__content {
       width: 30rem;
       height: 26rem;
     }
@@ -1650,14 +1658,14 @@ textarea {
     margin: 0 2vw;
 
     &__items {
-      width: 38vw;
-      height: 26rem;
+      width: 30rem ;
+      height: 27.5rem;
     }
   }
 
   .item {
-    &__img {
-      width: 38vw;
+    &__content {
+      width: 27.5rem;
       height: 26rem;
     }
   }
@@ -1683,13 +1691,13 @@ textarea {
 
     &__items {
       width: 32rem;
-      height: 28rem;
+      height: 29.5rem;
     }
   }
 
   .item {
-    &__img {
-      width: 32rem;
+    &__content {
+      width: 30.5rem;
       height: 28rem;
     }
   }
@@ -1894,7 +1902,7 @@ body.theme-dark {
         color: rgba($green-color, 14%);
 
         &-hover {
-          color: rgba($green-color, 80%);
+          color: rgba($green-color, 60%);
         }
       }
 
@@ -1902,7 +1910,7 @@ body.theme-dark {
         color: $green-color;
 
         &-hover {
-          color: $dark-color;
+          color: $green-color;
         }
       }
     }

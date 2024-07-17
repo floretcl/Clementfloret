@@ -1,4 +1,4 @@
-import Carousel from "./Carousel";
+import Carousel from "./Carousel/Carousel";
 
 export default function Project() {
     const skills = [{
@@ -66,12 +66,12 @@ export default function Project() {
                     Non amet faucibus purus posuere venenatis. Curabitur porta convallis dignissim suspendisse a felis
                     lorem id phasellus. Sem viverra felis sit adipiscing nibh vestibulum.
                 </p>
-                <ul className="project__skills">
+                <ol className="project__skills">
                     {listSkills}
-                </ul>
-                <ul className="project__links">
+                </ol>
+                <ol className="project__links">
                     {listLinks}
-                </ul>
+                </ol>
             </div>
         </main>
     );

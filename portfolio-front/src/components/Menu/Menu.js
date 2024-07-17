@@ -1,9 +1,32 @@
 import {useState} from "react";
-import Mode from "./Mode";
+import Mode from "../Mode/Mode";
+import MenuLink from "./MenuLink";
 
 export default function Menu() {
     const [isActive, setIsActive] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+
+    const menuLinks = [{
+        id: 0,
+        name: "Home",
+        url: "#"
+    }, {
+        id: 1,
+        name: "About",
+        url: "#"
+    }, {
+        id: 2,
+        name: "Projects",
+        url: "#"
+    }, {
+        id: 3,
+        name: "Contact",
+        url: "#"
+    }]
+
+    const listLinks = menuLinks.map((link) =>
+        <MenuLink key={link.id} name={link.name} url={link.url} />
+    );
 
     function toggleMenu() {
         if (isActive === true) {
@@ -30,22 +53,7 @@ export default function Menu() {
             <div className="menu__content">
                 <Mode/>
                 <ol className="menu__list">
-                    <li className="menu__link">
-                        <a className="hoverable" href="#">Home</a>
-                        <hr className="menu__divider"/>
-                    </li>
-                    <li className="menu__link">
-                        <a className="hoverable" href="#">About</a>
-                        <hr className="menu__divider"/>
-                    </li>
-                    <li className="menu__link">
-                        <a className="hoverable" href="#">Projects</a>
-                        <hr className="menu__divider"/>
-                    </li>
-                    <li className="menu__link">
-                        <a className="hoverable" href="#">Contact</a>
-                        <hr className="menu__divider"/>
-                    </li>
+                    {listLinks}
                 </ol>
             </div>
         </div>

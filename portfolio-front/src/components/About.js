@@ -17,12 +17,7 @@ import wordpressIcon from "../svg/wordpress-fill.svg";
 import gitIcon from "../svg/git-fill.svg";
 import figmaIcon from "../svg/figma-fill.svg";
 import avatar from "../img/avatar.webp";
-import Item from "./Item";
-import imgSrc1 from "../img/ales-nesetril-Im7lZjxeLhg-unsplash.webp";
-import imgSrc2 from "../img/campaign-creators-OGOWDVLbMSc-unsplash.webp";
-import imgSrc3 from "../img/christopher-gower-m_HRfLhgABo-unsplash.webp";
-import imgSrc4 from "../img/domenico-loia-EhTcC9sYXsw-unsplash.webp";
-import AboutSkill from "./AboutSkill";
+import AboutSkill from "./AboutSkill/AboutSkill";
 
 export default function About() {
     const skills = [{
@@ -100,7 +95,7 @@ export default function About() {
     }]
 
     const listSkills = skills.map(skill =>
-        <AboutSkill key={skill.id} id={skill.id} name={skill.name} icon={skill.imgSrc} />
+        <AboutSkill key={skill.id} name={skill.name} icon={skill.imgSrc} />
     );
 
     return (
@@ -122,9 +117,9 @@ export default function About() {
                 </svg>
             </div>
             <h2 className="about__subtitle">Skills</h2>
-            <ul className="about__icons">
+            <ol className="about__icons">
                 {listSkills}
-            </ul>
+            </ol>
         </main>
     );
 }
