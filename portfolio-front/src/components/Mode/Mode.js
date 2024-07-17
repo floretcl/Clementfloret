@@ -1,8 +1,8 @@
-import {useContext, useEffect, useState} from "react";
-import {DarkModeContext} from "../DarkModeProvider";
+import {useContext, useState} from "react";
+import {ThemeContext} from "../../ThemeProvider";
 
 export default function Mode() {
-    const {darkMode, toggleDarkMode} = useContext(DarkModeContext);
+    const {theme, toggleTheme} = useContext(ThemeContext);
     const [isClicked, setIsClicked] = useState(false);
 
     function handleClick() {
@@ -10,7 +10,7 @@ export default function Mode() {
 
         // modify icon during animation
         setTimeout(() => {
-            toggleDarkMode();
+            toggleTheme();
         }, 200);
     }
 
@@ -21,7 +21,7 @@ export default function Mode() {
                 type="button"
                 onClick={handleClick}
                 onAnimationEnd={() => setIsClicked(false)}>
-                {darkMode ? (
+                {(theme === "dark") ? (
                     <svg width="46" height="44" viewBox="0 0 46 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M22.5992 9.97791C20.8391 11.6225 19.7388 13.9645 19.7388 16.5634C19.7388 21.5402 23.7733 25.5746 28.75 25.5746C31.349 25.5746 33.6909 24.4744 35.3355 22.7143C34.9513 29.0033 29.7291 33.9851 23.3433 33.9851C16.7076 33.9851 11.3284 28.6058 11.3284 21.9702C11.3284 15.5844 16.3101 10.3622 22.5992 9.97791Z"

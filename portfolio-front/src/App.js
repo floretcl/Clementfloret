@@ -7,10 +7,10 @@ import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import Project from "./components/Project";
 import {useContext, useEffect, useRef, useState} from "react";
-import {DarkModeContext} from "./DarkModeProvider";
+import {ThemeContext} from "./ThemeProvider";
 
 function App() {
-    const {darkMode} = useContext(DarkModeContext);
+    const {theme} = useContext(ThemeContext);
     const [mousePosition, setMousePosition] = useState({
         x: 0,
         y: 0
@@ -54,7 +54,7 @@ function App() {
         handleScroll();
         window.addEventListener("scroll", handleScroll);
 
-        if (darkMode && bodyRef) {
+        if ((theme === "dark") && bodyRef) {
           bodyRef.current.classList.add("theme-dark");
         } else {
           bodyRef.current.classList.remove("theme-dark");
@@ -63,7 +63,7 @@ function App() {
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-    }, [darkMode]);
+    }, [theme]);
 
     return (
         <div

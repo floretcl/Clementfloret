@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './styles/index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import DarkModeProvider from "./DarkModeProvider";
+import ThemeProvider from "./ThemeProvider";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <DarkModeProvider>
+        <ThemeProvider>
             <App />
-        </DarkModeProvider>
+        </ThemeProvider>
     </React.StrictMode>
 );
 
