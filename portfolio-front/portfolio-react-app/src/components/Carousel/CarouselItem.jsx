@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function CarouselItem({id, index, imgSrc}) {
     return (
         <li
@@ -10,4 +12,10 @@ export default function CarouselItem({id, index, imgSrc}) {
             </div>
         </li>
     );
+}
+
+CarouselItem.propTypes = {
+    id: PropTypes.number.isRequired,
+    index: PropTypes.number.isRequired,
+    imgSrc: PropTypes.string.isRequired
 }

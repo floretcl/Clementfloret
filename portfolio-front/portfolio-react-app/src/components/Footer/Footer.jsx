@@ -1,4 +1,5 @@
 import Social from "../Social/Social.jsx";
+import PropTypes from "prop-types";
 
 export default function Footer({contactUrl, small}) {
     const fullYear = new Date().getFullYear();
@@ -22,4 +23,9 @@ export default function Footer({contactUrl, small}) {
             </div>
         </footer>
     );
+}
+
+Footer.propTypes = {
+    contactUrl: PropTypes.string.isRequired,
+    small: PropTypes.bool.isRequired
 }

@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState} from "react";
+import PropTypes from "prop-types";
 
 export default function Cursor({mousePosition}) {
     const [positionBigBall, setPositionBigBall] = useState({
@@ -112,4 +113,8 @@ export default function Cursor({mousePosition}) {
             </div>
         </div>
     );
+}
+
+Cursor.propTypes = {
+    mousePosition: PropTypes.number.isRequired
 }

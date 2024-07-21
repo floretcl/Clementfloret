@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function AboutSkill({name, icon}) {
     return (
         <li className="hoverable">
@@ -5,4 +7,9 @@ export default function AboutSkill({name, icon}) {
             <div>{name}</div>
         </li>
     );
+}
+
+AboutSkill.propTypes = {
+    name: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired
 }

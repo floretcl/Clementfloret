@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function ProjectCard({name, imgSrc, type, url}) {
     return (
         <li>
@@ -12,4 +14,11 @@ export default function ProjectCard({name, imgSrc, type, url}) {
             </a>
         </li>
     );
+}
+
+ProjectCard.propTypes = {
+    name: PropTypes.string.isRequired,
+    imgSrc: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired
 }

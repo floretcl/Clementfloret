@@ -1,4 +1,5 @@
 import Menu from "../Menu/Menu.jsx";
+import PropTypes from "prop-types";
 
 export default function Header({homeUrl, scrollDown}) {
     return (
@@ -20,5 +21,10 @@ export default function Header({homeUrl, scrollDown}) {
                 </nav>
             </div>
         </header>
-);
+    );
+}
+
+Header.propTypes = {
+    homeUrl: PropTypes.string.isRequired,
+    scrollDown: PropTypes.bool.isRequired
 }

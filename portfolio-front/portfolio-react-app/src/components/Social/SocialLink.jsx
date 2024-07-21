@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function SocialLink({svg, url}) {
     return (
         <li>
@@ -7,3 +9,8 @@ export default function SocialLink({svg, url}) {
         </li>
     );
 }
+
+SocialLink.propTypes = {
+  svg: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired
+};

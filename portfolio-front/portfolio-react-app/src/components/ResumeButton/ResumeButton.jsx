@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function ResumeButton({url}) {
     return (
         <div className="resumeButton">
@@ -12,4 +14,8 @@ export default function ResumeButton({url}) {
             </a>
         </div>
     );
+}
+
+ResumeButton.propTypes = {
+    url: PropTypes.string.isRequired
 }
