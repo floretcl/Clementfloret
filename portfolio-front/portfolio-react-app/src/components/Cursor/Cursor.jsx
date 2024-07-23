@@ -116,5 +116,5 @@ export default function Cursor({mousePosition}) {
 }
 
 Cursor.propTypes = {
-    mousePosition: PropTypes.number.isRequired
+    mousePosition: PropTypes.object.isRequired
 }
