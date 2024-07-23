@@ -1,28 +1,14 @@
 import {useEffect, useMemo, useState} from "react";
 import CarouselItem from "./CarouselItem.jsx";
-import imgSrc1 from "../../assets/img/ales-nesetril-Im7lZjxeLhg-unsplash.webp";
-import imgSrc2 from "../../assets/img/campaign-creators-OGOWDVLbMSc-unsplash.webp";
-import imgSrc3 from "../../assets/img/christopher-gower-m_HRfLhgABo-unsplash.webp";
-import imgSrc4 from "../../assets/img/domenico-loia-EhTcC9sYXsw-unsplash.webp";
 
 export default function Carousel() {
     const [index, setIndex] = useState(0);
     const [count, setCount] = useState(0);
 
+    const projectImages = JSON.parse(document.getElementById("project-images").textContent);
+
     const items = useMemo(() => {
-        return [{
-            id: 0,
-            imgSrc: imgSrc1
-        }, {
-            id: 1,
-            imgSrc: imgSrc2
-        }, {
-            id: 2,
-            imgSrc: imgSrc3
-        }, {
-            id: 3,
-            imgSrc: imgSrc4
-        }]
+        return projectImages;
     }, []);
 
     const itemsLengthMemo = useMemo(() => {
