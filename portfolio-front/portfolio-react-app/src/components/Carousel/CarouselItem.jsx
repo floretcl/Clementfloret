@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export default function CarouselItem({id, index, imgSrc}) {
+export default function CarouselItem({id, index, name, image}) {
     return (
         <li
             className={`item 
@@ -8,7 +8,7 @@ export default function CarouselItem({id, index, imgSrc}) {
             ${id === index - 1 ? "item--prev" : ""} 
             ${id === index + 1 ? "item--next" : ""}`}>
             <div className="item__content">
-                <img className="item__img" src={imgSrc} alt="project screenshot"/>
+                <img className="item__img" src={image} alt={name}/>
             </div>
         </li>
     );
@@ -17,5 +17,6 @@ export default function CarouselItem({id, index, imgSrc}) {
 CarouselItem.propTypes = {
     id: PropTypes.number.isRequired,
     index: PropTypes.number.isRequired,
-    imgSrc: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired
 }
