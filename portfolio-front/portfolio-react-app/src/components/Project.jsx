@@ -5,13 +5,23 @@ export default function Project() {
     const skills = JSON.parse(document.getElementById("project-skills").textContent);
     const links = JSON.parse(document.getElementById("project-links").textContent);
 
-    const listSkills = skills.map((skill) =>
-        <li key={skill.id}>{skill.name}</li>
-    );
+    const listSkills = skills.map((skill, i, {length}) => {
+        if(i + 1 === length) {
+            return <li key={skill.id}>{skill.name}</li>;
+        } else {
+            return <><li key={skill.id}>{skill.name}</li> - </>;
+        }
+    });
 
-    const listLinks = links.map((link) =>
-        <li key={link.id}><a className="hoverable" href={link.url}>{link.name}</a></li>
-    );
+    const listLinks = links.map((link, i, {length}) => {
+        if(i + 1 === length) {
+            return <li key={link.id}><a className="hoverable" href={link.url}>{link.name}</a></li>;
+        } else {
+            return <>
+                <li key={link.id}><a className="hoverable" href={link.url}>{link.name}</a></li>
+                - </>;
+        }
+    });
 
     return (
         <main className="project">
