@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, DetailView, FormView, ListView
 
 from portfolio.forms import ContactForm
@@ -32,22 +31,6 @@ class ProjectListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['project_types'] = ProjectType.objects.all()
-        context['portfolio_links'] = PortfolioLink.objects.order_by('order')
-        return context
-
-
-class TypeProjectListView(DetailView):
-    template_name = 'portfolio/projects_by_type.html'
-    type = None
-
-    def get_queryset(self):
-        self.type = get_object_or_404(ProjectType, name=self.kwargs['type'])
-        return Project.objects.filter(type=self.type)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['project'] = self.type
         context['project_types'] = ProjectType.objects.all()
         context['portfolio_links'] = PortfolioLink.objects.order_by('order')
         return context
