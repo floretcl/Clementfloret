@@ -1,21 +1,24 @@
 import ProjectList from "./ProjectList/ProjectList.jsx";
 import ProjectFilter from "./ProjectFilter/ProjectFilter.jsx";
+import {useState} from "react";
 
 export default function Projects() {
+    const [projectFilter, setProjectFilter] = useState("");
     const filters = JSON.parse(document.getElementById("project-types").textContent);
 
     const listFilters = filters.map((filter) =>
-        <ProjectFilter key={filter.id} name={filter.name} />
+        <ProjectFilter key={filter.id} name={filter.name} filterChange={() => setProjectFilter(filter.name)} />
     );
 
     return (
         <main className="projects">
             <h1 className="projects__title">Projects</h1>
             <ol className="projects__filters">
+                <ProjectFilter name="All" filterChange={() => setProjectFilter("")} />
                 {listFilters}
             </ol>
             <div className="projects__list">
-                <ProjectList/>
+                <ProjectList filter={projectFilter}/>
             </div>
         </main>
     );
