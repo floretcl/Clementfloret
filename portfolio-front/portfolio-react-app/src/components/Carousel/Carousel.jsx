@@ -16,7 +16,7 @@ export default function Carousel() {
     }, [items]);
 
     const listItems = items.map(item =>
-        <CarouselItem key={item.id} id={item.id} index={index} imgSrc={item.imgSrc}/>
+        <CarouselItem key={item.id} id={item.id} index={index} name={item.name} image={item.image} />
     );
     const listDots = items.map(item =>
         <div key={item.id} className={`carousel__dot ${item.id === index ? "carousel__dot--active" : ""}`}></div>

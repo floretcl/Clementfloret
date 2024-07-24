@@ -4,7 +4,7 @@ export default function Social() {
     const links = JSON.parse(document.getElementById("social-links").textContent);
 
     const listLinks = links.map((link) =>
-        <SocialLink key={link.id} name={link.name} imgSrc={link.imgSrc} url={link.url}/>
+        <SocialLink key={link.id} name={link.name} imgSrc={link.image} url={link.url}/>
     );
 
     return (
