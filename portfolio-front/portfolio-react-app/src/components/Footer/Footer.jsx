@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 export default function Footer({small}) {
     const fullYear = new Date().getFullYear();
+    const portfolio = JSON.parse(document.getElementById("portfolio").textContent);
 
     return (
         <footer className={`footer ${small ? "footer--home" : ""}`}>
