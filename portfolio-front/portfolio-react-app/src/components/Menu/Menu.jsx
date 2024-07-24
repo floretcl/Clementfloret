@@ -2,27 +2,12 @@ import {useState} from "react";
 import Mode from "../Mode/Mode.jsx";
 import MenuLink from "./MenuLink.jsx";
 
+
 export default function Menu() {
     const [isActive, setIsActive] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
-    const menuLinks = [{
-        id: 0,
-        name: "Home",
-        url: "#"
-    }, {
-        id: 1,
-        name: "About",
-        url: "#"
-    }, {
-        id: 2,
-        name: "Projects",
-        url: "#"
-    }, {
-        id: 3,
-        name: "Contact",
-        url: "#"
-    }]
+    const menuLinks = JSON.parse(document.getElementById("menu-links").textContent);
 
     const listLinks = menuLinks.map((link) =>
         <MenuLink key={link.id} name={link.name} url={link.url} />

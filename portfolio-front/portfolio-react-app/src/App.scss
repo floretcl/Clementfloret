@@ -590,16 +590,16 @@ textarea {
     padding: 0.25rem 0.5rem 0 0.5rem;
     margin: 0 0.5rem;
 
-    svg {
+    img {
       width: 2.5rem;
       height: 2.5rem;
-      color: $dark-color;
-      transition: color 0.2s ease-in;
+      filter: $dark-filter;
+      //transition: filter 0.2s ease-in;
     }
 
     &:hover, &:focus-visible {
-      svg {
-        color: $purple-color;
+      img {
+        filter: $purple-filter;
       }
     }
   }
@@ -1884,13 +1884,13 @@ body.theme-dark {
 
   .social {
     &__link {
-      svg {
-        color: $green-color;
+      img {
+        filter: $green-filter;
       }
 
       &:hover, &:focus-visible {
-        svg {
-          color: $purple-color;
+        img {
+          filter: $purple-filter;
         }
       }
     }
