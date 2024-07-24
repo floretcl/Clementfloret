@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-export default function ProjectCard({name, imgSrc, type, url}) {
+export default function ProjectCard({id, name, image, type}) {
     return (
         <li>
-            <a className="project-card hoverable" href={url}>
+            <a className="project-card hoverable" href={`/project/${id}`}>
                 <div className="project-card__thumbnail">
                     <img className="project-card__img" src={imgSrc} alt={name + " thumbnail"}/>
                 </div>
@@ -17,6 +17,7 @@ export default function ProjectCard({name, imgSrc, type, url}) {
 }
 
 ProjectCard.propTypes = {
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     imgSrc: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,

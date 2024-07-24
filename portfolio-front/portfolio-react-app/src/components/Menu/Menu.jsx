@@ -7,7 +7,24 @@ export default function Menu() {
     const [isActive, setIsActive] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
-    const menuLinks = JSON.parse(document.getElementById("menu-links").textContent);
+    const menuLinks =
+        [{
+            "id": 0,
+            "name": "Home",
+            "url": "/"
+        }, {
+            "id": 1,
+            "name": "About",
+            "url": "/about"
+        }, {
+            "id": 2,
+            "name": "Projects",
+            "url": "/project-list"
+        }, {
+            "id": 3,
+            "name": "Contact",
+            "url": "/contact"
+        }];
 
     const listLinks = menuLinks.map((link) =>
         <MenuLink key={link.id} name={link.name} url={link.url} />

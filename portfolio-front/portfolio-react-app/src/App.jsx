@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.scss'
 import {ThemeContext} from "./ThemeProvider.jsx";
 import Header from "./components/Header/Header.jsx";
@@ -71,9 +72,18 @@ function App() {
             onMouseMove={(event) => handleMouseMove(event)}
             className={`app ${preload ? "preload" : ""}`}
         >
-            <Header homeUrl={"#"} scrollDown={scrollDown}/>
-            <Project/>
-            <Footer contactUrl={"#"} small={false}/>
+            <Header scrollDown={scrollDown}/>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/project-list" element={<Projects />} />
+                    <Route path="/project-list/:type" element={<Projects />} />
+                    <Route path="/project/:id" element={<Project />} />
+                    <Route path="/contact" element={<Contact />} />
+                </Routes>
+            </Router>
+            <Footer small={false}/>
             <Cursor mousePosition={mousePosition}/>
         </div>
     );
