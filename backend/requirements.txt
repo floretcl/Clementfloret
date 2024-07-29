@@ -1,6 +1,6 @@
 aiosmtpd==1.4.6
 asgiref==3.8.1
-atpublic==4.1.0
+atpublic==5.0
 attrs==23.2.0
 Django==5.0.7
 django-debug-toolbar==4.4.6
