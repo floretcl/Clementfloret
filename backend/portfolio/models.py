@@ -53,6 +53,7 @@ class Portfolio(models.Model):
     about_description_fr = models.CharField('description de la section à propos fr', max_length=500)
     about_skill = models.ManyToManyField(Skill, verbose_name='compétences')
     about_link = models.ManyToManyField(PortfolioLink, verbose_name='liens')
+    avatar = models.ImageField('avatar', upload_to='uploads/avatar')
     resume = models.FileField('cv', upload_to='uploads/resume/')
     active = models.BooleanField('actif', default=False)
 
