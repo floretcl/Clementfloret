@@ -10,7 +10,7 @@ export default function Carousel() {
 
     const items = useMemo(() => {
         return projectImages;
-    }, []);
+    }, [projectImages]);
 
     const itemsLengthMemo = useMemo(() => {
         return items.length;
