@@ -1,0 +1,94 @@
+@use 'base';
+
+// PROJECT-CARD
+
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20rem;
+
+  &__thumbnail {
+    position: relative;
+  }
+
+  &__img {
+    width: 30rem;
+    height: auto;
+    transition: all 0.3s ease-in;
+    filter: brightness(90%);
+  }
+
+  &__text {
+    position: absolute;
+    margin: 0.5rem 0;
+    color: base.$white-color;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+  }
+
+  &__name {
+    font-family: base.$ruda-bold;
+    font-size: 1.5rem;
+    margin: 0.75rem 0;
+  }
+
+  &__type {
+    font-family: base.$ruda-regular;
+    font-size: 1rem;
+    margin: 0.25rem 0;
+  }
+
+  &:hover, &:focus-visible {
+    .project-card {
+      &__img {
+        filter: brightness(60%) blur(0.05rem);
+        transform: scale(105%);
+      }
+
+      &__text {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// -- MEDIA QUERIES -- //
+
+// MEDIA QUERY - SMALL (640p)
+
+@media all and (min-width: base.$small) {
+  .project-card {
+    height: 22rem;
+
+    &__img {
+      width: 34rem;
+    }
+  }
+}
+
+// MEDIA QUERY - MEDIUM (768p)
+
+@media all and (min-width: base.$medium) {
+  .project-card {
+    height: 26rem;
+
+    &__img {
+      width: 40rem;
+    }
+  }
+}
+
+// MEDIA QUERY - LARGE (1024p)
+
+@media all and (min-width: base.$large) {
+  .project-card {
+    height: 30rem;
+
+    &__img {
+      width: 46rem;
+    }
+  }
+}

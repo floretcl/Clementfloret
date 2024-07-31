@@ -1,5 +1,6 @@
 import Menu from "../Menu/Menu.jsx";
 import PropTypes from "prop-types";
+import '../../styles/Header.scss'
 
 export default function Header({scrollDown}) {
     return (

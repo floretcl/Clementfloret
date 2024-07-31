@@ -1,5 +1,6 @@
 import {useEffect, useMemo, useState} from "react";
 import CarouselItem from "./CarouselItem.jsx";
+import '../../styles/Carousel.scss'
 
 export default function Carousel() {
     const [index, setIndex] = useState(0);

@@ -1,3 +1,5 @@
+import '../styles/Contact.scss'
+
 export default function Contact() {
     const email = JSON.parse(document.getElementById("portfolio").textContent).contact_email;
 

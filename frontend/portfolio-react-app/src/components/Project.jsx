@@ -1,4 +1,5 @@
 import Carousel from "./Carousel/Carousel.jsx";
+import '../styles/Project.scss'
 
 export default function Project() {
     const project = JSON.parse(document.getElementById("project").textContent);

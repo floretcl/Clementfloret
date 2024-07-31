@@ -1,6 +1,7 @@
 import ProjectCard from "../ProjectCard/ProjectCard.jsx";
 import {useRef} from "react";
 import PropTypes from "prop-types";
+import '../../styles/ProjectList.scss'
 
 export default function ProjectList({filter}) {
     const contentRef = useRef(null);

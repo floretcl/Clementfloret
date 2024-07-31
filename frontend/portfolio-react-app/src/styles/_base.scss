@@ -1,0 +1,74 @@
+// -- FONTS -- //
+
+@font-face {
+  font-family: 'ruda-regular';
+  src: url('../assets/fonts/Ruda-Regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ruda-bold';
+  src: url('../assets/fonts/Ruda-Bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'karla-regular';
+  src: url('../assets/fonts/Karla-Regular.woff2') format('woff2'),
+  url('../assets/fonts/Karla-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'karla-bold';
+  src: url('../assets/fonts/Karla-Bold.woff2') format('woff2'),
+  url('../assets/fonts/Karla-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'duru-regular';
+  src: url('../assets/fonts/duru-sans-latin-400-normal.woff2') format('woff2'),
+  url('../assets/fonts/duru-sans-latin-400-normal.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$ruda-regular: ruda-regular, sans-serif;
+$ruda-bold: ruda-bold, sans-serif;
+$karla-regular: karla-regular, sans-serif;
+$karla-bold: karla-bold, sans-serif;
+$duru-regular: duru-regular, sans-serif;
+
+// -- COLORS -- //
+
+// ALL THEMES
+$dark-color: #464A4E;
+$green-color: #C4D4CF;
+$grey-color: #706F6F;
+$purple-color: #CA7DF9;
+$white-color: #F5F5F5;
+
+// DARK THEME
+$darker-color: #26282B;
+
+
+// -- FILTERS -- //
+
+$dark-filter: brightness(0) saturate(100%) invert(27%) sepia(7%) saturate(418%) hue-rotate(169deg) brightness(100%) contrast(91%);
+$green-filter: brightness(0) saturate(100%) invert(100%) sepia(73%) saturate(185%) hue-rotate(80deg) brightness(87%) contrast(90%);
+$grey-filter: brightness(0) saturate(100%) invert(44%) sepia(1%) saturate(1985%) hue-rotate(3deg) brightness(94%) contrast(79%);
+$purple-filter: brightness(0) saturate(100%) invert(64%) sepia(71%) saturate(2593%) hue-rotate(224deg) brightness(96%) contrast(104%);
+$white-filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(5596%) hue-rotate(298deg) brightness(112%) contrast(91%);
+
+// -- BREAKPOINTS -- //
+
+$small: 640px;
+$medium: 768px;
+$large: 1024px;
+$x-large: 1280px;
+$xx-large: 1536px;

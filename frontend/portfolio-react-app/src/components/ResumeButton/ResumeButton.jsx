@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import '../../styles/ResumeButton.scss'
 
 export default function ResumeButton({url}) {
     return (

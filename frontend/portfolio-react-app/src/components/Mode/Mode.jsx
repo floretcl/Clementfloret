@@ -1,5 +1,6 @@
 import {useContext, useState} from "react";
 import {ThemeContext} from "../../ThemeProvider.jsx";
+import '../../styles/Mode.scss'
 
 export default function Mode() {
     const {theme, toggleTheme} = useContext(ThemeContext);

@@ -1,0 +1,147 @@
+@use 'base';
+
+// HEADER
+
+.header {
+  top: 0;
+  position: sticky;
+  width: 100%;
+  max-width: 80rem;
+  z-index: 70;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 1rem;
+  }
+
+  &__nav {
+    position: relative;
+  }
+
+  &__logo {
+    padding-top: 0.5rem;
+
+    svg {
+      width: 3rem;
+      height: 3rem;
+      color: base.$dark-color;
+      transition: color 0.2s ease-in;
+    }
+  }
+
+  &__logo:hover, &__logo:focus-visible {
+    svg {
+      color: base.$purple-color;
+    }
+  }
+
+  &--scrolldown {
+    .header__content {
+      position: initial;
+      background-color: rgba(base.$dark-color, 70%);
+      backdrop-filter: blur(0.25rem);
+      -webkit-backdrop-filter: blur(0.25rem);
+      outline: thin solid base.$dark-color;
+      border-radius: 0.1rem;
+    }
+
+    .header__logo svg {
+      color: base.$green-color;
+    }
+
+    .header__logo:hover svg,
+    .header__logo:focus-visible svg {
+      color: base.$purple-color;
+    }
+
+    .menu {
+      &__button-lines div {
+        background-color: base.$green-color;
+      }
+
+      &__link a {
+        color: base.$green-color;
+      }
+
+      &__link a:hover,
+      &__link a:focus-visible {
+        color: base.$purple-color;
+      }
+    }
+
+    .mode {
+      &__button {
+        color: base.$green-color;
+
+        &:hover, &:focus-visible {
+          color: base.$purple-color;
+        }
+      }
+    }
+  }
+}
+
+// -- MEDIA QUERIES -- //
+
+// MEDIA QUERY - SMALL (640p)
+
+@media all and (min-width: base.$small) {
+  .header {
+    &__content {
+      margin: 0.75rem 1rem;
+    }
+  }
+}
+
+// MEDIA QUERY - MEDIUM (768p)
+
+@media all and (min-width: base.$medium) {
+  .header {
+    &__content {
+      margin: 1rem;
+      padding: 0 2rem;
+      transition-property: background-color, outline-color;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in;
+    }
+
+    &__nav {
+      position: initial;
+      flex-grow: 2;
+    }
+  }
+}
+
+// MEDIA QUERY - LARGE (1024p)
+
+@media all and (min-width: base.$large) {
+  .header {
+    &__content {
+      margin: 1.5rem 2rem;
+    }
+  }
+}
+
+// THEME - DARK
+
+body.theme-dark {
+  .header {
+    &__logo svg {
+      color: base.$green-color;
+    }
+
+    &__logo:hover, &__logo:focus-visible {
+      svg {
+        color: base.$purple-color;
+      }
+    }
+
+    &--scrolldown .header__content {
+      background-color: rgba(base.$darker-color, 70%);
+      outline: 0.0313rem solid base.$green-color;
+    }
+  }
+}

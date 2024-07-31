@@ -1,6 +1,7 @@
 import {useState} from "react";
 import Mode from "../Mode/Mode.jsx";
 import MenuLink from "./MenuLink.jsx";
+import '../../styles/Menu.scss'
 
 
 export default function Menu() {

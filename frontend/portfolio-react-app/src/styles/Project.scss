@@ -1,0 +1,137 @@
+@use 'base';
+
+// PROJECT
+
+.project {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 0;
+  margin: auto;
+
+  &__content {
+    margin: 1.5rem 7%;
+  }
+
+  &__title {
+    font-family: base.$karla-bold;
+    font-size: 2.25rem;
+    text-transform: uppercase;
+    margin: 0.5rem 1rem;
+  }
+
+  &__text {
+    margin: 2rem 0 3rem 0;
+  }
+
+  &__skills, &__links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0;
+
+    li {
+      margin: 0 0.25rem;
+    }
+
+    a {
+      color: base.$dark-color;
+      padding: 0.5625rem;
+      transition: color 0.2s ease-in;
+
+      &:hover, &:focus-visible {
+        color: base.$purple-color;
+      }
+    }
+  }
+}
+
+// -- MEDIA QUERIES -- //
+
+// MEDIA QUERY - SMALL (640p)
+
+@media all and (min-width: base.$small) {
+  .project {
+    padding: 7rem 0;
+
+    &__content {
+      margin: 2rem 12%;
+    }
+
+    .project__text {
+      margin: 2.5rem 0 3.5rem 0;
+    }
+
+    &__skills, &__links {
+      margin: 2rem 0;
+    }
+  }
+}
+
+// MEDIA QUERY - MEDIUM (768p)
+
+@media all and (min-width: base.$medium) {
+  .project {
+    &__content {
+      margin: 2rem 15%;
+    }
+  }
+}
+
+// MEDIA QUERY - LARGE (1024p)
+
+@media all and (min-width: base.$large) {
+  .project {
+    flex-direction: row;
+    text-align: start;
+    padding: 8rem 0;
+
+    &__content {
+      max-width: 30rem;
+      margin: 0 3rem 0 1rem;
+    }
+
+    &__title {
+      margin: 0.5rem 0;
+    }
+
+    &__skills, &__links {
+      justify-content: start;
+
+      a {
+        padding: 0.25rem 0;
+      }
+    }
+  }
+}
+
+// MEDIA QUERY - X-LARGE (1280p)
+
+@media all and (min-width: base.$x-large) {
+  .project {
+    &__content {
+      max-width: 38rem;
+      margin: 0 3rem 0 2rem;
+    }
+  }
+}
+
+// THEME - DARK
+
+body.theme-dark {
+  .project {
+    &__skills, &__links {
+      a {
+        color: base.$green-color;
+
+        &:hover, &:focus-visible {
+          color: base.$purple-color;
+        }
+      }
+    }
+  }
+}

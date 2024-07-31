@@ -1,0 +1,16 @@
+@use 'base';
+
+// APP
+
+.preload * {
+  animation-duration: 0s !important;
+  transition-duration: 0s !important;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: auto;
+}

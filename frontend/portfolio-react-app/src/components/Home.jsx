@@ -1,5 +1,6 @@
 import Social from "./Social/Social.jsx";
 import ResumeButton from "./ResumeButton/ResumeButton.jsx";
+import '../styles/Home.scss'
 
 export default function Home() {
     const portfolio = JSON.parse(document.getElementById("portfolio").textContent);

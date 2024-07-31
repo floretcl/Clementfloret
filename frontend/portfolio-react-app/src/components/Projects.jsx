@@ -1,6 +1,7 @@
 import ProjectList from "./ProjectList/ProjectList.jsx";
 import ProjectFilter from "./ProjectFilter/ProjectFilter.jsx";
 import {useState} from "react";
+import '../styles/Projects.scss'
 
 export default function Projects() {
     const [projectFilter, setProjectFilter] = useState("");

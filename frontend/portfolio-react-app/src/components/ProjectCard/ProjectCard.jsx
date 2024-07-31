@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import '../../styles/ProjectCard.scss'
 
 export default function ProjectCard({id, name, image, type}) {
     return (

@@ -1,5 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types";
+import '../../styles/Cursor.scss'
 
 export default function Cursor({mousePosition}) {
     const [positionBigBall, setPositionBigBall] = useState({

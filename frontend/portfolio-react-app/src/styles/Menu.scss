@@ -1,0 +1,507 @@
+@use 'base';
+
+// MENU
+
+.menu {
+  &__content {
+    position: absolute;
+    display: none;
+    top: -0.75rem;
+    right: -1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: base.$dark-color;
+    background-image: url("../assets/svg/hexagon-8.svg");
+    background-repeat: no-repeat;
+    backdrop-filter: blur(0.25rem);
+    -webkit-backdrop-filter: blur(0.25rem);
+    outline: thin solid base.$dark-color;
+    border-radius: 0.1rem;
+    width: 100vw;
+    z-index: 80;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 1rem 0;
+    height: 100vh;
+  }
+
+  &__link {
+    a {
+      display: inline-block;
+      padding: 0.5rem 2rem;
+      font-family: base.$karla-regular;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: base.$green-color;
+      transition: color 0.2s ease-in;
+
+      &:hover, &:focus-visible {
+        color: base.$purple-color;
+
+        ~ hr {
+          opacity: 1;
+          border-color: base.$purple-color;
+          animation: 0.25s ease-in 0s forwards moving-line;
+        }
+
+        @keyframes moving-line {
+          from {
+            border-color: base.$grey-color;
+            margin-left: 4.5rem;
+            margin-right: 4.5rem;
+          }
+          75% {
+            margin-left: 1rem;
+            margin-right: 1rem;
+          }
+          to {
+            border-color: base.$purple-color;
+            margin-left: 3rem;
+            margin-right: 3rem;
+          }
+        }
+      }
+    }
+  }
+
+  &__divider {
+    opacity: 0.3;
+    border: 0.075rem solid base.$green-color;
+    margin: 0 4.5rem 1.5rem 4.5rem;
+  }
+
+  &__button {
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    color: base.$dark-color;
+    transition: color 0.2s ease-in;
+    z-index: 90;
+
+    &:hover, &:focus-visible {
+      cursor: none;
+      color: base.$purple-color;
+
+      .menu__button-lines div {
+        background-color: base.$purple-color;
+      }
+    }
+
+    svg {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  &__button-lines {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__button-lines div {
+    height: 0.1875rem;
+    width: 2rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    background-color: base.$dark-color;
+    transition: background-color 0.2s ease-in;
+  }
+
+  &--active {
+    .menu__content {
+      display: flex;
+    }
+  }
+
+  &--open {
+    .menu__content {
+      animation: 0.4s ease-in-out 0s forwards opening-menu-open;
+    }
+
+    .menu__button-line-top {
+      transform: translateY(0.6875rem) rotate(45deg);
+      transform-origin: center;
+      background-color: base.$green-color;
+      animation: 0.4s ease-in-out 0s menu-button-line-top-in;
+    }
+
+    .menu__button-line-middle {
+      opacity: 0;
+      background-color: base.$green-color;
+      animation: 0.4s ease-in-out 0s menu-button-line-middle-in;
+    }
+
+    .menu__button-line-bottom {
+      transform: translateY(-0.6875rem) rotate(-45deg);
+      transform-origin: center;
+      background-color: base.$green-color;
+      animation: 0.4s ease-in-out 0s menu-button-line-bottom-in;
+    }
+
+    @keyframes opening-menu-open {
+      from {
+        transform: scale(0);
+        transform-origin: top right;
+      }
+      to {
+        transform: scale(1);
+        transform-origin: top right;
+      }
+    }
+
+    @keyframes menu-button-line-top-in {
+      from {
+        transform: none;
+        background-color: base.$dark-color;
+      }
+      75% {
+        transform: translateY(0.6875rem);
+      }
+      to {
+        transform: translateY(0.6875rem) rotate(45deg);
+        transform-origin: center;
+        background-color: base.$green-color;
+      }
+    }
+
+    @keyframes menu-button-line-middle-in {
+      from {
+        opacity: 1;
+        background-color: base.$dark-color;
+      }
+      to {
+        opacity: 0;
+        background-color: base.$green-color;
+      }
+    }
+
+    @keyframes menu-button-line-bottom-in {
+      from {
+        transform: none;
+        background-color: base.$dark-color;
+      }
+      75% {
+        transform: translateY(-0.6875rem);
+      }
+      to {
+        transform: translateY(-0.6875rem) rotate(-45deg);
+        transform-origin: center;
+        background-color: base.$green-color;
+      }
+    }
+  }
+
+  &--close {
+    .menu__button-line-top {
+      animation: 0.4s ease-in-out 0s menu-button-line-top-out;
+    }
+
+    .menu__button-line-middle {
+      animation: 0.4s ease-in-out 0s menu-button-line-middle-out;
+    }
+
+    .menu__button-line-bottom {
+      animation: 0.4s ease-in-out 0s menu-button-line-bottom-out;
+    }
+
+    .menu__content {
+      animation: 0.4s ease-in-out 0s forwards opening-menu-close;
+    }
+
+    @keyframes opening-menu-close {
+      from {
+        transform: scale(1);
+        transform-origin: top right;
+      }
+      to {
+        transform: scale(0);
+        transform-origin: top right;
+      }
+    }
+
+
+    @keyframes menu-button-line-top-out {
+      from {
+        transform: translateY(0.6875rem) rotate(45deg);
+        transform-origin: center;
+        background-color: base.$green-color;
+      }
+      25% {
+        transform: translateY(0.6875rem);
+      }
+      to {
+        transform: none;
+        background-color: base.$dark-color;
+      }
+    }
+
+    @keyframes menu-button-line-middle-out {
+      from {
+        opacity: 0;
+        background-color: base.$green-color;
+      }
+      to {
+        opacity: 1;
+        background-color: base.$dark-color;
+      }
+    }
+
+    @keyframes menu-button-line-bottom-out {
+      from {
+        transform: translateY(-0.6875rem) rotate(-45deg);
+        transform-origin: center;
+        background-color: base.$green-color;
+      }
+      25% {
+        transform: translateY(-0.6875rem);
+      }
+      to {
+        transform: none;
+        background-color: base.$dark-color;
+      }
+    }
+  }
+}
+// -- MEDIA QUERIES -- //
+
+// MEDIA QUERY - SMALL (640p)
+
+@media all and (min-width: base.$small) {
+  .menu {
+    &__content {
+      width: calc(100vw - 2rem);
+    }
+
+    &__list {
+      height: calc(100vh - 3.5rem);
+    }
+  }
+}
+
+// MEDIA QUERY - MEDIUM (768p)
+
+@media all and (min-width: base.$medium) {
+  .menu {
+    &__content {
+      position: initial;
+      display: flex;
+      top: 0;
+      right: 0;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      background-color: initial;
+      backdrop-filter: initial;
+      -webkit-backdrop-filter: initial;
+      outline: initial;
+      width: initial;
+      padding: 0;
+
+    }
+
+    &__list {
+      order: 1;
+      display: flex;
+      flex-direction: row;
+      margin: 0 2rem;
+      height: initial;
+    }
+
+    &__link {
+      a {
+        color: base.$dark-color;
+        padding: 0.625rem 1rem 0.25rem 1rem;
+
+        &:hover, &:focus-visible {
+          ~ hr {
+            animation: 0.5s ease-in-out 0s forwards moving-line-medium;
+          }
+
+          @keyframes moving-line-medium {
+            from {
+              margin-left: 1rem;
+              margin-right: 100%;
+            }
+            50% {
+              margin-left: 1rem;
+              margin-right: 1rem;
+            }
+            to {
+              margin-left: 1rem;
+              margin-right: 40%;
+            }
+          }
+        }
+      }
+    }
+
+    &__divider {
+      margin: 0 1rem 0.25rem 1rem;
+      opacity: 0;
+    }
+
+    &__button {
+      display: none;
+    }
+
+    &--close {
+      .menu__content {
+        animation: none;
+      }
+    }
+  }
+}
+
+// MEDIA QUERY - LARGE (1024p)
+
+@media all and (min-width: base.$large) {
+  .menu {
+    &__list {
+      margin: 0 3rem;
+    }
+  }
+}
+
+// THEME - DARK
+
+body.theme-dark {
+  .menu {
+    &__content {
+      background-color: base.$darker-color;
+      outline: 0.0313rem solid base.$green-color;
+    }
+
+    &__link a {
+      &:hover, &:focus-visible {
+        color: base.$purple-color;
+      }
+    }
+
+    &__button {
+      color: base.$green-color;
+
+      &:hover, &:focus-visible {
+        color: base.$purple-color;
+
+        .menu__button-lines div {
+          background-color: base.$purple-color;
+        }
+      }
+    }
+
+    &__button-lines div {
+      background-color: base.$green-color;
+    }
+
+    &--open {
+      @keyframes menu-button-line-top-in {
+        from {
+          transform: none;
+          background-color: base.$green-color;
+        }
+        50% {
+          transform: translateY(0.6875rem);
+        }
+        to {
+          transform: translateY(0.6875rem) rotate(45deg);
+          transform-origin: center;
+          background-color: base.$green-color;
+        }
+      }
+
+      @keyframes menu-button-line-middle-in {
+        from {
+          opacity: 1;
+          background-color: base.$green-color;
+        }
+        to {
+          opacity: 0;
+          background-color: base.$green-color;
+        }
+      }
+
+      @keyframes menu-button-line-bottom-in {
+        from {
+          transform: none;
+          background-color: base.$green-color;
+        }
+        50% {
+          transform: translateY(-0.6875rem);
+        }
+        to {
+          transform: translateY(-0.6875rem) rotate(-45deg);
+          transform-origin: center;
+          background-color: base.$green-color;
+        }
+      }
+    }
+
+    &--close {
+      @keyframes menu-button-line-top-out {
+        from {
+          transform: translateY(0.6875rem) rotate(45deg);
+          transform-origin: center;
+          background-color: base.$green-color;
+        }
+        50% {
+          transform: translateY(0.6875rem);
+        }
+        to {
+          transform: none;
+          background-color: base.$green-color;
+        }
+      }
+
+      @keyframes menu-button-line-middle-out {
+        from {
+          opacity: 0;
+          background-color: base.$green-color;
+        }
+        to {
+          opacity: 1;
+          background-color: base.$green-color;
+        }
+      }
+
+      @keyframes menu-button-line-bottom-out {
+        from {
+          transform: translateY(-0.6875rem) rotate(-45deg);
+          transform-origin: center;
+          background-color: base.$green-color;
+        }
+        50% {
+          transform: translateY(-0.6875rem);
+        }
+        to {
+          transform: none;
+          background-color: base.$green-color;
+        }
+      }
+    }
+  }
+
+  @media all and (min-width: base.$medium) {
+    .menu {
+      &__content {
+        background-color: initial;
+        outline: initial;
+      }
+
+      &__link {
+        a {
+          color: base.$green-color;
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import '../../styles/CartouselItem.scss'
 
 export default function CarouselItem({id, index, name, image}) {
     return (

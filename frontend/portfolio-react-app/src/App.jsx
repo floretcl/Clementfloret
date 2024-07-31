@@ -1,6 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import './App.scss'
 import {ThemeContext} from "./ThemeProvider.jsx";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
@@ -10,6 +9,7 @@ import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
 import Projects from "./components/Projects.jsx";
 import Project from "./components/Project.jsx";
+import './styles/App.scss'
 
 function App() {
     const {theme} = useContext(ThemeContext);

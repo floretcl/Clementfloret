@@ -1,0 +1,83 @@
+@use 'base';
+
+// CAROUSEL ITEM
+
+.item {
+  position: absolute;
+  left: 0;
+  z-index: 10;
+  opacity: 0;
+  transition: all 0.2s ease-in;
+  margin: 0.75rem;
+
+  &--active {
+    z-index: 20;
+    opacity: 100%;
+  }
+
+  &--prev {
+    left: -100%;
+  }
+
+  &--next {
+    left: 100%;
+  }
+
+  &__content {
+    width: 18rem;
+    height: 18rem;
+  }
+
+  &__img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// -- MEDIA QUERIES -- //
+
+// MEDIA QUERY - MEDIUM (768p)
+
+@media all and (min-width: base.$medium) {
+  .item {
+    &__content {
+      width: 30rem;
+      height: 26rem;
+    }
+  }
+}
+
+// MEDIA QUERY - LARGE (1024p)
+
+@media all and (min-width: base.$large) {
+  .item {
+    &__content {
+      width: 26.5rem;
+      height: 26rem;
+    }
+  }
+}
+
+// MEDIA QUERY - X-LARGE (1280p)
+
+@media all and (min-width: base.$x-large) {
+  .item {
+    &__content {
+      width: 30.5rem;
+      height: 28rem;
+    }
+  }
+}
+
+// THEME - DARK
+
+body.theme-dark {
+  .item {
+    &__content {
+      &::before {
+        background: base.$green-color;
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import SocialLink from "./SocialLink.jsx";
+import '../../styles/Social.scss'
 
 export default function Social() {
     const links = JSON.parse(document.getElementById("social-links").textContent);

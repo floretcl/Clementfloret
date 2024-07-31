@@ -1,0 +1,145 @@
+@use 'base';
+
+// CAROUSEL
+
+.carousel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  &__items {
+    width: 19.5rem;
+    height: 19.5rem;
+
+    filter: drop-shadow(0.125rem 0.125rem 0.25rem base.$grey-color);
+  }
+
+  &__buttons {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+  }
+
+  &__button {
+    font-size: 1.25rem;
+    color: base.$green-color;
+    background-color: rgba(base.$dark-color, 80%);
+    border: thin solid base.$green-color;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    transition: all 0.2s ease-in;
+    z-index: 50;
+
+    &:hover, &:focus-visible {
+      background-color: base.$purple-color;
+      border-width: 0;
+      transform: scale(115%);
+      cursor: none;
+    }
+  }
+
+  &__dots {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    bottom: 8%;
+    z-index: 40;
+  }
+
+  &__dot {
+    border-width: 0.3125rem;
+    border-style: solid;
+    border-radius: 50%;
+    margin: 0.25rem;
+    border-color: rgba(base.$dark-color, 75%);
+
+    &--active {
+      border-color: base.$green-color;
+    }
+  }
+}
+
+// -- MEDIA QUERIES -- //
+
+// MEDIA QUERY - SMALL (640p)
+
+@media all and (min-width: base.$small) {
+  .carousel {
+    &__dots {
+      bottom: 7%;
+    }
+
+    &__items {
+      width: 27.5rem;
+      height: 23.5rem;
+    }
+  }
+
+  .item {
+    &__content {
+      width: 26rem;
+      height: 22rem;
+    }
+  }
+}
+
+// MEDIA QUERY - MEDIUM (768p)
+
+@media all and (min-width: base.$medium) {
+  .carousel {
+    &__dots {
+      bottom: 7%;
+    }
+
+    &__items {
+      width: 31.5rem;
+      height: 27.5rem;
+    }
+  }
+}
+
+// MEDIA QUERY - LARGE (1024p)
+
+@media all and (min-width: base.$large) {
+  .carousel {
+    margin: 0 2vw;
+
+    &__items {
+      width: 28rem;
+      height: 27.5rem;
+    }
+  }
+}
+
+// MEDIA QUERY - X-LARGE (1280p)
+
+@media all and (min-width: base.$x-large) {
+  .carousel {
+    margin: 0 1vw;
+
+    &__items {
+      width: 32rem;
+      height: 29.5rem;
+    }
+  }
+}
+
+// THEME - DARK
+
+body.theme-dark {
+  .carousel {
+    &__items {
+      filter: drop-shadow(0.125rem 0.125rem 0.25rem base.$darker-color);
+    }
+  }
+}

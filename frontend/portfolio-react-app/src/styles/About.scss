@@ -1,0 +1,192 @@
+@use 'base';
+
+// ABOUT
+
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 6rem 0;
+  max-width: 26rem;
+
+  &__avatar {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  &__title {
+    font-family: base.$karla-bold;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  &__text {
+    padding: 0 1.5rem;
+    line-height: 2rem;
+  }
+
+  &__separator {
+    width: 7.375rem;
+    height: 5.975rem;
+    margin: 6rem 1rem;
+    color: base.$dark-color;
+    transition: all 0.4s ease-in-out;
+
+    &:hover, &:focus-visible {
+      transform: scale(110%) rotate(540deg);
+      transform-origin: center;
+    }
+  }
+
+  &__subtitle {
+    font-family: base.$karla-bold;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+  }
+
+  &__skills {
+    padding: 0 1.5rem;
+    line-height: 2rem;
+
+    li {
+      display: inline;
+    }
+  }
+
+  &__icons {
+    display: grid;
+    grid-gap: 3rem 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 1rem 0;
+
+    li {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &::after {
+        display: block;
+        content: "";
+        height: 0.5rem;
+        width: 0.0625rem;
+        background-color: base.$grey-color;
+        opacity: 0;
+        transition: all 0.4s ease-in;
+      }
+
+      img {
+        width: 45px;
+        height: 45px;
+        filter: base.$dark-filter;
+      }
+
+      div {
+        position: absolute;
+        bottom: -1rem;
+        font-size: 0.875rem;
+        color: base.$dark-color;
+        padding: 0.125rem 0.25rem;
+        border: thin solid base.$grey-color;
+        border-radius: 0.1rem;
+        opacity: 0;
+        transition: all 0.2s ease-in;
+      }
+
+      &:has(> img:hover), &:has(> img:focus-visible) {
+        &::after {
+          opacity: 1;
+        }
+
+        div {
+          bottom: -1.75rem;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+// -- MEDIA QUERIES -- //
+
+// MEDIA QUERY - SMALL (640p)
+
+@media all and (min-width: base.$small) {
+  .about {
+    max-width: 32rem;
+    padding: 7rem 0;
+
+    &__separator {
+      margin: 6.5rem 1rem;
+    }
+
+    &__icons {
+      grid-gap: 3.25rem 2rem;
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+}
+
+// MEDIA QUERY - MEDIUM (768p)
+
+@media all and (min-width: base.$medium) {
+  .about {
+    max-width: 38rem;
+
+    &__icons {
+      grid-gap: 3.5rem 2.5rem;
+    }
+  }
+}
+
+// MEDIA QUERY - LARGE (1024p)
+
+@media all and (min-width: base.$large) {
+  .about {
+    max-width: 48rem;
+    padding: 8rem 0;
+
+    &__title {
+      font-size: 2.25rem;
+    }
+
+    &__separator {
+      margin: 7rem 1rem;
+    }
+
+    &__icons {
+      grid-template-columns: repeat(9, 1fr);
+    }
+  }
+}
+
+// THEME - DARK
+
+body.theme-dark {
+  .about {
+    &__separator {
+      color: base.$green-color;
+    }
+
+    &__icons {
+      li {
+        &::after {
+          background-color: base.$green-color;
+        }
+
+        img {
+          filter: base.$green-filter;
+        }
+
+        div {
+          color: base.$white-color;
+          border-color: base.$green-color;
+        }
+      }
+    }
+  }
+}

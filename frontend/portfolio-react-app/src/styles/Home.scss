@@ -1,0 +1,59 @@
+@use 'base';
+
+// HOME
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+  text-transform: uppercase;
+
+  &__title {
+    font-family: base.$karla-bold;
+    font-size: 2.25rem;
+    margin: 1.5rem 1rem;
+  }
+
+  &__subtitle {
+    font-family: base.$ruda-bold;
+    font-size: 1.25rem;
+    margin: 0 1rem;
+  }
+
+  &__social {
+    margin: 1rem;
+  }
+}
+
+// -- MEDIA QUERIES -- //
+
+// MEDIA QUERY - LARGE (1024p)
+
+@media all and (min-width: base.$large) {
+  .home {
+    &__title {
+      font-size: 2.5rem;
+    }
+
+    &__subtitle {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+// MEDIA QUERY - XX-LARGE (1536p)
+
+@media all and (min-width: base.$xx-large) {
+  .home {
+    &__title {
+      font-size: 2.75rem;
+    }
+
+    &__subtitle {
+      font-size: 1.75rem;
+    }
+  }
+}

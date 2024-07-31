@@ -1,5 +1,6 @@
 import Social from "../Social/Social.jsx";
 import PropTypes from "prop-types";
+import '../../styles/Footer.scss'
 
 export default function Footer({small}) {
     const fullYear = new Date().getFullYear();
@@ -14,7 +15,7 @@ export default function Footer({small}) {
                     </div>
                 )}
                 <div className="footer__infos">
-                    © {fullYear} Clément Floret, All rights reserved
+                    © {fullYear} {portfolio.firstname} {portfolio.lastname}, All rights reserved
                 </div>
                 { !small && (
                     <div className="footer__social">

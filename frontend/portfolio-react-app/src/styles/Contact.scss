@@ -1,0 +1,129 @@
+@use 'base';
+
+// CONTACT
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 26rem;
+  margin: auto;
+  padding: 6rem 0;
+
+  &__title {
+    font-family: base.$karla-bold;
+    font-size: 2.25rem;
+    text-transform: uppercase;
+    margin: 0.5rem 1rem;
+  }
+
+  &__infos {
+    margin: 0.5rem 1rem;
+
+    a {
+      color: base.$dark-color;
+      font-weight: bolder;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0.75rem 0;
+
+    input, textarea {
+      font-family: base.$duru-regular;
+      font-size: 1rem;
+      color: base.$dark-color;
+      background: none;
+      padding: 0.5rem 1rem;
+      border: thin solid base.$grey-color;
+      margin: 0.75rem 1rem;
+
+      &[type="submit"] {
+        text-transform: uppercase;
+        background-color: base.$dark-color;
+        color: base.$white-color;
+        padding: 0.75rem 1rem;
+        margin: 1.5rem 1rem;
+        cursor: none;
+        width: 50%;
+        max-width: 13rem;
+        align-self: center;
+        transition: all 0.2s ease-in;
+
+        &:hover, &:focus-visible {
+          color: base.$dark-color;
+          background-color: base.$purple-color;
+        }
+      }
+    }
+
+    textarea {
+      padding: 0.75rem 1rem;
+    }
+  }
+}
+
+// -- MEDIA QUERIES -- //
+
+// MEDIA QUERY - SMALL (640p)
+
+@media all and (min-width: base.$small) {
+  .contact {
+    max-width: 32rem;
+    padding: 7rem 0;
+
+    &__title {
+      margin: 1rem;
+    }
+  }
+}
+
+// MEDIA QUERY - MEDIUM (768p)
+
+@media all and (min-width: base.$medium) {
+  .contact {
+    max-width: 38rem;
+  }
+}
+
+// MEDIA QUERY - LARGE (1024p)
+
+@media all and (min-width: base.$large) {
+  .contact {
+    max-width: 48rem;
+    padding: 8rem 0;
+  }
+}
+
+// THEME - DARK
+
+body.theme-dark {
+  .contact {
+    &__infos {
+      a {
+        color: base.$green-color;
+      }
+    }
+
+    &__form {
+      input, textarea {
+        color: base.$green-color;
+        border-color: base.$green-color;
+
+        &[type="submit"] {
+          background-color: base.$darker-color;
+
+          &:hover, &:focus-visible {
+            color: base.$dark-color;
+            background-color: base.$purple-color;
+          }
+        }
+      }
+    }
+  }
+}

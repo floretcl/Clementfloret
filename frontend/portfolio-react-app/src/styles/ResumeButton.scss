@@ -1,0 +1,60 @@
+@use 'base';
+
+// RESUME BUTTON
+
+.resumeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 110px;
+  margin: 1rem;
+  transition: color 0.3s ease-in;
+
+  a {
+    position: absolute;
+    color: base.$dark-color;
+    transition: all 0.5s ease-in;
+    margin-top: 0.25rem;
+
+    &:hover, &:focus-visible {
+      color: base.$purple-color;
+      transform: scale(120%);
+      transition: all 0.3s ease-in;
+    }
+  }
+
+  &:has(> a:hover), &:has(> a:focus-visible) {
+    color: base.$purple-color;
+    transition: all 0s ease-in;
+
+    svg {
+      transform: rotate(360deg) scale(120%);
+      transition: all 0.3s ease-in;
+    }
+  }
+
+  svg {
+    width: 100px;
+    height: 100px;
+    transition: all 0.5s ease-in;
+  }
+}
+
+// THEME - DARK
+
+body.theme-dark {
+  .resumeButton {
+    a {
+      color: base.$green-color;
+
+      &:hover, &:focus-visible {
+        color: base.$purple-color;
+      }
+    }
+
+    &:has(> a:hover), &:has(> a:focus-visible) {
+      color: base.$purple-color;
+    }
+  }
+}

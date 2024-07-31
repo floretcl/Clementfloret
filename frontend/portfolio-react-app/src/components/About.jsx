@@ -1,4 +1,5 @@
 import AboutSkill from "./AboutSkill/AboutSkill.jsx";
+import '../styles/About.scss'
 
 export default function About() {
     const portfolio = JSON.parse(document.getElementById("portfolio").textContent)

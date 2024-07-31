@@ -1,0 +1,78 @@
+@use 'base';
+
+// MODE
+
+.mode {
+  align-self: start;
+  position: absolute;
+  top: 0;
+  padding: 0.75rem 1.5rem 0.5rem 1.5rem;
+
+  &__button {
+    padding-top: 0.25rem;
+    color: base.$green-color;
+    transition: color 0.2s ease-in;
+
+    &:hover, &:focus-visible {
+      cursor: none;
+      color: base.$purple-color;
+    }
+
+    svg {
+      width: 2.75rem;
+      height: 2.75rem;
+    }
+
+    &--active {
+      animation: 0.3s ease-in-out 0s forwards rotation-button;
+
+      @keyframes rotation-button {
+        from {
+          transform: rotate(0);
+          transform-origin: center;
+        }
+        to {
+          transform: rotate(360deg);
+          transform-origin: center;
+        }
+      }
+    }
+  }
+}
+
+// -- MEDIA QUERIES -- //
+
+// MEDIA QUERY - MEDIUM (768p)
+
+@media all and (min-width: base.$medium) {
+  .mode {
+    order: 2;
+    position: initial;
+    align-self: initial;
+    padding: 0;
+
+    &__button {
+      color: base.$dark-color;
+    }
+  }
+}
+
+// THEME - DARK
+
+body.theme-dark {
+  .mode {
+    &__button {
+      &:hover, &:focus-visible {
+        color: base.$purple-color;
+      }
+    }
+  }
+
+  @media all and (min-width: base.$medium) {
+    .mode {
+      &__button {
+        color: base.$green-color;
+      }
+    }
+  }
+}

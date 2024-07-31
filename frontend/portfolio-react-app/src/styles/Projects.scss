@@ -1,0 +1,123 @@
+@use 'base';
+
+// PROJECTS
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 26rem;
+  padding: 6rem 0;
+  margin: auto;
+
+  &__title {
+    font-family: base.$karla-bold;
+    font-size: 2.25rem;
+    text-transform: uppercase;
+    margin: 0.5rem 1rem;
+  }
+
+  &__filters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.25rem;
+    justify-items: center;
+    align-content: center;
+    margin: 0 0 3rem 0;
+
+    li {
+      transition: all 0.2s ease-in;
+
+      button {
+        cursor: none;
+      }
+
+      &:has(> button:hover), &:has(> button:focus-visible) {
+        margin-bottom: -0.125rem;
+        border-bottom: 0.125rem solid base.$purple-color;
+      }
+    }
+  }
+
+  &__filter-btn {
+    position: relative;
+    font-family: base.$duru-regular;
+    font-size: 1rem;
+    color: base.$dark-color;
+    padding: 0.75rem 1rem;
+    transition: color 0.2s ease-in;
+
+    &:hover, &:focus-visible {
+      color: base.$purple-color;
+    }
+  }
+
+  &__list {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// -- MEDIA QUERIES -- //
+
+// MEDIA QUERY - SMALL (640p)
+
+@media all and (min-width: base.$small) {
+  .projects {
+    max-width: 32rem;
+    padding: 7rem 0;
+
+    &__title {
+      margin: 1rem;
+    }
+  }
+}
+
+// MEDIA QUERY - MEDIUM (768p)
+
+@media all and (min-width: base.$medium) {
+  .projects {
+    max-width: 38rem;
+  }
+}
+
+// MEDIA QUERY - LARGE (1024p)
+
+@media all and (min-width: base.$large) {
+  .projects {
+    max-width: 48rem;
+    padding: 8rem 0;
+  }
+}
+
+// MEDIA QUERY - X-LARGE (1280p)
+
+@media all and (min-width: base.$x-large) {
+  .projects {
+    max-width: 48rem;
+    padding: 8rem 0;
+  }
+}
+
+// THEME - DARK
+
+body.theme-dark {
+  .projects {
+    &__filter-btn {
+      color: base.$green-color;
+
+      &:hover, &:focus-visible {
+        color: base.$purple-color;
+      }
+    }
+
+    &__list li {
+      border-color: base.$grey-color;
+    }
+  }
+}
