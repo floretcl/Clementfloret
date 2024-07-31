@@ -25,9 +25,9 @@ class AboutView(TemplateView):
 
 
 class ProjectListView(ListView):
-    template_name = 'portfolio/project-list.html'
+    template_name = 'portfolio/projects.html'
     queryset = Project.objects.order_by('order')
-    context_object_name = 'projects'
+    context_object_name = 'projects.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -37,7 +37,7 @@ class ProjectListView(ListView):
 
 
 class ProjectDetailView(DetailView):
-    template_name = 'portfolio/project-detail.html'
+    template_name = 'portfolio/project.html'
     model = Project
     context_object_name = 'project'
 
