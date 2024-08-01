@@ -12,6 +12,7 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['portfolio'] = serializers.serialize("json", Portfolio.objects.filter(active=True))
+        context['portfolio_links'] = serializers.serialize("json", PortfolioLink.objects.order_by('order'))
         return context
 
 
