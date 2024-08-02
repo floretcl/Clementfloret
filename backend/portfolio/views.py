@@ -28,7 +28,7 @@ class AboutView(TemplateView):
 
 class ProjectListView(ListView):
     template_name = 'portfolio/projects.html'
-    queryset = Project.objects.order_by('order')
+    queryset = serializers.serialize("json", Project.objects.order_by('order'))
     context_object_name = 'projects'
 
     def get_context_data(self, **kwargs):
@@ -41,10 +41,10 @@ class ProjectListView(ListView):
 class ProjectDetailView(DetailView):
     template_name = 'portfolio/project.html'
     model = Project
-    context_object_name = 'project'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['project'] = serializers.serialize('json', [self.object])
         context['portfolio_links'] = serializers.serialize("json", PortfolioLink.objects.order_by('order'))
         return context
 
