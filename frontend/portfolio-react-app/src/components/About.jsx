@@ -3,15 +3,15 @@ import '../styles/About.scss'
 
 export default function About() {
     const portfolio = JSON.parse(document.getElementById("portfolio").textContent)
-    const skills = JSON.parse(document.getElementById("skills").textContent);
+    const skills = JSON.parse(document.getElementById("about-skills").textContent);
 
     const listSkills = skills.map(skill =>
-        <AboutSkill key={skill.id} name={skill.name} icon={skill.image} />
+        <AboutSkill key={skill.id} name={skill.name} icon={skill.icon} />
     );
 
     return (
         <main className="about">
-            <img className="about__avatar" src={portfolio.image} alt={`${portfolio.firstname}'s ${portfolio.lastname} avatar`}/>
+            <img className="about__avatar" src={portfolio.avatar} alt={`${portfolio.firstname}'s ${portfolio.lastname} avatar`}/>
             <h1 className="about__title">About me</h1>
             <p className="about__text">
                 {portfolio.about_description}

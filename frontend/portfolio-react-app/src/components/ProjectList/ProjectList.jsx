@@ -5,12 +5,12 @@ import '../../styles/ProjectList.scss'
 
 export default function ProjectList({filter}) {
     const contentRef = useRef(null);
-    const projects = JSON.parse(document.getElementById("project-list").textContent);
+    const projects = JSON.parse(document.getElementById("projects").textContent);
 
     const projectsFiltered = projectFiltration(projects)
 
     const listProjects = projectsFiltered.map(project =>
-        <ProjectCard key={project.id} id={project.id} name={project.name} image={project.image} type={project.type} />
+        <ProjectCard key={project.id} id={project.id} name={project.name} image={project.images[0]} type={project.type} />
     );
 
     function projectFiltration(projects) {

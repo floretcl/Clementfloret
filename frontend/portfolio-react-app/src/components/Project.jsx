@@ -16,10 +16,10 @@ export default function Project() {
 
     const listLinks = links.map((link, i, {length}) => {
         if(i + 1 === length) {
-            return <li key={link.id}><a className="hoverable" href={link.url}>{link.name}</a></li>;
+            return <li key={link.id}><a className="hoverable" href={link.icon}>{link.name}</a></li>;
         } else {
             return <>
-                <li key={link.id}><a className="hoverable" href={link.url}>{link.name}</a></li>
+                <li key={link.id}><a className="hoverable" href={link.icon}>{link.name}</a></li>
                 - </>;
         }
     });

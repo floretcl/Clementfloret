@@ -20,7 +20,7 @@ export default function Menu() {
         }, {
             "id": 2,
             "name": "Projects",
-            "url": "/project-list"
+            "url": "/projects"
         }, {
             "id": 3,
             "name": "Contact",

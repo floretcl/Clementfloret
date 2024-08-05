@@ -2,10 +2,10 @@ import SocialLink from "./SocialLink.jsx";
 import '../../styles/Social.scss'
 
 export default function Social() {
-    const links = JSON.parse(document.getElementById("social-links").textContent);
+    const links = JSON.parse(document.getElementById("about-links").textContent);
 
     const listLinks = links.map((link) =>
-        <SocialLink key={link.id} name={link.name} imgSrc={link.image} url={link.url}/>
+        <SocialLink key={link.id} name={link.name} imgSrc={link.icon} url={link.url}/>
     );
 
     return (
