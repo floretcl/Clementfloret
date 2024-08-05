@@ -30,7 +30,7 @@ class Skill(models.Model):
 class PortfolioLink(models.Model):
     name = models.CharField('nom', max_length=50, unique=True)
     icon = models.ForeignKey(Icon, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='icône')
-    link = models.CharField('lien', max_length=200)
+    url = models.CharField('lien', max_length=200)
     order = models.PositiveSmallIntegerField("ordre d'apparition")
 
     def __str__(self):
