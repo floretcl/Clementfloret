@@ -1,13 +1,17 @@
 {% extends "portfolio/base.html" %}
 
-{% block title %}Clément Floret's portfolio{% endblock %}
+{% block title %}Clément Floret | Portfolio{% endblock %}
 
 {% block description %}
-    Bienvenue sur mon portfolio en ligne.
-    Découvrez mes compétences en développement et mes projets web ou mobile.
-    Contactez-moi pour discuter de nouvelles opportunités.
+    Welcome to my online portfolio.
+    Discover my development skills and my web or mobile projects.
+    Contact me to discuss new opportunities.
 {% endblock %}>
 
 {% block content %}
+    {{ portfolio|json_script:"portfolio" }}
+    {{ about_links|json_script:"about-links" }}
     {{ project|json_script:"project" }}
+    {{ project_images|json_script:"project-images" }}
+    {{ project_links|json_script:"project-links" }}
 {% endblock %}

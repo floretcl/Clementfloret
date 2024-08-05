@@ -14,17 +14,15 @@
 
     <meta name="description"
           content="{% block description %}Bienvenue sur mon portfolio en ligne.
-          Découvrez mes projets web et mobile, et mes compétences en développement.
+          Découvrez mes compétences en développement et mes projets web ou mobile.
           Contactez-moi pour discuter de nouvelles opportunités.{% endblock %}">
-    <title>{% block title %}Clément Floret's portfolio{% endblock %}</title>
+    <title>{% block title %}Clément Floret | Portfolio{% endblock %}</title>
     <script type="module" crossorigin src="{% static 'portfolio/assets/js/index-BoXoxiGF.js' %}"></script>
     <link rel="stylesheet" crossorigin href="{% static 'portfolio/assets/css/index-ZuqoMFvM.css' %}">
 </head>
 <body>
 <div id="root"></div>
 <noscript>You need to enable JavaScript to run this app.</noscript>
-{% block content %}
-{% endblock %}
-{{ portfolio_links|json_script:"social-links" }}
+{% block content %}{% endblock %}
 </body>
 </html>
