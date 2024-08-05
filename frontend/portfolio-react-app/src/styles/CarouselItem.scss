@@ -37,6 +37,17 @@
 
 // -- MEDIA QUERIES -- //
 
+// MEDIA QUERY - SMALL (640p)
+
+@media all and (min-width: base.$small) {
+  .item {
+    &__content {
+      width: 26rem;
+      height: 22rem;
+    }
+  }
+}
+
 // MEDIA QUERY - MEDIUM (768p)
 
 @media all and (min-width: base.$medium) {
