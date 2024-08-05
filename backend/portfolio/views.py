@@ -30,7 +30,7 @@ class IndexView(TemplateView):
                 "id": link.pk,
                 "name": link.name,
                 "icon": link.icon.svg_file.url if link.icon else None,
-                "link": link.link,
+                "url": link.url,
             }
             for link in about_links
         ]
@@ -49,7 +49,7 @@ class AboutView(TemplateView):
         about_links = PortfolioLink.objects.filter(portfolio=portfolio).order_by('order')
 
         portfolio_data = {
-            "pk": portfolio.pk,
+            "id": portfolio.pk,
             "name": portfolio.name,
             "name_fr": portfolio.name_fr,
             "firstname": portfolio.firstname,
@@ -58,7 +58,6 @@ class AboutView(TemplateView):
             "avatar": portfolio.avatar.url,
             "about_description": portfolio.about_description,
             "about_description_fr": portfolio.about_description_fr,
-            "about_skill": list(portfolio.about_skill.values_list("id", flat=True)),
         }
         about_skills_data = [
             {
@@ -73,7 +72,7 @@ class AboutView(TemplateView):
                 "id": link.pk,
                 "name": link.name,
                 "icon": link.icon.svg_file.url if link.icon else None,
-                "link": link.link,
+                "url": link.url,
             }
             for link in about_links
         ]
@@ -106,7 +105,7 @@ class ProjectListView(ListView):
                 "id": link.pk,
                 "name": link.name,
                 "icon": link.icon.svg_file.url if link.icon else None,
-                "link": link.link,
+                "url": link.url,
             }
             for link in about_links
         ]
@@ -123,7 +122,15 @@ class ProjectListView(ListView):
                 "id": project.pk,
                 "name": project.name,
                 "name_fr": project.name_fr,
-                "project_type": project.project_type.name,
+                "type": project.project_type.name,
+                "images": [
+                    {
+                        "id": image.id,
+                        "name": image.name,
+                        "url": image.image.url
+                    }
+                    for image in ProjectImage.objects.filter(project=project).order_by()
+                ]
             }
             for project in projects
         ]
@@ -157,7 +164,7 @@ class ProjectDetailView(DetailView):
                 "id": link.pk,
                 "name": link.name,
                 "icon": link.icon.svg_file.url if link.icon else None,
-                "link": link.link,
+                "url": link.url,
             }
             for link in about_links
         ]
@@ -183,6 +190,7 @@ class ProjectDetailView(DetailView):
                 "id": link.pk,
                 "name": link.name,
                 "icon": link.icon.svg_file.url if link.icon else None,
+                "url": link.url
             }
             for link in project_links
         ]
@@ -216,8 +224,7 @@ class ContactView(FormView):
         about_links = PortfolioLink.objects.filter(portfolio=portfolio).order_by('order')
 
         portfolio_data = {
-            "model": portfolio._meta.label_lower,
-            "pk": portfolio.pk,
+            "id": portfolio.pk,
             "name": portfolio.name,
             "name_fr": portfolio.name_fr,
             "firstname": portfolio.firstname,
@@ -231,7 +238,7 @@ class ContactView(FormView):
                 "id": link.pk,
                 "name": link.name,
                 "icon": link.icon.svg_file.url if link.icon else None,
-                "link": link.link,
+                "url": link.url,
             }
             for link in about_links
         ]
