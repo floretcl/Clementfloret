@@ -41,30 +41,6 @@ class PortfolioLink(models.Model):
         verbose_name_plural = 'Liens de portfolio'
 
 
-class Portfolio(models.Model):
-    name = models.CharField('nom', max_length=100)
-    name_fr = models.CharField('nom fr', max_length=100)
-    firstname = models.CharField('prénom', max_length=30)
-    lastname = models.CharField('nom', max_length=30)
-    job_title = models.CharField('titre de poste', max_length=50)
-    job_title_fr = models.CharField('titre de poste fr', max_length=50)
-    contact_email = models.EmailField('email de contact')
-    about_description = models.CharField('description de la section à propos', max_length=500)
-    about_description_fr = models.CharField('description de la section à propos fr', max_length=500)
-    about_skill = models.ManyToManyField(Skill, verbose_name='compétences')
-    about_link = models.ManyToManyField(PortfolioLink, verbose_name='liens')
-    avatar = models.ImageField('avatar', upload_to='uploads/avatar')
-    resume = models.FileField('cv', upload_to='uploads/resume/')
-    active = models.BooleanField('actif', default=False)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Portfolio'
-        verbose_name_plural = 'Portfolios'
-
-
 class ProjectType(models.Model):
     name = models.CharField('nom', max_length=50, unique=True)
     name_fr = models.CharField('nom fr', max_length=50)
@@ -120,3 +96,29 @@ class ProjectLink(models.Model):
     class Meta:
         verbose_name = 'Lien de projet'
         verbose_name_plural = 'Liens de projet'
+
+
+class Portfolio(models.Model):
+    name = models.CharField('nom', max_length=100)
+    name_fr = models.CharField('nom fr', max_length=100)
+    firstname = models.CharField('prénom', max_length=30)
+    lastname = models.CharField('nom', max_length=30)
+    job_title = models.CharField('titre de poste', max_length=50)
+    job_title_fr = models.CharField('titre de poste fr', max_length=50)
+    contact_email = models.EmailField('email de contact')
+    about_description = models.CharField('description de la section à propos', max_length=500)
+    about_description_fr = models.CharField('description de la section à propos fr', max_length=500)
+    about_skill = models.ManyToManyField(Skill, verbose_name='compétences')
+    about_link = models.ManyToManyField(PortfolioLink, verbose_name='liens')
+    project_types = models.ManyToManyField(ProjectType, verbose_name='types')
+    projects = models.ManyToManyField(Project, verbose_name='projects')
+    avatar = models.ImageField('avatar', upload_to='uploads/avatar')
+    resume = models.FileField('cv', upload_to='uploads/resume/')
+    active = models.BooleanField('actif', default=False)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Portfolio'
+        verbose_name_plural = 'Portfolios'
