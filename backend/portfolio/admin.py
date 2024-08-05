@@ -24,7 +24,7 @@ class SkillAdmin(admin.ModelAdmin):
 
 
 class PortfolioLinkAdmin(admin.ModelAdmin):
-    list_display = ['name', 'link', 'order']
+    list_display = ['name', 'url', 'order']
     list_per_page = 50
     ordering = ['order']
     search_fields = ['name']
