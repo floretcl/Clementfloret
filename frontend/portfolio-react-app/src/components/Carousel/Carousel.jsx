@@ -1,6 +1,7 @@
 import {useEffect, useMemo, useState} from "react";
 import CarouselItem from "./CarouselItem.jsx";
 import '../../styles/Carousel.scss'
+import CarouselDot from "./CarouselDot.jsx";
 
 export default function Carousel() {
     const [index, setIndex] = useState(0);
@@ -20,7 +21,7 @@ export default function Carousel() {
         <CarouselItem key={item.id} id={item.id} index={index} name={item.name} image={item.image} />
     );
     const listDots = items.map(item =>
-        <div key={item.id} className={`carousel__dot ${item.id === index ? "carousel__dot--active" : ""}`}></div>
+        <CarouselDot key={item.id} id={item.id} index={index} />
     );
 
     function previousItem() {

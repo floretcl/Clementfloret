@@ -1,5 +1,5 @@
 import ProjectList from "./ProjectList/ProjectList.jsx";
-import ProjectFilter from "./ProjectFilter/ProjectFilter.jsx";
+import ProjectFilter from "./ProjectList/ProjectFilter.jsx";
 import {useState} from "react";
 import '../styles/Projects.scss'
 
@@ -15,7 +15,7 @@ export default function Projects() {
         <main className="projects">
             <h1 className="projects__title">Projects</h1>
             <ol className="projects__filters">
-                <ProjectFilter name="All" filterChange={() => setProjectFilter("")} />
+                <ProjectFilter key={0} name="All" filterChange={() => setProjectFilter("")} />
                 {listFilters}
             </ol>
             <div className="projects__list">

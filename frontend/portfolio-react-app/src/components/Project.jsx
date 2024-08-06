@@ -1,4 +1,6 @@
 import Carousel from "./Carousel/Carousel.jsx";
+import ProjectSkill from "./Project/ProjectSkill.jsx";
+import ProjectLink from "./Project/ProjectLink.jsx";
 import '../styles/Project.scss'
 
 export default function Project() {
@@ -7,22 +9,16 @@ export default function Project() {
     const links = JSON.parse(document.getElementById("project-links").textContent);
 
     const listSkills = skills.map((skill, i, {length}) => {
-        if(i + 1 === length) {
-            return <li key={skill.id}>{skill.name}</li>;
+        if (i + 1 === length) {
+            return <ProjectSkill key={skill.id} name={skill.name} last={true}/>;
         } else {
-            return <><li key={skill.id}>{skill.name}</li> - </>;
+            return <ProjectSkill key={skill.id} name={skill.name} last={false}/>;
         }
     });
 
-    const listLinks = links.map((link, i, {length}) => {
-        if(i + 1 === length) {
-            return <li key={link.id}><a className="hoverable" href={link.icon}>{link.name}</a></li>;
-        } else {
-            return <>
-                <li key={link.id}><a className="hoverable" href={link.icon}>{link.name}</a></li>
-                - </>;
-        }
-    });
+    const listLinks = links.map((link) =>
+        <ProjectLink key={link.id} url={link.url} name={link.name} icon={link.icon}/>
+    );
 
     return (
         <main className="project">

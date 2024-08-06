@@ -1,4 +1,4 @@
-import AboutSkill from "./AboutSkill/AboutSkill.jsx";
+import AboutSkill from "./About/AboutSkill.jsx";
 import '../styles/About.scss'
 
 export default function About() {
