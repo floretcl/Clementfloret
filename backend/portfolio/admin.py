@@ -1,9 +1,14 @@
 from django.contrib import admin
-from portfolio import models
+from . import models
 
 
 class ProjectLinkInline(admin.StackedInline):
     model = models.ProjectLink
+    extra = 0
+
+
+class ProjectImageInline(admin.StackedInline):
+    model = models.ProjectImage
     extra = 0
 
 
@@ -54,7 +59,7 @@ class ProjectAdmin(admin.ModelAdmin):
     ordering = ['order']
     search_fields = ['name', 'name_fr']
     search_help_text = 'Recherche par nom'
-    inlines = [ProjectLinkInline]
+    inlines = [ProjectLinkInline, ProjectImageInline]
 
 
 class ProjectImageAdmin(admin.ModelAdmin):

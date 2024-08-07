@@ -1,5 +1,9 @@
 {% extends "portfolio/base.html" %}
 
+{% block meta %}
+    <meta name="csrf-token" content={{ csrf_token }}/>
+{% endblock %}
+
 {% block title %}Clément Floret | Portfolio{% endblock %}
 
 {% block description %}

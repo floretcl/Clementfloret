@@ -46,7 +46,7 @@ INTERNAL_IPS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'clementfloret.apps.PortfolioAdminConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -116,6 +116,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 12,
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -142,17 +145,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Media
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'uploads'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# ---- CUSTOM ---- #
+
+# Security
+
+CSRF_TRUSTED_ORIGINS = ['https://*.127.0.0.1']
+
 # Email
 
 EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_PORT = env('EMAIL_PORT')
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = env('EMAIL_USE_TLS')
-EMAIL_USE_LOCALTIME = env('EMAIL_USE_LOCALTIME')
+#EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+#EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+#EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+#EMAIL_USE_LOCALTIME = env('EMAIL_USE_LOCALTIME')

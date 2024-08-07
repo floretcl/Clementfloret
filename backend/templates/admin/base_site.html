@@ -1,0 +1,14 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrahead %}
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'portfolio/../../portfolio/static/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'portfolio/../../portfolio/static/icons/favicon-16x16.png' %}">
+    <link rel="shortcut icon" href="{% static 'portfolio/../../portfolio/static/icons/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'portfolio/../../portfolio/static/icons/favicon.ico' %}" type="image/x-icon">
+{% endblock %}
+
+{% block branding %}
+    <img src="{% static 'portfolio/../../portfolio/static/icons/favicon-32x32.png' %}" alt="Logo du Garage V.Parrot" height="32px">
+    {{ block.super }}
+{% endblock %}

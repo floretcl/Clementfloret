@@ -1,9 +1,11 @@
+import json
+from json import JSONDecodeError
 from django.core import serializers
-from django.contrib import messages
+from django.http import JsonResponse
 from django.views.generic import TemplateView, DetailView, FormView, ListView
 
-from portfolio.forms import ContactForm
-from portfolio.models import Portfolio, PortfolioLink, ProjectType, Project, ProjectLink, ProjectImage, Icon, Skill
+from .forms import ContactForm
+from .models import Portfolio, PortfolioLink, ProjectType, Project, ProjectLink, ProjectImage, Skill
 
 
 class IndexView(TemplateView):
@@ -209,14 +211,29 @@ class ContactView(FormView):
     success_message = 'Tank you {name}. Your message has been sent.'
     error_message = 'Your message could not be sent.'
 
+    def post(self, request, *args, **kwargs):
+        try:
+            data = json.loads(request.body)
+        except JSONDecodeError:
+            return JsonResponse({'success': False, 'errors': {'__all__': ['Invalid JSON']}}, status=400)
+
+        form = self.form_class(data)
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
     def form_invalid(self, form):
-        super().form_invalid(form)
-        messages.error(self.request, self.error_message)
+        return JsonResponse({'success': False, 'message': self.error_message, 'errors': form.errors}, status=400)
 
     def form_valid(self, form):
-        form.send_email()
-        messages.success(self.request, self.success_message.format(name=form.cleaned_data.get("name")))
-        return super().form_valid(form)
+        try:
+            form.send_email()
+            return JsonResponse(
+                {'success': True, 'message': self.success_message.format(name=form.cleaned_data.get("name"))})
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': self.error_message, 'errors': {'__all__': [str(e)]}},
+                                status=500)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -234,7 +251,6 @@ class ContactView(FormView):
         }
         about_links_data = [
             {
-                "model": link._meta.label_lower,
                 "id": link.pk,
                 "name": link.name,
                 "icon": link.icon.svg_file.url if link.icon else None,
