@@ -7,8 +7,8 @@ export default function Footer({small}) {
     const portfolio = JSON.parse(document.getElementById("portfolio").textContent);
 
     return (
-        <footer className={`footer ${small ? "footer--home" : ""}`}>
-            <div className="footer__content">
+        <footer className="footer">
+            <div className={`${small ? "footer__content--home" : "footer__content"}`}>
                 { !small && (
                     <div className="footer__contact">
                         <a className="hoverable" href="/contact">Contact</a>

@@ -1,43 +1,5 @@
 // -- FONTS -- //
 
-@font-face {
-  font-family: 'ruda-regular';
-  src: url('assets/fonts/Ruda-Regular-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'ruda-bold';
-  src: url('assets/fonts/Ruda-Bold-webfont.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'karla-regular';
-  src: url('assets/fonts/Karla-Regular.woff2') format('woff2'),
-  url('assets/fonts/Karla-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'karla-bold';
-  src: url('assets/fonts/Karla-Bold.woff2') format('woff2'),
-  url('assets/fonts/Karla-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'duru-regular';
-  src: url('assets/fonts/duru-sans-latin-400-normal.woff2') format('woff2'),
-  url('assets/fonts/duru-sans-latin-400-normal.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
 $ruda-regular: ruda-regular, sans-serif;
 $ruda-bold: ruda-bold, sans-serif;
 $karla-regular: karla-regular, sans-serif;

@@ -1,5 +1,5 @@
-import { useContext, useEffect, useRef, useState } from 'react'
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {useContext, useEffect, useRef, useState} from 'react'
+import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
 import {ThemeContext} from "./ThemeProvider.jsx";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
@@ -9,6 +9,7 @@ import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
 import Projects from "./components/Projects.jsx";
 import Project from "./components/Project.jsx";
+import './fonts.css'
 import './styles/App.scss'
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
     const [preload, setPreload] = useState(true);
     const bodyRef = useRef(null);
 
-    function timeoutPreload () {
+    function timeoutPreload() {
         setTimeout(() => {
             setPreload(false);
         }, 500);
@@ -57,9 +58,9 @@ function App() {
         window.addEventListener("scroll", handleScroll);
 
         if ((theme === "dark") && bodyRef) {
-          bodyRef.current.classList.add("theme-dark");
+            bodyRef.current.classList.add("theme-dark");
         } else {
-          bodyRef.current.classList.remove("theme-dark");
+            bodyRef.current.classList.remove("theme-dark");
         }
 
         return () => {
@@ -75,15 +76,15 @@ function App() {
             <Header scrollDown={scrollDown}/>
             <Router>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/projects" element={<Projects />} />
-                    <Route path="/projects/:type" element={<Projects />} />
-                    <Route path="/project/:id" element={<Project />} />
-                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/" element={<><Home/><Footer small={true}/></>}/>
+                    <Route path="/about" element={<><About/><Footer small={false}/></>}/>
+                    <Route path="/projects" element={<><Projects/> <Footer small={false}/></>}/>
+                    <Route path="/projects/:type" element={<><Projects/> <Footer small={false}/></>}/>
+                    <Route path="/project/:id" element={<><Project/> <Footer small={false}/></>}/>
+                    <Route path="/contact" element={<><Contact/> <Footer small={false}/></>}/>
+                    <Route path="*" element={<Navigate to="/" replace={true}/>}/>
                 </Routes>
             </Router>
-            <Footer small={false}/>
             <Cursor mousePosition={mousePosition}/>
         </div>
     );
