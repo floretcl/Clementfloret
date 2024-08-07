@@ -1,6 +1,6 @@
 from django.urls import path
 
-from portfolio.views import IndexView, AboutView, ContactView, ProjectListView, ProjectDetailView
+from .views import IndexView, AboutView, ContactView, ProjectListView, ProjectDetailView
 
 app_name = 'portfolio'
 urlpatterns = [
