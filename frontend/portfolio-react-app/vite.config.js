@@ -7,24 +7,24 @@ export default defineConfig({
         react(),
     ],
     build: {
-        outDir: '../../backend/portfolio/static/portfolio',
-        assetsDir: '../../backend/portfolio/static/portfolio/assets',
+        outDir: '../../backend/portfolio/static',
+        assetsDir: '',
         emptyOutDir: true,
         rollupOptions: {
             output: {
-                chunkFileNames: 'assets/js/[name]-[hash].js',
-                entryFileNames: 'assets/js/[name]-[hash].js',
+                chunkFileNames: 'js/[name]-[hash].js',
+                entryFileNames: 'js/[name]-[hash].js',
                 assetFileNames: ({name}) => {
                     if (/\.(gif|jpe?g|png|svg|webp|avif)$/.test(name ?? '')) {
-                        return 'assets/img/[name]-[hash][extname]';
+                        return 'img/[name]-[hash][extname]';
                     }
                     if (/\.(css|scss)$/.test(name ?? '')) {
-                        return 'assets/css/[name]-[hash][extname]';
+                        return 'css/[name]-[hash][extname]';
                     }
                     if (/\.(woff|woff2|ttf|otf)$/.test(name ?? '')) {
-                        return 'assets/fonts/[name]-[hash][extname]';
+                        return 'fonts/[name]-[hash][extname]';
                     }
-                    return 'assets/[name]-[hash][extname]';
+                    return '[name]-[hash][extname]';
                 },
             },
         },
