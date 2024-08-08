@@ -5,14 +5,13 @@ import '../styles/Project.scss'
 
 export default function Project() {
     const project = JSON.parse(document.getElementById("project").textContent);
-    const skills = JSON.parse(document.getElementById("project-skills").textContent);
     const links = JSON.parse(document.getElementById("project-links").textContent);
 
-    const listSkills = skills.map((skill, i, {length}) => {
+    const listSkills = project.skills.map((skill, i, {length}) => {
         if (i + 1 === length) {
-            return <ProjectSkill key={skill.id} name={skill.name} last={true}/>;
+            return <ProjectSkill key={skill[0]} name={skill[1]} last={true}/>;
         } else {
-            return <ProjectSkill key={skill.id} name={skill.name} last={false}/>;
+            return <ProjectSkill key={skill[0]} name={skill[1]} last={false}/>;
         }
     });
 

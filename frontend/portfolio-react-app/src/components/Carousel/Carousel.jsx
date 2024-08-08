@@ -17,11 +17,11 @@ export default function Carousel() {
         return items.length;
     }, [items]);
 
-    const listItems = items.map(item =>
-        <CarouselItem key={item.id} id={item.id} index={index} name={item.name} image={item.image} />
+    const listItems = items.map((item, i) =>
+        <CarouselItem key={i} id={i} index={index} name={item.name} image={item.image} />
     );
-    const listDots = items.map(item =>
-        <CarouselDot key={item.id} id={item.id} index={index} />
+    const listDots = items.map((item, i) =>
+        <CarouselDot key={i} id={i} index={index} />
     );
 
     function previousItem() {
