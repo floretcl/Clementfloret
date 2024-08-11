@@ -13,6 +13,7 @@ export default function About() {
         <main className="about">
             <img className="about__avatar" src={portfolio.avatar} alt={`${portfolio.firstname}'s ${portfolio.lastname} avatar`}/>
             <h1 className="about__title">About me</h1>
+            <h2 className="about__subtitle">Profile</h2>
             <p className="about__text">
                 {portfolio.about_description}
             </p>
