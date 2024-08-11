@@ -12,15 +12,19 @@
   max-width: 26rem;
 
   &__avatar {
-    width: 8rem;
-    height: 8rem;
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+    border: 0.125rem solid base.$dark-color;
+    margin: 0 0.5rem 2rem 0.5rem;
   }
 
   &__title {
     font-family: base.$karla-bold;
-    font-size: 2rem;
+    font-size: 2.25rem;
     text-transform: uppercase;
     text-align: left;
+    margin: 0 0.5rem 4rem 0.5rem;
   }
 
   &__text {
@@ -42,9 +46,10 @@
   }
 
   &__subtitle {
-    font-family: base.$karla-bold;
-    font-size: 1.75rem;
+    font-family: base.$ruda-regular;
+    font-size: 1.375rem;
     text-transform: uppercase;
+    margin: 1rem 0;
   }
 
   &__skills {
@@ -60,7 +65,7 @@
     display: grid;
     grid-gap: 3rem 2rem;
     grid-template-columns: repeat(3, 1fr);
-    padding: 1rem 0;
+    padding: 1.25rem 0;
 
     li {
       position: relative;
@@ -120,8 +125,23 @@
     max-width: 32rem;
     padding: 7rem 0;
 
+    &__avatar {
+      width: 15rem;
+      height: 15rem;
+    }
+
+    &__title {
+      font-size: 2.5rem;
+      margin: 0 0.5rem 5rem 0.5rem;
+    }
+
     &__separator {
       margin: 6.5rem 1rem;
+    }
+
+    &__subtitle {
+      font-size: 1.5rem;
+      margin: 2rem 0;
     }
 
     &__icons {
@@ -137,6 +157,15 @@
   .about {
     max-width: 38rem;
 
+    &__title {
+      font-size: 2.75rem;
+      margin: 0 0.5rem 6rem 0.5rem;
+    }
+
+    &__subtitle {
+      font-size: 1.625rem;
+    }
+
     &__icons {
       grid-gap: 3.5rem 2.5rem;
     }
@@ -150,12 +179,22 @@
     max-width: 48rem;
     padding: 8rem 0;
 
+    &__avatar {
+      width: 16rem;
+      height: 16rem;
+    }
+
     &__title {
-      font-size: 2.25rem;
+      font-size: 3rem;
     }
 
     &__separator {
       margin: 7rem 1rem;
+    }
+
+    &__subtitle {
+      font-size: 1.75rem;
+      margin: 2.25rem 0;
     }
 
     &__icons {
@@ -164,10 +203,34 @@
   }
 }
 
+// MEDIA QUERY - X-LARGE (1280p)
+
+@media all and (min-width: base.$x-large) {
+  .about {
+    &__avatar {
+      width: 17rem;
+      height: 17rem;
+    }
+
+    &__title {
+      font-size: 3.5rem;
+      margin: 0 0.5rem 7rem 0.5rem;
+    }
+
+    &__subtitle {
+      font-size: 2rem;
+    }
+  }
+}
+
 // THEME - DARK
 
 body.theme-dark {
   .about {
+    &__avatar {
+      border-color: base.$green-color;
+    }
+
     &__separator {
       color: base.$green-color;
     }

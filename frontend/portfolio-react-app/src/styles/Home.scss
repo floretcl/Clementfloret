@@ -30,12 +30,35 @@
 
 // -- MEDIA QUERIES -- //
 
+// MEDIA QUERY - SMALL (640p)
+
+@media all and (min-width: base.$small) {
+  .home {
+    &__title {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+// MEDIA QUERY - MEDIUM (768p)
+
+@media all and (min-width: base.$medium) {
+  .home {
+    max-width: 38rem;
+
+    &__title {
+      font-size: 2.75rem;
+    }
+  }
+}
+
 // MEDIA QUERY - LARGE (1024p)
 
 @media all and (min-width: base.$large) {
   .home {
+    max-width: 42rem;
     &__title {
-      font-size: 2.5rem;
+      font-size: 3rem;
     }
 
     &__subtitle {
@@ -44,12 +67,13 @@
   }
 }
 
-// MEDIA QUERY - XX-LARGE (1536p)
+// MEDIA QUERY - X-LARGE (1280p)
 
-@media all and (min-width: base.$xx-large) {
+@media all and (min-width: base.$x-large) {
   .home {
+    max-width: 48rem;
     &__title {
-      font-size: 2.75rem;
+      font-size: 3.5rem;
     }
 
     &__subtitle {

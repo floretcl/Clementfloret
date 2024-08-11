@@ -16,7 +16,7 @@
     font-family: base.$karla-bold;
     font-size: 2.25rem;
     text-transform: uppercase;
-    margin: 0.5rem 1rem;
+    margin: 0.5rem 0.5rem 2.5rem 0.5rem;
   }
 
   &__infos {
@@ -78,7 +78,8 @@
     padding: 7rem 0;
 
     &__title {
-      margin: 1rem;
+      font-size: 2.5rem;
+      margin: 0.5rem 0.5rem 4rem 0.5rem;
     }
   }
 }
@@ -88,6 +89,10 @@
 @media all and (min-width: base.$medium) {
   .contact {
     max-width: 38rem;
+
+    &__title {
+      font-size: 2.75rem;
+    }
   }
 }
 
@@ -97,6 +102,22 @@
   .contact {
     max-width: 48rem;
     padding: 8rem 0;
+
+    &__title {
+      font-size: 3rem;
+      margin: 0.5rem 0.5rem 6rem 0.5rem;
+    }
+  }
+}
+
+// MEDIA QUERY - X-LARGE (1280p)
+
+@media all and (min-width: base.$x-large) {
+  .contact {
+    &__title {
+      font-size: 3.5rem;
+      margin: 0.5rem 0.5rem 8rem 0.5rem;
+    }
   }
 }
 

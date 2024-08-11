@@ -50,7 +50,7 @@
     li {
       flex: 0 0 7rem;
       overflow: hidden;
-      border: thin base.$white-color solid;
+      border: thin base.$dark-color solid;
       border-radius: 0.2rem;
       transition: all 0.3s ease-in-out;
 
@@ -138,6 +138,16 @@
           flex: 0 0 28rem;
         }
       }
+    }
+  }
+}
+
+// THEME - DARK
+
+body.theme-dark {
+  .project-list {
+    li {
+      border-color: base.$green-color;
     }
   }
 }
