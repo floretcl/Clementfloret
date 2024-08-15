@@ -1,7 +1,9 @@
 import AboutSkill from "./About/AboutSkill.jsx";
 import '../styles/About.scss'
+import {useTranslation} from "react-i18next";
 
 export default function About() {
+    const { t } = useTranslation();
     const portfolio = JSON.parse(document.getElementById("portfolio").textContent)
     const skills = JSON.parse(document.getElementById("about-skills").textContent);
 
@@ -11,9 +13,9 @@ export default function About() {
 
     return (
         <main className="about">
-            <img className="about__avatar" src={portfolio.avatar} alt={`${portfolio.firstname}'s ${portfolio.lastname} avatar`}/>
-            <h1 className="about__title">About me</h1>
-            <h2 className="about__subtitle">Profile</h2>
+            <img className="about__avatar" src={portfolio.avatar} alt={`${portfolio.firstname}'s ${portfolio.lastname} ${t('avatar')}`}/>
+            <h1 className="about__title">{t('about_title')}</h1>
+            <h2 className="about__subtitle">{t('about_subtitle_profile')}</h2>
             <p className="about__text">
                 {portfolio.about_description}
             </p>
@@ -25,7 +27,7 @@ export default function About() {
                           stroke="currentColor" strokeWidth="3"/>
                 </svg>
             </div>
-            <h2 className="about__subtitle">Skills</h2>
+            <h2 className="about__subtitle">{t('about_subtitle_skills')}</h2>
             <ol className="about__icons">
                 {listSkills}
             </ol>

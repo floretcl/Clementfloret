@@ -1,5 +1,6 @@
 import json
 from json import JSONDecodeError
+from django.utils import translation
 from django.core import serializers
 from django.http import JsonResponse
 from django.views.generic import TemplateView, DetailView, FormView, ListView
@@ -13,17 +14,16 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        current_language = translation.get_language()
         portfolio = Portfolio.objects.filter(active=True).first()
         about_links = PortfolioLink.objects.filter(portfolio=portfolio).order_by('order')
 
         portfolio_data = {
             "id": portfolio.pk,
-            "name": portfolio.name,
-            "name_fr": portfolio.name_fr,
+            "name": getattr(portfolio, 'name_fr' if current_language == 'fr' else 'name'),
             "firstname": portfolio.firstname,
             "lastname": portfolio.lastname,
-            "job_title": portfolio.job_title,
-            "job_title_fr": portfolio.job_title_fr,
+            "job_title": getattr(portfolio, 'job_title_fr' if current_language == 'fr' else 'job_title'),
             "contact_email": portfolio.contact_email,
             "resume": portfolio.resume.url,
         }
@@ -46,20 +46,20 @@ class AboutView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        current_language = translation.get_language()
         portfolio = Portfolio.objects.filter(active=True).first()
         about_skills = Skill.objects.filter(portfolio=portfolio).order_by('order')
         about_links = PortfolioLink.objects.filter(portfolio=portfolio).order_by('order')
 
         portfolio_data = {
             "id": portfolio.pk,
-            "name": portfolio.name,
-            "name_fr": portfolio.name_fr,
+            "name": getattr(portfolio, 'name_fr' if current_language == 'fr' else 'name'),
             "firstname": portfolio.firstname,
             "lastname": portfolio.lastname,
             "contact_email": portfolio.contact_email,
             "avatar": portfolio.avatar.url,
-            "about_description": portfolio.about_description,
-            "about_description_fr": portfolio.about_description_fr,
+            "about_description": getattr(portfolio,
+                                         'about_description_fr' if current_language == 'fr' else 'about_description'),
         }
         about_skills_data = [
             {
@@ -91,6 +91,7 @@ class ProjectListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        current_language = translation.get_language()
         portfolio = Portfolio.objects.filter(active=True).first()
         about_links = PortfolioLink.objects.filter(portfolio=portfolio).order_by('order')
         project_types = ProjectType.objects.filter(portfolio=portfolio).order_by()
@@ -114,16 +115,14 @@ class ProjectListView(ListView):
         project_types_data = [
             {
                 "id": project_type.pk,
-                "name": project_type.name,
-                "name_fr": project_type.name_fr,
+                "name": getattr(project_type, 'name_fr' if current_language == 'fr' else 'name'),
             }
             for project_type in project_types
         ]
         projects_data = [
             {
                 "id": project.pk,
-                "name": project.name,
-                "name_fr": project.name_fr,
+                "name": getattr(project, 'name_fr' if current_language == 'fr' else 'name'),
                 "type": project.project_type.name,
                 "images": [
                     {
@@ -149,6 +148,7 @@ class ProjectDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        current_language = translation.get_language()
         portfolio = Portfolio.objects.filter(active=True).first()
         about_links = PortfolioLink.objects.filter(portfolio=portfolio).order_by('order')
         project = self.object
@@ -172,10 +172,8 @@ class ProjectDetailView(DetailView):
         ]
         project_data = {
             "id": project.pk,
-            "name": project.name,
-            "name_fr": project.name_fr,
-            "description": project.description,
-            "description_fr": project.description_fr,
+            "name": getattr(project, 'name_fr' if current_language == 'fr' else 'name'),
+            "description": getattr(project, 'description_fr' if current_language == 'fr' else 'description'),
             "skills": list(project.skill.values_list("id", "name").order_by("order")),
             "type": project.project_type.name,
         }
@@ -237,13 +235,13 @@ class ContactView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        current_language = translation.get_language()
         portfolio = Portfolio.objects.filter(active=True).first()
         about_links = PortfolioLink.objects.filter(portfolio=portfolio).order_by('order')
 
         portfolio_data = {
             "id": portfolio.pk,
-            "name": portfolio.name,
-            "name_fr": portfolio.name_fr,
+            "name": getattr(portfolio, 'name_fr' if current_language == 'fr' else 'name'),
             "firstname": portfolio.firstname,
             "lastname": portfolio.lastname,
             "contact_email": portfolio.contact_email,

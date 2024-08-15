@@ -1,7 +1,9 @@
 import {useState} from "react";
 import '../styles/Contact.scss'
+import {useTranslation} from "react-i18next";
 
 export default function Contact() {
+    const {t} = useTranslation();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -66,8 +68,8 @@ export default function Contact() {
                 }
             })
             .catch(error => {
-                setErrorMessage("Your message could not be sent.");
-                // Pour obtenir les erreurs du serveur
+                setErrorMessage(t('contact_error_message'));
+                // To get server errors
                 if (error.response) {
                     error.response.json()
                         .then(errorData => {
@@ -81,32 +83,31 @@ export default function Contact() {
 
     return (
         <main className="contact">
-            <h1 className="contact__title">Contact</h1>
+            <h1 className="contact__title">{t('contact_title')}</h1>
             {successMessage && <div className="success">{successMessage}</div>}
             {errorMessage && <div className="error">{errorMessage}</div>}
             <p className="contact__infos">
-                Complete the form or email me directly at <a className="hoverable"
-                                                             href={`mailto: ${email}`}
-                                                             title="send me an email">{email}</a>
+                {t('contact_infos')} <a className="hoverable" href={`mailto: ${email}`}
+                                        title={t('contact_infos_title')}>{email}</a>
             </p>
             <form className="contact__form" onSubmit={handleSubmit}>
-                <input type="text" id="name" name="name" minLength="3" maxLength="100" placeholder="Name" required
+                <input type="text" id="name" name="name" minLength="3" maxLength="100" placeholder={t('contact_name_placeholder')} required
                        value={formData.name} onChange={handleChange}/>
                 {errors.name && <div className="error">{errors.name}</div>}
 
-                <input type="email" id="email" name="email" minLength="3" maxLength="254" placeholder="Email" required
+                <input type="email" id="email" name="email" minLength="3" maxLength="254" placeholder={t('contact_email_placeholder')} required
                        value={formData.email} onChange={handleChange}/>
                 {errors.email && <div className="error">{errors.email}</div>}
 
-                <input type="text" id="subject" name="subject" minLength="5" maxLength="200" placeholder="Subject"
+                <input type="text" id="subject" name="subject" minLength="5" maxLength="200" placeholder={t('contact_subject_placeholder')}
                        required value={formData.subject} onChange={handleChange}/>
                 {errors.subject && <div className="error">{errors.subject}</div>}
 
-                <textarea id="message" name="message" minLength="10" placeholder="Message" rows="10" required
+                <textarea id="message" name="message" minLength="10" placeholder={t('contact_message_placeholder')} rows="10" required
                           value={formData.message} onChange={handleChange}/>
                 {errors.message && <div className="error">{errors.message}</div>}
 
-                <input className="hoverable" type="submit" value="Submit"/>
+                <input className="hoverable" type="submit" value={t('contact_button_value')}/>
             </form>
         </main>
     );

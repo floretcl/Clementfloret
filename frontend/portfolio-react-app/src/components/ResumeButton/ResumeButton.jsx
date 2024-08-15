@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
 import '../../styles/ResumeButton.scss'
+import {useTranslation} from "react-i18next";
 
 export default function ResumeButton({url}) {
+    const { t } = useTranslation();
+
     return (
         <div className="resumeButton">
             <svg width="512" height="490" viewBox="0 0 512 490" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,7 +13,7 @@ export default function ResumeButton({url}) {
                     stroke="currentColor" strokeWidth="18"/>
             </svg>
             <a className="hoverable" href={url} target={"_blank"}>
-                Resume<br/>
+                {t('resume')}<br/>
                 Pdf
             </a>
         </div>
