@@ -16,11 +16,10 @@
     <link rel="icon" href="{% static 'portfolio/icons/favicon.ico' %}" type="image/x-icon">
     <link rel="manifest" href="{% static 'portfolio/site.webmanifest' %}">
 
-    <title>{% block title %}{% translate 'title' %}{% endblock %}</title>
-    <meta name="description"
-          content="{% translate 'meta_description' %}"/>
-  <script type="module" crossorigin src="{% static 'portfolio/js/index-CYWISYVN.js' %}"></script>
-  <link rel="stylesheet" crossorigin href="{% static 'portfolio/css/index-C1NPeC6W.css' %}">
+    <title>{% block title %}Clément Floret | Portfolio{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% translate 'meta_description' %}{% endblock %}"/>
+  <script type="module" crossorigin src="{% static 'portfolio/js/index-CqDVyHai.js' %}"></script>
+  <link rel="stylesheet" crossorigin href="{% static 'portfolio/css/index-BJWkgWZB.css' %}">
     {% block meta %}{% endblock %}
 </head>
 <body>
