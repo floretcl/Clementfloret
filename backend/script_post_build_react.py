@@ -25,19 +25,19 @@ def convert_html_to_django_template(path_input, path_output):
         # Re-make html title tag with {% block title %} template tag
         return '<title>{% block title %}' + title + '{% endblock %}</title>'
 
-    def replace_description(match):
-        # Get html meta description tag
-        html_description = match.group(1)
-        # Delete html tag, keep content
-        description = html_description.replace('<meta name="description" content="', '')
-        description = description.replace('"/>', '')
-        # Re-make html meta description tag with {% block description %} template tag
-        return '<meta name="description" content="{% block description %}' + description + '{% endblock %}"/>'
-
     # Add {% load static %} template tag on top of html file
-    html_content = "{% load static %}\n\n" + html_content
+    html_content = ("{% load i18n %}\n"
+                    "{% get_available_languages as languages %}\n"
+                    "{% get_current_language as LANGUAGE_CODE %}\n\n"
+                    "{% load static %}\n\n") + html_content
 
     # Replace static paths by static template tag
+    html_content = re.sub(
+        r'<html lang="(.*?)">',
+        '<html lang="{{ LANGUAGE_CODE }}">',
+        html_content
+    )
+
     html_content = re.sub(
         r'"/static/(.*?)"',
         replace_static_paths,
@@ -53,15 +53,16 @@ def convert_html_to_django_template(path_input, path_output):
 
     # Replace html meta description by meta description with template tag
     html_content = re.sub(
-        r'<meta name="description" content="((.|\n)*)"/>',
-        replace_description,
+        r'<meta name="description"((.|\n)*)content="((.|\n)*)"/>',
+        '<meta name="description" ' +
+        'content="{% block description %}{% translate \'meta_description\' %}{% endblock %}"/>',
         html_content
     )
 
     # Replace html scripts tags by {% block content %} template tag
     html_content = re.sub(
         r'<noscript>You need to enable JavaScript to run this app.</noscript>((.|\n)*)</body>',
-        '<noscript>You need to enable JavaScript to run this app.</noscript>\n'
+        '<noscript>{% translate \'noscript_message\' %}</noscript>\n'
         '{% block content %}{% endblock %}\n</body>',
         html_content
     )
