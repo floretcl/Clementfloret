@@ -17,6 +17,6 @@ class ContactForm(forms.Form):
             subject=f'Message de contact de {name} - sujet: {subject}',
             message=f'Nom: {name}\nEmail: {email}\nSujet: {subject}\n\nMessage: {message}',
             from_email=email,
-            recipient_list=['clement.floret@icloud.com']
+            recipient_list=['clement.floret@protonmail.com']
         )
         pass
