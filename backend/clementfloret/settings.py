@@ -36,7 +36,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 if env('ENV') == 'PROD':
-    ALLOWED_HOSTS = ['www.clementfloret.dev']
+    ALLOWED_HOSTS = ['www.clementfloret.dev', 'clementfloret.dev']
 else:
     ALLOWED_HOSTS = ['*']
 
@@ -153,12 +153,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+if env('ENV') == 'PROD':
+    STATIC_URL = env('STATIC_URL')
+    STATIC_ROOT = env('STATIC_ROOT')
+else:
+    STATIC_URL = 'static/'
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Media
-
-MEDIA_URL = 'media/'
+if env('ENV') == 'PROD':
+    MEDIA_URL = env('MEDIA_URL')
+    MEDIA_ROOT = env('MEDIA_ROOT')
+else:
+    MEDIA_URL = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -175,7 +182,14 @@ LOCALE_PATHS = (
 
 # Security
 
-CSRF_TRUSTED_ORIGINS = ['https://*.localhost']
+if env('ENV') == 'PROD':
+    ADMINS = env('ADMINS')
+    CSRF_TRUSTED_ORIGINS = ['']
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+else:
+    CSRF_TRUSTED_ORIGINS = ['https://*.localhost', 'https://*.127.0.0.1']
 
 # Email
 
