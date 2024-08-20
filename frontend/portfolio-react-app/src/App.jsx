@@ -1,9 +1,9 @@
 import {useContext, useEffect, useRef, useState} from 'react'
 import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
 import {ThemeContext} from "./ThemeProvider.jsx";
+import MouseMove from "./components/MouseMove/MouseMove.jsx";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
-import Cursor from "./components/Cursor/Cursor.jsx";
 import Home from "./components/Home.jsx";
 import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
@@ -14,10 +14,6 @@ import './styles/App.scss'
 
 function App() {
     const {theme} = useContext(ThemeContext);
-    const [mousePosition, setMousePosition] = useState({
-        x: 0,
-        y: 0
-    });
     const [scrollDown, setScrollDown] = useState(true);
     const [preload, setPreload] = useState(true);
     const bodyRef = useRef(null);
@@ -27,18 +23,6 @@ function App() {
         setTimeout(() => {
             setPreload(false);
         }, 500);
-    }
-
-    function moveBackground(x, y) {
-        if (bodyRef) {
-            bodyRef.current.style.backgroundPositionX = `-${x / 20}px`;
-            bodyRef.current.style.backgroundPositionY = `-${y / 20}px`;
-        }
-    }
-
-    function handleMouseMove(event) {
-        setMousePosition({x: event.clientX, y: event.clientY});
-        moveBackground(event.clientX, event.clientY);
     }
 
     function handleScroll() {
@@ -71,7 +55,6 @@ function App() {
 
     return (
         <div
-            onMouseMove={(event) => handleMouseMove(event)}
             className={`app ${preload ? "preload" : ""}`}
         >
             <Header scrollDown={scrollDown}/>
@@ -86,7 +69,7 @@ function App() {
                     <Route path="*" element={<Navigate to="/en/" replace={true}/>}/>
                 </Routes>
             </Router>
-            <Cursor mousePosition={mousePosition}/>
+            <MouseMove/>
         </div>
     );
 }

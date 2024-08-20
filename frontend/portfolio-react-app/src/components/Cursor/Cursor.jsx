@@ -43,7 +43,7 @@ export default function Cursor({mousePosition}) {
             const distSmallBall = Math.sqrt(dxSmallBall * dxSmallBall + dySmallBall * dySmallBall);
 
             // Vitesse de l'animation
-            const speedBigBall = 0.0175;
+            const speedBigBall = 0.025;
             const speedSmallBall = 0.1;
 
             if (distBigBall > 0.1) {
@@ -51,8 +51,8 @@ export default function Cursor({mousePosition}) {
                 lastPositionBigBall.current.y += dyBigBall * speedBigBall;
 
                 setPositionBigBall({
-                    x: lastPositionBigBall.current.x,
-                    y: lastPositionBigBall.current.y,
+                    x: Math.round(lastPositionBigBall.current.x),
+                    y: Math.round(lastPositionBigBall.current.y),
                 });
             }
 
@@ -61,8 +61,8 @@ export default function Cursor({mousePosition}) {
                 lastPositionSmallBall.current.y += dySmallBall * speedSmallBall;
 
                 setPositionSmallBall({
-                    x: lastPositionSmallBall.current.x,
-                    y: lastPositionSmallBall.current.y,
+                    x: Math.round(lastPositionSmallBall.current.x),
+                    y: Math.round(lastPositionSmallBall.current.y),
                 });
             }
 
