@@ -1,6 +1,7 @@
 import json
 from json import JSONDecodeError
 from django.utils import translation
+from django.utils.translation import gettext_lazy as _
 from django.core import serializers
 from django.http import JsonResponse
 from django.views.generic import TemplateView, DetailView, FormView, ListView
@@ -206,8 +207,8 @@ class ContactView(FormView):
     template_name = 'portfolio/contact.html'
     form_class = ContactForm
     success_url = '/'
-    success_message = 'Tank you {name}. Your message has been sent.'
-    error_message = 'Your message could not be sent.'
+    success_message = _('Tank you {name}. Your message has been sent.')
+    error_message = _('Your message could not be sent.')
 
     def post(self, request, *args, **kwargs):
         try:

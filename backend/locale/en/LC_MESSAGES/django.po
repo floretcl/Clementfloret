@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-15 20:21+0200\n"
+"POT-Creation-Date: 2024-08-22 00:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: clementfloret/settings.py:137
+
+#: clementfloret/settings.py:138
 msgid "English"
 msgstr ""
 
-#: clementfloret/settings.py:138
+#: clementfloret/settings.py:139
 msgid "Français"
 msgstr ""
 
 #: portfolio/templates/portfolio/base.html:20
-msgid "title"
-msgstr "Clément Floret | Portfolio"
-
-#: portfolio/templates/portfolio/base.html:22
 msgid "meta_description"
-msgstr "Welcome to my online portfolio. Discover my web and mobile projects, and my development skills. Contact me to discuss new opportunities."
+msgstr ""
+"Welcome to my online portfolio. Discover my web and mobile projects, and my "
+"development skills. Contact me to discuss new opportunities."
 
-#: portfolio/templates/portfolio/base.html:29
+#: portfolio/templates/portfolio/base.html:27
 msgid "noscript_message"
 msgstr "You must enable Javascript to view this website."
+
+#: portfolio/views.py:210
+#, python-brace-format
+msgid "Tank you {name}. Your message has been sent."
+msgstr "Tank you {name}. Your message has been sent."
+
+#: portfolio/views.py:211
+msgid "Your message could not be sent."
+msgstr "Your message could not be sent."
+
+#~ msgid "title"
+#~ msgstr "Clément Floret | Portfolio"
