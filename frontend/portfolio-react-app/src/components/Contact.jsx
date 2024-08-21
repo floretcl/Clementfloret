@@ -43,7 +43,9 @@ export default function Contact() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        const requestUrl = "/contact/";
+        const pathName = window.location.pathname;
+        const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
+        const requestUrl = `${langPrefix}/contact/`;
         const requestInit = {
             method: "POST",
             headers: {
@@ -84,8 +86,6 @@ export default function Contact() {
     return (
         <main className="contact">
             <h1 className="contact__title">{t('contact_title')}</h1>
-            {successMessage && <div className="success">{successMessage}</div>}
-            {errorMessage && <div className="error">{errorMessage}</div>}
             <p className="contact__infos">
                 {t('contact_infos')} <a className="hoverable" href={`mailto: ${email}`}
                                         title={t('contact_infos_title')}>{email}</a>
@@ -109,6 +109,8 @@ export default function Contact() {
 
                 <input className="hoverable" type="submit" value={t('contact_button_value')}/>
             </form>
+            {successMessage && <p className="contact__success">{successMessage}</p>}
+            {errorMessage && <p className="contact__error">{errorMessage}</p>}
         </main>
     );
 }
