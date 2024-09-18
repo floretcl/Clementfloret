@@ -114,6 +114,7 @@ class Portfolio(models.Model):
     projects = models.ManyToManyField(Project, verbose_name='projects')
     avatar = models.ImageField('avatar', upload_to='uploads/avatar')
     resume = models.FileField('cv', upload_to='uploads/resume/')
+    resume_fr = models.FileField('cv fr', upload_to='uploads/resume/')
     active = models.BooleanField('actif', default=False)
 
     def __str__(self):

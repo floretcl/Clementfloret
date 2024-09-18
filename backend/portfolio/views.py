@@ -26,7 +26,7 @@ class IndexView(TemplateView):
             "lastname": portfolio.lastname,
             "job_title": getattr(portfolio, 'job_title_fr' if current_language == 'fr' else 'job_title'),
             "contact_email": portfolio.contact_email,
-            "resume": portfolio.resume.url,
+            "resume": getattr(portfolio, 'resume_fr' if current_language == 'fr' else 'resume').url,
         }
         about_links_data = [
             {
@@ -87,8 +87,10 @@ class AboutView(TemplateView):
 
 class ProjectListView(ListView):
     template_name = 'portfolio/projects.html'
-    queryset = serializers.serialize("json", Project.objects.order_by('order'))
     context_object_name = 'projects'
+
+    def get_queryset(self):
+        return serializers.serialize("json", Project.objects.order_by('order'))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
