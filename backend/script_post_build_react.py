@@ -31,13 +31,14 @@ def convert_html_to_django_template(path_input, path_output):
                     "{% get_current_language as LANGUAGE_CODE %}\n\n"
                     "{% load static %}\n\n") + html_content
 
-    # Replace static paths by static template tag
+    # Replace html lang value with language_code template tag
     html_content = re.sub(
         r'<html lang="(.*?)">',
         '<html lang="{{ LANGUAGE_CODE }}">',
         html_content
     )
 
+    # Replace static paths by static template tag
     html_content = re.sub(
         r'"/static/(.*?)"',
         replace_static_paths,
@@ -67,20 +68,20 @@ def convert_html_to_django_template(path_input, path_output):
         html_content
     )
 
-    # Add block template tag Ajouter les blocs de template Django pour meta et content
+    # Add meta block template tag before end of head
     html_content = html_content.replace('</head>', '    {% block meta %}{% endblock %}\n</head>', 1)
 
-    # Écrire le contenu modifié dans un nouveau fichier base.html
+    # Write modified content in base.html file
     with open(path_output, 'w', encoding='utf-8') as file:
         file.write(html_content)
 
 
-# Chemin vers votre fichier index.html d'origine
+# Path to input index.html file
 input_file_path = 'portfolio/static/portfolio/index.html'
-# Chemin où vous voulez enregistrer le fichier base.html
+# Path to output base.html file
 output_file_path = 'portfolio/templates/portfolio/base.html'
 
-# Appeler la fonction pour convertir le fichier
+# Convert index.html file to django template base.html file
 convert_html_to_django_template(input_file_path, output_file_path)
 
-print("La conversion est terminée. Le fichier base.html a été créé.")
+print("Conversion is complete, base.html file has been created.")
