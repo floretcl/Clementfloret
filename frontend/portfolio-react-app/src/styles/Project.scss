@@ -73,6 +73,7 @@
 @media all and (min-width: base.$small) {
   .project {
     padding: 7rem 0;
+    margin-bottom: 8rem;
 
     &__content {
       margin: 2rem 12%;
@@ -100,6 +101,8 @@
 
 @media all and (min-width: base.$medium) {
   .project {
+    margin-bottom: 10rem;
+
     &__content {
       margin: 2rem 15%;
     }
@@ -117,6 +120,7 @@
     flex-direction: row;
     text-align: start;
     padding: 8rem 0;
+    margin-bottom: 12rem;
 
     &__content {
       max-width: 30rem;
@@ -143,6 +147,8 @@
 
 @media all and (min-width: base.$x-large) {
   .project {
+    margin-bottom: 14rem;
+
     &__content {
       max-width: 38rem;
       margin: 0 3rem 0 2rem;
@@ -158,6 +164,10 @@
 
 body.theme-dark {
   .project {
+    &__icon {
+      filter: base.$green-filter;
+    }
+
     &__skills, &__links {
       a {
         color: base.$green-color;

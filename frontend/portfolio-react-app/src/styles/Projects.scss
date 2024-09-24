@@ -71,6 +71,7 @@
   .projects {
     max-width: 32rem;
     padding: 7rem 0;
+    margin-bottom: 8rem;
 
     &__title {
       font-size: 2.5rem;
@@ -88,6 +89,7 @@
 @media all and (min-width: base.$medium) {
   .projects {
     max-width: 38rem;
+    margin-bottom: 10rem;
 
     &__title {
       font-size: 2.75rem;
@@ -105,6 +107,7 @@
   .projects {
     max-width: 48rem;
     padding: 8rem 0;
+    margin-bottom: 12rem;
 
     &__title {
       font-size: 3rem;
@@ -123,6 +126,7 @@
   .projects {
     max-width: 48rem;
     padding: 8rem 0;
+    margin-bottom: 14rem;
 
     &__title {
       font-size: 3.5rem;

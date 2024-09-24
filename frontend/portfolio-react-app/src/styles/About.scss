@@ -124,6 +124,7 @@
   .about {
     max-width: 32rem;
     padding: 7rem 0;
+    margin-bottom: 8rem;
 
     &__avatar {
       width: 15rem;
@@ -156,6 +157,7 @@
 @media all and (min-width: base.$medium) {
   .about {
     max-width: 38rem;
+    margin-bottom: 10rem;
 
     &__title {
       font-size: 2.75rem;
@@ -178,6 +180,7 @@
   .about {
     max-width: 48rem;
     padding: 8rem 0;
+    margin-bottom: 12rem;
 
     &__avatar {
       width: 16rem;
@@ -207,6 +210,8 @@
 
 @media all and (min-width: base.$x-large) {
   .about {
+    margin-bottom: 14rem;
+
     &__avatar {
       width: 17rem;
       height: 17rem;
