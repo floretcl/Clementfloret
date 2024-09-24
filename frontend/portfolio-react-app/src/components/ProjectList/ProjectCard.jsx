@@ -3,11 +3,11 @@ import '../../styles/ProjectCard.scss'
 import {useTranslation} from "react-i18next";
 
 export default function ProjectCard({id, name, image, type}) {
-    const { t } = useTranslation();
+    const {i18n, t } = useTranslation();
 
     return (
         <li>
-            <a className="project-card hoverable" href={`/project/${id}`}>
+            <a className="project-card hoverable" href={`/${i18n.language}/project/${id}`}>
                 <div className="project-card__thumbnail">
                     <img className="project-card__img" src={image.url} alt={`${image.name} ${t('thumbnail')}`}/>
                 </div>
