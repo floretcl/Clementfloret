@@ -14,12 +14,14 @@
 
 - `cd frontend/portfolio-react-app`
 - `npm install`
-- Run app : `npm run dev`
 - Run app preview`npm run preview`
+- Run app : `npm run dev`
 - Eslint`npm run lint`
 - Build app : `npm run build`
-- After build : 
+- After build, create new base template for backend app : 
   - `cd ../../backend`
+  - `./script_post_build_react.py`
+
 
 ### BACK
 
