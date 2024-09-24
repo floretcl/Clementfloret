@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next";
 
 
 export default function Menu() {
-    const { t } = useTranslation();
+    const {i18n ,t } = useTranslation();
     const [isActive, setIsActive] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -14,23 +14,23 @@ export default function Menu() {
         [{
             "id": 0,
             "name": t('home'),
-            "url": "/"
+            "url": "/" + i18n.language + "/"
         }, {
             "id": 1,
             "name": t('about'),
-            "url": "/about"
+            "url": "/" + i18n.language + "/about/"
         }, {
             "id": 2,
             "name": t('projects'),
-            "url": "/projects"
+            "url": "/" + i18n.language + "/projects/"
         }, {
             "id": 3,
             "name": t('contact'),
-            "url": "/contact"
+            "url": "/" + i18n.language + "/contact/"
         }];
 
     const listLinks = menuLinks.map((link) =>
-        <MenuLink key={link.id} name={link.name} url={link.url} />
+        <MenuLink key={link.id} name={link.name} url={link.url} reloadDocument/>
     );
 
     function toggleMenu() {
