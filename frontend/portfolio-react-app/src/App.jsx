@@ -54,11 +54,9 @@ function App() {
     }, [theme]);
 
     return (
-        <div
-            className={`app ${preload ? "preload" : ""}`}
-        >
-            <Header scrollDown={scrollDown}/>
+        <div className={`app ${preload ? "preload" : ""}`}>
             <Router>
+                <Header scrollDown={scrollDown}/>
                 <Routes>
                     <Route path="/:lang/" element={<><Home/><Footer small={true}/></>}/>
                     <Route path="/:lang/about" element={<><About/><Footer small={false}/></>}/>
