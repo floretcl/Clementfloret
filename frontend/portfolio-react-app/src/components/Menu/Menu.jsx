@@ -30,7 +30,7 @@ export default function Menu() {
         }];
 
     const listLinks = menuLinks.map((link) =>
-        <MenuLink key={link.id} name={link.name} url={link.url} reloadDocument/>
+        <MenuLink key={link.id} name={link.name} url={link.url} toggleMenu={toggleMenu} reloadDocument/>
     );
 
     function toggleMenu() {
