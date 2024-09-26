@@ -8,17 +8,38 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 20rem;
+  width: 100%;
 
-  &__thumbnail {
-    position: relative;
+  &-carrousel {
+    position: absolute;
+    z-index: 10;
+    opacity: 0;
+    margin: 0.75rem;
+    transition: all 4s ease-in;
+
+    &--prev {
+      bottom: 50%;
+      opacity: 60%;
+      scale: 75%;
+    }
+
+    &--active {
+      z-index: 20;
+      opacity: 100%;
+    }
+
+    &--next {
+      top: 50%;
+      opacity: 60%;
+      scale: 75%;
+    }
   }
 
   &__img {
-    width: 36rem;
-    height: auto;
+    height: 55vw;
+    width: 80vw;
+    object-fit: cover;
     transition: all 0.3s ease-in;
-    filter: brightness(90%);
   }
 
   &__text {
@@ -44,7 +65,7 @@
   &:hover, &:focus-visible {
     .project-card {
       &__img {
-        filter: brightness(60%) blur(0.05rem);
+        filter: brightness(30%) blur(0.025rem);
         transform: scale(105%);
       }
 
@@ -64,7 +85,7 @@
     height: 22rem;
 
     &__img {
-      width: 40rem;
+      height: 24rem;
     }
   }
 }
@@ -76,7 +97,7 @@
     height: 26rem;
 
     &__img {
-      width: 46rem;
+      height: 28rem;
     }
   }
 }
@@ -88,7 +109,7 @@
     height: 30rem;
 
     &__img {
-      width: 54rem;
+      height: 32rem;
     }
   }
 }
