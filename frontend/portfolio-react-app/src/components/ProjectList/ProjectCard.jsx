@@ -5,37 +5,58 @@ import {useEffect, useState} from "react";
 
 export default function ProjectCard({length, index, id, name, image, type}) {
     const {i18n, t } = useTranslation();
-    const [prev, setPrev] = useState(0);
-    const [next, setNext] = useState(0);
+    const [indexMinus2, setIndexMinus2] = useState(0);
+    const [indexMinus1, setIndexMinus1] = useState(0);
+    const [indexPlus1, setIndexPlus1] = useState(0);
+    const [indexPlus2, setIndexPlus2] = useState(0);
 
     useEffect(() => {
-        const setPreviousItem = () => {
-            if (index !== 1) {
-                setPrev(index - 1);
+        const getIndexMinus2 = () => {
+            if (index - 2 > 0) {
+                setIndexMinus2(index - 2);
             } else {
-                setPrev(length);
+                setIndexMinus2(((index - 2) % length) + length);
             }
         }
 
-        const setNextItem = () => {
-            if (index !== length) {
-                setNext(index + 1);
+        const getIndexMinus1 = () => {
+            if (index - 1 > 0) {
+                setIndexMinus1(index - 1);
             } else {
-                setNext(1);
+                setIndexMinus1(((index - 1) % length) + length);
             }
         }
 
-        setPreviousItem();
-        setNextItem();
+        const getIndexPlus1 = () => {
+            if (index + 1 > length) {
+                setIndexPlus1((index + 1) % length);
+            } else {
+                setIndexPlus1(index + 1);
+            }
+        }
 
+        const getIndexPlus2 = () => {
+            if (index + 2 > length) {
+                setIndexPlus2((index + 2) % length);
+            } else {
+                setIndexPlus2(index + 2);
+            }
+        }
+
+        getIndexMinus2();
+        getIndexMinus1();
+        getIndexPlus1();
+        getIndexPlus2();
     }, [index, length]);
 
     return (
-        <li className={`project-card-carrousel
-            ${id === prev? "project-card-carrousel--prev" : ""} 
-            ${id === index ? "project-card-carrousel--active" : ""} 
-            ${id === next ? "project-card-carrousel--next" : ""}`}>
-            <a className="project-card hoverable" href={`/${i18n.language}/project/${id}`}>
+        <li className={`project-card
+            ${id === indexMinus2 ? "project-card--indexMinus2" : ""}
+            ${id === indexMinus1 ? "project-card--indexMinus1" : ""} 
+            ${id === index ? "project-card--index" : ""} 
+            ${id === indexPlus1 ? "project-card--indexPlus1" : ""}
+            ${id === indexPlus2 ? "project-card--indexPlus2" : ""}`}>
+            <a className="project-card__link hoverable" href={`/${i18n.language}/project/${id}`}>
                 <img className="project-card__img" src={image.url} alt={`${image.name} ${t('thumbnail')}`}/>
                 <div className="project-card__text">
                     <p className="project-card__name">{name}</p>

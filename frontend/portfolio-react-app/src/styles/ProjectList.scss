@@ -5,8 +5,6 @@
 .projects-list {
   &__content {
     width: 90vw;
-    overflow-y: hidden;
-    overflow-x: scroll;
   }
 
   &__buttons {
@@ -47,21 +45,12 @@
   }
 
   &__list {
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.25rem;
-    height: 130vw;
-    padding: 1rem;
-
-    li {
-      overflow: hidden;
-      border: thin base.$dark-color solid;
-      border-radius: 0.2rem;
-      transition: all 0.3s ease-in-out;
-    }
+    height: 120vw;
+    padding: 3rem 0;
   }
 }
 
@@ -76,13 +65,10 @@
     }
 
     &__buttons {
-      width: 90vw;
     }
 
     &__list {
-      height: 22rem;
-      gap: 0.5rem;
-
+      height: 110vw;
     }
   }
 }
@@ -96,12 +82,9 @@
     }
 
     &__buttons {
-      width: 87vw;
     }
 
     &__list {
-      height: 26rem;
-      gap: 0.75rem;
     }
   }
 }
@@ -112,9 +95,6 @@
   .projects-list {
     &__content {
       width: 90vw;
-      overflow-x: hidden;
-      overflow-y: scroll;
-      max-width: 62rem;
     }
 
     &__buttons {
@@ -122,24 +102,6 @@
     }
 
     &__list {
-      display: flex;
-      flex-direction: row;
-      justify-content: start;
-      align-items: center;
-      gap: 1rem;
-      margin: 0;
-      padding: 1rem;
-      height: 30rem;
-    }
-  }
-}
-
-// THEME - DARK
-
-body.theme-dark {
-  .project-list {
-    li {
-      border-color: base.$green-color;
     }
   }
 }

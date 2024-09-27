@@ -1,5 +1,5 @@
-import ProjectList from "./ProjectList/ProjectList.jsx";
 import ProjectFilter from "./ProjectList/ProjectFilter.jsx";
+import ProjectList from "./ProjectList/ProjectList.jsx";
 import {useState} from "react";
 import '../styles/Projects.scss'
 import {useTranslation} from "react-i18next";
