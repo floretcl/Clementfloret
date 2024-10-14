@@ -15,11 +15,11 @@ export default function Cursor({mousePosition}) {
 
     const cursorRef = useRef(null);
 
-    // Position cible
+    // Target position
     const targetPositionBigBall = useRef({x: 0, y: 0});
     const targetPositionSmallBall = useRef({x: 0, y: 0});
 
-    // Dernière position pour le calcul de l'animation
+    // Last position need for calculate animation
     const lastPositionBigBall = useRef({x: 0, y: 0});
     const lastPositionSmallBall = useRef({x: 0, y: 0});
 
@@ -42,7 +42,7 @@ export default function Cursor({mousePosition}) {
             const dySmallBall = targetPositionSmallBall.current.y - lastPositionSmallBall.current.y;
             const distSmallBall = Math.sqrt(dxSmallBall * dxSmallBall + dySmallBall * dySmallBall);
 
-            // Vitesse de l'animation
+            // Animation speed
             const speedBigBall = 0.04;
             const speedSmallBall = 0.5;
 
