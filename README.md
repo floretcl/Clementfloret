@@ -30,7 +30,6 @@
   - `CREATE DATABASE portfolio;`
   - `GRANT *privileges* ON portoflio.* TO 'user'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;`
   - `FLUSH PRIVILEGES;`
-  - `cd backend`
   - `exit`
 - Create virtual env : 
   - `cd backend`
@@ -40,7 +39,7 @@
   - `pip install --upgrade pip`
   - `pip install -r requirements.txt`
     - if mysqlclient fails to install : 
-    - `sudo apt install pkg-config build-essential`
+    - `sudo apt install pkg-config python3-dev default-libmysqlclient-dev build-essential`
 - Create .env file
   - `cd clementfloret`
   - `touch .env`
