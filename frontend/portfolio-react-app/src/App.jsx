@@ -1,7 +1,7 @@
 import {useContext, useEffect, useRef, useState} from 'react'
 import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
 import {ThemeContext} from "./ThemeProvider.jsx";
-import MouseMove from "./components/MouseMove/MouseMove.jsx";
+import MouseEvents from "./components/MouseMove/MouseEvents.jsx";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Home from "./components/Home.jsx";
@@ -67,7 +67,7 @@ function App() {
                     <Route path="*" element={<Navigate to="/en/" replace={true}/>}/>
                 </Routes>
             </Router>
-            <MouseMove/>
+            <MouseEvents/>
         </div>
     );
 }

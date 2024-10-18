@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from "react";
 import Cursor from "../Cursor/Cursor.jsx";
 
-export default function MouseMove() {
+export default function MouseEvents() {
     const bodyRef = useRef(null);
     const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
 
@@ -19,11 +19,7 @@ export default function MouseMove() {
         }
 
         bodyRef.current = document.body;
-
-            document.addEventListener('mousemove', handleMouseMove);
-        return () => {
-            document.removeEventListener('mousemove', handleMouseMove);
-        };
+        document.addEventListener('mousemove', handleMouseMove);
     }, []);
 
     return(
