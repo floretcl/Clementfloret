@@ -28,7 +28,7 @@
 - Create new database and user :
   - `sudo mariadb`
   - `CREATE DATABASE portfolio;`
-  - `GRANT *privileges* ON portoflio.* TO 'user'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;`
+  - `GRANT *privileges* ON portfolio.* TO 'user'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;`
   - `FLUSH PRIVILEGES;`
   - `exit`
 - Create virtual env : 

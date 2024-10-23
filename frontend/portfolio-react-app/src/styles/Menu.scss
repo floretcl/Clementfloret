@@ -50,22 +50,22 @@
           opacity: 1;
           border-color: base.$purple-color;
           animation: 0.25s ease-in 0s forwards moving-line;
-        }
 
-        @keyframes moving-line {
-          from {
-            border-color: base.$grey-color;
-            margin-left: 4.5rem;
-            margin-right: 4.5rem;
-          }
-          75% {
-            margin-left: 1rem;
-            margin-right: 1rem;
-          }
-          to {
-            border-color: base.$purple-color;
-            margin-left: 3rem;
-            margin-right: 3rem;
+          @keyframes moving-line {
+            from {
+              border-color: base.$grey-color;
+              margin-left: 4.5rem;
+              margin-right: 4.5rem;
+            }
+            75% {
+              margin-left: 1rem;
+              margin-right: 1rem;
+            }
+            to {
+              border-color: base.$purple-color;
+              margin-left: 3rem;
+              margin-right: 3rem;
+            }
           }
         }
       }
@@ -272,6 +272,7 @@
     }
   }
 }
+
 // -- MEDIA QUERIES -- //
 
 // MEDIA QUERY - SMALL (640p)
@@ -354,6 +355,7 @@
       display: none;
     }
 
+    &--open,
     &--close {
       .menu__content {
         animation: none;
