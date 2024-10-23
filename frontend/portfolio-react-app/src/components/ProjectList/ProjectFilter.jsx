@@ -4,9 +4,10 @@ export default function ProjectFilter({filterChange, name}) {
     return (
         <li>
             <button
-                type="button"
                 onClick={filterChange}
-                className="projects__filter-btn hoverable">{name}</button>
+                type="button"
+                className="projects__filter-btn hoverable">{name}
+            </button>
         </li>
     );
 }
