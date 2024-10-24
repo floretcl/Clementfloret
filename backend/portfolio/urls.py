@@ -1,12 +1,24 @@
 from django.urls import path
 
-from .views import IndexView, AboutView, ContactView, ProjectListView, ProjectDetailView
+from .views import (
+    IndexView,
+    PortfolioView,
+    PortfolioLinksView,
+    PortfolioSkillsView,
+    ProjectTypesView,
+    ProjectsView,
+    ProjectView,
+    ContactView
+)
 
 app_name = 'portfolio'
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
-    path('about/', AboutView.as_view(), name='about'),
-    path('projects/', ProjectListView.as_view(), name='project-list'),
-    path('project/<int:pk>/', ProjectDetailView.as_view(), name='project-detail'),
-    path('contact/', ContactView.as_view(), name='contact'),
+    path('api/portfolio', PortfolioView.as_view(), name='about'),
+    path('api/portfolio_links', PortfolioLinksView.as_view(), name='portfolio-links'),
+    path('api/portfolio_skills', PortfolioSkillsView.as_view(), name='portfolio-skills'),
+    path('api/project_types', ProjectTypesView.as_view(), name='project-types'),
+    path('api/projects', ProjectsView.as_view(), name='projects'),
+    path('api/project', ProjectView.as_view(), name='project'),
+    path('api/contact', ContactView.as_view(), name='contact'),
 ]
