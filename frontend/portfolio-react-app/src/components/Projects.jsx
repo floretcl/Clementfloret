@@ -1,17 +1,43 @@
 import ProjectList from "./ProjectList/ProjectList.jsx";
 import ProjectFilter from "./ProjectList/ProjectFilter.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import '../styles/Projects.scss'
 import {useTranslation} from "react-i18next";
 
 export default function Projects() {
     const {t} = useTranslation();
     const [projectFilter, setProjectFilter] = useState("");
-    const filters = JSON.parse(document.getElementById("project-types").textContent);
-
-    const listFilters = filters.map((filter) =>
-        <ProjectFilter key={filter.id} name={filter.name} filterChange={() => setProjectFilter(filter.name)} />
+    const [projectTypes, setProjectTypes] = useState([]);
+    const listFilters = projectTypes.map((type) =>
+        <ProjectFilter key={type.id} name={type.name} filterChange={() => setProjectFilter(type.name)} />
     );
+
+    useEffect(() => {
+        function fetchRequest() {
+            const pathName = window.location.pathname;
+            const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
+            const url = `${langPrefix}/api/project_types`;
+
+            const init = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                mode: 'same-origin',
+                cache: 'default',
+            };
+
+            fetch(url, init)
+                .then(response => response.json())
+                .then(data => {
+                    setProjectTypes(data);
+                })
+                .catch(error => {
+                    console.log(`Error getting project types data: ${error}`);
+                });
+        }
+        fetchRequest();
+    }, [projectTypes]);
 
     return (
         <main className="projects">

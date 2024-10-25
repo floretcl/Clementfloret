@@ -1,9 +1,10 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import '../styles/Contact.scss'
 import {useTranslation} from "react-i18next";
 
 export default function Contact() {
     const {t} = useTranslation();
+    const [email, setEmail] = useState("");
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -13,7 +14,6 @@ export default function Contact() {
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [errors, setErrors] = useState({});
-    const email = JSON.parse(document.getElementById("portfolio").textContent).contact_email;
 
     const csrftoken = getCookie('csrftoken');
 
@@ -82,6 +82,34 @@ export default function Contact() {
                 }
             });
     }
+
+    useEffect(() => {
+        function fetchRequest() {
+            const pathName = window.location.pathname;
+            const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
+            const url = `${langPrefix}/api/portfolio`;
+
+            const init = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                mode: 'same-origin',
+                cache: 'default',
+            };
+
+            fetch(url, init)
+                .then(response => response.json())
+                .then(data => {
+                    setEmail(data.contact_email);
+                })
+                .catch(error => {
+                    console.log(`Error getting portfolio email data: ${error}`);
+                });
+        }
+        fetchRequest();
+    }, [email]);
+
 
     return (
         <main className="contact">

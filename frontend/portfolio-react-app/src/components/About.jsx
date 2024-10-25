@@ -1,15 +1,67 @@
 import AboutSkill from "./About/AboutSkill.jsx";
 import '../styles/About.scss'
 import {useTranslation} from "react-i18next";
+import {useEffect, useState} from "react";
 
 export default function About() {
     const { t } = useTranslation();
-    const portfolio = JSON.parse(document.getElementById("portfolio").textContent)
-    const skills = JSON.parse(document.getElementById("about-skills").textContent);
+    const [portfolio, setPortfolio] = useState({});
+    const [portfolioSkills, setPortfolioSkills] = useState([]);
 
-    const listSkills = skills.map(skill =>
+    const listSkills = portfolioSkills.map(skill =>
         <AboutSkill key={skill.id} name={skill.name} icon={skill.icon} />
     );
+
+    useEffect(() => {
+        const pathName = window.location.pathname;
+        const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
+
+        function fetchRequestPortfolio() {
+            const url = `${langPrefix}/api/portfolio`;
+
+            const init = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                mode: 'same-origin',
+                cache: 'default',
+            };
+
+            fetch(url, init)
+                .then(response => response.json())
+                .then(data => {
+                    setPortfolio(data);
+                })
+                .catch(error => {
+                    console.log(`Error getting portfolio data: ${error}`);
+                });
+        }
+
+        function fetchRequestSkills() {
+            const url = `${langPrefix}/api/portfolio_skills`;
+
+            const init = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                mode: 'same-origin',
+                cache: 'default',
+            };
+
+            fetch(url, init)
+                .then(response => response.json())
+                .then(data => {
+                    setPortfolioSkills(data);
+                })
+                .catch(error => {
+                    console.log(`Error getting portfolio skills data: ${error}`);
+                });
+        }
+        fetchRequestPortfolio();
+        fetchRequestSkills();
+    }, [portfolio, portfolioSkills]);
 
     return (
         <main className="about">
