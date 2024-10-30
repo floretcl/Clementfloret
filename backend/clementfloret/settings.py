@@ -103,6 +103,7 @@ DATABASES = {
         'PORT': env('DB_PORT'),
         'CONN_MAX_AGE': 500,
         'OPTIONS': {
+            'unix_socket': '/tmp/mysql.sock',
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         }
     }
