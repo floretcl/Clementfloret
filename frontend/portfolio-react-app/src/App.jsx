@@ -1,7 +1,7 @@
 import {useContext, useEffect, useRef, useState} from 'react'
 import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
 import {ThemeContext} from "./ThemeProvider.jsx";
-import MouseEvents from "./components/MouseMove/MouseEvents.jsx";
+import MouseEvents from "./components/MouseEvents/MouseEvents.jsx";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Home from "./components/Home.jsx";
