@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import '../../styles/ProjectList.scss'
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import ProjectCard from "./ProjectCard.jsx";
 
 export default function ProjectList({filter}) {
@@ -9,8 +9,8 @@ export default function ProjectList({filter}) {
     const pointerEndX = useRef(0);
     const isSwiping = useRef(false);
     const [index, setIndex] = useState(1);
-    
-    const projects = JSON.parse(document.getElementById("projects").textContent);
+
+    const [projects, setProjects] = useState([]);
 
     const projectsFiltered = projectFiltration(projects);
     const projectsLength = projectsFiltered.length;
@@ -120,6 +120,33 @@ export default function ProjectList({filter}) {
     function nextItem() {
         setIndex((index) => (index === projectsLength ? 1 : index + 1));
     }
+
+    useEffect(() => {
+        function fetchRequest() {
+            const pathName = window.location.pathname;
+            const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
+            const url = `${langPrefix}/api/projects`;
+
+            const init = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                mode: 'same-origin',
+                cache: 'default',
+            };
+
+            fetch(url, init)
+                .then(response => response.json())
+                .then(data => {
+                    setProjects(data);
+                })
+                .catch(error => {
+                    console.log(`Error getting projects data: ${error}`);
+                });
+        }
+        fetchRequest();
+    }, [projects]);
 
     return (
         <>
