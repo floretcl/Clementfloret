@@ -38,8 +38,6 @@
   - `source .venv/bin/activate`
   - `pip install --upgrade pip`
   - `pip install -r requirements.txt`
-    - if mysqlclient fails to install : 
-    - `sudo apt install pkg-config python3-dev default-libmysqlclient-dev build-essential`
 - Create .env file
   - `cd clementfloret`
   - `touch .env`
