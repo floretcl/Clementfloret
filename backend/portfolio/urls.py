@@ -13,7 +13,7 @@ from .views import (
 
 app_name = 'portfolio'
 urlpatterns = [
-    path('', IndexView.as_view(), name='index'),
+    path(r'^.*$', IndexView.as_view(), name='index'),
     path('api/portfolio', PortfolioView.as_view(), name='about'),
     path('api/portfolio_links', PortfolioLinksView.as_view(), name='portfolio-links'),
     path('api/portfolio_skills', PortfolioSkillsView.as_view(), name='portfolio-skills'),
