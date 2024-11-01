@@ -49,7 +49,7 @@ class PortfolioLinksView(View):
             for link in links
         ]
 
-        return JsonResponse(links_data)
+        return JsonResponse(links_data, safe=False)
 
 
 class PortfolioSkillsView(View):
@@ -66,7 +66,7 @@ class PortfolioSkillsView(View):
             for skill in skills if skill.icon is not None
         ]
 
-        return JsonResponse(skills_data)
+        return JsonResponse(skills_data, safe=False)
 
 
 class ProjectTypesView(View):
@@ -82,7 +82,7 @@ class ProjectTypesView(View):
             for project_type in project_types
         ]
 
-        return JsonResponse(project_types_data)
+        return JsonResponse(project_types_data, safe=False)
 
 
 class ProjectsView(View):
@@ -108,7 +108,7 @@ class ProjectsView(View):
             for project in projects
         ]
 
-        return JsonResponse(projects_data)
+        return JsonResponse(projects_data, safe=False)
 
 
 class ProjectView(View):
