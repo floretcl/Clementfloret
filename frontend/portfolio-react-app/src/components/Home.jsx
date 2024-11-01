@@ -1,11 +1,39 @@
 import Social from "./Social/Social.jsx";
 import ResumeButton from "./ResumeButton/ResumeButton.jsx";
 import '../styles/Home.scss'
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
+import {useEffect, useState} from "react";
 
 export default function Home() {
-    const { t } = useTranslation();
-    const portfolio = JSON.parse(document.getElementById("portfolio").textContent);
+    const [portfolio, setPortfolio] = useState({});
+    const {t} = useTranslation();
+
+    useEffect(() => {
+        function fetchRequest() {
+            const pathName = window.location.pathname;
+            const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
+            const url = `${langPrefix}/api/portfolio`;
+
+            const init = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                mode: 'same-origin',
+                cache: 'default',
+            };
+
+            fetch(url, init)
+                .then(response => response.json())
+                .then(data => {
+                    setPortfolio(data);
+                })
+                .catch(error => {
+                    console.log(`Error getting portfolio data: ${error}`);
+                });
+        }
+        fetchRequest();
+    }, [portfolio]);
 
     return (
         <main className="home">

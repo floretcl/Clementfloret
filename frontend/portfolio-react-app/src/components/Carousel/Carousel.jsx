@@ -2,25 +2,24 @@ import {useState} from "react";
 import CarouselItem from "./CarouselItem.jsx";
 import '../../styles/Carousel.scss'
 import CarouselDot from "./CarouselDot.jsx";
+import PropTypes from "prop-types";
 
-export default function Carousel() {
+export default function Carousel({images}) {
     const [index, setIndex] = useState(0);
 
-    const projectImages = JSON.parse(document.getElementById("project-images").textContent);
-
-    const listItems = projectImages.map((item, i) =>
+    const listItems = images.map((item, i) =>
         <CarouselItem key={i} id={i} index={index} name={item.name} image={item.image} />
     );
-    const listDots = projectImages.map((item, i) =>
+    const listDots = images.map((item, i) =>
         <CarouselDot key={i} id={i} index={index} />
     );
 
     function previousItem() {
-        setIndex((index) => (index === 0 ? projectImages.length - 1 : index - 1));
+        setIndex((index) => (index === 0 ? images.length - 1 : index - 1));
     }
 
     function nextItem() {
-        setIndex((index) => (index === projectImages.length - 1 ? 0 : index + 1));
+        setIndex((index) => (index === images.length - 1 ? 0 : index + 1));
     }
 
     return (
@@ -37,4 +36,8 @@ export default function Carousel() {
             </div>
         </div>
     );
+}
+
+Carousel.propTypes = {
+    images: PropTypes.array.isRequired
 }

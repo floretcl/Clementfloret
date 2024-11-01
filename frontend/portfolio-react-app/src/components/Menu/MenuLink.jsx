@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
+import {NavLink} from "react-router-dom";
 
 export default function MenuLink({name, url, toggleMenu}) {
     return (
         <li className="menu__link">
-            <a href={url} onClick={toggleMenu} className="hoverable">
+            <NavLink to={url} onClick={toggleMenu} className="hoverable">
                 {name}
-            </a>
+            </NavLink>
             <hr className="menu__divider"/>
         </li>
     );
