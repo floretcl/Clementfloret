@@ -142,7 +142,7 @@ class ProjectView(View):
             ]
         }
 
-        return JsonResponse(project_data)
+        return JsonResponse(project_data, safe=False)
 
 
 class ContactView(View):
