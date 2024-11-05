@@ -3,8 +3,10 @@ import ProjectSkill from "./Project/ProjectSkill.jsx";
 import ProjectLink from "./Project/ProjectLink.jsx";
 import '../styles/Project.scss'
 import {useEffect, useState} from "react";
+import {useTranslation} from "react-i18next";
 
 export default function Project() {
+    const {t} = useTranslation();
     const [project, setProject] = useState(null);
 
     useEffect(() => {
@@ -47,18 +49,21 @@ export default function Project() {
                         <p className="project__text">
                             {project.description}
                         </p>
-                        <ol className="project__skills">
-                            {project.skills.map((skill) =>
-                                <ProjectSkill key={skill[0]} name={skill[1]}/>
-                            ).reduce((prevComponents, component) => {
-                                return prevComponents === null ? [component] : [...prevComponents, "-", component];
-                            }, null)}
-                        </ol>
-                        <ol className="project__links">
-                            {project.links.map((link) =>
-                                <ProjectLink key={link.id} url={link.url} name={link.name} icon={link.icon}/>
-                            )}
-                        </ol>
+                        <p>
+                            <ol className="project__skills">
+                                {t('Skills')} :
+                                {project.skills.map((skill) =>
+                                    <ProjectSkill key={skill[0]} name={skill[1]}/>
+                                ).reduce((prevComponents, component) => {
+                                    return prevComponents === null ? [component] : [...prevComponents, "-", component];
+                                }, null)}
+                            </ol>
+                            <ol className="project__links">
+                                {project.links.map((link) =>
+                                    <ProjectLink key={link.id} url={link.url} name={link.name} icon={link.icon}/>
+                                )}
+                            </ol>
+                        </p>
                     </div>
                 </>
             ) : (

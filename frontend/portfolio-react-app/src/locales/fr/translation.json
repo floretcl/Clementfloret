@@ -23,5 +23,6 @@
   "icon": "icône",
   "link_to": "Lien vers",
   "thumbnail": "miniature",
-  "resume": "CV"
+  "resume": "CV",
+  "skills": "Compétences"
 }
