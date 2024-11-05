@@ -25,6 +25,10 @@
     a {
       color: base.$dark-color;
       font-weight: bolder;
+
+      &:hover, &:focus-visible {
+        color: base.$purple-color;
+      }
     }
   }
 
@@ -133,6 +137,10 @@ body.theme-dark {
     &__infos {
       a {
         color: base.$green-color;
+
+        &:hover, &:focus-visible {
+          color: base.$purple-color;
+        }
       }
     }
 
