@@ -29,10 +29,6 @@ export default function Menu() {
             "url": "/" + i18n.language + "/contact/"
         }];
 
-    const listLinks = menuLinks.map((link) =>
-        <MenuLink key={link.id} name={link.name} url={link.url} toggleMenu={toggleMenu} reloadDocument/>
-    );
-
     function toggleMenu() {
         if (isActive === true) {
             setIsOpen(false);
@@ -58,7 +54,9 @@ export default function Menu() {
             <div className="menu__content">
                 <Mode/>
                 <ol className="menu__list">
-                    {listLinks}
+                    {menuLinks && menuLinks.map((link) =>
+                        <MenuLink key={link.id} name={link.name} url={link.url} toggleMenu={toggleMenu} reloadDocument/>
+                    )}
                 </ol>
             </div>
         </div>
