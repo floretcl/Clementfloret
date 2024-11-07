@@ -2,11 +2,15 @@ import Carousel from "./Carousel/Carousel.jsx";
 import ProjectSkill from "./Project/ProjectSkill.jsx";
 import ProjectLink from "./Project/ProjectLink.jsx";
 import '../styles/Project.scss'
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useTranslation} from "react-i18next";
+import {useParams} from "react-router-dom";
 
 export default function Project() {
+    let params = useParams();
     const {t} = useTranslation();
+    const lang = useRef(params.lang);
+    const id = useRef(params.id);
     const [project, setProject] = useState(null);
 
     useEffect(() => {
@@ -14,11 +18,7 @@ export default function Project() {
     }, []);
 
     function fetchProject() {
-        const pathName = window.location.pathname;
-        const pathNameSplit = pathName.split('/');
-        const id = pathNameSplit[pathNameSplit.length - 1];
-        const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
-        const url = `${langPrefix}/api/project?id=${id}`;
+        const url = `/${lang.current}/api/project?id=${id.current}`;
 
         const init = {
             method: "GET",

@@ -1,38 +1,8 @@
 import SocialLink from "./SocialLink.jsx";
 import '../../styles/Social.scss'
-import {useEffect, useState} from "react";
+import PropTypes from "prop-types";
 
-export default function Social() {
-    const [portfolioLinks, setPortfolioLinks] = useState(null);
-
-    useEffect(() => {
-        fetchPortfolioLinks();
-    }, []);
-
-    function fetchPortfolioLinks() {
-        const pathName = window.location.pathname;
-        const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
-        const url = `${langPrefix}/api/portfolio_links`;
-
-        const init = {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            mode: 'same-origin',
-            cache: 'default',
-        };
-
-        fetch(url, init)
-            .then(response => response.json())
-            .then(data => {
-                setPortfolioLinks(data);
-            })
-            .catch(error => {
-                console.log(`Error getting portfolio links data: ${error}`);
-            });
-    }
-
+export default function Social({portfolioLinks}) {
     return (
         <ol className="social">
             {portfolioLinks && portfolioLinks.map((link) =>
@@ -40,4 +10,8 @@ export default function Social() {
             )}
         </ol>
     );
+}
+
+Social.propTypes = {
+    portfolioLinks: PropTypes.array.isRequired,
 }

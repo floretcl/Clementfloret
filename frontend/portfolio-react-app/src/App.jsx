@@ -14,10 +14,32 @@ import './styles/App.scss'
 
 function App() {
     const {theme} = useContext(ThemeContext);
+    const bodyRef = useRef(null);
     const [scrollDown, setScrollDown] = useState(true);
     const [preload, setPreload] = useState(true);
-    const bodyRef = useRef(null);
+    const [portfolio, setPortfolio] = useState({});
+    const [portfolioLinks, setPortfolioLinks] = useState(null);
 
+    useEffect(() => {
+        bodyRef.current = document.body;
+
+        timeoutPreload()
+
+        handleScroll();
+        window.addEventListener("scroll", handleScroll);
+
+        if ((theme === "dark") && bodyRef) {
+            bodyRef.current.classList.add("theme-dark");
+        } else {
+            bodyRef.current.classList.remove("theme-dark");
+        }
+
+        fetchPortfolio();
+        fetchPortfolioLinks();
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [theme]);
 
     function timeoutPreload() {
         setTimeout(() => {
@@ -34,37 +56,79 @@ function App() {
         }
     }
 
-    useEffect(() => {
-        bodyRef.current = document.body;
+    function fetchPortfolio() {
+        const pathName = window.location.pathname;
+        const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
+        const url = `${langPrefix}/api/portfolio`;
 
-        timeoutPreload()
-
-        handleScroll();
-        window.addEventListener("scroll", handleScroll);
-
-        if ((theme === "dark") && bodyRef) {
-            bodyRef.current.classList.add("theme-dark");
-        } else {
-            bodyRef.current.classList.remove("theme-dark");
-        }
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
+        const init = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            mode: 'same-origin',
+            cache: 'default',
         };
-    }, [theme]);
+
+        fetch(url, init)
+            .then(response => response.json())
+            .then(data => {
+                setPortfolio(data);
+            })
+            .catch(error => {
+                console.log(`Error getting portfolio data: ${error}`);
+            });
+    }
+
+    function fetchPortfolioLinks() {
+        const pathName = window.location.pathname;
+        const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
+        const url = `${langPrefix}/api/portfolio_links`;
+
+        const init = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            mode: 'same-origin',
+            cache: 'default',
+        };
+
+        fetch(url, init)
+            .then(response => response.json())
+            .then(data => {
+                setPortfolioLinks(data);
+            })
+            .catch(error => {
+                console.log(`Error getting portfolio links data: ${error}`);
+            });
+    }
 
     return (
         <div className={`app ${preload ? "preload" : ""}`}>
             <Router>
                 <Header scrollDown={scrollDown}/>
                 <Routes>
-                    <Route path="/:lang/" element={<><Home/><Footer small={true}/></>}/>
-                    <Route path="/:lang/about" element={<><About/><Footer small={false}/></>}/>
-                    <Route path="/:lang/projects/:type?" element={<><Projects/> <Footer small={false}/></>}/>
-                    <Route path="/:lang/project/:id" element={<><Project/> <Footer small={false}/></>}/>
-                    <Route path="/:lang/contact" element={<><Contact/> <Footer small={false}/></>}/>
-                    <Route path="*" element={<Navigate to="/en/" replace={true}/>}/>
+                    <Route
+                        path="/:lang/"
+                        element={<Home portfolio={portfolio} portfolioLinks={portfolioLinks} />}/>
+                    <Route
+                        path="/:lang/about"
+                        element={<About portfolio={portfolio} />}/>
+                    <Route
+                        path="/:lang/projects/:type?"
+                        element={<Projects/>}/>
+                    <Route
+                        path="/:lang/project/:id"
+                        element={<Project/>}/>
+                    <Route
+                        path="/:lang/contact"
+                        element={<Contact email={portfolio.contact_email} />}/>
+                    <Route
+                        path="*"
+                        element={<Navigate to="/en/" replace={true}/>}/>
                 </Routes>
+                <Footer portfolio={portfolio} portfolioLinks={portfolioLinks} />
             </Router>
             <MouseEvents/>
         </div>

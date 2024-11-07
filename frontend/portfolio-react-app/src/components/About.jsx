@@ -1,46 +1,22 @@
 import AboutSkill from "./About/AboutSkill.jsx";
 import '../styles/About.scss'
 import {useTranslation} from "react-i18next";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
+import {useParams} from "react-router-dom";
+import PropTypes from "prop-types";
 
-export default function About() {
+export default function About({portfolio}) {
+    let params = useParams();
     const {t} = useTranslation();
-    const [portfolio, setPortfolio] = useState(null);
+    const lang = useRef(params.lang);
     const [portfolioSkills, setPortfolioSkills] = useState(null);
 
     useEffect(() => {
-        fetchPortfolio();
         fetchSkills();
     }, []);
 
-    function fetchPortfolio() {
-        const pathName = window.location.pathname;
-        const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
-        const url = `${langPrefix}/api/portfolio`;
-
-        const init = {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            mode: 'same-origin',
-            cache: 'default',
-        };
-
-        fetch(url, init)
-            .then(response => response.json())
-            .then(data => {
-                setPortfolio(data);
-            })
-            .catch(error => {
-                console.log(`Error getting portfolio data: ${error}`);
-            });
-    }
-
     function fetchSkills() {
-        const pathName = window.location.pathname;
-        const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
-        const url = `${langPrefix}/api/portfolio_skills`;
+        const url = `/${lang.current}/api/portfolio_skills`;
 
         const init = {
             method: "GET",
@@ -98,4 +74,8 @@ export default function About() {
             )}
         </main>
     );
+}
+
+About.propTypes = {
+    portfolio: PropTypes.object.isRequired,
 }

@@ -1,10 +1,13 @@
-import {useEffect, useState} from "react";
+import {useRef, useState} from "react";
 import '../styles/Contact.scss'
 import {useTranslation} from "react-i18next";
+import {useParams} from "react-router-dom";
+import PropTypes from "prop-types";
 
-export default function Contact() {
+export default function Contact({email}) {
+    let params = useParams();
     const {t} = useTranslation();
-    const [email, setEmail] = useState("");
+    const lang = useRef(params.lang);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -43,9 +46,7 @@ export default function Contact() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        const pathName = window.location.pathname;
-        const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
-        const requestUrl = `${langPrefix}/contact/`;
+        const requestUrl = `/${lang.current}/contact/`;
         const requestInit = {
             method: "POST",
             headers: {
@@ -83,34 +84,6 @@ export default function Contact() {
             });
     }
 
-    useEffect(() => {
-        function fetchRequest() {
-            const pathName = window.location.pathname;
-            const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
-            const url = `${langPrefix}/api/portfolio`;
-
-            const init = {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                mode: 'same-origin',
-                cache: 'default',
-            };
-
-            fetch(url, init)
-                .then(response => response.json())
-                .then(data => {
-                    setEmail(data.contact_email);
-                })
-                .catch(error => {
-                    console.log(`Error getting portfolio email data: ${error}`);
-                });
-        }
-        fetchRequest();
-    }, [email]);
-
-
     return (
         <main className="contact">
             <h1 className="contact__title">{t('contact_title')}</h1>
@@ -141,4 +114,8 @@ export default function Contact() {
             {errorMessage && <p className="contact__error">{errorMessage}</p>}
         </main>
     );
+}
+
+Contact.propTypes = {
+    email: PropTypes.string.isRequired,
 }
