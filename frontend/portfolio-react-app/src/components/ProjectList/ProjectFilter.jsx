@@ -1,18 +1,18 @@
 import PropTypes from "prop-types";
+import {NavLink} from "react-router-dom";
 
-export default function ProjectFilter({filterChange, name}) {
+export default function ProjectFilter({name, url, setFilter}) {
     return (
         <li>
-            <button
-                onClick={filterChange}
-                type="button"
-                className="projects__filter-btn hoverable">{name}
-            </button>
+            <NavLink to={url} onClick={setFilter} className="projects__filter-link hoverable">
+                {name}
+            </NavLink>
         </li>
     );
 }
 
 ProjectFilter.propTypes = {
-    filterChange: PropTypes.func.isRequired,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    setFilter: PropTypes.func.isRequired,
 }

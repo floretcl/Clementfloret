@@ -1,24 +1,25 @@
 import ProjectList from "./ProjectList/ProjectList.jsx";
 import ProjectFilter from "./ProjectList/ProjectFilter.jsx";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import '../styles/Projects.scss'
 import {useTranslation} from "react-i18next";
+import {useParams} from "react-router-dom";
 
 export default function Projects() {
-    const {t} = useTranslation();
-    const [projectFilter, setProjectFilter] = useState("");
+    let params = useParams();
+    const { t } = useTranslation();
+    const lang = useRef(params.lang);
     const [projectTypes, setProjectTypes] = useState(null);
     const [projects, setProjects] = useState(null);
+    const [filter, setFilter] = useState(params.type);
 
     useEffect(() => {
         fetchProjectTypes();
-        fetchProjects();
-    }, []);
+        fetchProjects(filter);
+    }, [filter]);
 
     function fetchProjectTypes() {
-        const pathName = window.location.pathname;
-        const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
-        const url = `${langPrefix}/api/project_types`;
+        const url = `/${lang.current}/api/project_types`;
 
         const init = {
             method: "GET",
@@ -39,10 +40,11 @@ export default function Projects() {
             });
     }
 
-    function fetchProjects() {
-        const pathName = window.location.pathname;
-        const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
-        const url = `${langPrefix}/api/projects`;
+    function fetchProjects(filter) {
+        let url = `/${lang.current}/api/projects`;
+        if (filter !== 0 && filter !== undefined) {
+            url += `?type=${filter}`;
+        }
 
         const init = {
             method: "GET",
@@ -70,19 +72,21 @@ export default function Projects() {
                 <ProjectFilter
                     key={0}
                     name={t('project_filter_all')}
-                    filterChange={() => setProjectFilter("")}
+                    url={`/${lang.current}/projects/`}
+                    setFilter={()=> setFilter(0)}
                 />
                 {projectTypes && projectTypes.map((type) =>
                     <ProjectFilter
                         key={type.id}
                         name={type.name}
-                        filterChange={() => setProjectFilter(type.name)}
+                        url={`/${lang.current}/projects/${type.id}`}
+                        setFilter={() => setFilter(type.id)}
                     />
                 )}
             </ol>
             <div className="projects__list">
                 {projects ? (
-                    <ProjectList filter={projectFilter} projects={projects} />
+                    <ProjectList projects={projects} />
                 ) : (
                     <p>Loading...</p>
                 )}

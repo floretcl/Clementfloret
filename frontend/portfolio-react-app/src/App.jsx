@@ -60,8 +60,7 @@ function App() {
                 <Routes>
                     <Route path="/:lang/" element={<><Home/><Footer small={true}/></>}/>
                     <Route path="/:lang/about" element={<><About/><Footer small={false}/></>}/>
-                    <Route path="/:lang/projects" element={<><Projects/> <Footer small={false}/></>}/>
-                    <Route path="/:lang/projects/:type" element={<><Projects/> <Footer small={false}/></>}/>
+                    <Route path="/:lang/projects/:type?" element={<><Projects/> <Footer small={false}/></>}/>
                     <Route path="/:lang/project/:id" element={<><Project/> <Footer small={false}/></>}/>
                     <Route path="/:lang/contact" element={<><Contact/> <Footer small={false}/></>}/>
                     <Route path="*" element={<Navigate to="/en/" replace={true}/>}/>

@@ -3,33 +3,23 @@ import '../../styles/ProjectList.scss'
 import {useRef, useState} from "react";
 import ProjectCard from "./ProjectCard.jsx";
 
-export default function ProjectList({filter, projects}) {
+export default function ProjectList({projects}) {
     const contentRef = useRef(null);
     const pointerStartX = useRef(0);
     const pointerEndX = useRef(0);
     const isSwiping = useRef(false);
     const [index, setIndex] = useState(1);
 
-    const projectsFiltered = projectFiltration(projects);
-
-    function projectFiltration(projects) {
-        if (filter !== "") {
-            return projects.filter(project => project.type === filter);
-        } else {
-            return projects;
-        }
-    }
-
     function getClassName(i) {
         if (i === index) {
             return "project-card--index";
-        } else if (i === getIndexPlus2() && projectsFiltered.length >= 5) {
+        } else if (i === getIndexPlus2() && projects.length >= 5) {
             return "project-card--indexPlus2";
-        } else if (i === getIndexPlus1() && projectsFiltered.length >= 3) {
+        } else if (i === getIndexPlus1() && projects.length >= 3) {
             return "project-card--indexPlus1";
-        } else if (i === getIndexMinus1() && projectsFiltered.length >= 3) {
+        } else if (i === getIndexMinus1() && projects.length >= 3) {
             return "project-card--indexMinus1";
-        } else if (i === getIndexMinus2() && projectsFiltered.length >= 5) {
+        } else if (i === getIndexMinus2() && projects.length >= 5) {
             return "project-card--indexMinus2";
         } else {
             return "";
@@ -40,7 +30,7 @@ export default function ProjectList({filter, projects}) {
         if (index - 2 > 0) {
             return (index - 2);
         } else {
-            return (((index - 2) % projectsFiltered.length) + projectsFiltered.length);
+            return (((index - 2) % projects.length) + projects.length);
         }
     }
 
@@ -48,21 +38,21 @@ export default function ProjectList({filter, projects}) {
         if (index - 1 > 0) {
             return (index - 1);
         } else {
-            return (((index - 1) % projectsFiltered.length) + projectsFiltered.length);
+            return (((index - 1) % projects.length) + projects.length);
         }
     }
 
     function getIndexPlus1() {
-        if (index + 1 > projectsFiltered.length) {
-            return ((index + 1) % projectsFiltered.length);
+        if (index + 1 > projects.length) {
+            return ((index + 1) % projects.length);
         } else {
             return (index + 1);
         }
     }
 
     function getIndexPlus2() {
-        if (index + 2 > projectsFiltered.length) {
-            return ((index + 2) % projectsFiltered.length);
+        if (index + 2 > projects.length) {
+            return ((index + 2) % projects.length);
         } else {
             return (index + 2);
         }
@@ -95,16 +85,16 @@ export default function ProjectList({filter, projects}) {
     }
 
     function previousItem() {
-        setIndex((index) => (index === 1 ? projectsFiltered.length : index - 1));
+        setIndex((index) => (index === 1 ? projects.length : index - 1));
     }
 
     function nextItem() {
-        setIndex((index) => (index === projectsFiltered.length ? 1 : index + 1));
+        setIndex((index) => (index === projects.length ? 1 : index + 1));
     }
 
     return (
         <>
-            {projectsFiltered ? (
+            {projects ? (
                 <>
                     <div className="projects-list__buttons-yaxis">
                         <button className="projects-list__button hoverable" onClick={previousItem}>
@@ -144,7 +134,7 @@ export default function ProjectList({filter, projects}) {
                     </div>
                     <div ref={contentRef} className="projects-list__content">
                         <ol className="projects-list__list">
-                            {projectsFiltered.map((project, index) =>
+                            {projects.map((project, index) =>
                                 <ProjectCard key={index + 1}
                                              id={index + 1}
                                              name={project.name}
@@ -168,6 +158,5 @@ export default function ProjectList({filter, projects}) {
 }
 
 ProjectList.propTypes = {
-    filter: PropTypes.string.isRequired,
     projects: PropTypes.array.isRequired,
 }

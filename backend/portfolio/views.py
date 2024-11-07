@@ -14,7 +14,8 @@ class IndexView(TemplateView):
 
 
 class PortfolioView(View):
-    def get(self, request, *args, **kwargs):
+    @staticmethod
+    def get(request, *args, **kwargs):
         current_language = translation.get_language()
         portfolio = Portfolio.objects.filter(active=True).first()
 
@@ -35,7 +36,8 @@ class PortfolioView(View):
 
 
 class PortfolioLinksView(View):
-    def get(self, request, *args, **kwargs):
+    @staticmethod
+    def get(request, *args, **kwargs):
         portfolio = Portfolio.objects.filter(active=True).first()
         links = PortfolioLink.objects.filter(portfolio=portfolio).order_by('order')
 
@@ -53,7 +55,8 @@ class PortfolioLinksView(View):
 
 
 class PortfolioSkillsView(View):
-    def get(self, request, *args, **kwargs):
+    @staticmethod
+    def get(request, *args, **kwargs):
         portfolio = Portfolio.objects.filter(active=True).first()
         skills = Skill.objects.filter(portfolio=portfolio).order_by('order')
 
@@ -70,7 +73,8 @@ class PortfolioSkillsView(View):
 
 
 class ProjectTypesView(View):
-    def get(self, request, *args, **kwargs):
+    @staticmethod
+    def get(request, *args, **kwargs):
         current_language = translation.get_language()
         portfolio = Portfolio.objects.filter(active=True).first()
         project_types = ProjectType.objects.filter(portfolio=portfolio).order_by()
@@ -89,7 +93,13 @@ class ProjectsView(View):
     def get(self, request, *args, **kwargs):
         current_language = translation.get_language()
         portfolio = Portfolio.objects.filter(active=True).first()
-        projects = Project.objects.filter(portfolio=portfolio).order_by('order')
+        project_type = self.request.GET.get('type')
+        if project_type:
+            projects = Project.objects.filter(project_type=project_type).order_by('order')
+        else:
+            projects = Project.objects.filter(portfolio=portfolio).order_by('order')
+
+
         projects_data = [
             {
                 "id": project.pk,
