@@ -87,7 +87,6 @@
     z-index: 90;
 
     &:hover, &:focus-visible {
-      cursor: none;
       color: base.$purple-color;
 
       .menu__button-lines div {

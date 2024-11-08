@@ -14,7 +14,6 @@
     transition: color 0.2s ease-in;
 
     &:hover, &:focus-visible {
-      cursor: none;
       color: base.$purple-color;
     }
 

@@ -30,10 +30,6 @@
     li {
       transition: all 0.2s ease-in;
 
-      button {
-        cursor: none;
-      }
-
       &:has(> button:hover), &:has(> button:focus-visible) {
         margin-bottom: -0.125rem;
         border-bottom: 0.125rem solid base.$purple-color;

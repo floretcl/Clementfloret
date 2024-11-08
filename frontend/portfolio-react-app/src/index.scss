@@ -15,10 +15,6 @@ body {
   margin: 0;
   font-family: base.$duru-regular;
   color: base.$dark-color;
-  background-color: base.$green-color;
-  background-image: url("static/img/hexagon-body.svg");
-  background-repeat: no-repeat;
-  cursor: none;
 }
 
 button {
@@ -28,7 +24,6 @@ button {
 }
 
 a {
-  cursor: none;
   text-decoration: none;
 }
 
@@ -55,8 +50,6 @@ textarea {
 
 body.theme-dark {
   color: base.$green-color;
-  background-color: base.$dark-color;
-  background-image: url("static/img/hexagon-body-dark.svg");
 
   strong {
     color: base.$white-color;

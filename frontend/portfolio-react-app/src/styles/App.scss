@@ -14,3 +14,21 @@
   min-height: 100vh;
   margin: auto;
 }
+
+.parallax-effect {
+  position: relative;
+  background-color: base.$green-color;
+  background-image: url("../static/img/hexagon-body.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-position 0.1s ease;
+}
+
+// THEME - DARK
+
+body.theme-dark {
+  .parallax-effect {
+    background-color: base.$dark-color;
+    background-image: url("../static/img/hexagon-body-dark.svg");
+  }
+}

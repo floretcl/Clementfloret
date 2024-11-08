@@ -1,7 +1,6 @@
 import {useContext, useEffect, useRef, useState} from 'react'
 import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
 import {ThemeContext} from "./ThemeProvider.jsx";
-import MouseEvents from "./components/MouseEvents/MouseEvents.jsx";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Home from "./components/Home.jsx";
@@ -11,6 +10,7 @@ import Projects from "./components/Projects.jsx";
 import Project from "./components/Project.jsx";
 import './fonts.css'
 import './styles/App.scss'
+import ParallaxEffect from "./components/ParallaxEffect/ParallaxEffect.jsx";
 
 function App() {
     const {theme} = useContext(ThemeContext);
@@ -105,7 +105,7 @@ function App() {
     }
 
     return (
-        <div className={`app ${preload ? "preload" : ""}`}>
+        <div className={`app parallax-effect ${preload ? "preload" : ""}`}>
             <Router>
                 <Header scrollDown={scrollDown}/>
                 <Routes>
@@ -130,7 +130,7 @@ function App() {
                 </Routes>
                 <Footer portfolio={portfolio} portfolioLinks={portfolioLinks} />
             </Router>
-            <MouseEvents/>
+            <ParallaxEffect />
         </div>
     );
 }
