@@ -1,5 +1,6 @@
 import json
 from json import JSONDecodeError
+from django.middleware.csrf import get_token
 from django.utils import translation
 from django.utils.translation import gettext_lazy as _
 from django.http import JsonResponse
@@ -156,9 +157,7 @@ class ProjectView(View):
 
 
 class ContactView(View):
-    template_name = 'portfolio/contact.html'
     form_class = ContactForm
-    success_url = '/'
     success_message = _('Tank you {name}. Your message has been sent.')
     error_message = _('Your message could not be sent.')
 
@@ -170,14 +169,16 @@ class ContactView(View):
 
         form = self.form_class(data)
         if form.is_valid():
-            return self.form_valid(form)
+            return self.response_valid(form)
         else:
-            return self.form_invalid(form)
+            return self.response_invalid(form)
 
-    def form_invalid(self, form):
-        return JsonResponse({'success': False, 'message': self.error_message, 'errors': form.errors}, status=400)
+    @staticmethod
+    def get(request, *args, **kwargs):
+        csrf_token = get_token(request)
+        return JsonResponse({'csrfToken': csrf_token})
 
-    def form_valid(self, form):
+    def response_valid(self, form):
         try:
             form.send_email()
             return JsonResponse(
@@ -185,3 +186,6 @@ class ContactView(View):
         except Exception as e:
             return JsonResponse({'success': False, 'message': self.error_message, 'errors': {'__all__': [str(e)]}},
                                 status=500)
+
+    def response_invalid(self, form):
+        return JsonResponse({'success': False, 'message': self.error_message, 'errors': form.errors}, status=400)

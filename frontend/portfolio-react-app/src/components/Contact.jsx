@@ -1,4 +1,4 @@
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import '../styles/Contact.scss'
 import {useTranslation} from "react-i18next";
 import {useParams} from "react-router-dom";
@@ -8,6 +8,7 @@ export default function Contact({email}) {
     let params = useParams();
     const {t} = useTranslation();
     const lang = useRef(params.lang);
+    const [csrfToken, setCsrfToken] = useState("");
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -18,22 +19,17 @@ export default function Contact({email}) {
     const [errorMessage, setErrorMessage] = useState('');
     const [errors, setErrors] = useState({});
 
-    const csrftoken = getCookie('csrftoken');
+    useEffect(() => {
+        setCsrfToken(getCsrfToken());
+    }, [])
 
-    function getCookie(name) {
-        let cookieValue = null;
+    function getCsrfToken() {
         if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
+            const cookie = document.cookie.split(';').find(row => row.startsWith('csrftoken='));
+            return cookie ? cookie.split("=")[1] : "";
+        } else {
+            return "";
         }
-        return cookieValue;
     }
 
     function handleChange(e) {
@@ -46,12 +42,12 @@ export default function Contact({email}) {
     function handleSubmit(e) {
         e.preventDefault();
 
-        const requestUrl = `/${lang.current}/contact/`;
+        const requestUrl = `/${lang.current}/api/contact`;
         const requestInit = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                'X-CSRFToken': csrftoken
+                'X-CSRFToken': csrfToken
             },
             body: JSON.stringify(formData),
             mode: 'same-origin'
