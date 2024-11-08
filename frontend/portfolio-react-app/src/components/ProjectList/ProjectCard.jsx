@@ -3,10 +3,7 @@ import '../../styles/ProjectCard.scss'
 import {useTranslation} from "react-i18next";
 
 export default function ProjectCard({
-                                        id,
-                                        name,
-                                        image,
-                                        type,
+                                        project,
                                         className,
                                         onDragStart,
                                         onPointerDown,
@@ -25,11 +22,11 @@ export default function ProjectCard({
             <a
                 className={`project-card__link hoverable ${className !== "project-card--index" ? "project-card__link--disable" : ""}`}
                 onClick={onClick}
-                href={`/${i18n.language}/project/${id}`}>
-                <img className="project-card__img" src={image.url} alt={`${image.name} ${t('thumbnail')}`}/>
+                href={`/${i18n.language}/project/${project.id}`}>
+                <img className="project-card__img" src={project.images[0].url} alt={`${project.images[0].name} ${t('thumbnail')}`}/>
                 <div className="project-card__text">
-                    <p className="project-card__name">{name}</p>
-                    <p className="project-card__type">{type}</p>
+                    <p className="project-card__name">{project.name}</p>
+                    <p className="project-card__type">{project.type}</p>
                 </div>
             </a>
         </li>
@@ -37,10 +34,7 @@ export default function ProjectCard({
 }
 
 ProjectCard.propTypes = {
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    image: PropTypes.object.isRequired,
-    type: PropTypes.string.isRequired,
+    project: PropTypes.object.isRequired,
     className: PropTypes.string.isRequired,
     onDragStart: PropTypes.func.isRequired,
     onPointerDown: PropTypes.func.isRequired,

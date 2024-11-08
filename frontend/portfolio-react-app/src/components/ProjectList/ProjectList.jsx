@@ -136,10 +136,7 @@ export default function ProjectList({projects}) {
                         <ol className="projects-list__list">
                             {projects.map((project, index) =>
                                 <ProjectCard key={index + 1}
-                                             id={index + 1}
-                                             name={project.name}
-                                             image={project.images[0]}
-                                             type={project.type}
+                                             project={project}
                                              className={getClassName(index + 1)}
                                              onDragStart={(e) => e.preventDefault()}
                                              onPointerDown={handlePointerDown}
