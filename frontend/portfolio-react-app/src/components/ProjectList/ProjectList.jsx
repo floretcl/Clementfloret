@@ -1,17 +1,16 @@
 import PropTypes from "prop-types";
 import '../../styles/ProjectList.scss'
-import {useRef, useState} from "react";
+import {useRef} from "react";
 import ProjectCard from "./ProjectCard.jsx";
 
-export default function ProjectList({projects}) {
+export default function ProjectList({projects, currentIndex, onClickPrevious, onClickNext}) {
     const contentRef = useRef(null);
     const pointerStartX = useRef(0);
     const pointerEndX = useRef(0);
     const isSwiping = useRef(false);
-    const [index, setIndex] = useState(1);
 
     function getClassName(i) {
-        if (i === index) {
+        if (i === currentIndex) {
             return "project-card--index";
         } else if (i === getIndexPlus2() && projects.length >= 5) {
             return "project-card--indexPlus2";
@@ -27,34 +26,34 @@ export default function ProjectList({projects}) {
     }
 
     function getIndexMinus2() {
-        if (index - 2 > 0) {
-            return (index - 2);
+        if (currentIndex - 2 > 0) {
+            return (currentIndex - 2);
         } else {
-            return (((index - 2) % projects.length) + projects.length);
+            return (((currentIndex - 2) % projects.length) + projects.length);
         }
     }
 
     function getIndexMinus1() {
-        if (index - 1 > 0) {
-            return (index - 1);
+        if (currentIndex - 1 > 0) {
+            return (currentIndex - 1);
         } else {
-            return (((index - 1) % projects.length) + projects.length);
+            return (((currentIndex - 1) % projects.length) + projects.length);
         }
     }
 
     function getIndexPlus1() {
-        if (index + 1 > projects.length) {
-            return ((index + 1) % projects.length);
+        if (currentIndex + 1 > projects.length) {
+            return ((currentIndex + 1) % projects.length);
         } else {
-            return (index + 1);
+            return (currentIndex + 1);
         }
     }
 
     function getIndexPlus2() {
-        if (index + 2 > projects.length) {
-            return ((index + 2) % projects.length);
+        if (currentIndex + 2 > projects.length) {
+            return ((currentIndex + 2) % projects.length);
         } else {
-            return (index + 2);
+            return (currentIndex + 2);
         }
     }
 
@@ -67,9 +66,9 @@ export default function ProjectList({projects}) {
         if (Math.abs(movementX) > 40 && window.innerWidth >= 640) {
             isSwiping.current = true;
             if (movementX < 0) {
-                nextItem();
+                onClickNext();
             } else {
-                previousItem();
+                onClickPrevious();
             }
         }
     }
@@ -84,20 +83,12 @@ export default function ProjectList({projects}) {
         }
     }
 
-    function previousItem() {
-        setIndex((index) => (index === 1 ? projects.length : index - 1));
-    }
-
-    function nextItem() {
-        setIndex((index) => (index === projects.length ? 1 : index + 1));
-    }
-
     return (
         <>
             {projects ? (
                 <>
                     <div className="projects-list__buttons-yaxis">
-                        <button className="projects-list__button hoverable" onClick={previousItem}>
+                        <button className="projects-list__button hoverable" onClick={onClickPrevious}>
                             <svg width="512" height="512" viewBox="0 0 512 512" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -105,7 +96,7 @@ export default function ProjectList({projects}) {
                                     fill="currentColor"/>
                             </svg>
                         </button>
-                        <button className="projects-list__button hoverable" onClick={nextItem}>
+                        <button className="projects-list__button hoverable" onClick={onClickNext}>
                             <svg width="512" height="512" viewBox="0 0 512 512" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -115,7 +106,7 @@ export default function ProjectList({projects}) {
                         </button>
                     </div>
                     <div className="projects-list__buttons-xaxis">
-                        <button className="projects-list__button hoverable" onClick={previousItem}>
+                        <button className="projects-list__button hoverable" onClick={onClickPrevious}>
                             <svg width="512" height="512" viewBox="0 0 512 512" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -123,7 +114,7 @@ export default function ProjectList({projects}) {
                                     fill="currentColor"/>
                             </svg>
                         </button>
-                        <button className="projects-list__button hoverable" onClick={nextItem}>
+                        <button className="projects-list__button hoverable" onClick={onClickNext}>
                             <svg width="512" height="512" viewBox="0 0 512 512" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -156,4 +147,7 @@ export default function ProjectList({projects}) {
 
 ProjectList.propTypes = {
     projects: PropTypes.array.isRequired,
+    currentIndex: PropTypes.number.isRequired,
+    onClickPrevious: PropTypes.func.isRequired,
+    onClickNext: PropTypes.func.isRequired,
 }
