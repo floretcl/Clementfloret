@@ -3,6 +3,7 @@ import '../styles/Contact.scss'
 import {useTranslation} from "react-i18next";
 import {useParams} from "react-router-dom";
 import PropTypes from "prop-types";
+import {ContactModal} from "./Contact/ContactModal.jsx";
 
 export default function Contact({email}) {
     let params = useParams();
@@ -15,8 +16,8 @@ export default function Contact({email}) {
         subject: '',
         message: '',
     })
-    const [successMessage, setSuccessMessage] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+    const [modalVisible, setModalVisible] = useState(false);
+    const [message, setMessage] = useState('');
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
@@ -57,17 +58,16 @@ export default function Contact({email}) {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    setSuccessMessage(data.message);
-                    setErrorMessage("");
+                    setMessage(data.message);
                     setErrors({});
                     setFormData({name: "", email: "", subject: "", message: ""});
                 } else {
-                    setErrorMessage(data.message);
+                    setMessage(data.message);
                     setErrors(data.errors);
                 }
             })
             .catch(error => {
-                setErrorMessage(t('contact_error_message'));
+                setMessage(t('contact_error_message'));
                 // To get server errors
                 if (error.response) {
                     error.response.json()
@@ -78,11 +78,15 @@ export default function Contact({email}) {
                     setErrors({});
                 }
             });
+        setModalVisible(true);
     }
 
     return (
         <main className="contact">
             <h1 className="contact__title">{t('contact_title')}</h1>
+            {modalVisible &&
+                <ContactModal message={message} onClick={() => setModalVisible(false)} />
+            }
             <p className="contact__infos">
                 {t('contact_infos')} <a className="hoverable" href={`mailto: ${email}`}
                                         title={t('contact_infos_title')}>{email}</a>
@@ -106,8 +110,6 @@ export default function Contact({email}) {
 
                 <input className="hoverable" type="submit" value={t('contact_button_value')}/>
             </form>
-            {successMessage && <p className="contact__success">{successMessage}</p>}
-            {errorMessage && <p className="contact__error">{errorMessage}</p>}
         </main>
     );
 }
