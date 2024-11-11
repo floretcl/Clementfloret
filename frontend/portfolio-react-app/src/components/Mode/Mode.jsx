@@ -1,10 +1,18 @@
 import {useContext, useState} from "react";
-import {ThemeContext} from "../../ThemeProvider.jsx";
+import {ThemeContext} from "../../ThemeContext.jsx";
 import '../../styles/Mode.scss'
 
 export default function Mode() {
-    const {theme, toggleTheme} = useContext(ThemeContext);
+    const {theme, setTheme} = useContext(ThemeContext);
     const [isClicked, setIsClicked] = useState(false);
+
+    function toggleTheme() {
+        setTheme((prevTheme) => {
+            const nextTheme = prevTheme === "light" ? "dark" : "light";
+            localStorage.setItem("theme", nextTheme);
+            return nextTheme;
+        });
+    }
 
     function handleClick() {
         setIsClicked(!isClicked);

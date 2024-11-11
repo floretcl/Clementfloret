@@ -1,6 +1,6 @@
 import {useContext, useEffect, useRef, useState} from 'react'
 import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
-import {ThemeContext} from "./ThemeProvider.jsx";
+import {ThemeContext} from "./ThemeContext.jsx";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Home from "./components/Home.jsx";
@@ -8,9 +8,10 @@ import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
 import Projects from "./components/Projects.jsx";
 import Project from "./components/Project.jsx";
+import ParallaxEffect from "./components/ParallaxEffect/ParallaxEffect.jsx";
 import './fonts.css'
 import './styles/App.scss'
-import ParallaxEffect from "./components/ParallaxEffect/ParallaxEffect.jsx";
+import {ScrollToTop} from "./ScrollToTop.jsx";
 
 function App() {
     const {theme} = useContext(ThemeContext);
@@ -107,30 +108,31 @@ function App() {
     return (
         <div className={`app parallax-effect ${preload ? "preload" : ""}`}>
             <Router>
+                <ScrollToTop/>
                 <Header scrollDown={scrollDown}/>
-                <Routes>
-                    <Route
-                        path="/:lang/"
-                        element={<Home portfolio={portfolio} portfolioLinks={portfolioLinks} />}/>
-                    <Route
-                        path="/:lang/about"
-                        element={<About portfolio={portfolio} />}/>
-                    <Route
-                        path="/:lang/projects/:type?"
-                        element={<Projects/>}/>
-                    <Route
-                        path="/:lang/project/:id"
-                        element={<Project/>}/>
-                    <Route
-                        path="/:lang/contact"
-                        element={<Contact email={portfolio.contact_email} />}/>
-                    <Route
-                        path="*"
-                        element={<Navigate to="/en/" replace={true}/>}/>
-                </Routes>
-                <Footer portfolio={portfolio} portfolioLinks={portfolioLinks} />
+                    <Routes>
+                        <Route
+                            path="/:lang/"
+                            element={<Home portfolio={portfolio} portfolioLinks={portfolioLinks}/>}/>
+                        <Route
+                            path="/:lang/about"
+                            element={<About portfolio={portfolio}/>}/>
+                        <Route
+                            path="/:lang/projects/:type?"
+                            element={<Projects/>}/>
+                        <Route
+                            path="/:lang/project/:id"
+                            element={<Project/>}/>
+                        <Route
+                            path="/:lang/contact"
+                            element={<Contact email={portfolio.contact_email}/>}/>
+                        <Route
+                            path="*"
+                            element={<Navigate to="/en/" replace={true}/>}/>
+                    </Routes>
+                <Footer portfolio={portfolio} portfolioLinks={portfolioLinks}/>
             </Router>
-            <ParallaxEffect />
+            <ParallaxEffect/>
         </div>
     );
 }

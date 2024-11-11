@@ -1,7 +1,6 @@
-import {createContext, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import PropTypes from "prop-types";
-
-export const ThemeContext = createContext();
+import {ThemeContext} from "./ThemeContext.jsx";
 
 export default function ThemeProvider({children}) {
     const [theme, setTheme] = useState(() => {
@@ -9,19 +8,11 @@ export default function ThemeProvider({children}) {
         return prefTheme ? prefTheme : "light";
     });
 
-    function toggleTheme() {
-        setTheme((prevTheme) => {
-            const nextTheme = prevTheme === "light" ? "dark" : "light";
-            localStorage.setItem("theme", nextTheme);
-            return nextTheme;
-        });
-    }
-
     useEffect(() => {
         const mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
         const prefTheme = localStorage.getItem("theme");
 
-        function handleMediaChange() {
+        const handleMediaChange = () => {
             if (mediaQueryList.matches) {
                 setTheme("dark");
                 localStorage.setItem("theme", "dark");
@@ -49,7 +40,7 @@ export default function ThemeProvider({children}) {
     },[]);
     
     return (
-        <ThemeContext.Provider value={{theme, toggleTheme}}>
+        <ThemeContext.Provider value={{theme, setTheme}}>
             {children}
         </ThemeContext.Provider>
     );
