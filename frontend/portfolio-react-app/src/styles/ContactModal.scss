@@ -32,7 +32,7 @@
     border-radius: 0.5rem;
     overflow: hidden;
     background-color: base.$white-color;
-    box-shadow: 0 20px 25px -5px base.$grey-color, 0 8px 10px -6px base.$grey-color;
+    box-shadow: 6px 20px 25px -5px base.$grey-color, 0 8px 10px -6px base.$grey-color;
   }
 
   &__head {
@@ -58,7 +58,7 @@
       color: base.$purple-color;
 
       svg {
-        scale: 1.1;
+        scale: 1.2;
       }
     }
   }
@@ -68,7 +68,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     margin: 0.5rem auto 0 auto;
   }
 
@@ -77,9 +77,10 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    color: base.$green-color;
 
     svg {
-      width: 4rem;
+      width: 3rem;
       height: auto;
     }
   }
@@ -87,6 +88,63 @@
   &__message {
     font-size: 1.125rem;
     color: base.$grey-color;
-    margin: 1rem auto;
+    margin: 0.5rem auto;
+  }
+}
+
+// -- MEDIA QUERIES -- //
+
+// MEDIA QUERY - SMALL (640p)
+
+@media all and (min-width: base.$small) {
+  .contact-modal {
+    &__main {
+      padding: 1rem 1.5rem;
+    }
+
+    &__icon {
+      svg {
+        width: 4rem;
+        height: auto;
+      }
+    }
+
+    &__message {
+      margin: 0.5rem;
+    }
+  }
+}
+
+// MEDIA QUERY - MEDIUM (768p)
+
+@media all and (min-width: base.$medium) {
+  .contact-modal {
+    &__message {
+      margin: 1rem;
+    }
+  }
+}
+
+// MEDIA QUERY - LARGE (1024p)
+
+@media all and (min-width: base.$large) {
+  .contact-modal {
+    &__main {
+      padding: 2rem 2.5rem;
+    }
+  }
+}
+
+// THEME - DARK
+
+body.theme-dark {
+  .contact-modal {
+    &__background {
+      background-color: base.$dark-color;
+    }
+
+    &__content {
+      box-shadow: 6px 20px 25px -5px base.$darker-color, 0 8px 10px -6px base.$darker-color;
+    }
   }
 }

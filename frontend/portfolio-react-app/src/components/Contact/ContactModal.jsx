@@ -11,6 +11,7 @@ export function ContactModal({message, onClick}) {
                         <div className="contact-modal__head">
                             <button className="contact-modal__close-button"
                                     type="button"
+                                    title="Close"
                                     onClick={onClick}>
                                 <svg width="383" height="511" viewBox="0 0 383 511" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -23,13 +24,21 @@ export function ContactModal({message, onClick}) {
                         </div>
                         <div className="contact-modal__main">
                             <div className="contact-modal__icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                     fill="currentColor"
-                                     className="">
-                                    <path fillRule="evenodd"
-                                          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                                          clipRule="evenodd"></path>
-                                </svg>
+                                {message.includes('Your message has been sent') ?
+                                    <svg width="512" height="512" viewBox="0 0 512 512" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M256 469.333C138.179 469.333 42.6667 373.82 42.6667 256C42.6667 138.179 138.179 42.6667 256 42.6667C373.82 42.6667 469.333 138.179 469.333 256C469.333 373.82 373.82 469.333 256 469.333ZM234.722 341.333L385.572 190.484L355.403 160.314L234.722 280.994L174.383 220.653L144.213 250.825L234.722 341.333Z"
+                                            fill="currentColor"/>
+                                    </svg>
+                                    :
+                                    <svg width="512" height="512" viewBox="0 0 512 512" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M256 469.333C138.179 469.333 42.6667 373.82 42.6667 256C42.6667 138.179 138.179 42.6667 256 42.6667C373.82 42.6667 469.333 138.179 469.333 256C469.333 373.82 373.82 469.333 256 469.333ZM234.667 320V362.667H277.333V320H234.667ZM234.667 149.333V277.333H277.333V149.333H234.667Z"
+                                            fill="currentColor"/>
+                                    </svg>
+                                }
                             </div>
                             <div className="contact-modal__message">
                                 <p>{message}</p>
