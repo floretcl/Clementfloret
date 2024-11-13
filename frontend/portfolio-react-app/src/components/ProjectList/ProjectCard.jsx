@@ -23,7 +23,12 @@ export default function ProjectCard({
                 className={`project-card__link hoverable ${className !== "project-card--index" ? "project-card__link--disable" : ""}`}
                 onClick={onClick}
                 href={`/${i18n.language}/project/${project.id}`}>
-                <img className="project-card__img" src={project.images[0].url} alt={`${project.images[0].name} ${t('thumbnail')}`}/>
+                <img
+                    className="project-card__img"
+                    src={project.images[0].url}
+                    width="1920"
+                    height="1280"
+                    alt={`${project.images[0].name} ${t('thumbnail')}`}/>
                 <div className="project-card__text">
                     <p className="project-card__name">{project.name}</p>
                     <p className="project-card__type">{project.type}</p>

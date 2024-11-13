@@ -9,7 +9,7 @@ export default function CarouselItem({id, index, name, image}) {
             ${id === index - 1 ? "item--prev" : ""} 
             ${id === index + 1 ? "item--next" : ""}`}>
             <div className="item__content">
-                <img className="item__img" src={image} alt={name}/>
+                <img className="item__img" src={image} alt={`${name} screen`} width="1920" height="1280"/>
             </div>
         </li>
     );
