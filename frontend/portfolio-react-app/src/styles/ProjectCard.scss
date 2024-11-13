@@ -36,7 +36,6 @@
         &__img {
           filter: brightness(30%) blur(0.025rem);
           transform: scale(105%);
-          border-width: medium;
         }
 
         &__text {
@@ -80,7 +79,6 @@
     max-width: 24rem;
     object-fit: cover;
     transition: all 0.3s ease-in;
-    border: thin solid base.$dark-color;
   }
 
   &__text {
@@ -186,16 +184,6 @@
       max-height: 34rem;
       width: 43vw;
       max-width: 46rem;
-    }
-  }
-}
-
-// THEME - DARK
-
-body.theme-dark {
-  .project-card {
-    &__img {
-      border-color: base.$green-color;
     }
   }
 }
