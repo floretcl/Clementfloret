@@ -21,16 +21,24 @@ export default function Contact({email}) {
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
-        setCsrfToken(getCsrfToken());
+        fetchCSRF();
+        setCsrfToken(getCookie('csrftoken'));
     }, [])
 
-    function getCsrfToken() {
+    function getCookie(name) {
+        let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
-            const cookie = document.cookie.split(';').find(row => row.startsWith('csrftoken='));
-            return cookie ? cookie.split("=")[1] : "";
-        } else {
-            return "";
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
         }
+        return cookieValue;
     }
 
     function handleChange(e) {
@@ -81,11 +89,33 @@ export default function Contact({email}) {
         setModalVisible(true);
     }
 
+    function fetchCSRF() {
+        const url = `/${lang.current}/api/contact`;
+
+        const init = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            mode: 'same-origin',
+            cache: 'default',
+        };
+
+        fetch(url, init)
+            .then(response => response.ok)
+            .then(success => {
+                success && console.log(`CSRF token set in cookies`);
+            })
+            .catch(error => {
+                console.log(`Error getting CSRF token: ${error}`);
+            });
+    }
+
     return (
         <main className="contact">
             <h1 className="contact__title">{t('contact_title')}</h1>
             {modalVisible &&
-                <ContactModal message={message} onClick={() => setModalVisible(false)} />
+                <ContactModal message={message} onClick={() => setModalVisible(false)}/>
             }
             <p className="contact__infos">
                 {t('contact_infos')} <a className="hoverable" href={`mailto: ${email}`}
