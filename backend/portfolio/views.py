@@ -176,7 +176,9 @@ class ContactView(View):
     @staticmethod
     def get(request, *args, **kwargs):
         csrf_token = get_token(request)
-        return JsonResponse({'csrfToken': csrf_token})
+        response = JsonResponse({'csrfToken': csrf_token})
+        response.set_cookie('csrftoken', csrf_token)
+        return response
 
     def response_valid(self, form):
         try:
