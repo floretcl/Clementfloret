@@ -10,6 +10,10 @@ from .forms import ContactForm
 from .models import Portfolio, PortfolioLink, ProjectType, Project, ProjectLink, ProjectImage, Skill
 
 
+class RobotsTxtView(TemplateView):
+    template_name = 'portfolio/robots.txt'
+
+
 class IndexView(TemplateView):
     template_name = 'portfolio/index.html'
 

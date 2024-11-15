@@ -8,7 +8,8 @@ from .views import (
     ProjectTypesView,
     ProjectsView,
     ProjectView,
-    ContactView
+    ContactView,
+    RobotsTxtView
 )
 
 app_name = 'portfolio'
@@ -21,5 +22,6 @@ urlpatterns = [
     path('api/projects', ProjectsView.as_view(), name='projects'),
     path('api/project', ProjectView.as_view(), name='project'),
     path('api/contact', ContactView.as_view(), name='contact'),
+    path('robots.txt', RobotsTxtView.as_view(content_type="text/plain"), name="robots"),
     re_path(r'^.*$', IndexView.as_view(), name='index'),
 ]
