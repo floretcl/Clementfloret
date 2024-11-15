@@ -24,5 +24,11 @@
   "link_to": "Lien vers",
   "thumbnail": "miniature",
   "resume": "CV",
-  "skills": "Compétences"
+  "skills": "Compétences",
+  "close_button": "Bouton fermer",
+  "menu_button": "Bouton de menu",
+  "previous_button": "Bouton précédent",
+  "next_button": "Bouton suivant",
+  "mode_button_title": "Bouton du mode clair/sombre",
+  "contact_modal": "Fenêtre modal de contact"
 }

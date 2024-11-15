@@ -24,5 +24,11 @@
   "link_to": "Link to",
   "thumbnail": "thumbnail",
   "resume": "Resume",
-  "skills": "Skills"
+  "skills": "Skills",
+  "close_button": "Close button",
+  "menu_button": "Menu button",
+  "previous_button": "Previous button",
+  "next_button": "Next button",
+  "mode_button_title": "Light/Dark mode button",
+  "contact_modal": "Contact modal window"
 }
