@@ -1,8 +1,10 @@
 import {useContext, useState} from "react";
 import {ThemeContext} from "../../ThemeContext.jsx";
 import '../../styles/Mode.scss'
+import {useTranslation} from "react-i18next";
 
 export default function Mode() {
+    const {t} = useTranslation();
     const {theme, setTheme} = useContext(ThemeContext);
     const [isClicked, setIsClicked] = useState(false);
 
@@ -28,6 +30,7 @@ export default function Mode() {
             <button
                 className={`mode__button ${isClicked ? "mode__button--active" : ""} hoverable`}
                 type="button"
+                title={t('mode_button_title')}
                 onClick={handleClick}
                 onAnimationEnd={() => setIsClicked(false)}>
                 {(theme === "dark") ? (

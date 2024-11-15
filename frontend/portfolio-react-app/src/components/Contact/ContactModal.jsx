@@ -1,17 +1,20 @@
 import PropTypes from "prop-types";
 import '../../styles/ContactModal.scss'
+import {useTranslation} from "react-i18next";
 
 export function ContactModal({message, onClick}) {
+    const {t} = useTranslation();
+
     return (
         <section>
-            <div className="contact-modal" aria-labelledby="contact-modal-title" role="dialog" aria-modal="true">
+            <div className="contact-modal" aria-labelledby={t('contact_modal')} role="dialog" aria-modal="true">
                 <div className="contact-modal__background"></div>
                 <div className="contact-modal__modal">
                     <div className="contact-modal__content">
                         <div className="contact-modal__head">
                             <button className="contact-modal__close-button"
                                     type="button"
-                                    title="Close"
+                                    title={t('close_button')}
                                     onClick={onClick}>
                                 <svg width="383" height="511" viewBox="0 0 383 511" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">

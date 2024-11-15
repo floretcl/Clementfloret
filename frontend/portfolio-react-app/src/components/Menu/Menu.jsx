@@ -44,7 +44,7 @@ export default function Menu() {
     return (
         <div
             className={`menu ${isActive ? "menu--active" : ""} ${isOpen ? "menu--open" : "menu--close"}`}>
-            <button className="menu__button hoverable" type="button" onClick={toggleMenu}>
+            <button className="menu__button hoverable" type="button" title={t('menu_button')} onClick={toggleMenu}>
                 <div className="menu__button-lines">
                     <div className="menu__button-line-top"></div>
                     <div className="menu__button-line-middle"></div>

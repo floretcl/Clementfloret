@@ -2,8 +2,10 @@ import PropTypes from "prop-types";
 import '../../styles/ProjectList.scss'
 import {useRef} from "react";
 import ProjectCard from "./ProjectCard.jsx";
+import {useTranslation} from "react-i18next";
 
 export default function ProjectList({projects, currentIndex, onClickPrevious, onClickNext}) {
+    const {t} = useTranslation();
     const contentRef = useRef(null);
     const pointerStartX = useRef(0);
     const pointerEndX = useRef(0);
@@ -88,7 +90,7 @@ export default function ProjectList({projects, currentIndex, onClickPrevious, on
             {projects ? (
                 <>
                     <div className="projects-list__buttons-yaxis">
-                        <button className="projects-list__button hoverable" onClick={onClickPrevious}>
+                        <button className="projects-list__button hoverable" title={t('previous_button')} onClick={onClickPrevious}>
                             <svg width="512" height="512" viewBox="0 0 512 512" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -96,7 +98,7 @@ export default function ProjectList({projects, currentIndex, onClickPrevious, on
                                     fill="currentColor"/>
                             </svg>
                         </button>
-                        <button className="projects-list__button hoverable" onClick={onClickNext}>
+                        <button className="projects-list__button hoverable" title={t('next_button')} onClick={onClickNext}>
                             <svg width="512" height="512" viewBox="0 0 512 512" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -106,7 +108,7 @@ export default function ProjectList({projects, currentIndex, onClickPrevious, on
                         </button>
                     </div>
                     <div className="projects-list__buttons-xaxis">
-                        <button className="projects-list__button hoverable" onClick={onClickPrevious}>
+                        <button className="projects-list__button hoverable" title={t('previous_button')} onClick={onClickPrevious}>
                             <svg width="512" height="512" viewBox="0 0 512 512" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -114,7 +116,7 @@ export default function ProjectList({projects, currentIndex, onClickPrevious, on
                                     fill="currentColor"/>
                             </svg>
                         </button>
-                        <button className="projects-list__button hoverable" onClick={onClickNext}>
+                        <button className="projects-list__button hoverable" title={t('next_button')} onClick={onClickNext}>
                             <svg width="512" height="512" viewBox="0 0 512 512" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path

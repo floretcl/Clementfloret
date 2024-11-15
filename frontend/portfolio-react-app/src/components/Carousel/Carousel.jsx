@@ -3,8 +3,10 @@ import CarouselItem from "./CarouselItem.jsx";
 import '../../styles/Carousel.scss'
 import CarouselDot from "./CarouselDot.jsx";
 import PropTypes from "prop-types";
+import {useTranslation} from "react-i18next";
 
 export default function Carousel({images}) {
+    const {t} = useTranslation();
     const [index, setIndex] = useState(0);
 
     function previousItem() {
@@ -23,8 +25,8 @@ export default function Carousel({images}) {
                 )}
             </ol>
             <div className="carousel__buttons">
-                <button className="carousel__button hoverable" onClick={previousItem}>&lsaquo;</button>
-                <button className="carousel__button hoverable" onClick={nextItem}>&rsaquo;</button>
+                <button className="carousel__button hoverable" onClick={previousItem} title={t('previous_button')}>&lsaquo;</button>
+                <button className="carousel__button hoverable" onClick={nextItem} title={t('next_button')}>&rsaquo;</button>
             </div>
             <div className="carousel__dots">
                 {images && images.map((item, id) =>
