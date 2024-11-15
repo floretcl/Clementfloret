@@ -22,7 +22,8 @@ export default function ProjectCard({
             <a
                 className={`project-card__link hoverable ${className !== "project-card--index" ? "project-card__link--disable" : ""}`}
                 onClick={onClick}
-                href={`/${i18n.language}/project/${project.id}`}>
+                href={`/${i18n.language}/project/${project.id}`}
+                aria-label={`${t('link_to')} ${name} project`}>
                 <img
                     className="project-card__img"
                     src={project.images[0].url}

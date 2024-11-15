@@ -6,7 +6,11 @@ export default function ProjectLink({url, name, icon}) {
 
     return (
         <li>
-            <a className="project__link hoverable" href={url} target="_blank" title={`${t('link_to')} ${name}`}>
+            <a
+                className="project__link hoverable"
+                href={url} target="_blank"
+                title={`${t('link_to')} ${name}`}
+                aria-label={`${t('link_to')} ${name}`}>
                 <img className="project__icon" src={icon} alt={`${name} ${t('icon')}`}/>
                 {name}
             </a>

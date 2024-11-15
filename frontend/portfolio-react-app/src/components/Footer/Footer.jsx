@@ -26,7 +26,11 @@ export default function Footer({portfolio, portfolioLinks}) {
             <div className={`${smallVersion ? "footer__content--home" : "footer__content"}`}>
                 {!smallVersion && (
                     <div className="footer__contact">
-                        <a className="hoverable" href="/contact">{t('contact_title')}</a>
+                        <a className="hoverable"
+                           href="/contact"
+                           aria-label={`${t('link_to')} ${t('contact')}`}>
+                            {t('contact_title')}
+                        </a>
                     </div>
                 )}
                 <div className="footer__infos">

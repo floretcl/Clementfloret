@@ -118,8 +118,11 @@ export default function Contact({email}) {
                 <ContactModal message={message} onClick={() => setModalVisible(false)}/>
             }
             <p className="contact__infos">
-                {t('contact_infos')} <a className="hoverable" href={`mailto: ${email}`}
-                                        title={t('contact_infos_title')}>{email}</a>
+                {t('contact_infos')} <a
+                    className="hoverable"
+                    href={`mailto: ${email}`}
+                    title={t('contact_infos_title')}
+                    aria-label={t('contact_infos_title')}>{email}</a>
             </p>
             <form className="contact__form" onSubmit={handleSubmit}>
                 <input

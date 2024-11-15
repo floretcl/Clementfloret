@@ -6,8 +6,12 @@ export default function SocialLink({name, imgSrc, url}) {
 
     return (
         <li>
-            <a className="social__link hoverable" href={url} target="_blank">
-                <img className="social__icon" src={imgSrc}  alt={`${name} ${t('icon')}`}/>
+            <a
+                className="social__link hoverable"
+                href={url}
+                target="_blank"
+                aria-label={`${t('link_to')} ${name}`}>
+                <img className="social__icon" src={imgSrc} alt={`${name} ${t('icon')}`}/>
             </a>
         </li>
     );

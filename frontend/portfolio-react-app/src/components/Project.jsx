@@ -50,8 +50,8 @@ export default function Project() {
                             {project.description}
                         </p>
                         <p>
+                            {t('Skills')} :
                             <ol className="project__skills">
-                                {t('Skills')} :
                                 {project.skills.map((skill) =>
                                     <ProjectSkill key={skill[0]} name={skill[1]}/>
                                 ).reduce((prevComponents, component) => {
