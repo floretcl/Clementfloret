@@ -3,7 +3,7 @@ asgiref==3.8.1
 atpublic==5.0
 attrs==24.2.0
 cffi==1.17.1
-cryptography==43.0.3
+cryptography==44.0.0
 Django==5.1.3
 django-debug-toolbar==4.4.6
 django-environ==0.11.2
@@ -11,5 +11,5 @@ django-pictures==1.3.3
 pillow==11.0.0
 pycparser==2.22
 PyMySQL==1.1.1
-sqlparse==0.5.1
+sqlparse==0.5.2
 typing_extensions==4.12.2
