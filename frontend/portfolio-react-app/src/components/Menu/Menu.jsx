@@ -27,6 +27,14 @@ export default function Menu() {
             "id": 3,
             "name": t('contact'),
             "url": "/" + i18n.language + "/contact/"
+        },{
+            "id": 4,
+            "name": "FR",
+            "url": "/fr/"
+        }, {
+            "id": 5,
+            "name": "EN",
+            "url": "/en/"
         }];
 
     function toggleMenu() {
