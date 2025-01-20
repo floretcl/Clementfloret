@@ -1,4 +1,4 @@
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 
 from .views import (
     IndexView,
@@ -24,4 +24,8 @@ urlpatterns = [
     path('api/contact', ContactView.as_view(), name='contact'),
     path('robots.txt', RobotsTxtView.as_view(content_type="text/plain"), name="robots"),
     re_path(r'^.*$', IndexView.as_view(), name='index'),
+]
+
+urlpatterns += [
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
