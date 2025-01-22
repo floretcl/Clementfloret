@@ -14,27 +14,33 @@ export default function Menu() {
         [{
             "id": 0,
             "name": t('home'),
-            "url": "/" + i18n.language + "/"
+            "url": "/" + i18n.language + "/",
+            "reload": false
         }, {
             "id": 1,
             "name": t('about'),
-            "url": "/" + i18n.language + "/about/"
+            "url": "/" + i18n.language + "/about/",
+            "reload": false
         }, {
             "id": 2,
             "name": t('projects'),
-            "url": "/" + i18n.language + "/projects/"
+            "url": "/" + i18n.language + "/projects/",
+            "reload": false
         }, {
             "id": 3,
             "name": t('contact'),
-            "url": "/" + i18n.language + "/contact/"
+            "url": "/" + i18n.language + "/contact/",
+            "reload": false
         },{
             "id": 4,
             "name": "FR",
-            "url": "/fr/"
+            "url": "/fr/",
+            "reload": true
         }, {
             "id": 5,
             "name": "EN",
-            "url": "/en/"
+            "url": "/en/",
+            "reload": true
         }];
 
     function toggleMenu() {
@@ -63,7 +69,7 @@ export default function Menu() {
                 <Mode/>
                 <ol className="menu__list">
                     {menuLinks && menuLinks.map((link) =>
-                        <MenuLink key={link.id} name={link.name} url={link.url} toggleMenu={toggleMenu} reloadDocument/>
+                        <MenuLink key={link.id} name={link.name} url={link.url} reload={link.reload} toggleMenu={toggleMenu}/>
                     )}
                 </ol>
             </div>
