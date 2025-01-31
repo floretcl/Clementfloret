@@ -7,7 +7,13 @@ from django.http import JsonResponse
 from django.views.generic import TemplateView, View
 
 from .forms import ContactForm
-from .models import Portfolio, PortfolioLink, ProjectType, Project, ProjectLink, ProjectImage, Skill
+from .models import (Portfolio,
+                     PortfolioLink,
+                     ProjectType,
+                     Project,
+                     ProjectLink,
+                     ProjectImage,
+                     Skill)
 
 
 class RobotsTxtView(TemplateView):
@@ -180,7 +186,7 @@ class ContactView(View):
     @staticmethod
     def get(request, *args, **kwargs):
         csrf_token = get_token(request)
-        response = JsonResponse({'csrfToken': csrf_token})
+        response = JsonResponse({})
         response.set_cookie('csrftoken', csrf_token)
         return response
 
