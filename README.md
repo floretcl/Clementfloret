@@ -75,6 +75,12 @@ ADMINS=[("username", "email")]
   - `./manage.py createsuperuser`
 - Check project 
   - `./manage.py check`
+- Check test
+  - `.manage.py test`
+- Coverage
+  - `coverage run --source='.' manage.py test portfolio`
+  - `coverage report`
+  - report html : `coverage html -d coverage_html `
 - Run Django server :
   - `./manage.py runserver`
   - Web app : http://127.0.0.1:8000/
