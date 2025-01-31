@@ -45,8 +45,18 @@ class PortfolioTests(TestCase):
     @classmethod
     def tearDownClass(cls):
         super().tearDownClass()
-        if os.path.exists("uploads"):
-            shutil.rmtree("uploads")
+        if cls.portfolio.avatar:
+            image_path = cls.portfolio.avatar.path
+            if os.path.exists(image_path):
+                os.remove(image_path)
+        if cls.portfolio.resume:
+            image_path = cls.portfolio.resume.path
+            if os.path.exists(image_path):
+                os.remove(image_path)
+        if cls.portfolio.resume_fr:
+            image_path = cls.portfolio.resume_fr.path
+            if os.path.exists(image_path):
+                os.remove(image_path)
 
     def test_url_en(self):
         self.client.cookies.load({settings.LANGUAGE_COOKIE_NAME: "en"})

@@ -125,8 +125,11 @@ class ProjectsTests(TestCase):
     @classmethod
     def tearDownClass(cls):
         super().tearDownClass()
-        if os.path.exists("uploads"):
-            shutil.rmtree("uploads")
+        if cls.images:
+            for image in cls.images:
+                image_path = image.image.path
+                if os.path.exists(image_path):
+                    os.remove(image_path)
 
     def test_url_en(self):
         self.client.cookies.load({settings.LANGUAGE_COOKIE_NAME: "en"})
