@@ -62,7 +62,7 @@ def convert_html_to_django_template(path_input, path_output):
 
     # Replace html scripts tags by {% block content %} template tag
     html_content = re.sub(
-        r'<noscript>You need to enable JavaScript to run this app.</noscript>((.|\n)*)</body>',
+        r'<noscript>Vous devez activer Javascript pour afficher cette page.</noscript>((.|\n)*)</body>',
         '<noscript>{% translate \'noscript_message\' %}</noscript>\n'
         '{% block content %}{% endblock %}\n</body>',
         html_content

@@ -51,7 +51,7 @@ export default function Contact({email}) {
     function handleSubmit(e) {
         e.preventDefault();
 
-        const requestUrl = `${lang.current === "fr" ? "" : "/en"}/api/contact`;
+        const requestUrl = `${lang.current === "en" ? "/en" : ""}/api/contact`;
         const requestInit = {
             method: "POST",
             headers: {
@@ -90,7 +90,7 @@ export default function Contact({email}) {
     }
 
     function fetchCSRF() {
-        const url = `${lang.current === "fr" ? "" : "/en"}/api/contact`;
+        const url = `${lang.current === "en" ? "/en" : ""}/api/contact`;
 
         const init = {
             method: "GET",

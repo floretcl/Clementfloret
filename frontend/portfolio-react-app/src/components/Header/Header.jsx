@@ -7,7 +7,7 @@ import i18n from "i18next";
 export default function Header({scrollDown}) {
     const lang = i18n.language;
     const { t } = useTranslation();
-    const langPrefix = lang === "fr" ? "/" : "/en";
+    const langPrefix = lang === "en" ? "/en/" : "/";
 
     return (
         <header className={`header ${scrollDown ? "header--scrolldown" : ""}`}>

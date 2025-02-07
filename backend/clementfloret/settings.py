@@ -17,7 +17,7 @@ from django.utils.translation import gettext_lazy as _
 # Django-environ
 # environment variables
 
-env = environ.Env()
+env = environ.Env(DEBUG=(bool, False))
 environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

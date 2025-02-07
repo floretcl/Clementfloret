@@ -20,7 +20,7 @@ export default function Projects() {
     }, [filter]);
 
     function fetchProjectTypes() {
-        const url = `${lang.current === "fr" ? "" : "/en"}/api/project_types`;
+        const url = `${lang.current === "en" ? "/en" : ""}/api/project_types`;
 
         const init = {
             method: "GET",
@@ -42,7 +42,7 @@ export default function Projects() {
     }
 
     function fetchProjects(filter) {
-        let url = `${lang.current === "fr" ? "" : "/en"}/api/projects`;
+        let url = `${lang.current === "en" ? "/en" : ""}/api/projects`;
         if (filter !== 0 && filter !== undefined) {
             url += `?type=${filter}`;
         }
@@ -86,14 +86,14 @@ export default function Projects() {
                 <ProjectFilter
                     key={0}
                     name={t('project_filter_all')}
-                    url={`${lang.current === "fr" ? "" : "/en"}/projects/`}
+                    url={`${lang.current === "en" ? "/en" : ""}/projects/`}
                     setFilter={()=> modifyFilter(0)}
                 />
                 {projectTypes && projectTypes.map((type) =>
                     <ProjectFilter
                         key={type.id}
                         name={type.name}
-                        url={`${lang.current === "fr" ? "" : "/en"}/projects/${type.id}`}
+                        url={`${lang.current === "en" ? "/en" : ""}/projects/${type.id}`}
                         setFilter={() => modifyFilter(type.id)}
                     />
                 )}

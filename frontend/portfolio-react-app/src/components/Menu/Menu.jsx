@@ -11,7 +11,7 @@ export default function Menu() {
     const { t } = useTranslation();
     const [isActive, setIsActive] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const langPrefix = lang === "fr" ? "/" : "/en/";
+    const langPrefix = lang === "en" ? "/en/" : "/";
 
     const menuLinks =
         [{

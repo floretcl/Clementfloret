@@ -16,7 +16,7 @@ export default function About({portfolio}) {
     }, []);
 
     function fetchSkills() {
-        const url = `${lang.current === "fr" ? "" : "/en"}/api/portfolio_skills`;
+        const url = `${lang.current === "en" ? "/en" : ""}/api/portfolio_skills`;
 
         const init = {
             method: "GET",

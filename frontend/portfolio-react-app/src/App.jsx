@@ -60,7 +60,7 @@ function App() {
 
     function fetchPortfolio() {
         const lang = i18n.language;
-        const url = `${lang === "fr" ? "" : "/en"}/api/portfolio`;
+        const url = `${lang === "en" ? "/en" : ""}/api/portfolio`;
 
         const init = {
             method: "GET",
@@ -83,7 +83,7 @@ function App() {
 
     function fetchPortfolioLinks() {
         const lang = i18n.language;
-        const url = `${lang === "fr" ? "" : "/en"}/api/portfolio_links`;
+        const url = `${lang === "en" ? "/en" : ""}/api/portfolio_links`;
 
         const init = {
             method: "GET",
@@ -125,7 +125,9 @@ function App() {
                         <Route
                             path=":lang?/contact"
                             element={<Contact email={portfolio.contact_email}/>}/>
-
+                        <Route
+                            path="*"
+                            element={<Navigate to="/" replace={true}/>}/>
                     </Routes>
                 <Footer portfolio={portfolio} portfolioLinks={portfolioLinks}/>
             </Router>
