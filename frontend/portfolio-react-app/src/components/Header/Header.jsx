@@ -2,14 +2,17 @@ import Menu from "../Menu/Menu.jsx";
 import PropTypes from "prop-types";
 import '../../styles/Header.scss'
 import {useTranslation} from "react-i18next";
+import i18n from "i18next";
 
 export default function Header({scrollDown}) {
-    const {t} = useTranslation();
+    const lang = i18n.language;
+    const { t } = useTranslation();
+    const langPrefix = lang === "fr" ? "/" : "/en";
 
     return (
         <header className={`header ${scrollDown ? "header--scrolldown" : ""}`}>
             <div className="header__content">
-                <a className="header__logo hoverable" href="/" aria-label={`${t('link_to')} ${t('home')}`}>
+                <a className="header__logo hoverable" href={langPrefix} aria-label={`${t('link_to')} ${t('home')}`}>
                     <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="512" height="512" fill="none"/>
                         <path fillRule="evenodd" clipRule="evenodd"

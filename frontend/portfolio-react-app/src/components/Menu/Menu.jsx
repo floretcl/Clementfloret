@@ -3,38 +3,41 @@ import Mode from "../Mode/Mode.jsx";
 import MenuLink from "./MenuLink.jsx";
 import '../../styles/Menu.scss'
 import {useTranslation} from "react-i18next";
+import i18n from "i18next";
 
 
 export default function Menu() {
-    const {i18n ,t } = useTranslation();
+    const lang = i18n.language;
+    const { t } = useTranslation();
     const [isActive, setIsActive] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const langPrefix = lang === "fr" ? "/" : "/en/";
 
     const menuLinks =
         [{
             "id": 0,
             "name": t('home'),
-            "url": "/" + i18n.language + "/",
+            "url": `${langPrefix}`,
             "reload": false
         }, {
             "id": 1,
             "name": t('about'),
-            "url": "/" + i18n.language + "/about/",
+            "url": `${langPrefix}about`,
             "reload": false
         }, {
             "id": 2,
             "name": t('projects'),
-            "url": "/" + i18n.language + "/projects/",
+            "url": `${langPrefix}projects`,
             "reload": false
         }, {
             "id": 3,
             "name": t('contact'),
-            "url": "/" + i18n.language + "/contact/",
+            "url": `${langPrefix}contact`,
             "reload": false
         },{
             "id": 4,
             "name": "FR",
-            "url": "/fr/",
+            "url": "/",
             "reload": true
         }, {
             "id": 5,

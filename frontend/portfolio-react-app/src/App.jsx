@@ -1,5 +1,6 @@
 import {useContext, useEffect, useRef, useState} from 'react'
 import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
+import i18n from "i18next";
 import {ThemeContext} from "./ThemeContext.jsx";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
@@ -58,9 +59,8 @@ function App() {
     }
 
     function fetchPortfolio() {
-        const pathName = window.location.pathname;
-        const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
-        const url = `${langPrefix}/api/portfolio`;
+        const lang = i18n.language;
+        const url = `${lang === "fr" ? "" : "/en"}/api/portfolio`;
 
         const init = {
             method: "GET",
@@ -82,9 +82,8 @@ function App() {
     }
 
     function fetchPortfolioLinks() {
-        const pathName = window.location.pathname;
-        const langPrefix = pathName.startsWith('/fr/') ? '/fr' : pathName.startsWith('/en/') ? '/en' : '';
-        const url = `${langPrefix}/api/portfolio_links`;
+        const lang = i18n.language;
+        const url = `${lang === "fr" ? "" : "/en"}/api/portfolio_links`;
 
         const init = {
             method: "GET",
@@ -112,23 +111,21 @@ function App() {
                 <Header scrollDown={scrollDown}/>
                     <Routes>
                         <Route
-                            path="/:lang/"
+                            path=":lang?"
                             element={<Home portfolio={portfolio} portfolioLinks={portfolioLinks}/>}/>
                         <Route
-                            path="/:lang/about"
+                            path=":lang?/about"
                             element={<About portfolio={portfolio}/>}/>
                         <Route
-                            path="/:lang/projects/:type?"
+                            path=":lang?/projects/:type?"
                             element={<Projects/>}/>
                         <Route
-                            path="/:lang/project/:id"
+                            path=":lang?/project/:id"
                             element={<Project/>}/>
                         <Route
-                            path="/:lang/contact"
+                            path=":lang?/contact"
                             element={<Contact email={portfolio.contact_email}/>}/>
-                        <Route
-                            path="*"
-                            element={<Navigate to="/en/" replace={true}/>}/>
+
                     </Routes>
                 <Footer portfolio={portfolio} portfolioLinks={portfolioLinks}/>
             </Router>
