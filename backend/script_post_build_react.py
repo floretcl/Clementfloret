@@ -56,7 +56,7 @@ def convert_html_to_django_template(path_input, path_output):
     html_content = re.sub(
         r'<meta name="description"((.|\n)*)content="((.|\n)*)"/>',
         '<meta name="description" ' +
-        'content="{% block description %}{% translate \'meta_description\' %}{% endblock %}"/>',
+        'content="{% block description %}{% endblock %}"/>',
         html_content
     )
 
