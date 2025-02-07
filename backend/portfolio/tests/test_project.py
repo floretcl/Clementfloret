@@ -25,12 +25,12 @@ class ProjectTests(TestCase):
         cls.skills = [Skill.objects.create(
             id=1,
             name="skill 1",
-            icon=Icon.objects.create(id=1, name="icon skill 1", svg_file="uploads/icons/icon_skill_1.svg"),
+            icon=Icon.objects.create(id=1, name="icon skill 1", svg_file="media/uploads/icons/icon_skill_1.svg"),
             order=1
         ), Skill.objects.create(
             id=2,
             name="skill 2",
-            icon=Icon.objects.create(id=2, name="icon skill 2", svg_file="uploads/icons/icon_skill_2.svg"),
+            icon=Icon.objects.create(id=2, name="icon skill 2", svg_file="media/uploads/icons/icon_skill_2.svg"),
             order=2
         )]
         cls.images = [ProjectImage.objects.create(
@@ -55,14 +55,14 @@ class ProjectTests(TestCase):
         cls.links = [ProjectLink.objects.create(
             id=1,
             name="Project Link 1",
-            icon=Icon.objects.create(id=3, name="icon link 3", svg_file="uploads/icons/icon_link_3.svg"),
+            icon=Icon.objects.create(id=3, name="icon link 3", svg_file="media/uploads/icons/icon_link_3.svg"),
             url="https://example.com",
             project=Project.objects.get(id=1),
             order=1
         ), ProjectLink.objects.create(
             id=2,
             name="Project Link 2",
-            icon=Icon.objects.create(id=4, name="icon link 4", svg_file="uploads/icons/icon_link_4.svg"),
+            icon=Icon.objects.create(id=4, name="icon link 4", svg_file="media/uploads/icons/icon_link_4.svg"),
             url="https://example.com",
             project=Project.objects.get(id=1),
             order=2

@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path, re_path, include
 
 from .views import (
@@ -23,9 +25,12 @@ urlpatterns = [
     path('api/project', ProjectView.as_view(), name='project'),
     path('api/contact', ContactView.as_view(), name='contact'),
     path('robots.txt', RobotsTxtView.as_view(content_type="text/plain"), name="robots"),
-    re_path(r'^.*$', IndexView.as_view(), name='index'),
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 urlpatterns += [
+    re_path(r'^.*$', IndexView.as_view(), name='index'),
     path('i18n/', include('django.conf.urls.i18n')),
 ]

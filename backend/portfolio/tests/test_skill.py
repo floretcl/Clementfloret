@@ -9,7 +9,7 @@ class SkillTest(TestCase):
         cls.skill = Skill.objects.create(
             id=1,
             name="skill 1",
-            icon=Icon.objects.create(id=1, name="icon skill 1", svg_file="uploads/icons/icon_skill_1.svg"),
+            icon=Icon.objects.create(id=1, name="icon skill 1", svg_file="media/uploads/icons/icon_skill_1.svg"),
             order=1
         )
 

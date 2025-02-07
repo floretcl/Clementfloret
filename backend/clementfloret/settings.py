@@ -17,9 +17,7 @@ from django.utils.translation import gettext_lazy as _
 # Django-environ
 # environment variables
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
+env = environ.Env()
 environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -36,7 +34,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 if env('ENV') == 'PROD':
-    ALLOWED_HOSTS = ['www.clementfloret.dev', 'clementfloret.dev']
+    ALLOWED_HOSTS = ['www.clementfloret.fr', 'clementfloret.fr']
 else:
     ALLOWED_HOSTS = ['*']
 
@@ -54,19 +52,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portfolio.apps.PortfolioConfig',
-    'debug_toolbar'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "django.middleware.locale.LocaleMiddleware",
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'clementfloret.urls'
@@ -136,11 +132,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
 LANGUAGES = [
-    ('en', _('English')),
     ('fr', _('Français')),
+    ('en', _('English')),
 ]
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'fr'
 
 TIME_ZONE = 'Europe/Paris'
 
@@ -166,7 +162,8 @@ if env('ENV') == 'PROD':
     MEDIA_URL = env('MEDIA_URL')
     MEDIA_ROOT = env('MEDIA_ROOT')
 else:
-    MEDIA_URL = 'media/'
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -185,7 +182,7 @@ LOCALE_PATHS = (
 
 if env('ENV') == 'PROD':
     ADMINS = env('ADMINS')
-    CSRF_TRUSTED_ORIGINS = ['']
+    CSRF_TRUSTED_ORIGINS = ['https://clementfloret.fr', 'https://www.clementfloret.fr']
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
     SECURE_SSL_REDIRECT = True
@@ -196,7 +193,10 @@ else:
 
 EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_PORT = env('EMAIL_PORT')
-#EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-#EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-#EMAIL_USE_TLS = env('EMAIL_USE_TLS')
-#EMAIL_USE_LOCALTIME = env('EMAIL_USE_LOCALTIME')
+if env('ENV') == 'PROD':
+     EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+     EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS')
+     EMAIL_USE_SSL = env.bool('EMAIL_USE_TLS')
+     EMAIL_USE_LOCALTIME = env('EMAIL_USE_LOCALTIME')
+     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

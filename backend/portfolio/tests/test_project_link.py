@@ -18,7 +18,7 @@ class TestProjectLink(TestCase):
         cls.project_link = ProjectLink.objects.create(
             id=1,
             name="Project Link",
-            icon=Icon.objects.create(id=1, name="icon link 1", svg_file="uploads/icons/icon_link_1.svg"),
+            icon=Icon.objects.create(id=1, name="icon link 1", svg_file="media/uploads/icons/icon_link_1.svg"),
             url="https://example.com",
             project=Project.objects.get(id=1),
             order=1

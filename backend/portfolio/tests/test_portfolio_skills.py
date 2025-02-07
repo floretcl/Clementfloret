@@ -13,12 +13,12 @@ class PortfolioSkillsTests(TestCase):
         cls.portfolio_skill = [Skill.objects.create(
             id=1,
             name="skill",
-            icon=Icon.objects.create(id=1, name="icon skill", svg_file="uploads/icons/icon_skill.svg"),
+            icon=Icon.objects.create(id=1, name="icon skill", svg_file="media/uploads/icons/icon_skill.svg"),
             order=1
         ), Skill.objects.create(
             id=2,
             name="skill2",
-            icon=Icon.objects.create(id=2, name="icon skill2", svg_file="uploads/icons/icon_skill2.svg"),
+            icon=Icon.objects.create(id=2, name="icon skill2", svg_file="media/uploads/icons/icon_skill2.svg"),
             order=2
         )]
 

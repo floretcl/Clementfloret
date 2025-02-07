@@ -1,6 +1,8 @@
+import environ
 from django import forms
 from django.core.mail import send_mail
-
+env = environ.Env()
+environ.Env.read_env()
 
 class ContactForm(forms.Form):
     name = forms.CharField(label='Name', max_length=100, min_length=3)
@@ -16,7 +18,7 @@ class ContactForm(forms.Form):
         send_mail(
             subject=f'Message de contact de {name} - sujet: {subject}',
             message=f'Nom: {name}\nEmail: {email}\nSujet: {subject}\n\nMessage: {message}',
-            from_email=email,
+            from_email=env('EMAIL_HOST_USER'),
             recipient_list=['clement.floret@protonmail.com']
         )
         pass

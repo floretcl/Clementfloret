@@ -12,14 +12,14 @@ class PortfolioLinksTests(TestCase):
         cls.portfolio_link = PortfolioLink.objects.create(
             id=1,
             name="link",
-            icon=Icon.objects.create(id=1, name="icon link", svg_file="uploads/icons/icon_link.svg"),
+            icon=Icon.objects.create(id=1, name="icon link", svg_file="media/uploads/icons/icon_link.svg"),
             url="https://link.com",
             order=1
         )
         cls.portfolio_link2 = PortfolioLink.objects.create(
             id=2,
             name="link2",
-            icon=Icon.objects.create(id=2, name="icon link2", svg_file="uploads/icons/icon_link2.svg"),
+            icon=Icon.objects.create(id=2, name="icon link2", svg_file="media/uploads/icons/icon_link2.svg"),
             url="https://link.com",
             order=2
         )

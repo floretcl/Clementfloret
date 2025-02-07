@@ -9,7 +9,7 @@ class IconTest(TestCase):
         cls.icon = Icon.objects.create(
             id=1,
             name="icon skill 1",
-            svg_file="uploads/icons/icon_skill_1.svg"
+            svg_file="media/uploads/icons/icon_skill_1.svg"
         )
     def test_model(self):
         self.assertEqual(str(self.icon), "icon skill 1")
