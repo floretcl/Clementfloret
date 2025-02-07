@@ -61,6 +61,7 @@ export default function ProjectList({projects, currentIndex, onClickPrevious, on
 
     function handlePointerDown(e) {
         pointerStartX.current = e.clientX;
+        isSwiping.current = false;
     }
 
     function handlePointerUp() {

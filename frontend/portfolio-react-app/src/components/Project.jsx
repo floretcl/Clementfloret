@@ -18,7 +18,7 @@ export default function Project() {
     }, []);
 
     function fetchProject() {
-        const url = `/${lang.current}/api/project?id=${id.current}`;
+        const url = `${lang.current === "fr" ? "" : "/en"}/api/project?id=${id.current}`;
 
         const init = {
             method: "GET",
