@@ -13,7 +13,6 @@ class ContactTests(TestCase):
         cls.client_csrf = Client(enforce_csrf_check=True)
 
     def test_url_en(self):
-        self.client.cookies.load({settings.LANGUAGE_COOKIE_NAME: "en"})
         static_url = "/en/api/contact"
         _ = self.client.get(static_url)
         reversed_url = reverse("portfolio:contact")
@@ -22,8 +21,7 @@ class ContactTests(TestCase):
         self.assertEqual(resolve(static_url).view_name, "portfolio:contact")
 
     def test_url_fr(self):
-        self.client.cookies.load({settings.LANGUAGE_COOKIE_NAME: "fr"})
-        static_url = "/fr/api/contact"
+        static_url = "/api/contact"
         _ = self.client.get(static_url)
         reversed_url = reverse("portfolio:contact")
         self.assertEqual(reversed_url, static_url)
@@ -32,7 +30,7 @@ class ContactTests(TestCase):
 
     def test_get(self):
         response = self.client.get("/api/contact")
-        self.assertEqual(response.status_code, HTTPStatus.FOUND)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_get_en(self):
         response = self.client.get("/en/api/contact")
@@ -40,13 +38,13 @@ class ContactTests(TestCase):
         self.assertEqual(response.headers['Content-Type'], "application/json")
 
     def test_get_fr(self):
-        response = self.client.get("/fr/api/contact")
+        response = self.client.get("/api/contact")
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(response.headers['Content-Type'], "application/json")
 
     def test_post(self):
         response = self.client.post("/api/contact")
-        self.assertEqual(response.status_code, HTTPStatus.FOUND)
+        self.assertEqual(response.status_code, HTTPStatus.BAD_REQUEST)
 
     def test_post_en(self):
         static_url = "/en/api/contact"
@@ -72,7 +70,7 @@ class ContactTests(TestCase):
         self.assertEqual(response_post.json()["success"], True)
 
     def test_post_fr(self):
-        static_url = "/fr/api/contact"
+        static_url = "/api/contact"
 
         response = self.client_csrf.get(static_url)
         self.assertEqual(response.status_code, HTTPStatus.OK)
@@ -148,7 +146,7 @@ class ContactTests(TestCase):
         sent_email = mail.outbox[0]
         self.assertEqual(sent_email.subject, "Message de contact de John Doe - sujet: Sujet du message")
         self.assertEqual(sent_email.body, "Nom: John Doe\nEmail: johndoe@example.com\nSujet: Sujet du message\n\nMessage: Contenu du message")
-        self.assertEqual(sent_email.from_email, "johndoe@example.com")
+        self.assertEqual(sent_email.from_email, "webmaster@localhost")
         self.assertEqual(sent_email.to, ["clement.floret@protonmail.com"])
 
 

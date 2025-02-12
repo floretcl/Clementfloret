@@ -9,7 +9,6 @@ from bs4 import BeautifulSoup
 
 class IndexTests(TestCase):
     def test_url_en(self):
-        self.client.cookies.load({settings.LANGUAGE_COOKIE_NAME: "en"})
         static_url = "/en/"
         _ = self.client.get(static_url)
         reversed_url = reverse("portfolio:index")
@@ -18,8 +17,7 @@ class IndexTests(TestCase):
         self.assertEqual(resolve(static_url).view_name, "portfolio:index")
 
     def test_url_fr(self):
-        self.client.cookies.load({settings.LANGUAGE_COOKIE_NAME: "fr"})
-        static_url = "/fr/"
+        static_url = "/"
         _ = self.client.get(static_url)
         reversed_url = reverse("portfolio:index")
         self.assertEqual(reversed_url, static_url)
@@ -28,7 +26,7 @@ class IndexTests(TestCase):
 
     def test_get(self):
         response = self.client.get("/")
-        self.assertEqual(response.status_code, HTTPStatus.FOUND)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_get_en(self):
         response = self.client.get("/en/")
@@ -43,7 +41,7 @@ class IndexTests(TestCase):
 
 
     def test_get_fr(self):
-        response = self.client.get("/fr/")
+        response = self.client.get("/")
 
         soup = BeautifulSoup(response.content, "html.parser")
         html_tag = soup.find("html")

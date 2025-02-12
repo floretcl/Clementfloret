@@ -22,7 +22,6 @@ class ProjectTypesTests(TestCase):
         )
 
     def test_url_en(self):
-        self.client.cookies.load({settings.LANGUAGE_COOKIE_NAME: "en"})
         static_url = "/en/api/project_types"
         _ = self.client.get(static_url)
         reversed_url = reverse("portfolio:project-types")
@@ -31,8 +30,7 @@ class ProjectTypesTests(TestCase):
         self.assertEqual(resolve(static_url).view_name, "portfolio:project-types")
 
     def test_url_fr(self):
-        self.client.cookies.load({settings.LANGUAGE_COOKIE_NAME: "fr"})
-        static_url = "/fr/api/project_types"
+        static_url = "/api/project_types"
         _ = self.client.get(static_url)
         reversed_url = reverse("portfolio:project-types")
         self.assertEqual(reversed_url, static_url)
@@ -41,7 +39,7 @@ class ProjectTypesTests(TestCase):
 
     def test_get(self):
         response = self.client.get("/api/project_types")
-        self.assertEqual(response.status_code, HTTPStatus.FOUND)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_get_en(self):
         response = self.client.get("/en/api/project_types")
@@ -56,7 +54,7 @@ class ProjectTypesTests(TestCase):
         }])
 
     def test_get_fr(self):
-        response = self.client.get("/fr/api/project_types")
+        response = self.client.get("/api/project_types")
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(response.headers['Content-Type'], "application/json")
         self.assertEqual(response.json(), [{

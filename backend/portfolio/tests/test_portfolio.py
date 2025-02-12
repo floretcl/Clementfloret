@@ -59,7 +59,6 @@ class PortfolioTests(TestCase):
                 os.remove(image_path)
 
     def test_url_en(self):
-        self.client.cookies.load({settings.LANGUAGE_COOKIE_NAME: "en"})
         static_url = "/en/api/portfolio"
         _ = self.client.get(static_url)
         reversed_url = reverse("portfolio:about")
@@ -68,8 +67,7 @@ class PortfolioTests(TestCase):
         self.assertEqual(resolve(static_url).view_name, "portfolio:about")
 
     def test_url_fr(self):
-        self.client.cookies.load({settings.LANGUAGE_COOKIE_NAME: "fr"})
-        static_url = "/fr/api/portfolio"
+        static_url = "/api/portfolio"
         _ = self.client.get(static_url)
         reversed_url = reverse("portfolio:about")
         self.assertEqual(reversed_url, static_url)
@@ -78,7 +76,7 @@ class PortfolioTests(TestCase):
 
     def test_get(self):
         response = self.client.get("/api/portfolio")
-        self.assertEqual(response.status_code, HTTPStatus.FOUND)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_get_en(self):
         response = self.client.get("/en/api/portfolio")
@@ -97,7 +95,7 @@ class PortfolioTests(TestCase):
         })
 
     def test_get_fr(self):
-        response = self.client.get("/fr/api/portfolio")
+        response = self.client.get("/api/portfolio")
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(response.headers['Content-Type'], "application/json")
         self.assertEqual(response.json(), {
