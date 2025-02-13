@@ -13,6 +13,10 @@ export default function Project() {
     const id = useRef(params.id);
     const [project, setProject] = useState(null);
 
+    function replaceWithBr(text) {
+        return text.replace(/\n/g, "<br />");
+    }
+
     useEffect(() => {
         fetchProject();
     }, []);
@@ -46,11 +50,9 @@ export default function Project() {
                     <Carousel images={project.images}/>
                     <div className="project__content">
                         <h1 className="project__title">{project.name}</h1>
-                        <p className="project__text">
-                            {project.description}
-                        </p>
+                        <p className="project__text" dangerouslySetInnerHTML={{ __html: replaceWithBr(project.description) }} />
                         <p>
-                            {t('Skills')} :
+                            {t('skills')} :
                             <ol className="project__skills">
                                 {project.skills.map((skill) =>
                                     <ProjectSkill key={skill[0]} name={skill[1]}/>

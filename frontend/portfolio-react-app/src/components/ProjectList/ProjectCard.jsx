@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import '../../styles/ProjectCard.scss'
 import {useTranslation} from "react-i18next";
+import {useRef} from "react";
+import {useParams} from "react-router-dom";
 
 export default function ProjectCard({
                                         project,
@@ -11,7 +13,9 @@ export default function ProjectCard({
                                         onPointerMove,
                                         onClick
                                     }) {
-    const {i18n, t} = useTranslation();
+    let params = useParams();
+    const {t} = useTranslation();
+    const lang = useRef(params.lang);
 
     return (
         <li className={`project-card ${className}`}
@@ -22,7 +26,7 @@ export default function ProjectCard({
             <a
                 className={`project-card__link hoverable ${className !== "project-card--index" ? "project-card__link--disable" : ""}`}
                 onClick={onClick}
-                href={`/${i18n.language}/project/${project.id}`}
+                href={`${lang.current === "en" ? "/en" : ""}/project/${project.id}`}
                 aria-label={`${t('link_to')} ${name} project`}>
                 <img
                     className="project-card__img"
