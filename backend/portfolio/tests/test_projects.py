@@ -19,7 +19,6 @@ class ProjectsTests(TestCase):
             name_fr="Projet de test",
             description="Test project description",
             description_fr="Description de projet de test",
-            project_type=ProjectType.objects.create(id=1, name="Project Type"),
             order=1
         )
         cls.project2 = Project.objects.create(
@@ -28,9 +27,18 @@ class ProjectsTests(TestCase):
             name_fr="Projet de test 2",
             description="Test project description 2",
             description_fr="Description de projet de test 2",
-            project_type=ProjectType.objects.create(id=2, name="Project Type 2"),
             order=2
         )
+        cls.project_type1 = [ProjectType.objects.create(
+            id=1,
+            name="Project Type",
+            name_fr="Type de projet"
+        )]
+        cls.project_type2 = [ProjectType.objects.create(
+            id=2,
+            name="Project Type 2",
+            name_fr="Type de projet 2"
+        )]
         cls.skills_project1 = [Skill.objects.create(
             id=1,
             name="skill 1",
@@ -119,6 +127,8 @@ class ProjectsTests(TestCase):
             project=Project.objects.get(id=2),
             order=4
         )]
+        cls.project1.project_type.set(cls.project_type1)
+        cls.project2.project_type.set(cls.project_type2)
         cls.project1.skill.set(cls.skills_project1)
         cls.project2.skill.set(cls.skills_project2)
 
@@ -160,7 +170,10 @@ class ProjectsTests(TestCase):
             "id": 1,
             "name": "Test Project",
             "description": "Test project description",
-            "type": "Project Type",
+            "types": [{
+                "id": 1,
+                "name": "Project Type",
+            }],
             "images": [{
                 "id": 1,
                 "name": "image 1",
@@ -174,7 +187,10 @@ class ProjectsTests(TestCase):
             "id": 2,
             "name": "Test Project 2",
             "description": "Test project description 2",
-            "type": "Project Type 2",
+            "types": [{
+                "id": 2,
+                "name": "Project Type 2",
+            }],
             "images": [{
                 "id": 3,
                 "name": "image 3",
@@ -194,7 +210,10 @@ class ProjectsTests(TestCase):
             "id": 1,
             "name": "Projet de test",
             "description": "Description de projet de test",
-            "type": "Project Type",
+            "types": [{
+                "id": 1,
+                "name": "Type de projet",
+            }],
             "images": [{
                 "id": 1,
                 "name": "image 1",
@@ -208,7 +227,10 @@ class ProjectsTests(TestCase):
             "id": 2,
             "name": "Projet de test 2",
             "description": "Description de projet de test 2",
-            "type": "Project Type 2",
+            "types": [{
+                "id": 2,
+                "name": "Type de projet 2",
+            }],
             "images": [{
                 "id": 3,
                 "name": "image 3",

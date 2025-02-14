@@ -19,9 +19,17 @@ class ProjectTests(TestCase):
             name_fr="Projet de test",
             description="Test project description",
             description_fr="Description de projet de test",
-            project_type=ProjectType.objects.create(id=1, name="Project Type"),
             order=1
         )
+        cls.project_types = [ProjectType.objects.create(
+            id=1,
+            name="Project Type",
+            name_fr="Type de projet"
+        ),ProjectType.objects.create(
+            id=2,
+            name="Project Type 2",
+            name_fr="Type de projet 2"
+        )]
         cls.skills = [Skill.objects.create(
             id=1,
             name="skill 1",
@@ -68,6 +76,7 @@ class ProjectTests(TestCase):
             order=2
         )]
         cls.project.skill.set(cls.skills)
+        cls.project.project_type.set(cls.project_types)
 
     @classmethod
     def tearDownClass(cls):
@@ -107,7 +116,13 @@ class ProjectTests(TestCase):
             "name": "Test Project",
             "description": "Test project description",
             "skills": [[1, 'skill 1'], [2, 'skill 2']],
-            "type": "Project Type",
+            "types": [{
+                "id": 1,
+                "name": "Project Type",
+            }, {
+                "id": 2,
+                "name": "Project Type 2",
+            }],
             "images": [{
                 "id": 1,
                 "name": "image 1",
@@ -139,7 +154,13 @@ class ProjectTests(TestCase):
             "name": "Projet de test",
             "description": "Description de projet de test",
             "skills": [[1, 'skill 1'], [2, 'skill 2']],
-            "type": "Project Type",
+            "types": [{
+                "id": 1,
+                "name": "Type de projet",
+            }, {
+                "id": 2,
+                "name": "Type de projet 2",
+            }],
             "images": [{
                 "id": 1,
                 "name": "image 1",

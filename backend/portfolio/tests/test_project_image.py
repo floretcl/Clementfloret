@@ -6,15 +6,20 @@ from portfolio.models import ProjectImage, Project, ProjectType
 class ProjectTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        Project.objects.create(
+        cls.project_type = [ProjectType.objects.create(
+            id=1,
+            name="Project Type",
+            name_fr="Type de projet"
+        )]
+        cls.project = Project.objects.create(
             id=1,
             name="Test Project",
             name_fr="Projet de test",
             description="Test project description",
             description_fr="Description de projet de test",
-            project_type=ProjectType.objects.create(id=1, name="Project Type"),
             order=1
         )
+        cls.project.project_type.set(cls.project_type)
         cls.project_image = ProjectImage.objects.create(
             id=1,
             name="project image",

@@ -9,7 +9,6 @@ from portfolio.models import ProjectType
 class ProjectTypesTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-
         cls.project_type = ProjectType.objects.create(
             id=1,
             name="Test Project Type",

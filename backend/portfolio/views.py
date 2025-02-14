@@ -148,7 +148,13 @@ class ProjectView(View):
             "name": getattr(project, 'name_fr' if current_language == 'fr' else 'name'),
             "description": getattr(project, 'description_fr' if current_language == 'fr' else 'description'),
             "skills": list(project.skill.values_list("id", "name").order_by("order")),
-            "type": project.project_type.name,
+            "types": [
+                    {
+                        "id": type.id,
+                        "name": getattr(type, 'name_fr' if current_language == 'fr' else 'name')
+                    }
+                    for type in ProjectType.objects.filter(project=project)
+                ],
             "images": [
                 {
                     "id": image.pk,
