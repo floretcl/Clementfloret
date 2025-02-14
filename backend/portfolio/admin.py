@@ -53,7 +53,7 @@ class ProjectTypeAdmin(admin.ModelAdmin):
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ['name', 'name_fr', 'project_type', 'order']
+    list_display = ['name', 'name_fr', 'order']
     list_per_page = 50
     list_filter = ['project_type']
     ordering = ['order']

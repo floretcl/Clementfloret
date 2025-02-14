@@ -3,7 +3,7 @@ import ProjectFilter from "./ProjectList/ProjectFilter.jsx";
 import {useEffect, useRef, useState} from "react";
 import '../styles/Projects.scss'
 import {useTranslation} from "react-i18next";
-import {useParams} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 
 export default function Projects() {
     let params = useParams();
@@ -82,13 +82,12 @@ export default function Projects() {
     return (
         <main className="projects">
             <h1 className="projects__title">{t('projects_title')}</h1>
+            <p>
+                <NavLink to={`${lang.current === "en" ? "/en" : ""}/projects/`} onClick={()=> modifyFilter(0)} className="projects__filter-link hoverable">
+                    {t('project_filter_all')}
+                </NavLink>
+            </p>
             <ol className="projects__filters">
-                <ProjectFilter
-                    key={0}
-                    name={t('project_filter_all')}
-                    url={`${lang.current === "en" ? "/en" : ""}/projects/`}
-                    setFilter={()=> modifyFilter(0)}
-                />
                 {projectTypes && projectTypes.map((type) =>
                     <ProjectFilter
                         key={type.id}

@@ -36,7 +36,12 @@ export default function ProjectCard({
                     alt={`${project.images[0].name} ${t('thumbnail')}`}/>
                 <div className="project-card__text">
                     <p className="project-card__name">{project.name}</p>
-                    <p className="project-card__type">{project.type}</p>
+                    <p className="project-card__type">
+                        {project.types.map((type) =>
+                            <>{type.name}</>
+                        ).reduce((prevElements, element) => {
+                            return prevElements === null ? [element] : [...prevElements, " - ", element];
+                        }, null)}</p>
                 </div>
             </a>
         </li>

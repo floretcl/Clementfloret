@@ -59,7 +59,7 @@ class Project(models.Model):
     description = models.TextField('description du projet')
     description_fr = models.TextField('description du projet fr')
     skill = models.ManyToManyField(Skill, verbose_name='compétences')
-    project_type = models.ForeignKey(ProjectType, on_delete=models.CASCADE, verbose_name='type de projet')
+    project_type = models.ManyToManyField(ProjectType, verbose_name='types de projet')
     order = models.PositiveSmallIntegerField("ordre d'apparition")
 
     def __str__(self):

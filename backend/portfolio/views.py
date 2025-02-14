@@ -110,13 +110,18 @@ class ProjectsView(View):
         else:
             projects = Project.objects.filter(portfolio=portfolio).order_by('order')
 
-
         projects_data = [
             {
                 "id": project.pk,
                 "name": getattr(project, 'name_fr' if current_language == 'fr' else 'name'),
                 "description": getattr(project, "description_fr" if current_language == 'fr' else 'description'),
-                "type": project.project_type.name,
+                "types": [
+                    {
+                        "id": type.id,
+                        "name": getattr(type, 'name_fr' if current_language == 'fr' else 'name')
+                    }
+                    for type in ProjectType.objects.filter(project=project)
+                ],
                 "images": [
                     {
                         "id": image.id,
