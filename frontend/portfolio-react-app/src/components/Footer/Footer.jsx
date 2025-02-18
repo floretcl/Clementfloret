@@ -16,7 +16,7 @@ export default function Footer({portfolio, portfolioLinks}) {
     }, [location]);
 
     function testSmallVersion(location) {
-        const regexp = new RegExp("^/([a-z]){2}/$");
+        const regexp = new RegExp("^/(([a-z]){2}/)*$");
         const test = regexp.test(location.pathname);
         setSmallVersion(test);
     }
