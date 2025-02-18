@@ -19,15 +19,15 @@ export default function Carousel({images}) {
 
     return (
         <div className="carousel">
+            <div className="carousel__buttons">
+                <button className="carousel__button hoverable" onClick={previousItem} title={t('previous_button')}>&lsaquo;</button>
+                <button className="carousel__button hoverable" onClick={nextItem} title={t('next_button')}>&rsaquo;</button>
+            </div>
             <ol className="carousel__items">
                 {images && images.map((item, id) =>
                     <CarouselItem key={id} id={id} index={index} name={item.name} image={item.image} />
                 )}
             </ol>
-            <div className="carousel__buttons">
-                <button className="carousel__button hoverable" onClick={previousItem} title={t('previous_button')}>&lsaquo;</button>
-                <button className="carousel__button hoverable" onClick={nextItem} title={t('next_button')}>&rsaquo;</button>
-            </div>
             <div className="carousel__dots">
                 {images && images.map((item, id) =>
                     <CarouselDot key={id} id={id} index={index} />
