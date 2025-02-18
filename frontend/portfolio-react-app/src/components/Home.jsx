@@ -11,8 +11,10 @@ export default function Home({portfolio, portfolioLinks}) {
         <main className="home">
             {portfolio ? (
                 <>
-                    <h1 className="home__title">{t('home_title')}
-                        <strong>{portfolio.firstname} {portfolio.lastname}</strong></h1>
+                    <h1 className="home__title">
+                        {t('home_hello')}<br />
+                        <strong>{portfolio.firstname} {portfolio.lastname}</strong>
+                    </h1>
                     <p className="home__subtitle">{portfolio.job_title}</p>
                     <div className="home__social">
                         <Social portfolioLinks={portfolioLinks}/>

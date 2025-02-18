@@ -34,7 +34,7 @@ export default function Footer({portfolio, portfolioLinks}) {
                     </div>
                 )}
                 <div className="footer__infos">
-                    © {fullYear} {portfolio && `${portfolio.firstname} ${portfolio.lastname}, ${t('footer_infos')}`}
+                    {portfolio && `${portfolio.firstname}  ${portfolio.lastname}`} - {fullYear} {t('footer_infos')}
                 </div>
                 {!smallVersion && (
                     <div className="footer__social">

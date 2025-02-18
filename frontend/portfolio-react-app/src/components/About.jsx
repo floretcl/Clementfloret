@@ -11,6 +11,10 @@ export default function About({portfolio}) {
     const lang = useRef(params.lang);
     const [portfolioSkills, setPortfolioSkills] = useState(null);
 
+    function replaceWithBr(text) {
+        return text.replace(/\n/g, "<br />");
+    }
+
     useEffect(() => {
         fetchSkills();
     }, []);
@@ -48,9 +52,7 @@ export default function About({portfolio}) {
                     />
                     <h1 className="about__title">{t('about_title')}</h1>
                     <h2 className="about__subtitle">{t('about_subtitle_profile')}</h2>
-                    <p className="about__text">
-                        {portfolio.about_description}
-                    </p>
+                    <p className="about__text" dangerouslySetInnerHTML={{ __html: replaceWithBr(portfolio.about_description) }} />
                     <div className="about__separator hoverable">
                         <svg width="118" height="94" viewBox="0 0 118 94" fill="none"
                              xmlns="http://www.w3.org/2000/svg">

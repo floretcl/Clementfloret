@@ -1,5 +1,5 @@
 {
-  "home_title": "Bonjour je suis ",
+  "home_hello": "Hello, je suis ",
   "about_title": "À propos",
   "about_subtitle_profile": "Profil",
   "about_subtitle_skills": "Compétences",
@@ -14,7 +14,7 @@
   "contact_error_message": "Le message n'a pas pu être envoyé.",
   "projects_title": "Projets",
   "project_filter_all": "Tous",
-  "footer_infos": "Tous droits réservés",
+  "footer_infos": "",
   "home": "Accueil",
   "about": "À propos",
   "contact":  "Contact",
@@ -30,5 +30,6 @@
   "previous_button": "Bouton précédent",
   "next_button": "Bouton suivant",
   "mode_button_title": "Bouton du mode clair/sombre",
-  "contact_modal": "Fenêtre modal de contact"
+  "contact_modal": "Fenêtre modal de contact",
+  "see_img": "Cliquez pour voir l'image"
 }

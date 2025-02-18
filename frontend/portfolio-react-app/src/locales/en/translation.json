@@ -1,5 +1,5 @@
 {
-  "home_title": "Hello I'm ",
+  "home_hello": "Hello, I'm ",
   "about_title": "About me",
   "about_subtitle_profile": "Profile",
   "about_subtitle_skills": "Skills",
@@ -14,7 +14,7 @@
   "contact_error_message": "Your message could not be sent.",
   "projects_title": "Projects",
   "project_filter_all": "All",
-  "footer_infos": "All rights reserved",
+  "footer_infos": "© All rights reserved",
   "home": "Home",
   "about": "About",
   "contact":  "Contact",
@@ -30,5 +30,6 @@
   "previous_button": "Previous button",
   "next_button": "Next button",
   "mode_button_title": "Light/Dark mode button",
-  "contact_modal": "Contact modal window"
+  "contact_modal": "Contact modal window",
+  "see_img": "Click to see screenshot"
 }
