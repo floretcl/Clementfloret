@@ -1,14 +1,14 @@
 import AboutSkill from "./About/AboutSkill.jsx";
 import '../styles/About.scss'
-import {useTranslation} from "react-i18next";
 import {useEffect, useRef, useState} from "react";
+import {useTranslation} from "react-i18next";
 import {useParams} from "react-router-dom";
-import PropTypes from "prop-types";
 
-export default function About({portfolio}) {
+export default function About() {
     let params = useParams();
     const {t} = useTranslation();
     const lang = useRef(params.lang);
+    const [portfolio, setPortfolio] = useState(null);
     const [portfolioSkills, setPortfolioSkills] = useState(null);
 
     function replaceWithBr(text) {
@@ -16,8 +16,31 @@ export default function About({portfolio}) {
     }
 
     useEffect(() => {
+        fetchPortfolio();
         fetchSkills();
     }, []);
+
+    function fetchPortfolio() {
+        const url = `${lang.current === "en" ? "/en" : ""}/api/portfolio`;
+
+        const init = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            mode: 'same-origin',
+            cache: 'default',
+        };
+
+        fetch(url, init)
+            .then(response => response.json())
+            .then(data => {
+                setPortfolio(data);
+            })
+            .catch(error => {
+                console.log(`Error getting portfolio data: ${error}`);
+            });
+    }
 
     function fetchSkills() {
         const url = `${lang.current === "en" ? "/en" : ""}/api/portfolio_skills`;
@@ -76,8 +99,4 @@ export default function About({portfolio}) {
             )}
         </main>
     );
-}
-
-About.propTypes = {
-    portfolio: PropTypes.object.isRequired,
 }

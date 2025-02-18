@@ -115,7 +115,7 @@ function App() {
                             element={<Home portfolio={portfolio} portfolioLinks={portfolioLinks}/>}/>
                         <Route
                             path=":lang?/about"
-                            element={<About portfolio={portfolio}/>}/>
+                            element={<About/>}/>
                         <Route
                             path=":lang?/projects/:type?"
                             element={<Projects/>}/>
